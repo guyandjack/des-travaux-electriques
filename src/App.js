@@ -6,15 +6,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 //Import des pages de l'application
 import { PageHome } from "../src/Pages/Home/PageHome.jsx";
 import { PagePC16A } from "../src/Pages/Prise_De_Courant_16A/Prise_De_Courant_16A";
-import { PageCircuitSpecialise } from "../src/Pages/Circuit_Specialise/Circuit_Specialisé.jsx";
+import { PageCircuitSpecialise } from "../src/Pages/Circuit_Specialise/Circuit_Specialise.jsx";
 import { PageCircuitEclairage } from "../src/Pages/Circuit_Eclairage/Circuit_Eclairage.jsx";
-import { PageDisjoncteurdeBranchement } from "../src/Pages/Disjoncteur_De_Branchement/Disjoncteur_De_branchement.jsx";
+import { PageDisjoncteurDeBranchement } from "../src/Pages/Disjoncteur_De_Branchement/Disjoncteur_De_branchement.jsx";
 import { PageDispositifDifferentiel } from "../src/Pages/Dispositif_Differentiel/Dispositif_Differentiel.jsx";
 import { PageTableauDeCommunication } from "../src/Pages/Tableau_De_Communication/Tableau_De_Communication.jsx";
-import { PageTableauDeRepartition } from "../src/Pages/Tableau_De_Repartition/Tableau_De_Repartition.jsx";
+import { PageTGBT } from "./Pages/TGBT/TGBT.jsx";
 import { PageContact } from "../src/Pages/Contact/Contact.jsx";
 import { PageMentionLegale } from "../src/Pages/Mention_Legale/Mention_Legale.jsx";
-import { TrucsEtAstuces } from "../src/Pages/Truc_Et_Astuce/Truc_Et_Astuce.jsx";
+import { PageTrucEtAstuce } from "../src/Pages/Truc_Et_Astuce/Truc_Et_Astuce.jsx";
 import { PageErreur } from "../src/Pages/Erreur_404/Erreur_404.jsx";
 
 //Import des composants enfants
@@ -28,31 +28,31 @@ import './App.css';
 function App() {
   return (
     <Router>
-      
       <Header />
 
       <Routes>
-        
-        <Route  exact path="/" element={<PageHome />}> </Route>
-        <Route  path="/pc16a" element={<PagePC16A />}> </Route>
-        <Route  path="/circuit-specialise" element={<PageCircuitSpecialise />}> </Route>
-        <Route  path="/circuit-eclairage" element={<PageCircuitEclairage />}> </Route>
-        <Route  path="/db" element={<PageDisjoncteurdeBranchement />}> </Route>
-        <Route  path="/ddr" element={<PageDispositifDifferentiel />}> </Route>
-        <Route  path="/tc" element={<PageTableauDeCommunication />}> </Route>
-        <Route  path="/tgbt" element={<PageTableauDeRepartition />}> </Route>
-        <Route  path="/contact" element={<PageContact />}> </Route>
-        <Route  path="/mention-legale" element={<PageMentionLegale />}> </Route>
-        <Route  path="/truc-astuce" element={<TrucsEtAstuces />}> </Route>
-        <Route  path="/*" element={<PageErreur />}> </Route>
-        
-
+        <Route exact path="/" element={<PageHome />}></Route>
+        <Route path="/pc16a" element={<PagePC16A />}></Route>
+        <Route
+          path="/circuit-specialise"
+          element={<PageCircuitSpecialise />}
+        ></Route>
+        <Route
+          path="/circuit-eclairage"
+          element={<PageCircuitEclairage />}
+        ></Route>
+        <Route path="/db" element={<PageDisjoncteurDeBranchement />}></Route>
+        <Route path="/ddr" element={<PageDispositifDifferentiel />}></Route>
+        <Route path="/tc" element={<PageTableauDeCommunication />}></Route>
+        <Route path="/tgbt" element={<PageTGBT />}></Route>
+        <Route path="/contact" element={<PageContact />}></Route>
+        <Route path="/mention-legale" element={<PageMentionLegale />}></Route>
+        <Route path="/truc-astuce" element={<PageTrucEtAstuce />}></Route>
+        <Route path="/*" element={<PageErreur />}></Route>
       </Routes>
 
       <Footer />
-
-    </Router>  
-    
+    </Router>
   );
 }
 

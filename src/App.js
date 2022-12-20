@@ -23,7 +23,7 @@ import { Footer } from "../src/Components/Footer/Footer.jsx";
 
 
 //Import des feuilles de style
-import './App.css';
+import './Style/CSS/App.css';
 
 function App() {
   return (

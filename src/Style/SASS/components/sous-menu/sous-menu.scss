@@ -1,0 +1,77 @@
+//Feuille de style composant "SousMenu"
+
+//Importation de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+
+//Animation du sous-menu
+
+@keyframes displaySousMenu {
+    
+        0%{
+            height: 0px;
+            overflow: hidden;
+
+        }
+
+        100%{
+            height: 320px;
+        }
+    
+}
+
+@keyframes hideSousMenu {
+    
+        from{
+            height: 320px;
+            
+           
+
+        }
+        to{
+            
+            height: 0px;
+            overflow: hidden;
+           
+        }
+    
+}
+
+
+.header-sous-menu{
+    position: absolute;
+    top: 100%;
+    left : 0px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    
+    .sous-menu-li{
+    display:block;
+    background-color: map-get($colors-rule, fourth-color ) ;
+
+        .sous-menu-link{
+            display:block;
+            margin-top: 0.5em;
+            width: 100%;
+        }
+    }
+    
+}
+
+.display{
+    
+    animation: displaySousMenu 250ms linear 0ms 1 normal forwards;
+    //border: 2px solid red;
+}
+
+.hide{
+    
+    animation: hideSousMenu 100ms linear 50ms 1 normal forwards ;
+    //border: 2px solid blue;
+}
+
+
+

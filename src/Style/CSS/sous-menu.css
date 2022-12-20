@@ -1,0 +1,75 @@
+@-webkit-keyframes displaySousMenu {
+  0% {
+    height: 0px;
+    overflow: hidden;
+  }
+  100% {
+    height: 320px;
+  }
+}
+@keyframes displaySousMenu {
+  0% {
+    height: 0px;
+    overflow: hidden;
+  }
+  100% {
+    height: 320px;
+  }
+}
+@-webkit-keyframes hideSousMenu {
+  from {
+    height: 320px;
+  }
+  to {
+    height: 0px;
+    overflow: hidden;
+  }
+}
+@keyframes hideSousMenu {
+  from {
+    height: 320px;
+  }
+  to {
+    height: 0px;
+    overflow: hidden;
+  }
+}
+.header-sous-menu {
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+}
+
+.display {
+  -webkit-animation: displaySousMenu 250ms linear 0ms 1 normal forwards;
+          animation: displaySousMenu 250ms linear 0ms 1 normal forwards;
+}
+
+.hide {
+  -webkit-animation: hideSousMenu 100ms linear 50ms 1 normal forwards;
+          animation: hideSousMenu 100ms linear 50ms 1 normal forwards;
+}
+
+.sous-menu-li {
+  background-color: gray;
+}
+
+.sous-menu-link {
+  display: block;
+  margin-top: 0.5em;
+  width: 100%;
+}

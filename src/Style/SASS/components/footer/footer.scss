@@ -1,0 +1,33 @@
+//Feuille de style du composant "Footer"
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.footer{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    background-color: map-get($colors-rule , fifth-color );
+
+    &__menu{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+
+        &__li{
+
+            margin: 0px 20px;
+            
+
+            & > Link {
+
+                color: map-get($colors-rule , fourth-color );
+            }
+        }
+    }
+    
+}

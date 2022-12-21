@@ -1,0 +1,18 @@
+//Feuille de style du composant "Title"
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.title-page{
+    font-size: 2em;
+    text-transform: uppercase;
+    color: map-get($colors-rule, fifth-color );
+
+}
+
+.title-home{
+    font-size: 3em;
+    text-transform: uppercase;
+    color: map-get($colors-rule, fifth-color );
+
+}

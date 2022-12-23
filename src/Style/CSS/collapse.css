@@ -1,3 +1,51 @@
+@-webkit-keyframes displayCollapseContent {
+  0% {
+    max-height: 0px;
+    overflow: hidden;
+    padding: 0em;
+  }
+  100% {
+    max-height: 300px;
+    padding: 1em;
+  }
+}
+@keyframes displayCollapseContent {
+  0% {
+    max-height: 0px;
+    overflow: hidden;
+    padding: 0em;
+  }
+  100% {
+    max-height: 300px;
+    padding: 1em;
+  }
+}
+@-webkit-keyframes hideCollapseContent {
+  0% {
+    max-height: 300px;
+    padding: 1em;
+  }
+  100% {
+    max-height: 0px;
+    overflow: hidden;
+    padding: 0em;
+    border: 2px solid transparent;
+    background-color: transparent;
+  }
+}
+@keyframes hideCollapseContent {
+  0% {
+    max-height: 300px;
+    padding: 1em;
+  }
+  100% {
+    max-height: 0px;
+    overflow: hidden;
+    padding: 0em;
+    border: 2px solid transparent;
+    background-color: transparent;
+  }
+}
 .collapse {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -27,16 +75,40 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 1em;
+  border-radius: 2em;
+  font-family: "Oswald", sans-serif;
   font-size: 1.1em;
+  text-transform: uppercase;
   color: #302B27;
 }
 .collapse__content {
+  display: none;
+  font-family: "Source Sans Pro", sans-serif;
+  border: 2px solid #0267C1;
+  border-radius: 2em;
   background-color: #FDFAED;
   color: #302B27;
 }
 .collapse .display {
   display: block;
+  -webkit-animation: displayCollapseContent 500ms linear 0s 1 normal forwards;
+          animation: displayCollapseContent 500ms linear 0s 1 normal forwards;
 }
 .collapse .hide {
-  display: none;
+  display: block;
+  -webkit-animation: hideCollapseContent 300ms linear 0ms 1 normal forwards;
+          animation: hideCollapseContent 300ms linear 0ms 1 normal forwards;
+}
+.collapse .first-color {
+  border: 2px solid #0267C1;
+}
+.collapse .second-color {
+  border: 2px solid #0F8064;
+}
+.collapse .third-color {
+  border: 2px solid #B74701;
+}
+.collapse .fourth-color {
+  border: 2px solid #FDFAED;
 }

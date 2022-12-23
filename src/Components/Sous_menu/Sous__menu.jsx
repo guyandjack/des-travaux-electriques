@@ -1,5 +1,8 @@
 //Composant "SousMenu"
 
+//Import des hook
+import { useState, useEffect } from "react";
+
 //Import du module "Link"
 import { Link } from "react-router-dom";
 
@@ -10,9 +13,22 @@ import "../../Style/CSS/sous-menu.css";
 
 function SousMenu({ hover }) {
     
-    
+      
     let classDefault = "header-sous-menu";
-    let classAdd = (hover === true)? (" display") : (" hide");
+    let classAdd;
+    if (hover === null) {
+      classAdd = "";
+    }
+
+    if (hover === true) {
+      classAdd = " display";
+    }
+
+    if (hover === false) {
+      classAdd = " hide";
+    } 
+
+    console.log(classAdd)
     
     return (
         

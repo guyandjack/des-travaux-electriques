@@ -42,7 +42,7 @@
     position: absolute;
     top: 100%;
     left : 0px;
-    display: flex;
+    display: none;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: flex-start;
@@ -62,13 +62,13 @@
 }
 
 .display{
-    
+    display: flex;
     animation: displaySousMenu 250ms linear 0ms 1 normal forwards;
     //border: 2px solid red;
 }
 
 .hide{
-    
+    display: flex;
     animation: hideSousMenu 100ms linear 50ms 1 normal forwards ;
     //border: 2px solid blue;
 }

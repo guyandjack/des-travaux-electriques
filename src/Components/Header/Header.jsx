@@ -16,7 +16,7 @@ import "../../Style/CSS/header.css";
 //Fonction "Header"
 function Header() {
 
-    const [mouseover, setMouseover] = useState(false);
+    const [mouseover, setMouseover] = useState(null);
 
     useEffect(() => {
         let menuItem = document.querySelector(".schema-elec");

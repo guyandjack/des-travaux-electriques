@@ -4,6 +4,45 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
+//Animation du "Collapse"
+@keyframes displayCollapseContent {
+    
+        0%{
+            max-height: 0px;
+            overflow: hidden;
+            padding: 0em;
+        
+        }
+
+        100%{
+            
+            max-height:300px;
+            padding: 1em;
+           
+        }
+    
+};
+
+@keyframes hideCollapseContent {
+    
+        0%{
+            
+            max-height: 300px;
+            padding: 1em;
+        
+        }
+
+        100%{
+            max-height: 0px;
+            overflow: hidden;
+            padding: 0em;
+            border: 2px solid transparent;
+            background-color: transparent;
+        
+        }
+    
+};
+
 
 .collapse{
 
@@ -17,19 +56,48 @@
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
+
+        padding: 1em;
+        border-radius: 2em;
+        font-family: 'Oswald', sans-serif;
+        
         font-size: 1.1em;
+        text-transform: uppercase;
         color: map-get($colors-rule, fifth-color );
     }
 
     &__content{
+        display: none;
+        font-family: 'Source Sans Pro', sans-serif;
+        border: 2px solid map-get($colors-rule, first-color );
+        border-radius: 2em;
         background-color:  map-get($colors-rule, fourth-color ) ;
         color: map-get($colors-rule, fifth-color );
     }
 
     .display{
         display: block;
+        animation: displayCollapseContent 500ms linear 0s 1 normal forwards;
     }
     .hide{
-        display: none;
+        display: block;
+        animation: hideCollapseContent 300ms linear 0ms 1 normal forwards;
+    }
+
+    .first-color{
+        border: 2px solid map-get($colors-rule, first-color );
+    }
+
+    .second-color{
+        border: 2px solid map-get($colors-rule, second-color );
+    }
+
+    .third-color{
+        border: 2px solid map-get($colors-rule, third-color );
+
+    }
+    .fourth-color{
+        border: 2px solid map-get($colors-rule, fourth-color );
+
     }
 }

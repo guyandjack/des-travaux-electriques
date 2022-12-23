@@ -63,7 +63,7 @@
         
         font-size: 1.1em;
         text-transform: uppercase;
-        color: map-get($colors-rule, fifth-color );
+        color: map-get($colors-rule, fourth-color );
     }
 
     &__content{
@@ -71,8 +71,8 @@
         font-family: 'Source Sans Pro', sans-serif;
         border: 2px solid map-get($colors-rule, first-color );
         border-radius: 2em;
-        background-color:  map-get($colors-rule, fourth-color ) ;
-        color: map-get($colors-rule, fifth-color );
+        background-color:  map-get($colors-rule, fifth-color ) ;
+        color: map-get($colors-rule, fourth-color );
     }
 
     .display{

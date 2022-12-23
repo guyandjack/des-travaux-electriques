@@ -7,6 +7,7 @@ import { textContentCollapse } from "../../Data/contenu_textuel_collapse/contenu
 //Import des composants enfants
 import {Title} from "../../Components/Title/Title.jsx";
 import { Collapse } from "../../Components/Collapse/Collapse.jsx";
+import { ListeShemaCablage } from "../../Components/Liste_Schema_De_cablage/Liste_Schema_De_Cablage.jsx";
 
 //Import des feuilles de style
 import "../../Style/CSS/prise_courant.css";
@@ -18,6 +19,8 @@ function PagePC16A() {
       <div className="prise-courant">
         
         <Title title="prise courant 16A" pagetype="page"></Title>
+
+        <ListeShemaCablage pagename={"priseCourant"}></ListeShemaCablage>
 
         <Collapse
           idCollapse="principe"

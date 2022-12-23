@@ -50,7 +50,9 @@ let textContentCollapse = {
       ),
       collapseSavoir: (
         
-        <div></div>),
+        <div>
+          ya du taff
+        </div>),
     }
   ,
   

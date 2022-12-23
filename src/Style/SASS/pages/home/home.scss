@@ -2,5 +2,20 @@
 
 
 .home{
-    background-color: lightblue;
+
+    position:relative;
+
+    
+    &__list{
+        position:absolute;
+        top:0px;
+        left: 50%;
+        width: 100%;
+        height: 100px;
+
+
+        &__li{
+            margin: 20px;
+        }
+    };
 }

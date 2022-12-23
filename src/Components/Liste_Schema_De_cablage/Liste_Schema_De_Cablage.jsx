@@ -3,8 +3,13 @@
 //Import des feuilles de style
 
 //Fonction "ListeShemaCablage"
-function ListeShemaCablage() {
-  return <div></div>;
+function ListeShemaCablage({ pagename }) {
+  
+  return (
+    <ul>
+      <li></li>
+    </ul>
+  );
 }
 
 export { ListeShemaCablage };

@@ -1,0 +1,94 @@
+// Feuille de style du composant "Banner"
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+//Import des "mixins" qui gerent le responsive design
+@import "../../utils/mixins/responsive/_responsive.scss";
+
+
+.banner{
+
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+  height:111px;
+  margin: 20px 0px;
+  padding: 50px;
+  border-radius: 25px;
+
+
+  //responsive large-screen
+  @include large-screen {
+    height: 223px;
+  }
+
+  //responsive x-large-screen
+  @include x-large-screen {
+    height: 223px;
+  }
+
+  //responsive xx-large-screen
+  @include xx-large-screen {
+    height: 250px;
+  }
+
+  &__backgroundcolor , &__img{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+  }
+
+  &__backgroundcolor{
+    
+    background-color: map-get($colors-rule, bg-dark );
+  }
+
+  &__img{
+    
+    opacity: 0.7;
+  }
+
+  &__text{
+    position:absolute;
+    top:50%;
+    left:1%;
+    transform: translateY(-50%);
+    color: map-get($colors-rule, text-light );
+    font-size: 24px;
+
+    //responsive large-screen
+    @include medium-screen {
+      font-size: 28px;
+    }
+
+    //responsive large-screen
+    @include large-screen {
+      font-size: 36px;
+      left:50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    //responsive x-large-screen
+    @include x-large-screen {
+      font-size: 48px;
+      left:50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    //responsive xx-large-screen
+    @include xx-large-screen {
+      font-size: 50px;
+      left:50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+}

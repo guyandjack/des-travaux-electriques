@@ -1,9 +1,30 @@
 .button-link {
-  color: #0267C1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   border: 2px solid #0267C1;
   border-radius: 1em;
+}
+.button-link__text {
+  color: #0267C1;
   padding: 1em;
   text-transform: uppercase;
   font-family: "Oswald", sans-serif;
-  font-weight: 500;
+  font-weight: 100;
+}
+.button-link__img {
+  width: 150px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }

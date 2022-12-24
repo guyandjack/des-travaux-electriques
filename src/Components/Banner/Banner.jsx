@@ -33,13 +33,13 @@ function Banner({ pagename, text }) {
   }
 
   let typeScreen = getTypeScreen();
-  let imgUrl = urlImgBanner[pagename][typeScreen];
+  let imgUrl = urlImgBanner[pagename]["medium"];
 
   window.addEventListener("resize", () => setSizeScreen(window.innerWidth));
 
     return (
       
-    <div className="banner" >
+    <div className="banner">
           
         <div className="banner__backgroundcolor"></div>
         <img className="banner__img" src={imgUrl} alt="image non disponible"></img>

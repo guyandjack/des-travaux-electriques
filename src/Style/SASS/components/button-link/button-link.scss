@@ -5,12 +5,27 @@
 
 .button-link{
 
-    color: map-get($colors-rule, first-color );
-    border: 2px solid map-get($colors-rule, first-color );
-    border-radius: 1em;
-    padding: 1em;
-    text-transform: uppercase;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 500;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border: 2px solid map-get($colors-rule, first-color);
+        border-radius: 1em;
+
+    &__text{
+        color: map-get($colors-rule, first-color);
+        
+        padding: 1em;
+        text-transform: uppercase;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 100;
+    }
+
+    &__img{
+        width:150px;
+        height:200px;
+        object-fit: cover;
+
+    }
 
 };

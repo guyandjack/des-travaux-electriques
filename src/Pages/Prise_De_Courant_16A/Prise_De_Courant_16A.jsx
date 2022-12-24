@@ -18,7 +18,7 @@ function PagePC16A() {
     return (
       <div className="prise-courant">
         
-        <Title title="prise courant 16A" pagetype="page"></Title>
+        <Title text="prise courant 16A" pagetype="page"></Title>
 
         <ListeShemaCablage pagename={"priseCourant"}></ListeShemaCablage>
 

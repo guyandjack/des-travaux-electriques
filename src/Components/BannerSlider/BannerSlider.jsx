@@ -16,15 +16,20 @@ import "../../Style/CSS/banner-slider.css";
 //Fonction "BannerSlider"
 
 function BannerSlider() {
+    let refId = "link"
     return (
+      
         <ul className="banner-slider">
-            
-            {componentsForBannerSlider.map((element, index) => {
-                return <li key={index} id={index} className="banner-slider__li">{element}</li>
-            })}
-            
+          {componentsForBannerSlider.map((element, index) => {
+            return (
+              <li key={index} id={refId + index} className="banner-slider__li">
+                {element}
+              </li>
+            );
+          })}
         </ul>
-    )
+      
+    );
 }
 
 export {BannerSlider}

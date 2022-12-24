@@ -32,9 +32,35 @@
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  width: 100%;
-  height: 4em;
+  width: 150%;
+  height: 100%;
+  border: 2px solid red;
+  -webkit-animation: slide 25s linear 0ms infinite alternate both;
+          animation: slide 25s linear 0ms infinite alternate both;
 }
-.banner-slider > {
-  margin: 0em 2em;
+.banner-slider:hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+.banner-slider__li {
+  width: 100%;
+  position: relative;
+}
+.banner-slider #link0, .banner-slider #link5 {
+  top: -20px;
+  left: 20px;
+}
+.banner-slider #link1, .banner-slider #link6 {
+  top: 20px;
+}
+.banner-slider #link2, .banner-slider #link7 {
+  top: -30px;
+  left: 30px;
+}
+.banner-slider #link3, .banner-slider #link8 {
+  top: -20px;
+}
+.banner-slider #link4, .banner-slider #link9 {
+  top: -50px;
+  left: 50px;
 }

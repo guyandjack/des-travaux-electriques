@@ -11,8 +11,16 @@
 }
 
 .title-home{
+    
     font-size: 3em;
     text-transform: uppercase;
     color: map-get($colors-rule, fourth-color );
+    
 
+}
+
+.text{
+    display:block;
+    //background-color: red;
+    
 }

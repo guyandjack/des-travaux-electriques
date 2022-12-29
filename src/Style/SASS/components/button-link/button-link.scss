@@ -3,28 +3,64 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
-.button-link{
+//Animation de survol des liens
+@keyframes hover {
+    0%{
+        transform: translateX(-1%);
+    }
+    50%{
+        transform: translateX(1%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
 
+.button-link{
+    position:relative;
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
     align-items: flex-start;
-    border: 2px solid map-get($colors-rule, first-color);
-        border-radius: 1em;
+    
+    &:hover >  .button-link__text{
+        border: 2px solid map-get($colors-rule, third-color);
+        background-color: map-get($colors-rule, fifth-color);
+        color:map-get($colors-rule, third-color);
+    }
+
+    &:hover >  .button-link__img{
+        border: 2px solid map-get($colors-rule, third-color);
+        background-color: map-get($colors-rule, fifth-color);
+        
+    }
+
+    &:hover {
+        animation: hover 100ms linear 0s 2 normal forwards;
+    }
+
+       
+    
 
     &__text{
         color: map-get($colors-rule, first-color);
+        border: 2px solid map-get($colors-rule, first-color);
         
-        padding: 1em;
+        border-radius: 1em;
+        padding: 0.5em;
         text-transform: uppercase;
         font-family: 'Oswald', sans-serif;
         font-weight: 100;
     }
 
     &__img{
-        width:150px;
-        height:200px;
+        border: 2px solid map-get($colors-rule, first-color);
+        border-radius: 50%;
+        padding: 0.2em;
+        width:100px;
+        height:100px;
         object-fit: cover;
+          
 
     }
 

@@ -1,0 +1,39 @@
+.cgu {
+  width: 100%;
+  margin: 0px auto;
+}
+.cgu__title {
+  width: 100%;
+  text-align: center;
+  color: #302B27;
+  font-family: "Oswald", sans-serif;
+  font-size: 3em;
+  margin: 1em 0%;
+  text-transform: uppercase;
+}
+.cgu__list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 80%;
+  margin: 0px auto;
+}
+.cgu__list .article-title {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.5em;
+  margin: 1em 0em;
+}
+.cgu__list .article-content {
+  font-size: 1.2em;
+  line-height: 1.5em;
+}

@@ -13,7 +13,7 @@ import { PageDispositifDifferentiel } from "../src/Pages/Dispositif_Differentiel
 import { PageTableauDeCommunication } from "../src/Pages/Tableau_De_Communication/Tableau_De_Communication.jsx";
 import { PageTGBT } from "./Pages/TGBT/TGBT.jsx";
 import { PageContact } from "../src/Pages/Contact/Contact.jsx";
-import { PageMentionLegale } from "../src/Pages/Mention_Legale/Mention_Legale.jsx";
+import { PageCGU } from "../src/Pages/CGU/CGU.jsx";
 import { PageTrucEtAstuce } from "../src/Pages/Truc_Et_Astuce/Truc_Et_Astuce.jsx";
 import { PageErreur } from "../src/Pages/Erreur_404/Erreur_404.jsx";
 
@@ -46,7 +46,7 @@ function App() {
         <Route path="/tc" element={<PageTableauDeCommunication />}></Route>
         <Route path="/tgbt" element={<PageTGBT />}></Route>
         <Route path="/contact" element={<PageContact />}></Route>
-        <Route path="/mention-legale" element={<PageMentionLegale />}></Route>
+        <Route path="/cgu" element={<PageCGU />}></Route>
         <Route path="/truc-astuce" element={<PageTrucEtAstuce />}></Route>
         <Route path="/*" element={<PageErreur />}></Route>
       </Routes>

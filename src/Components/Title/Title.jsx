@@ -1,25 +1,20 @@
 //Composant "Title"
 
-
-
 //Import des feuilles de style
 import "../../Style/CSS/title.css";
 
 
 //Fonction "Title"
 
-function Title({ text, text_2, text_3, pagetype }) {
+function Title({ text, pagetype }) {
 
-    let classList = (pagetype === "home")? ("title-home"): ("title-page")
-
+    let classList_1 = (pagetype === "home") ? ("title-home") : ("title-page");
+    let classList_2 = " text";
+    
     return (
-                    
-        <h1 className={classList}>
-            <p>{text}</p>
-            <p>{text_2}</p>
-            <p>{text_3}</p>
-        </h1>
-       
+      
+        <span className={classList_1 + classList_2}>{text}</span>
+      
     )
 }
 

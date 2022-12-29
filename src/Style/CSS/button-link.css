@@ -1,4 +1,33 @@
+@-webkit-keyframes hover {
+  0% {
+    -webkit-transform: translateX(-1%);
+            transform: translateX(-1%);
+  }
+  50% {
+    -webkit-transform: translateX(1%);
+            transform: translateX(1%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
+@keyframes hover {
+  0% {
+    -webkit-transform: translateX(-1%);
+            transform: translateX(-1%);
+  }
+  50% {
+    -webkit-transform: translateX(1%);
+            transform: translateX(1%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+}
 .button-link {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,19 +41,35 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  border: 2px solid #0267C1;
-  border-radius: 1em;
+}
+.button-link:hover > .button-link__text {
+  border: 2px solid #0F8064;
+  background-color: #FDFAED;
+  color: #0F8064;
+}
+.button-link:hover > .button-link__img {
+  border: 2px solid #0F8064;
+  background-color: #FDFAED;
+}
+.button-link:hover {
+  -webkit-animation: hover 100ms linear 0s 2 normal forwards;
+          animation: hover 100ms linear 0s 2 normal forwards;
 }
 .button-link__text {
   color: #0267C1;
-  padding: 1em;
+  border: 2px solid #0267C1;
+  border-radius: 1em;
+  padding: 0.5em;
   text-transform: uppercase;
   font-family: "Oswald", sans-serif;
   font-weight: 100;
 }
 .button-link__img {
-  width: 150px;
-  height: 200px;
+  border: 2px solid #0267C1;
+  border-radius: 50%;
+  padding: 0.2em;
+  width: 100px;
+  height: 100px;
   -o-object-fit: cover;
      object-fit: cover;
 }

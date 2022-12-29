@@ -17,13 +17,13 @@
 
   width: 100%;
   //overflow: hidden;
-  //height:111px;
+  height:100%;
   margin: 20px 0px;
   //padding: 50px;
   border-radius: 25px;
 
 
-  //responsive large-screen
+  /*//responsive large-screen
   @include large-screen {
     height: 223px;
   }
@@ -35,10 +35,10 @@
 
   //responsive xx-large-screen
   @include xx-large-screen {
-    height: 600px;
-  }
+    height: 100%;
+  }*/
 
-  &__backgroundcolor , &__img{
+  &__backgroundcolor, &__img{
     position:absolute;
     top:0px;
     left:0px;
@@ -49,12 +49,12 @@
 
   &__backgroundcolor{
     
-    background-color: map-get($colors-rule, bg-dark );
+    background-color: map-get($colors-rule, fifth-color );
   }
 
   &__img{
     
-    opacity: 0.3;
+    opacity: 0.4;
   }
 
   &__text{
@@ -62,7 +62,7 @@
     top:20%;
     left:50%;
     transform: translateY(-50%);
-    color: map-get($colors-rule, text-light );
+    color: map-get($colors-rule, text-light);
     font-size: 24px;
     border: 2px solid red;
 

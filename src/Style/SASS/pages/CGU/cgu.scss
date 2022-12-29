@@ -1,0 +1,48 @@
+//Feuille de style "Page CGU"
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.cgu{
+
+    width: 100%;
+    margin: 0px auto;
+    
+
+    &__title{
+        width: 100%;
+        text-align: center;
+        color: map-get($colors-rule , fourth-color);
+        font-family: 'Oswald', sans-serif;
+        font-size: 3em;
+        margin: 1em 0%;
+        text-transform: uppercase;
+       
+    }
+
+    &__list{
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 80%;
+        margin: 0px auto;
+
+        &__li{
+
+        }
+
+        .article-title{
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5em;
+            margin: 1em 0em;
+        }
+
+        .article-content{
+            font-size: 1.2em;
+            line-height: 1.5em;
+        }
+        
+    }
+}

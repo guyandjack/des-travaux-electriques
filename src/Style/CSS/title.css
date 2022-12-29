@@ -9,3 +9,7 @@
   text-transform: uppercase;
   color: #302B27;
 }
+
+.text {
+  display: block;
+}

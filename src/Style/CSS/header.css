@@ -31,14 +31,17 @@
   -webkit-box-flex: 1;
       -ms-flex: 1 0 50%;
           flex: 1 0 50%;
-  border: 2px solid green;
 }
 .header__menu > li {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 25%;
           flex: 1 0 25%;
-  border: 2px solid red;
   text-align: center;
+}
+.header__menu-link {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.6em;
+  color: #0267C1;
 }
 .header .schema-elec {
   position: relative;

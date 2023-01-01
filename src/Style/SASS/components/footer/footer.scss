@@ -27,6 +27,11 @@
             &__link {
 
                 color: map-get($colors-rule , fifth-color );
+                //border-bottom: 2px solid lighten(map-get($colors-rule , fifth-color ), 100%);
+
+                &:hover{
+                    border-bottom: 2px solid map-get($colors-rule , fifth-color );
+                }
             }
         }
     }

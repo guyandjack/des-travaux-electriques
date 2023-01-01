@@ -33,7 +33,6 @@
           align-items: center;
   position: relative;
   width: 100%;
-  border: 2px solid red;
   -webkit-animation: slide 1s linear 0ms 1 normal forwards;
           animation: slide 1s linear 0ms 1 normal forwards;
   /*&:hover{
@@ -42,7 +41,6 @@
 }
 .banner-slider__li {
   position: relative;
-  border: 2px solid green;
 }
 .banner-slider #link1, .banner-slider #link5 {
   top: -70%;

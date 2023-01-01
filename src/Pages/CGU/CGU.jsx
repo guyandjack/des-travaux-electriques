@@ -14,10 +14,13 @@ function PageCGU() {
       <ul className="cgu__list">
         {CGUContent.map((document, index) => {
           return(
-          <li className="cgu__list__li" key={index}>
+          <li id={index} className="cgu__list__li" key={index}>
+            
             
             <p className="article-title">{document.title}</p>
             <p className="article-content">{document.content}</p>
+            <hr className="article-split"></hr>
+              
 
           </li>
           )

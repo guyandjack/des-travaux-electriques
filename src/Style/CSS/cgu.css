@@ -28,6 +28,9 @@
   width: 80%;
   margin: 0px auto;
 }
+.cgu__list__li {
+  width: 100%;
+}
 .cgu__list .article-title {
   font-family: "Oswald", sans-serif;
   font-size: 1.5em;
@@ -36,4 +39,11 @@
 .cgu__list .article-content {
   font-size: 1.2em;
   line-height: 1.5em;
+}
+.cgu__list .article-split {
+  height: 1px;
+  color: #B74701;
+  background-color: #B74701;
+  margin: 4em auto;
+  width: 30%;
 }

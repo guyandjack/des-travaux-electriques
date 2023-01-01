@@ -25,24 +25,24 @@
     
     &:hover >  .button-link__text{
         border: 2px solid map-get($colors-rule, third-color);
-        background-color: map-get($colors-rule, fifth-color);
         color:map-get($colors-rule, third-color);
     }
-
+    
     &:hover >  .button-link__img{
         border: 2px solid map-get($colors-rule, third-color);
-        background-color: map-get($colors-rule, fifth-color);
+        //background-color: map-get($colors-rule, fifth-color);
         
     }
-
+    
     &:hover {
         animation: hover 100ms linear 0s 2 normal forwards;
     }
-
-       
     
-
+    
+    
+    
     &__text{
+        background-color: map-get($colors-rule, fifth-color);
         color: map-get($colors-rule, first-color);
         border: 2px solid map-get($colors-rule, first-color);
         

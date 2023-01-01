@@ -44,18 +44,17 @@
 }
 .button-link:hover > .button-link__text {
   border: 2px solid #0F8064;
-  background-color: #FDFAED;
   color: #0F8064;
 }
 .button-link:hover > .button-link__img {
   border: 2px solid #0F8064;
-  background-color: #FDFAED;
 }
 .button-link:hover {
   -webkit-animation: hover 100ms linear 0s 2 normal forwards;
           animation: hover 100ms linear 0s 2 normal forwards;
 }
 .button-link__text {
+  background-color: #FDFAED;
   color: #0267C1;
   border: 2px solid #0267C1;
   border-radius: 1em;

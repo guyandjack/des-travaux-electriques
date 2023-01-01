@@ -33,14 +33,15 @@ function Header() {
             <nav className="header">
                 <Link to="/"><img src="" alt=""></img></Link>
                 <ul className="header__menu">
-                    <li><Link to="/">Accueil</Link></li>
-                    <li><Link to="/">Rappel des fondamentaux</Link></li>
-                    <li className="schema-elec">Schemas-électriques
+                    
+                    <li><Link className="header__menu-link" to="/">Accueil</Link></li>
+                    <li><Link className="header__menu-link" to="/">Rappel des fondamentaux</Link></li>
+                    <li className="header__menu-link schema-elec ">Schémas-électriques
                         
                         <SousMenu hover={mouseover} />
 
                     </li>
-                    <li><Link to="/contact">Contact</Link></li>
+                    <li><Link className="header__menu-link" to="/contact">Contact</Link></li>
 
                 </ul>
             </nav>

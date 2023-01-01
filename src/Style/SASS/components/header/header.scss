@@ -1,5 +1,8 @@
 //Composant "header"
 
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
 .header{
     display: flex;
     flex-flow: row nowrap;
@@ -14,16 +17,21 @@
         justify-content: space-around;
         align-items: center;
         flex: 1 0 50%;
-        border: 2px solid green;
-
+        
         & > li{
             flex: 1 0 25%;
-            border: 2px solid red;
+            
             text-align: center;
         }
 
         
 
+    }
+
+    &__menu-link{
+        font-family: 'Oswald', sans-serif;
+        font-size: 1.6em;
+        color: map-get($colors-rule, first-color );
     }
 
     .schema-elec{

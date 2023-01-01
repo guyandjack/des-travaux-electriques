@@ -31,6 +31,8 @@
 
         &__li{
 
+            width: 100%;
+
         }
 
         .article-title{
@@ -42,6 +44,15 @@
         .article-content{
             font-size: 1.2em;
             line-height: 1.5em;
+           
+        }
+
+        .article-split{
+            height: 1px;
+            color: map-get($colors-rule, second-color);
+            background-color: map-get($colors-rule, second-color);
+            margin: 4em auto;
+            width: 30%;
         }
         
     }

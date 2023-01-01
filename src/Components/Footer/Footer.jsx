@@ -12,9 +12,18 @@ function Footer() {
     <footer className="footer">
       
       <ul className="footer__menu">
-        <li className="footer__menu__li"><Link className="footer__menu__li__link" to="/cgu" >Mentions Legales</Link></li>
-        <li className="footer__menu__li"><Link className="footer__menu__li__link" to="" >Politique de confidencialitée</Link></li>
-        <li className="footer__menu__li"><Link className="footer__menu__li__link" to="" >Webmaster: GuyandJack dev web</Link></li>
+        <li className="footer__menu__li">
+          <a href="/cgu#" className="footer__menu__li__link">CGU</a>
+        </li>
+        <li className="footer__menu__li">
+          <a href="/cgu#1" className="footer__menu__li__link">Mentions Légales</a>
+        </li>
+        <li className="footer__menu__li">
+          <a href="/cgu#6" className="footer__menu__li__link">Politique de confidencialitée</a>
+        </li>
+        <li className="footer__menu__li">
+          <Link className="footer__menu__li__link" to="/">Webmaster: GuyandJack dev-web</Link>
+        </li>
       </ul>
 
     </footer>

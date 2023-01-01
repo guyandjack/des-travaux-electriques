@@ -38,3 +38,6 @@
 .footer__menu__li__link {
   color: #FDFAED;
 }
+.footer__menu__li__link:hover {
+  border-bottom: 2px solid #FDFAED;
+}

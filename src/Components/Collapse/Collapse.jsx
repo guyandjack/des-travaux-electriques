@@ -12,7 +12,7 @@ import "../../Style/CSS/collapse.css";
 
 function Collapse({ idCollapse, title, content, color }) {
 
-    const [isCliked, setIsCliked] = useState(null);
+    const [isCliked, setIsCliked] = useState(false);
     
     useEffect(() => {
         let collapseTitle = document.getElementById(`${idCollapse}`);
@@ -22,11 +22,10 @@ function Collapse({ idCollapse, title, content, color }) {
     let defaultClassContent = "collapse__content";
     let defaultClassTitle = "collapse__title";
     let addClass;
-    let colorClass;
+    let colorClassTitle;
+    let colorClassContent;
 
-    if (isCliked === null) {
-        addClass = "";
-    }
+   
 
     if (isCliked === true) {
         addClass = " display";
@@ -37,26 +36,30 @@ function Collapse({ idCollapse, title, content, color }) {
     }
 
     if (color === "first") {
-        colorClass = " first-color";
+        colorClassTitle = " first-color-title";
+        colorClassContent = " first-color-content";
     }
     if (color === "second") {
-        colorClass = " second-color";
+        colorClassTitle = " second-color-title";
+        colorClassContent = " second-color-content";
     }
     if (color === "third") {
-        colorClass = " third-color";
+        colorClassTitle = " third-color-title";
+        colorClassContent = " third-color-content";
     }
     if (color === "fourth") {
-        colorClass = " fourth-color";
+        colorClassTitle = " fourth-color-title";
+        colorClassContent = " fourth-color-content";
     }
 
     return (
         <div className="collapse">
             
-            <div id={idCollapse} className={defaultClassTitle + colorClass}>
+            <div id={idCollapse} className={defaultClassTitle + colorClassTitle}>
                 {title}
                 <img className="chevron" src="" alt=""></img>
             </div>
-            <div className={defaultClassContent + addClass + colorClass}>{content}</div>
+            <div className={defaultClassContent + addClass + colorClassContent}>{content}</div>
 
         </div>
     );

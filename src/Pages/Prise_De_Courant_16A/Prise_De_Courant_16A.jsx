@@ -1,11 +1,12 @@
 //Page "prise de courant 16A"
 
-//Import du contenu textuel des collapse
-import { textContentCollapse } from "../../Data/contenu_textuel_collapse/contenu_textuel_collapse.jsx";
+//Import du contenu de la page
+import { ContentPagePC16A } from "../../Data/ContentForPage/ContentPagePC16A.jsx";
 
 
 //Import des composants enfants
 import {Title} from "../../Components/Title/Title.jsx";
+import {IntroText} from "../../Components/Introduction_Text/Introduction_Text.jsx";
 import { Collapse } from "../../Components/Collapse/Collapse.jsx";
 import { ListeShemaCablage } from "../../Components/Liste_Schema_De_cablage/Liste_Schema_De_Cablage.jsx";
 
@@ -18,35 +19,36 @@ function PagePC16A() {
     return (
       <div className="prise-courant">
         
-        <Title text="prise courant 16A" pagetype="page"></Title>
+        <Title text="prise de courant 16A" pagetype="page"></Title>
+        <IntroText content={ContentPagePC16A.introductionTexte}></IntroText>
 
         <ListeShemaCablage pagename={"priseCourant"}></ListeShemaCablage>
 
         <Collapse
           idCollapse="principe"
           title="principe de fonctionnement"
-          content={textContentCollapse.pagePC16A.collapsePrincipe}
+          content={ContentPagePC16A.collapsePrincipe}
           color="first"
         ></Collapse>
 
         <Collapse
           idCollapse="precaution"
           title="precautions"
-          content={textContentCollapse.pagePC16A.collapsePrecaution}
+          content={ContentPagePC16A.collapsePrecaution}
           color="second"
         ></Collapse>
 
         <Collapse
           idCollapse="astuce"
           title="trucs & astuces"
-          content={textContentCollapse.pagePC16A.collapseAstuce}
+          content={ContentPagePC16A.collapseAstuce}
           color="third"
         ></Collapse>
 
         <Collapse
           idCollapse="savoir"
           title="En savoir plus..."
-          content={textContentCollapse.pagePC16A.collapseSavoir}
+          content={ContentPagePC16A.collapseSavoir}
           color="fourth"
         ></Collapse>
 

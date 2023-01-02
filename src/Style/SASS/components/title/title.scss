@@ -3,20 +3,22 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
+.title-home .title-page{
+
+    font-family: 'Oswald', sans-serif;
+    text-transform:uppercase;
+    font-size: 3em;
+}
+
 .title-page{
-    font-size: 2em;
-    text-transform: uppercase;
-    color: map-get($colors-rule, fifth-color );
+    color: map-get($colors-rule, fourth-color );
 
 }
 
 .title-home{
     
-    font-size: 3em;
-    text-transform: uppercase;
-    color: map-get($colors-rule, fourth-color );
-    
-
+    color: map-get($colors-rule, fifth-color );
+   
 }
 
 .text{

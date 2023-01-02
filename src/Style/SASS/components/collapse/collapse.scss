@@ -4,44 +4,7 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
-//Animation du "Collapse"
-@keyframes displayCollapseContent {
-    
-        0%{
-            max-height: 0px;
-            overflow: hidden;
-            padding: 0em;
-        
-        }
 
-        100%{
-            
-            max-height:300px;
-            padding: 1em;
-           
-        }
-    
-};
-
-@keyframes hideCollapseContent {
-    
-        0%{
-            
-            max-height: 300px;
-            padding: 1em;
-        
-        }
-
-        100%{
-            max-height: 0px;
-            overflow: hidden;
-            padding: 0em;
-            border: 2px solid transparent;
-            background-color: transparent;
-        
-        }
-    
-};
 
 
 .collapse{
@@ -50,6 +13,7 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
+    
 
     &__title{
         display: flex;
@@ -60,43 +24,89 @@
         padding: 1em;
         border-radius: 2em;
         font-family: 'Oswald', sans-serif;
-        
         font-size: 1.1em;
         text-transform: uppercase;
         color: map-get($colors-rule, fourth-color );
     }
 
+    
+
     &__content{
-        display: none;
-        font-family: 'Source Sans Pro', sans-serif;
-        border: 2px solid map-get($colors-rule, first-color );
+        display:none;
+        width: 100%;
+        overflow: hidden;
+        padding: 0em;
         border-radius: 2em;
-        background-color:  map-get($colors-rule, fifth-color ) ;
+        border: none;
+        background-color:  map-get($colors-rule, fifth-color );
         color: map-get($colors-rule, fourth-color );
+        transition: max-height 300ms linear, opacity 200ms linear;
+        
     }
 
     .display{
         display: block;
-        animation: displayCollapseContent 500ms linear 0s 1 normal forwards;
-    }
-    .hide{
-        display: block;
-        animation: hideCollapseContent 300ms linear 0ms 1 normal forwards;
+        max-height: 300px;
+        height: auto;
+        padding: 1em;
+        
     }
 
-    .first-color{
+    .hide{
+        display: block;
+        max-height: 0px;
+        height: auto;
+        overflow: hidden;
+        padding: 0em;
+        opacity: 0;
+        
+    }
+
+    .first-color-title{
+        border: 2px solid map-get($colors-rule, first-color );
+
+        &:hover{
+            border-right: 6px solid map-get($colors-rule, first-color );
+            border-left: 6px solid map-get($colors-rule, first-color );
+        }
+    }
+    
+    .first-color-content{
         border: 2px solid map-get($colors-rule, first-color );
     }
 
-    .second-color{
+    .second-color-title{
+        border: 2px solid map-get($colors-rule, second-color );
+        &:hover{
+            border-right: 6px solid map-get($colors-rule, second-color );
+            border-left: 6px solid map-get($colors-rule, second-color );
+        }
+    }
+    .second-color-content{
         border: 2px solid map-get($colors-rule, second-color );
     }
 
-    .third-color{
+    .third-color-title{
+        border: 2px solid map-get($colors-rule, third-color );
+        &:hover{
+            border-right: 6px solid map-get($colors-rule, third-color );
+            border-left: 6px solid map-get($colors-rule, third-color );
+        }
+
+    }
+    .third-color-content{
         border: 2px solid map-get($colors-rule, third-color );
 
     }
-    .fourth-color{
+    .fourth-color-title{
+        border: 2px solid map-get($colors-rule, fourth-color );
+        &:hover{
+            border-right: 6px solid map-get($colors-rule, fourth-color );
+            border-left: 6px solid map-get($colors-rule, fourth-color );
+        }
+
+    }
+    .fourth-color-content{
         border: 2px solid map-get($colors-rule, fourth-color );
 
     }

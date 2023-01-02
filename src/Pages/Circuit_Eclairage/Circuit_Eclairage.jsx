@@ -1,8 +1,8 @@
 //Page "CircuitEclairage"
 
 
-//Import du contenu des "Collapse"
-import "../../Data/contenu_textuel_collapse/contenu_textuel_collapse.jsx";
+//Import du contenu de la page
+
 
 //Import des composants enfants
 import {Title} from "../../Components/Title/Title.jsx";

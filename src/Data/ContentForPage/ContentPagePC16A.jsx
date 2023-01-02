@@ -3,9 +3,19 @@
 //Import du module "LINK"
 import { Link } from 'react-router-dom';
 
-let textContentCollapse = {
-  
-    pagePC16A: {
+let ContentPagePC16A = {
+
+      introductionTexte: (
+        <div>
+          <p className='text-intro-securite'>
+            Avant toute intervention, veillez à mettre hors tension le circuit concerné au niveau du tableau de repartition et de vérifier ensuite l' absence de tension avec un VAT (vérificateur d'absence de tension) au point d' intervention.
+          </p>
+          <p className='text-intro-prise'>
+            Rien de bien compliquer pour les prises de courant(PC), nous devons juste respecter les couleurs et de verifier
+          </p>
+        </div>
+      ),
+     
       collapsePrincipe: (
         <div className='principe'>
           <p>
@@ -53,9 +63,9 @@ let textContentCollapse = {
         <div>
           ya du taff
         </div>),
-    }
-  ,
+    
+  
   
 };
 
-export {textContentCollapse}
+export {ContentPagePC16A}

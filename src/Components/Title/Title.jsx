@@ -13,7 +13,7 @@ function Title({ text, pagetype }) {
     
     return (
       
-        <span className={classList_1 + classList_2}>{text}</span>
+        <h1 className={classList_1 + classList_2}>{text}</h1>
       
     )
 }

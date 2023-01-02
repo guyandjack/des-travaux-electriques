@@ -1,51 +1,3 @@
-@-webkit-keyframes displayCollapseContent {
-  0% {
-    max-height: 0px;
-    overflow: hidden;
-    padding: 0em;
-  }
-  100% {
-    max-height: 300px;
-    padding: 1em;
-  }
-}
-@keyframes displayCollapseContent {
-  0% {
-    max-height: 0px;
-    overflow: hidden;
-    padding: 0em;
-  }
-  100% {
-    max-height: 300px;
-    padding: 1em;
-  }
-}
-@-webkit-keyframes hideCollapseContent {
-  0% {
-    max-height: 300px;
-    padding: 1em;
-  }
-  100% {
-    max-height: 0px;
-    overflow: hidden;
-    padding: 0em;
-    border: 2px solid transparent;
-    background-color: transparent;
-  }
-}
-@keyframes hideCollapseContent {
-  0% {
-    max-height: 300px;
-    padding: 1em;
-  }
-  100% {
-    max-height: 0px;
-    overflow: hidden;
-    padding: 0em;
-    border: 2px solid transparent;
-    background-color: transparent;
-  }
-}
 .collapse {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -84,31 +36,68 @@
 }
 .collapse__content {
   display: none;
-  font-family: "Source Sans Pro", sans-serif;
-  border: 2px solid #0267C1;
+  width: 100%;
+  overflow: hidden;
+  padding: 0em;
   border-radius: 2em;
+  border: none;
   background-color: #FDFAED;
   color: #302B27;
+  -webkit-transition: max-height 300ms linear, opacity 200ms linear;
+  -o-transition: max-height 300ms linear, opacity 200ms linear;
+  transition: max-height 300ms linear, opacity 200ms linear;
 }
 .collapse .display {
   display: block;
-  -webkit-animation: displayCollapseContent 500ms linear 0s 1 normal forwards;
-          animation: displayCollapseContent 500ms linear 0s 1 normal forwards;
+  max-height: 300px;
+  height: auto;
+  padding: 1em;
 }
 .collapse .hide {
   display: block;
-  -webkit-animation: hideCollapseContent 300ms linear 0ms 1 normal forwards;
-          animation: hideCollapseContent 300ms linear 0ms 1 normal forwards;
+  max-height: 0px;
+  height: auto;
+  overflow: hidden;
+  padding: 0em;
+  opacity: 0;
 }
-.collapse .first-color {
+.collapse .first-color-title {
   border: 2px solid #0267C1;
 }
-.collapse .second-color {
+.collapse .first-color-title:hover {
+  border-right: 6px solid #0267C1;
+  border-left: 6px solid #0267C1;
+}
+.collapse .first-color-content {
+  border: 2px solid #0267C1;
+}
+.collapse .second-color-title {
   border: 2px solid #B74701;
 }
-.collapse .third-color {
+.collapse .second-color-title:hover {
+  border-right: 6px solid #B74701;
+  border-left: 6px solid #B74701;
+}
+.collapse .second-color-content {
+  border: 2px solid #B74701;
+}
+.collapse .third-color-title {
   border: 2px solid #0F8064;
 }
-.collapse .fourth-color {
+.collapse .third-color-title:hover {
+  border-right: 6px solid #0F8064;
+  border-left: 6px solid #0F8064;
+}
+.collapse .third-color-content {
+  border: 2px solid #0F8064;
+}
+.collapse .fourth-color-title {
+  border: 2px solid #302B27;
+}
+.collapse .fourth-color-title:hover {
+  border-right: 6px solid #302B27;
+  border-left: 6px solid #302B27;
+}
+.collapse .fourth-color-content {
   border: 2px solid #302B27;
 }

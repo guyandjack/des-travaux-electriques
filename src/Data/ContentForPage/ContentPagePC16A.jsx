@@ -3,14 +3,17 @@
 //Import du module "LINK"
 import { Link } from 'react-router-dom';
 
+
+
+
 let ContentPagePC16A = {
 
       introductionTexte: (
-        <div>
+        <div className='container-intro'>
           <p className='text-intro-securite'>
-            Avant toute intervention, veillez à mettre hors tension le circuit concerné au niveau du tableau de repartition et de vérifier ensuite l' absence de tension avec un VAT (vérificateur d'absence de tension) au point d' intervention.
+            Avant toute intervention, veillez mettre hors tension le circuit concerné au niveau du <Link to="/tgbt">tableau de répartition</Link> et de vérifier ensuite l' absence de tension avec un VAT (vérificateur d'absence de tension) au point d' intervention.
           </p>
-          <p className='text-intro-prise'>
+          <p className='text-intro-pc'>
             Rien de bien compliquer pour les prises de courant(PC), nous devons juste respecter les couleurs et de verifier
           </p>
         </div>
@@ -29,7 +32,7 @@ let ContentPagePC16A = {
             circuits prises de courant.
           </p>
           <p>
-            <Link to="/disjoncteur">Les disjoncteurs magnéto-thermique</Link>{" "}
+            <Link to="/disjoncteur">Les disjoncteurs magnéto-thermique</Link>
             protègent notre installation contre les courts-circuits et
             surcharges.Le principe de câblage est simple, on doit respecter les
             couleurs.

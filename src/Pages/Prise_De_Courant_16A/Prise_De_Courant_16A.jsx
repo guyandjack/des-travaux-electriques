@@ -24,33 +24,41 @@ function PagePC16A() {
 
         <ListeShemaCablage pagename={"priseCourant"}></ListeShemaCablage>
 
+        <div className="container-collapse">
         <Collapse
           idCollapse="principe"
           title="principe de fonctionnement"
           content={ContentPagePC16A.collapsePrincipe}
           color="first"
         ></Collapse>
+        </div>
 
+        <div className="container-collapse">
         <Collapse
           idCollapse="precaution"
           title="precautions"
           content={ContentPagePC16A.collapsePrecaution}
           color="second"
-        ></Collapse>
+          ></Collapse>
+        </div>
 
-        <Collapse
-          idCollapse="astuce"
-          title="trucs & astuces"
-          content={ContentPagePC16A.collapseAstuce}
-          color="third"
-        ></Collapse>
+        <div className="container-collapse">
+          <Collapse
+            idCollapse="astuce"
+            title="trucs & astuces"
+            content={ContentPagePC16A.collapseAstuce}
+            color="third"
+          ></Collapse>
+        </div>
 
-        <Collapse
-          idCollapse="savoir"
-          title="En savoir plus..."
-          content={ContentPagePC16A.collapseSavoir}
-          color="fourth"
-        ></Collapse>
+        <div className="container-collapse">
+          <Collapse
+            idCollapse="savoir"
+            title="En savoir plus..."
+            content={ContentPagePC16A.collapseSavoir}
+            color="fourth"
+            ></Collapse>
+        </div>
 
       </div>
     );

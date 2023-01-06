@@ -1,12 +1,15 @@
 //Composant "IntroductionText"
 
-
+//Import des feuilles de style
+import "../../Style/CSS/intro-text.css";
 
 //Fonction "IntroText"
 
 function IntroText({content}) {
     
-      return (<div>{content}</div>)
+      return (
+            <div className="intro-text">{content}</div>
+      )
    
 }
 

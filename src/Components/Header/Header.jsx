@@ -4,7 +4,10 @@
 import { Link } from "react-router-dom";
 
 //Import des "hook"
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
+
+//Import des context
+import { ContextNav } from "../../Utils/context/Nav_context.jsx";
 
 //Import des composants enfants
 import { SousMenu } from "../Sous_menu/Sous__menu.jsx";
@@ -20,12 +23,12 @@ import { breakPoint } from "../../Utils/break_point/break_point.js";
 //Fonction "Header"
 function Header() {
 
-    const [isClicked, setIsClicked] = useState(false);
+    const { isClicked, setIsClicked } = useContext(ContextNav);
 
     let classChevron = "img-chevron";
     let addClassChevron = " rotate";
 
-
+    console.log("isclickked vue du composant HEADER :" + isClicked);
     
 
     return (

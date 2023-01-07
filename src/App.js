@@ -8,6 +8,7 @@ import { PageHome } from "../src/Pages/Home/PageHome.jsx";
 import { PagePC16A } from "../src/Pages/Prise_De_Courant_16A/Prise_De_Courant_16A";
 import { PageCircuitSpecialise } from "../src/Pages/Circuit_Specialise/Circuit_Specialise.jsx";
 import { PageCircuitEclairage } from "../src/Pages/Circuit_Eclairage/Circuit_Eclairage.jsx";
+import { PageDisjoncteurMagnetoThermique } from "../src/Pages/DisjoncteurMagnetoThermique/DisjoncteurMagnetoThermique.jsx";
 import { PageDisjoncteurDeBranchement } from "../src/Pages/Disjoncteur_De_Branchement/Disjoncteur_De_branchement.jsx";
 import { PageDispositifDifferentiel } from "../src/Pages/Dispositif_Differentiel/Dispositif_Differentiel.jsx";
 import { PageTableauDeCommunication } from "../src/Pages/Tableau_De_Communication/Tableau_De_Communication.jsx";
@@ -48,6 +49,7 @@ function App() {
         <Route path="/contact" element={<PageContact />}></Route>
         <Route path="/cgu" element={<PageCGU />}></Route>
         <Route path="/truc-astuce" element={<PageTrucEtAstuce />}></Route>
+        <Route path="/disjoncteur" element={<PageDisjoncteurMagnetoThermique />}></Route>
         <Route path="/*" element={<PageErreur />}></Route>
       </Routes>
 

@@ -32,6 +32,13 @@
   }
 }
 
+//mixin pour les ecrans inferieur à "large"
+@mixin under-large-screen {
+  @media screen and  (max-width: map-get($break-points, large-min)) {
+    @content;
+  }
+}
+
 //mixin pour les ecrans "large"
 @mixin large-screen {
   @media screen and (min-width: map-get($break-points, medium-max)) and (max-width: map-get($break-points, large-min)) {

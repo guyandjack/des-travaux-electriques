@@ -16,9 +16,7 @@ function SousMenu({ hover }) {
       
     let classDefault = "header-sous-menu";
     let classAdd;
-    if (hover === null) {
-      classAdd = "";
-    }
+    
 
     if (hover === true) {
       classAdd = " display";
@@ -63,7 +61,7 @@ function SousMenu({ hover }) {
             </li>
 
             <li className="sous-menu-li">
-              <Link className="sous-menu-link" to="" >Disjoncteur bipolaire</Link>
+              <Link className="sous-menu-link" to="/disjoncteur" >Disjoncteur magneto-thermique</Link>
             </li>
 
         </ul> 

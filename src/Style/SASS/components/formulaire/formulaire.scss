@@ -3,6 +3,18 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
+//Animation
+@keyframes landing {
+    0%{
+        margin-top: 0em;
+        opacity: 0;
+    }
+    100%{
+        margin-top: 2em;
+        opacity: 1;
+    }
+}
+
 
 .form{
     display: flex;
@@ -27,7 +39,7 @@
         margin-top: 2em;
         font-size: 1.2em;
         color:map-get($colors-rule, fourth-color);
-        
+        animation: landing 500ms linear 0s 1 normal forwards;
        
     }
     

@@ -13,7 +13,7 @@ function PageErreur() {
     return (
     <div className="error">
             
-        <p className="error__404">Oups... <br></br>Erreur 404</p>
+        <p className="error__404">Oups... <br></br>...Erreur 404</p>
         <Link className="error__link" to="/">Retour sur la page accueil</Link>
         
     </div>

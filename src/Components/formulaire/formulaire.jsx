@@ -4,10 +4,22 @@
 import { useEffect, useState } from "react";
 
 //Import des feuille de style
+import "../../Style/CSS/formulaire.css";
 
 //Fonction "Formulaire"
 
 function Formulaire() {
+
+  //Class css des elements du DOM
+    let form_input = "form__input";
+    let form_flag = "form__flag";
+    let textarea = " textarea";
+    let valid_text = " valid-text";
+    let valid_border = " valid-border"
+    let invalid_text = " invalid-text";
+    let invalid_border = " invalid-border";
+
+
   let messageLastName = "";
   let messageFirstName = "";
   let messageMail = "";
@@ -57,12 +69,13 @@ function Formulaire() {
 
   //Valide l' input "lastName"
   function validLastName(e) {
-    if (masqueText.test(e.target.value) !== true || e.target.value.length < 2) {
+      if (masqueText.test(e.target.value) !== true || e.target.value.length < 2) {
+        
       messageLastName = "veuillez entrer un nom valide";
       setisValidLastName(false);
       setLastname(messageLastName);
     } else {
-      messageLastName = "Champ validé";
+      messageLastName = "";
       setisValidLastName(true);
       setLastname(messageLastName);
     }
@@ -75,7 +88,7 @@ function Formulaire() {
       setisValidFirstName(false);
       setFirstname(messageFirstName);
     } else {
-      messageFirstName = "Champ validé";
+      messageFirstName = "";
       setisValidFirstName(true);
       setFirstname(messageFirstName);
     }
@@ -88,7 +101,7 @@ function Formulaire() {
       setisValidMail(false);
       setMail(messageMail);
     } else {
-      messageMail = "Champ validé";
+      messageMail = "";
       setisValidMail(true);
       setMail(messageMail);
     }
@@ -106,7 +119,7 @@ function Formulaire() {
       setisValidMsg(false);
       setMsg(messageMsg);
     } else {
-      messageMsg = "Champ validé";
+      messageMsg = "";
       setisValidMsg(true);
       setMsg(messageMsg);
     }
@@ -114,76 +127,123 @@ function Formulaire() {
 
   return (
     <form className="form" method="post" action="validation-form.js">
-      <p className="form-text">
-        Veuillez remplir tous les champs pour l' envoi de votre message
+      <p className="form__text">
+        Veuillez remplir tous les champs.... 
       </p>
 
-      <label className="form__label" htmlFor="lastname">
-        Nom
-      </label>
+      <label className="form__label" htmlFor="lastname"></label>
       <input
-        className="form__input"
+        className={
+          isValidLastName
+            ? form_input + valid_border
+            : form_input + invalid_border
+        }
         type="text"
         name="lastname"
         id="lastname"
         min="2"
         max="20"
+        placeholder="Votre nom..."
         required
         onChange={function (evt) {
           validLastName(evt);
         }}
       />
-      <p className="form-valid lastname">{lastName}</p>
+      <p
+        className={
+          isValidLastName ? form_flag + valid_text : form_flag + invalid_text
+        }
+      >
+        {lastName}
+      </p>
 
-      <label className="form__label" htmlFor="firstname">
-        Prénom
-      </label>
+      <label className="form__label" htmlFor="firstname"></label>
       <input
-        className="form__input"
+        className={
+          isValidFirstName
+            ? form_input + valid_border
+            : form_input + invalid_border
+        }
         type="text"
         name="firstname"
         id="firstname"
         min="2"
         max="20"
+        placeholder="Votre prénom"
+        required
         onChange={function (evt) {
           validFirstName(evt);
         }}
       />
-      <p className="form-valid firstname">{firstName}</p>
+      <p
+        className={
+          isValidFirstName ? form_flag + valid_text : form_flag + invalid_text
+        }
+      >
+        {firstName}
+      </p>
 
-      <label className="form__label" htmlFor="email">
-        e-mail
-      </label>
+      <label className="form__label" htmlFor="email"></label>
       <input
-        className="form__input"
+        className={
+          isValidMail ? form_input + valid_border : form_input + invalid_border
+        }
         type="email"
         name="email"
         id="email"
         min="2"
-        max="40"
+        max="55"
+        placeholder="Votre email..."
+        required
         onChange={function (evt) {
           validMail(evt);
         }}
       />
-      <p className="form-valid email">{mail}</p>
+      <p
+        className={
+          isValidMail ? form_flag + valid_text : form_flag + invalid_text
+        }
+      >
+        {mail}
+      </p>
 
-      <label className="form__label" htmlFor="message" min="2" max="200">
-        Votre message
-      </label>
+      <label
+        className="form__label"
+        htmlFor="message"
+        min="2"
+        max="200"
+      ></label>
       <textarea
-        className="form__input"
+        className={
+          isValidMsg ? form_input + textarea + valid_border : form_input + textarea + invalid_border
+        }
         name="message"
         id="message"
+        min="10"
+        max="200"
+        placeholder="Votre message..."
+        required
         onChange={function (evt) {
           validMessage(evt);
         }}
       ></textarea>
-      <p className="form-valid message">{msg}</p>
+      <p
+        className={
+          isValidMsg ? form_flag + valid_text : form_flag + invalid_text
+        }
+      >
+        {msg}
+      </p>
 
       {isValidButton ? (
-        <input className="form__input" type="submit" value="Envoyer" />
+        <input className="form__submit" type="submit" value="Envoyer" />
       ) : (
-        <input className="form__input" type="submit" value="Envoyer" disabled />
+        <input
+          className="form__submit"
+          type="submit"
+          value="Envoyer"
+          disabled
+        />
       )}
     </form>
   );

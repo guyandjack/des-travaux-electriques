@@ -1,0 +1,28 @@
+//Feuille de style de la page "error-404"
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.error{
+
+    display:flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    &__404{
+        font-family: 'Oswald', sans-serif;
+        font-size: 8em;
+        margin-top: 1em ;
+        
+    }
+
+    &__link{
+        font-size: 2em;
+        margin-top: 4em ;
+        text-decoration: underline;
+        color: map-get($colors-rule, first-color );
+        
+    }
+    
+}

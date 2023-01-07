@@ -46,7 +46,7 @@
 .footer__menu__li__link {
   color: #FDFAED;
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 993px) {
   .footer__menu__li__link:hover {
     border-bottom: 2px solid #FDFAED;
   }

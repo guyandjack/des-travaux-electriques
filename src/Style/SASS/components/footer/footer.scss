@@ -39,7 +39,7 @@
                 color: map-get($colors-rule , fifth-color );
                 
                 //Responsive pour ecran superieur à medium
-                @include upper-medium-screen{
+                @include upper-large-screen{
                     &:hover{
                         border-bottom: 2px solid map-get($colors-rule , fifth-color );
                     }

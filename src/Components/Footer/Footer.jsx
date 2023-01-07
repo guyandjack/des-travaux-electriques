@@ -19,7 +19,7 @@ function Footer() {
           <a href="/cgu#1" className="footer__menu__li__link">Mentions Légales</a>
         </li>
         <li className="footer__menu__li">
-          <a href="/cgu#6" className="footer__menu__li__link">Politique de confidencialitée</a>
+          <a href="/cgu#6" className="footer__menu__li__link">Politique de confidencialité</a>
         </li>
         <li className="footer__menu__li">
           <Link className="footer__menu__li__link" to="/">Webmaster: Guy&Jack Dev-Web</Link>

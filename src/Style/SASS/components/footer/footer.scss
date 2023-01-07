@@ -3,6 +3,9 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
+//Import des mixins qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
 .footer{
     display: flex;
     flex-flow: row nowrap;
@@ -13,11 +16,18 @@
     background-color: map-get($colors-rule , fourth-color );
     margin-top: 50px;
 
+   
+
     &__menu{
         display: flex;
-        flex-flow: row nowrap;
+        flex-flow: row wrap;
         justify-content: center;
         align-items: center;
+
+        //Responsive pour ecran inferieur à medium
+        @include under-medium-screen{
+        flex-flow: column nowrap;
+        }
 
         &__li{
 
@@ -27,11 +37,16 @@
             &__link {
 
                 color: map-get($colors-rule , fifth-color );
-                //border-bottom: 2px solid lighten(map-get($colors-rule , fifth-color ), 100%);
-
-                &:hover{
-                    border-bottom: 2px solid map-get($colors-rule , fifth-color );
+                
+                //Responsive pour ecran superieur à medium
+                @include upper-medium-screen{
+                    &:hover{
+                        border-bottom: 2px solid map-get($colors-rule , fifth-color );
+                    }
                 }
+
+                
+
             }
         }
     }

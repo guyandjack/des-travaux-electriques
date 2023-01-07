@@ -1,11 +1,32 @@
-// mixin qui gere le responsive design (mobile first)
+// mixin qui gere le responsive design 
 
 //Import des breakpoints
 @import "../../breakpoint/_breakpoint.scss";
 
+//mixin pour les ecrans "small"
+@mixin small-screen {
+  @media screen and (max-width: map-get($break-points, small-min)) {
+    @content;
+  }
+}
+
 //mixin pour les ecrans "medium"
 @mixin medium-screen {
   @media screen and (min-width: map-get($break-points, small-max)) and (max-width: map-get($break-points, medium-min)) {
+    @content;
+  }
+}
+
+//mixin pour les ecrans inferieur à "medium"
+@mixin under-medium-screen {
+  @media screen and (max-width: map-get($break-points, medium-min)) {
+    @content;
+  }
+}
+
+//mixin pour les ecrans supérieur à "medium"
+@mixin upper-medium-screen {
+  @media screen and (min-width: map-get($break-points, medium-max)) {
     @content;
   }
 }

@@ -1,4 +1,4 @@
-.title-home, .title-page {
+.title-home .title-page {
   font-family: "Oswald", sans-serif;
   text-transform: uppercase;
   font-size: 3em;
@@ -6,7 +6,6 @@
 
 .title-page {
   color: #302B27;
-  margin: 1em 0em;
 }
 
 .title-home {

@@ -1,0 +1,27 @@
+//Feuille de style du composant "DoubleChevronMenu"
+
+//Import de la charte decouleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.container-chevron{
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 1.5em;
+    transition: transform 250ms linear;
+    
+    
+
+}
+
+.rotate{
+    transform: rotateZ(180deg);
+}
+
+.img-size{
+    width: 1.2em;
+    height: 1.2em;
+}

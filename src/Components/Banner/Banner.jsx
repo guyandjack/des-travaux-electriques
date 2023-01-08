@@ -1,6 +1,6 @@
 // Composant "Banner"
 
-//Import du hook "useState"
+//Import des "hooks" 
 import { useState } from "react";
 
 //Importation des url des images pour les différents banner et taille d'écran

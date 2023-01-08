@@ -11,6 +11,8 @@ import { ContextNav } from "../../Utils/context/Nav_context.jsx";
 
 //Import des composants enfants
 import { SousMenu } from "../Sous_menu/Sous__menu.jsx";
+import { DoubleChevronMenu } from "../DoubleChevronMenu/DoubleChevronMenu.jsx";
+
 
 //Import des breakPoints
 import "../../Utils/break_point/break_point.js";
@@ -25,8 +27,7 @@ function Header() {
 
     const { isClicked, setIsClicked } = useContext(ContextNav);
 
-    let classChevron = "img-chevron";
-    let addClassChevron = " rotate";
+   
 
     console.log("isclickked vue du composant HEADER :" + isClicked);
     
@@ -34,47 +35,36 @@ function Header() {
     return (
       <header>
         <nav className="header">
-          <Link to="/">
+          <Link className="header__menu__li__link" to="/">
             <img src="" alt=""></img>
           </Link>
           <ul className="header__menu">
-            <li>
-              <Link className="header__menu-link" to="/">
+            <li className="header__menu__li">
+              <Link className="header__menu__li__link" to="/">
                 Accueil
               </Link>
             </li>
-            <li>
-              <Link className="header__menu-link" to="/cours">
+            <li className="header__menu__li">
+              <Link className="header__menu__li__link" to="/cours">
                 Rappel des fondamentaux
               </Link>
             </li>
             <li
-              className="schema-elec "
-              onClick={() => {
-                setIsClicked(!isClicked);
-              }}
+              className="header__menu__li schema-elec"
+              onClick={() => {setIsClicked(!isClicked)}}
+              onMouseLeave={() => { setIsClicked(false) }}
+                        
             >
-              <div className="header__menu-div">
-                <span className="header__menu-link ">Schémas-électriques</span>
-                <svg
-                  className={isClicked? classChevron + addClassChevron : classChevron}
-                  //width="13"
-                  //height="20"
-                  viewBox="0 0 13 20"
-                  //fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12.51 1.87003L10.74 0.100025L0.83995 10L10.7399 19.9L12.5099 18.13L4.37995 10L12.51 1.87003V1.87003Z"
-                    //fill=""
-                  />
-                </svg>
-              </div>
-
-              <SousMenu hover={isClicked} />
+              
+                <Link className="header__menu__li__link" >Schémas-électriques</Link>
+                
+                <DoubleChevronMenu isClick={isClicked} color="first-color" /> 
+                
+                <SousMenu hover={isClicked} />
+                        
             </li>
-            <li>
-              <Link className="header__menu-link" to="/contact">
+            <li className="header__menu__li">
+              <Link className="header__menu__li__link" to="/contact">
                 Contact
               </Link>
             </li>

@@ -14,6 +14,7 @@
     height: 80px;
     width: 100%;
     
+    
 
     &__menu{
         display: flex;
@@ -21,54 +22,48 @@
         justify-content: space-around;
         align-items: center;
         flex: 1 0 50%;
+        position:relative;
         
-        & > li{
+        &__li{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+
             flex: 1 0 auto;
-            text-align: center;
             
-        }
-
+            
+            &__link{
+                font-family: 'Oswald', sans-serif;
+                font-size: 1.6em;
+                color: map-get($colors-rule, first-color );
+                transition: font-size 250ms linear;
+                
         
-
-    }
-
-    &__menu-link{
-        font-family: 'Oswald', sans-serif;
-        font-size: 1.6em;
-        color: map-get($colors-rule, first-color );
-        transition: font-size 250ms linear;
-
-        //responsive pour les ecran inferieur à "large"
-        @include under-large-screen{
-            font-size: 1.3em;
+                //responsive pour les ecran inferieur à "large"
+                @include under-large-screen{
+                    font-size: 1.3em;
+                }
+            }
         }
     }
 
-    &__menu-div{
+
+    
+
+    .schema-elec{
+        position: relative;
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;
         align-items: center;
-    }
 
-    .img-chevron{
-        width:1.5em;
-        height:1.5em;
-        stroke: map-get($colors-rule, first-color );
-        fill: none ;
-        margin-left: 2em;
-        transform:rotateZ(-90deg);
-        border-left: 1px solid map-get($colors-rule, first-color );
-        transition: transform 250ms linear;
-    }
-
-    .rotate{
-        transform: rotateZ(90deg);
-    }
-
-    .schema-elec{
-        position: relative;
-        
+        &:hover{
+            //evite de lancer la fonction "onMouseleave" lors du survol entre le menu et le sous-menu
+            height: 80px;
+           
+        }
+       
     }
 
     

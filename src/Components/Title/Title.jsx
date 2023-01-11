@@ -6,15 +6,19 @@ import "../../Style/CSS/title.css";
 
 //Fonction "Title"
 
-function Title({ text, pagetype }) {
+function Title({ pagetype, title, text }) {
 
-    let classList_1 = (pagetype === "home") ? ("title-home") : ("title-page");
-    let classList_2 = " text";
+    let classPageType = (pagetype === "home") ? ("title-home") : ("title-page");
+    let classText = pagetype === "home" ? "text-home" : "text-page";
+    
     
     return (
-      
-        <h1 className={classList_1 + classList_2}>{text}</h1>
-      
+        <div className="title">
+            
+            <h1 className={classPageType}>{title}</h1>
+            <p className={classText}>{text}</p>
+            
+        </div>
     )
 }
 

@@ -1,28 +1,84 @@
 //Feuille de style du composant "Title"
 
+//Import des mixins qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
 //Import de la charte de couleur
+
 @import "../../utils/colors-rule/colors-rule.scss";
 
-.title-home .title-page{
 
-    font-family: 'Oswald', sans-serif;
-    text-transform:uppercase;
-    font-size: 3em;
-}
+.title{
+    display: flex;
+    flex-flow:column nowrap;
+    justify-content: flex-start;
+    align-items: center;
 
-.title-page{
-    color: map-get($colors-rule, fourth-color );
+    .title-home, .title-page{
 
-}
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        color: map-get($colors-rule, fourth-color);
+        font-size: 3em;
+        margin: 1em 0em;
 
-.title-home{
+        //responsive pour ecran inferieur à "large"
+        @include under-large-screen{
+            font-size: 2em;
+            margin: 0.8em 0em;
+        }
+
+        //responsive pour ecran small
+        @include small-screen{
+            font-size: 1.2em;
+            margin: 0.5em 0em;
+        }
+    }
+
+    .title-home{
+        
+        font-size: 3.5em;
+        color: map-get($colors-rule, fifth-color);
+
+        //responsive pour ecran inferieur à "large"
+        @include under-large-screen{
+            font-size: 2em;
+            margin: 0.8em 0em;
+        }
+
+        //responsive pour ecran small
+        @include small-screen{
+            font-size: 1.2em;
+            margin: 0.5em 0em;
+        }
     
-    color: map-get($colors-rule, fifth-color );
-   
+    }
+
+    .text-home, .text-page {
+        
+        width: 80%;
+        font-size: 2em;
+        font-style: italic;
+        color: map-get($colors-rule, fourth-color);
+        text-align: center;
+
+        //responsive pour ecran inferieur à large
+        @include under-large-screen{
+            font-size: 1.5em;
+            margin: 0.8em 0em;
+        }
+
+        //responsive pour ecran small
+        @include small-screen{
+            font-size: 1em;
+            margin: 0.5em 0em;
+        }
+       
+    
+    }
+
+    .text-home{
+        color: map-get($colors-rule, fifth-color);
+    }
 }
 
-.text{
-    display:block;
-    //background-color: red;
-    
-}

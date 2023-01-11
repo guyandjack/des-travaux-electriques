@@ -1,6 +1,6 @@
 //Composant "DoubleChevronMenu"
 
-//Imort des feuilles de style
+//Import des feuilles de style
 import "../../Style/CSS/double_chevron_menu.css";
 
 
@@ -49,7 +49,7 @@ function DoubleChevronMenu({ isClick, color }) {
     >
         <img className="img-size" src={urlImg} alt="fleche du menu déroulant"></img>
       
-        </div>
+    </div>
     )
 }
 

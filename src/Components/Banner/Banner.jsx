@@ -10,7 +10,7 @@ import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
 import "../../Style/CSS/banner.css";
 
 
-function Banner({ pagename, text }) {
+function Banner({ pagename, text, title, color }) {
     
   const [sizeScreen, setSizeScreen] = useState(window.innerWidth);
 
@@ -32,8 +32,40 @@ function Banner({ pagename, text }) {
     }
   }
 
+
+
   let typeScreen = getTypeScreen();
   let imgUrl = urlImgBanner[pagename]["medium"];
+  let classColor = "classColor";
+  let classBannerTitle = "banner__text";
+  let classBannerText = "banner__text";
+  
+
+  switch (color) {
+    case "first": {
+      classColor = " color-first";
+      break
+    }
+    case "second": {
+      classColor = " color-second";
+      break
+    }
+    case "third": {
+      classColor = " color-third";
+      break
+    }
+    case "fourth": {
+      classColor = " color-fourth";
+      break
+    }
+    case "fifth": {
+      classColor = " color-fifth";
+      break
+    }
+    default: {
+      classColor = " color-first";
+      }
+  }
 
   window.addEventListener("resize", () => setSizeScreen(window.innerWidth));
 
@@ -42,8 +74,9 @@ function Banner({ pagename, text }) {
     <div className="banner">
           
         <div className="banner__backgroundcolor"></div>
-        <img className="banner__img" src={imgUrl} alt="image non disponible"></img>
-        {text ? <p className="banner__text">{text}</p> : null}
+        <img className="banner__img" src={imgUrl} alt=""></img>
+        {title ? <h1 className={classBannerTitle + classColor}>{title}</h1> : null}
+        {text ? <p className={classBannerText + classColor}>{title}</p> : null}
       
     </div>
   );

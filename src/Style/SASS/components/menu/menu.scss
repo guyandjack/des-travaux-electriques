@@ -1,0 +1,43 @@
+//Feuille de style composant "Menu"
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+//Import des mixins qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+.menu{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1 0 auto;
+    position:relative;
+    height:100%;
+    
+    &__li{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+        flex: 1 0 auto;
+        height: 100%;
+        
+        
+    }
+
+    .schema-elec{
+        position: relative;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    
+    }
+
+}
+
+
+    

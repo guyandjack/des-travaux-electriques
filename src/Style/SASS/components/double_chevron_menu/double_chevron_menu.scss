@@ -1,5 +1,8 @@
 //Feuille de style du composant "DoubleChevronMenu"
 
+//Import des mixins qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
 //Import de la charte decouleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
@@ -24,4 +27,10 @@
 .img-size{
     width: 1.2em;
     height: 1.2em;
+
+    //responsive pour ecran inderieur à "large"
+    @include under-large-screen{
+        width: 1em;
+        height: 1em;
+    }
 }

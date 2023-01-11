@@ -17,15 +17,21 @@ import "../../Style/CSS/button-link.css";
 
 //Fonction "ButtonLink"
 
-function ButtonLink({ url, text, urlImg }) {
+function ButtonLink({ url, text, urlImg, classLink }) {
 
   const { setIsClicked } = useContext(ContextNav);
+
+  let classLinkImg = "__img";
+  let classLinkText = "__text";
    
     return (
-      <Link className="button-link" to={url} onClick={() => { setIsClicked(false) }}>
+      <Link
+        className={classLink}
+        to={url}
         
-        <img className="button-link__img" src={urlImg} alt=""></img>
-        <p className="button-link__text">{text}</p>
+      >
+        <img className={classLink + classLinkImg} src={urlImg} alt=""></img>
+        <p className={classLink + classLinkText}>{text}</p>
 
       </Link>
     );

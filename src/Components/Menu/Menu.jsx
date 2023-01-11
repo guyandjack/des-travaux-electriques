@@ -1,0 +1,72 @@
+//Composant "Menu"
+
+//Import des "hook"
+import { useState, useContext, useEffect } from "react";
+
+//Import des context
+import { ContextNav } from "../../Utils/context/Nav_context.jsx";
+
+//Import des informations pour les "buttonLink"
+import { listLinksMenu } from "../../Data/List_links_menu/List_links_menu.jsx";
+
+//Import des breakpoints
+import "../../Utils/break_point/break_point.js";
+
+//Import des composants enfants
+import { DoubleChevronMenu } from "../DoubleChevronMenu/DoubleChevronMenu.jsx";
+import { ButtonLink } from "../Button_Link/Button_Link.jsx";
+import { SousMenu } from "../Sous_menu/Sous_menu.jsx";
+
+//Import des feuilles de style
+import "../../Style/CSS/menu.css";
+
+//Fonction "Menu"
+
+function Menu() {
+  //const { isClicked, setIsClicked } = useContext(ContextNav);
+
+  const [isClicked, setIsClicked] = useState(false);
+
+  useEffect(() => {
+    let lienSchema = document.querySelector(".schema");
+    lienSchema.addEventListener("click", (e) => {
+      //e.preventDefault();
+      setIsClicked(!isClicked);
+    });
+  });
+
+  let refId = "link";
+
+  let classLien = "button-link-menu";
+  let urlNull = "";
+
+  return (
+    <ul className="menu">
+      {listLinksMenu.map((element, index) => {
+        return element.url !== null ? (
+          <li key={index} id={refId + index} className="menu__li">
+            <ButtonLink
+              classLink={classLien}
+              url={element.url}
+              text={element.text}
+            />
+          </li>
+        ) : (
+          <li key={index} id={refId + index} className="menu__li">
+            <div className="schema">
+              <ButtonLink
+                classLink={classLien}
+                url={urlNull}
+                text={element.text}
+              />
+            </div>
+            <DoubleChevronMenu isClick={isClicked} />
+            <SousMenu click={isClicked} />
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+export { Menu };

@@ -11,7 +11,7 @@
 
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     
     position: relative;
@@ -21,9 +21,9 @@
     transition: border-radius 250ms linear;
 
     //resposive pour ecran small
-    @include small-min{
+    /*@include small-min{
       border-radius: none;
-    }
+    }*/
     
     &__backgroundcolor, &__img{
 
@@ -34,8 +34,8 @@
       height: 100%;
       border-radius: 1.5em;
 
-      //resposive pour ecran small
-      @include small-min{
+      //responsive pour ecran small
+      @include small-screen{
       border-radius: none;
     }
       
@@ -43,7 +43,7 @@
 
     &__backgroundcolor{
       
-      background-color: black;
+      background-color: pink;
     }
 
     &__img{
@@ -58,7 +58,12 @@
       font-size: 24px;
       border: 2px solid red;
 
-      //responsive large-screen
+      //responsive small-screen
+      @include small-screen {
+        font-size: 1em;
+      }
+
+      //responsive medium-screen
       @include medium-screen {
         font-size: 28px;
       }

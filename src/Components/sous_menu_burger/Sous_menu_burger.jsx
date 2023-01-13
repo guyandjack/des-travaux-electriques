@@ -1,84 +1,52 @@
 //Composant "SousMenuBurger"
 
+//Composant "SousMenu"
+
 //Import des hook
 import { useState, useEffect } from "react";
 
-//Import du module "Link"
-import { Link } from "react-router-dom";
+//Import de la liste des liens
+import { ListLinksSousMenu } from "../../Data/List_links_sous_menu/List_links_sous_menu.jsx";
 
 //Import des composants enfants
-import { DoubleChevronMenu } from "../DoubleChevronMenu/DoubleChevronMenu.jsx";
+import { ButtonLink } from "../Button_Link/Button_Link.jsx";
 
 //Import des feuilles de style
-import "../../Style/CSS/sous-menu-burger.css";
+import "../../Style/CSS/sous_menu_burger.css";
 
-//Fonction "SousMenu"
+//Fonction "SousMenuBurger"
 
-function SousMenu({ hover }) {
-  let classDefault = "header-sous-menu";
+function SousMenuBurger({ click }) {
+  let classSousMenu = "sous-menu-burger";
   let classAdd;
+  let refId = "sousmenu";
+  let classLien = "button-link-sous-menu-burger";
 
-  if (hover === true) {
-    classAdd = " display";
+  if (click === true) {
+    classAdd = " display-sous-menu-burger";
   }
 
-  if (hover === false) {
-    classAdd = " hide";
+  if (click === false) {
+    classAdd = " hide-sous-menu-burger";
   }
-
-  console.log(classAdd);
 
   return (
-    <ul className={classDefault + classAdd}>
-      <li className="sous-menu-li">
-        <Link className="sous-menu-link" to="/pc16a">
-          Prise de courant
-        </Link>
-      </li>
-
-      <li className="sous-menu-li">
-        <Link className="sous-menu-link" to="/circuit-specialise">
-          Circuits spécialisés
-        </Link>
-      </li>
-
-      <li className="sous-menu-li">
-        <Link className="sous-menu-link" to="/circuit-eclairage">
-          Circuits éclairage
-        </Link>
-      </li>
-
-      <li className="sous-menu-li">
-        <Link className="sous-menu-link" to="/tgbt">
-          Tableau de répartition
-        </Link>
-      </li>
-
-      <li className="sous-menu-li">
-        <Link className="sous-menu-link" to="tc">
-          Tableau de communication
-        </Link>
-      </li>
-
-      <li className="sous-menu-li">
-        <Link className="sous-menu-link" to="/ddr">
-          Dispositifs Differentiel Residuel (DDR)
-        </Link>
-      </li>
-
-      <li className="sous-menu-li">
-        <Link className="sous-menu-link" to="/db">
-          Disjoncteur de branchement
-        </Link>
-      </li>
-
-      <li className="sous-menu-li">
-        <Link className="sous-menu-link" to="/disjoncteur">
-          Disjoncteur magneto-thermique
-        </Link>
-      </li>
+    <ul className={classSousMenu + classAdd}>
+      {ListLinksSousMenu.map((element, index) => {
+        return (
+          <li key={index} id={refId + index} className="sous-menu-burger__li">
+            <ButtonLink
+              classLink={classLien}
+              text={element.text}
+              url={element.url}
+            />
+          </li>
+        );
+      })}
     </ul>
   );
 }
 
-export { SousMenu };
+
+
+export { SousMenuBurger };

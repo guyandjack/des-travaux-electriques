@@ -1,0 +1,39 @@
+//Feuille de style "sous-Menu-Burger"
+
+//Import des "mixins" qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Importation de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+
+.sous-menu-burger{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    width: 100%;
+    overflow:hidden;
+    transition: max-height 300ms linear;
+
+    &__li{
+        width:100%;
+        padding: 0.5em;
+        background-color: map-get($colors-rule, fourth-color );
+        
+    }
+
+}
+
+.display-sous-menu-burger{
+    
+    max-height:500px;
+    
+}
+
+.hide-sous-menu-burger{
+    
+    max-height: 0px;
+    max-width: 0px;
+}

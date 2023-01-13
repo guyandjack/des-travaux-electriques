@@ -1,0 +1,34 @@
+.sous-menu-burger {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  overflow: hidden;
+  -webkit-transition: max-height 300ms linear;
+  -o-transition: max-height 300ms linear;
+  transition: max-height 300ms linear;
+}
+.sous-menu-burger__li {
+  width: 100%;
+  padding: 0.5em;
+  background-color: #302B27;
+}
+
+.display-sous-menu-burger {
+  max-height: 500px;
+}
+
+.hide-sous-menu-burger {
+  max-height: 0px;
+  max-width: 0px;
+}

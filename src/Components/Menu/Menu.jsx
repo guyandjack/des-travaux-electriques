@@ -4,7 +4,7 @@
 import { useState, useContext, useEffect } from "react";
 
 //Import des context
-import { ContextNav } from "../../Utils/context/Nav_context.jsx";
+//import { ContextNav } from "../../Utils/context/Nav_context.jsx";
 
 //Import des informations pour les "buttonLink"
 import { listLinksMenu } from "../../Data/List_links_menu/List_links_menu.jsx";
@@ -23,20 +23,9 @@ import "../../Style/CSS/menu.css";
 //Fonction "Menu"
 
 function Menu() {
-  //const { isClicked, setIsClicked } = useContext(ContextNav);
-
   const [isClicked, setIsClicked] = useState(false);
 
-  useEffect(() => {
-    let lienSchema = document.querySelector(".schema");
-    lienSchema.addEventListener("click", (e) => {
-      //e.preventDefault();
-      setIsClicked(!isClicked);
-    });
-  });
-
   let refId = "link";
-
   let classLien = "button-link-menu";
   let urlNull = "";
 
@@ -52,13 +41,24 @@ function Menu() {
             />
           </li>
         ) : (
-          <li key={index} id={refId + index} className="menu__li">
-            <div className="schema">
-              <ButtonLink
-                classLink={classLien}
-                url={urlNull}
-                text={element.text}
-              />
+          <li
+            key={index}
+            id={refId + index}
+            className="menu__li"
+            onMouseLeave={() => {
+              setIsClicked(false);
+            }}
+            onClick={() => {
+              setIsClicked(!isClicked);
+            }}
+          >
+            <div
+              className="schema"
+              /*onClick={() => {
+                setIsClicked(!isClicked);
+              }}*/
+            >
+              <ButtonLink classLink={classLien} text={element.text} />
             </div>
             <DoubleChevronMenu isClick={isClicked} />
             <SousMenu click={isClicked} />

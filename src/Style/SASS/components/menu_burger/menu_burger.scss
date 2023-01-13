@@ -1,44 +1,53 @@
+//Feuille de style "Menu-Burger"
+
+//Import des "mixins" qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Importation de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+
 .menu-burger{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    transition: max-height 250ms linear;
+    z-index: 10;
+    overflow: hidden;
+    position:relative;
+    
+    &__li{
+
+        display: flex;
         flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
 
+        width:100%;
+        padding: 0.5em 0em;
+        background-color: map-get($colors-rule, fourth-color);
         flex: 1 1 100%;
-        position:relative;
-        height:100%; 
-
-        &__banner{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            width: 100%;
-            height:100%;
-        }
+     
+    }
+    
+    .schema{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+   
 }
 
-.header-icon-menu{
-            position: absolute;
-            top:0%;
-            left:1em;
-            z-index: 2;
-            width:80px;
-            height: 80px;
-            padding:10px;
-            border: 2px solid map-get($colors-rule, fifth-color);
-            border-radius: 50%;
+.display-menu-burger{
+    
+    max-height: 400px;
+}
 
-        }
 
-        &__small-screen{
-
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: center;
-
-        position: relative;
-        height: 80px;
-        width: 100%;
-        border: 2px solid green;
-
-        
-    }
+.hide-menu-burger{
+    
+    max-height: 0px;
+}

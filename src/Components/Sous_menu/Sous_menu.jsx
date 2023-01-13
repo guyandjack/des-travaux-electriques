@@ -25,11 +25,11 @@ function SousMenu({ click }) {
     
 
   if (click === true) {
-    classAdd = " display";
+    classAdd = " display-sous-menu";
   }
 
   if (click === false) {
-    classAdd = " hide";
+    classAdd = " hide-sous-menu";
   }
 
   return (
@@ -40,10 +40,11 @@ function SousMenu({ click }) {
 
             return (
                     
-              <li key={index} id={refId + index} className="sous-menu__li">
+              <li key={index} id={refId + index} className="sous-menu__li" >
                 <ButtonLink
                   classLink={classLien}
                   text={element.text}
+                  url={element.url}
                 />
               </li>
             )

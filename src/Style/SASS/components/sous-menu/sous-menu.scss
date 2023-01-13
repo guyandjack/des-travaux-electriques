@@ -68,14 +68,14 @@
     
 }
 
-.display{
+.display-sous-menu{
     display: flex;
     height:400px;
     box-shadow: 0px 0px 10px 1px lighten(map-get($colors-rule, first-color),40%);
    
 }
 
-.hide{
+.hide-sous-menu{
     display: flex;
     height: 0px;
 }

@@ -9,7 +9,7 @@ import { ContextNav } from "../../Utils/context/Nav_context.jsx";
 
 //Import des composants enfants
 import { Menu } from "../Menu/Menu.jsx";
-import { MenuBurger } from "../Menu_Burger/Menu_Burger.jsx";
+import { MenuSmallScreen } from "../../Components/MenuSmallScreen/MenuSmallScreen.jsx";
 
 
 //Import des breakPoints
@@ -45,11 +45,12 @@ function Header() {
       <header>
         <nav className="header">
           <img className="header__logo" src="" alt=""></img>
-          {menu ?
-            <Menu /> :
-            <MenuBurger />
-          }
-        
+          <div className="header__container-menu">
+            {menu ?
+              <Menu /> :
+              <MenuSmallScreen />
+            }
+          </div>
         </nav>
       </header>
     );

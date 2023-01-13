@@ -19,6 +19,8 @@
   }
 }
 
+
+
 //Concerne les liens dans le banner slider page home
 .button-link-banner {
   display: flex;
@@ -133,6 +135,56 @@
         }
     }
   }
+
+  
+}
+
+//concerne le menu buregr
+.button-link-menu-burger {
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  position: relative;
+
+  
+
+  &__text {
+   
+    color: map-get($colors-rule, fifth-color);
+    text-transform: uppercase;
+    font-family: "Oswald", sans-serif;
+    font-weight: 100;
+
+  }  
+
+  
+}
+
+//concerne le sous menu buregr
+.button-link-sous-menu-burger {
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  position: relative;
+
+  
+
+  &__text {
+   
+    color: map-get($colors-rule, fifth-color);
+    
+    text-transform: capitalize;
+    font-family: "Oswald", sans-serif;
+    font-weight: 100;
+
+    
+  }  
 
   
 }

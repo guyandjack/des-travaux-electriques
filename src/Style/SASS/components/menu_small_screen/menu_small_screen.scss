@@ -1,0 +1,52 @@
+//Feuille de style composant "Menu-Burger"
+
+//Import des "mixins" qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Importation de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+
+.menu-small-screen{
+        display:flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        position:relative;
+        width:100%;
+        height:100%; 
+        
+
+        &__icon{
+            
+            width:auto;
+            height:100%;
+            padding: 0.5em;
+            margin-left: 1em;
+            z-index: 2;
+            border: 2px solid map-get($colors-rule, fifth-color );
+            border-radius: 50%;
+        }
+
+        &__banner{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height:100%;
+           
+            //border: 2px dotted green;
+        }
+
+        &__container-menu-burger{
+                       
+            width:100%;
+            //border: 2px dotted orange;
+        }
+}
+
+
+
+        
+    

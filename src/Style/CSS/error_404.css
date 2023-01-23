@@ -12,15 +12,36 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: font-size 250ms linear;
+  -o-transition: font-size 250ms linear;
+  transition: font-size 250ms linear;
 }
 .error__404 {
   font-family: "Oswald", sans-serif;
-  font-size: 8em;
+  font-size: 6em;
   margin-top: 1em;
+  -webkit-transition: font-size 250ms linear;
+  -o-transition: font-size 250ms linear;
+  transition: font-size 250ms linear;
+  line-height: 2em;
+  color: #302B27;
+}
+@media screen and (max-width: 992px) {
+  .error__404 {
+    font-size: 3em;
+  }
 }
 .error__link {
   font-size: 2em;
   margin-top: 4em;
-  text-decoration: underline;
+  border-bottom: 2px solid #0267C1;
   color: #0267C1;
+  -webkit-transition: font-size 250ms linear;
+  -o-transition: font-size 250ms linear;
+  transition: font-size 250ms linear;
+}
+@media screen and (max-width: 992px) {
+  .error__link {
+    font-size: 1.2em;
+  }
 }

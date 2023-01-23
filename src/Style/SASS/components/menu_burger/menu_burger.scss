@@ -17,6 +17,7 @@
     z-index: 10;
     overflow: hidden;
     position:relative;
+    top: 0.9em;
     
     &__li{
 
@@ -26,9 +27,10 @@
         align-items: center;
 
         width:100%;
-        padding: 0.5em 0em;
-        background-color: map-get($colors-rule, fourth-color);
+        
+        background-color: map-get($colors-rule, second-color);
         flex: 1 1 100%;
+        border-bottom: 2px solid lighten(map-get($colors-rule, second-color),3%);
      
     }
     
@@ -43,7 +45,7 @@
 
 .display-menu-burger{
     
-    max-height: 400px;
+    max-height: 500px;
 }
 
 

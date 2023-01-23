@@ -36,8 +36,10 @@ function Banner({ pagename, text, title, color }) {
 
   let typeScreen = getTypeScreen();
   let imgUrl = urlImgBanner[pagename]["medium"];
-  let classColor = "classColor";
-  let classBannerTitle = "banner__text";
+  
+  let classBanner = "banner";
+  let classColor = " classColor";
+  let classBannerTitle = "banner__title";
   let classBannerText = "banner__text";
   
 
@@ -76,7 +78,7 @@ function Banner({ pagename, text, title, color }) {
         <div className="banner__backgroundcolor"></div>
         <img className="banner__img" src={imgUrl} alt=""></img>
         {title ? <h1 className={classBannerTitle + classColor}>{title}</h1> : null}
-        {text ? <p className={classBannerText + classColor}>{title}</p> : null}
+        {text ? <p className={classBannerText + classColor}>{text}</p> : null}
       
     </div>
   );

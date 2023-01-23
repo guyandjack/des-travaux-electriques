@@ -19,18 +19,14 @@ import { PageTGBT } from "./Pages/TGBT/TGBT.jsx";
 import { PageContact } from "../src/Pages/Contact/Contact.jsx";
 import { PageCGU } from "../src/Pages/CGU/CGU.jsx";
 import { PageTrucEtAstuce } from "../src/Pages/Truc_Et_Astuce/Truc_Et_Astuce.jsx";
+import { PageQuiz } from "../src/Pages/Quiz/Quiz.jsx";
 import { PageErreur } from "../src/Pages/Erreur_404/Erreur_404.jsx";
 
 //Import des composants enfants
 import { Header } from "../src/Components/Header/Header.jsx";
 import { Footer } from "../src/Components/Footer/Footer.jsx";
 
-
-//Import des feuilles de style
-import './Style/CSS/App.css';
-
 function App() {
-
   return (
     <Router>
       <NavContextProvider>
@@ -39,14 +35,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<PageHome />}></Route>
           <Route path="/pc16a" element={<PagePC16A />}></Route>
-          <Route
-            path="/circuit-specialise"
-            element={<PageCircuitSpecialise />}
-          ></Route>
-          <Route
-            path="/circuit-eclairage"
-            element={<PageCircuitEclairage />}
-          ></Route>
+          <Route path="/circuit-specialise" element={<PageCircuitSpecialise />}></Route>
+          <Route path="/circuit-eclairage"  element={<PageCircuitEclairage />}></Route>
           <Route path="/db" element={<PageDisjoncteurDeBranchement />}></Route>
           <Route path="/ddr" element={<PageDispositifDifferentiel />}></Route>
           <Route path="/tc" element={<PageTableauDeCommunication />}></Route>
@@ -54,10 +44,8 @@ function App() {
           <Route path="/contact" element={<PageContact />}></Route>
           <Route path="/cgu" element={<PageCGU />}></Route>
           <Route path="/truc-astuce" element={<PageTrucEtAstuce />}></Route>
-          <Route
-            path="/disjoncteur"
-            element={<PageDisjoncteurMagnetoThermique />}
-          ></Route>
+          <Route path="/disjoncteur" element={<PageDisjoncteurMagnetoThermique />}></Route>
+          <Route path="/quiz" element={<PageQuiz />}></Route>
           <Route path="/*" element={<PageErreur />}></Route>
         </Routes>
 

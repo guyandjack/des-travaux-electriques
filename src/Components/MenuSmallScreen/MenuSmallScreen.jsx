@@ -22,7 +22,7 @@ function MenuSmallScreen() {
   let menuIcon = "__icon";
   let menuBanner = "__banner";
   let containerMenuBurger = "__container-menu-burger";
-  let urlIcon = "/Asset/image_component_header/icon-menu-burger-fourth-color.png";
+  let urlIcon = "/Asset/image_component_header/icon-menu-burger-fifth-color.png";
 
   let classDisplay
 
@@ -41,7 +41,7 @@ function MenuSmallScreen() {
         <Banner
           pagename="home"
           title="Des travaux électriques...!?"
-          text="Schemas, explications..., astuces"
+          text="Schémas, explications..., astuces"
           color="fifth"
         />
       </div>

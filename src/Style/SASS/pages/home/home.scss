@@ -1,5 +1,8 @@
 //Feuille de style pour la page "home"
 
+//Import des mixins qui gerent le responsive
+@import "../../../SASS/utils/mixins/responsive/responsive.scss";
+
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
@@ -12,8 +15,14 @@
     justify-content: flex-start;
     align-items: center;  
     width:100%;
-    height: 800px;
+    height: 1000px;
     
+
+    //responsive pour écran small
+    @include small-screen{
+        height: 100px;
+    }
+
 
     &__banner, &__title{
         position: absolute;
@@ -51,5 +60,14 @@
         
     }
 
+    .home-hide{
+        display: none;
+    }
+
+    .home-display{
+        display: flex;
+    }
+
        
 }
+

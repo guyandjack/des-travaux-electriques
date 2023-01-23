@@ -11,7 +11,7 @@
 
     display: flex;
     flex-flow: column nowrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     
     position: relative;
@@ -20,10 +20,10 @@
     border-radius: 1.5em;
     transition: border-radius 250ms linear;
 
-    //resposive pour ecran small
-    /*@include small-min{
-      border-radius: none;
-    }*/
+    //@at-root pour ecran small
+    @include small-screen{
+      border-radius: 0em;
+    }
     
     &__backgroundcolor, &__img{
 
@@ -36,53 +36,56 @@
 
       //responsive pour ecran small
       @include small-screen{
-      border-radius: none;
+      border-radius:0em;
     }
       
     }
 
     &__backgroundcolor{
       
-      background-color: pink;
+      background-color: map-get($colors-rule, second-color );
     }
 
     &__img{
       
-      opacity: 0.5;
+      opacity: 0.9;
     }
 
 
     &__title{
 
-            
-      font-size: 24px;
-      border: 2px solid red;
+
+      z-index: 10;      
+      
+      
 
       //responsive small-screen
       @include small-screen {
-        font-size: 1em;
+        font-size: 1.5em;
+        margin-left: 4em;
+        margin-bottom: 0.5em;
       }
 
       //responsive medium-screen
       @include medium-screen {
-        font-size: 28px;
+        font-size:1.5em;
       }
 
       //responsive large-screen
       @include large-screen {
-        font-size: 36px;
+        font-size: 2em;
         
       }
 
       //responsive x-large-screen
       @include x-large-screen {
-        font-size: 48px;
+        font-size: 2.2em;
         
       }
 
       //responsive xx-large-screen
       @include xx-large-screen {
-        font-size: 50px;
+        font-size: 3em;
         
       }
   }
@@ -91,30 +94,34 @@
 
   &__text{
    
-    
-    font-size: 24px;
-    border: 2px solid red;
+    z-index: 10;
+     //responsive small-screen
+      @include small-screen {
+        font-size: 1em;
+        margin-left: 4em;
+      }  
 
     //responsive large-screen
     @include medium-screen {
-      font-size: 28px;
+      font-size: 1.5em;
+      
     }
 
     //responsive large-screen
     @include large-screen {
-      font-size: 36px;
+      font-size: 1em;
      
     }
 
     //responsive x-large-screen
     @include x-large-screen {
-      font-size: 48px;
+      font-size: 2em;
      
     }
 
     //responsive xx-large-screen
     @include xx-large-screen {
-      font-size: 50px;
+      font-size: 2em;
       
     }
   }

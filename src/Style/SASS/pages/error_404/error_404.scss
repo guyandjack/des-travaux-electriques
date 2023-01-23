@@ -1,5 +1,8 @@
 //Feuille de style de la page "error-404"
 
+//Import des mixins qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
@@ -9,19 +12,36 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
+    transition: font-size 250ms linear;
 
     &__404{
         font-family: 'Oswald', sans-serif;
-        font-size: 8em;
+        font-size: 6em;
         margin-top: 1em ;
+        transition: font-size 250ms linear;
+        line-height: 2em;
+        color: map-get($colors-rule, fourth-color );
+
+        //responsive pour ecran inferieur à large
+        @include under-large-screen{
+            font-size: 3em;
+        }
+
         
     }
 
     &__link{
         font-size: 2em;
         margin-top: 4em ;
-        text-decoration: underline;
+        border-bottom: 2px solid map-get($colors-rule, first-color );
         color: map-get($colors-rule, first-color );
+        transition: font-size 250ms linear;
+
+
+        //responsive pour écran inférieur à "large"
+        @include under-large-screen{
+            font-size: 1.2em;
+        }
         
     }
     

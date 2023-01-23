@@ -65,7 +65,7 @@ function MenuBurger({ click }) {
             >
               <div className="schema">
                 <ButtonLink classLink={classLien} text={element.text} />
-                <DoubleChevronMenu isClick={schemaClicked} />
+                <DoubleChevronMenu isClick={schemaClicked} color="fifth-color" />
               </div>
                 <SousMenuBurger click={schemaClicked} />
             </li>

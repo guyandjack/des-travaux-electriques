@@ -58,9 +58,9 @@ function Menu() {
                 setIsClicked(!isClicked);
               }}*/
             >
-              <ButtonLink classLink={classLien} text={element.text} />
+            <ButtonLink classLink={classLien} text={element.text} />
             </div>
-            <DoubleChevronMenu isClick={isClicked} />
+            <DoubleChevronMenu isClick={isClicked} color="second-color" />
             <SousMenu click={isClicked} />
           </li>
         );

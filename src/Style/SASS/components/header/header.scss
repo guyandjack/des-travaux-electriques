@@ -13,17 +13,23 @@
     align-items: center;
     height: 100px;
     width: 100%;
-    border: 2px solid blue;
+    
+   
 
     &__logo{
-        flex: 0 1 20%;
+        flex: 0 1 15%;
         width:100px;
         height: 100px;
-        border: 2px dotted red;
+
+        //reponsive pour ecran small
+        @include small-screen{
+            flex: 0 0 0%;
+        }
+        
     }
     
     &__container-menu{
-        flex: 1 1 80%;
+        flex: 1 1 85%;
         height: 100%;
     }
 

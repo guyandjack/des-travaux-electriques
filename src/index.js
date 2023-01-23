@@ -1,7 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import '../src/Style/CSS/index.css';
+
+//Import de l' application
 import { App } from './App';
+
+//Import des feuilles de style
+import "./Style/CSS/normalize.css";
+import "./Style/CSS/style-rule.css";
+
+
 //import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

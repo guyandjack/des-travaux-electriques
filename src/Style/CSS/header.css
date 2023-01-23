@@ -14,19 +14,24 @@
           align-items: center;
   height: 100px;
   width: 100%;
-  border: 2px solid blue;
 }
 .header__logo {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 20%;
-          flex: 0 1 20%;
+      -ms-flex: 0 1 15%;
+          flex: 0 1 15%;
   width: 100px;
   height: 100px;
-  border: 2px dotted red;
+}
+@media screen and (max-width: 575px) {
+  .header__logo {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 0%;
+            flex: 0 0 0%;
+  }
 }
 .header__container-menu {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 80%;
-          flex: 1 1 80%;
+      -ms-flex: 1 1 85%;
+          flex: 1 1 85%;
   height: 100%;
 }

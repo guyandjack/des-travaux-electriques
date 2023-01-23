@@ -45,6 +45,7 @@
   }
 
   &__text {
+
     background-color: map-get($colors-rule, fifth-color);
     color: map-get($colors-rule, first-color);
     border: 2px solid map-get($colors-rule, first-color);
@@ -55,6 +56,12 @@
     font-family: "Oswald", sans-serif;
     font-weight: 100;
     font-size: 1.2em;
+
+    //responsive ecran inferieur à large
+    @include under-large-screen {
+        font-size: 1em;
+        text-transform: capitalize;
+    }
   }
 
   &__img {
@@ -82,17 +89,18 @@
   &__text {
     
     
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-family: "Oswald", sans-serif;
     font-weight: 100;
     font-size: 1.4em;
-    color: map-get($colors-rule, first-color );
+    color: map-get($colors-rule, second-color );
     transition: font-size 250ms linear;
     
   
-    //responsive pour les écran inferieur à "large"
-    @include under-large-screen{
-        font-size: 1.3em;
+    //responsive ecran inferieur à large
+    @include under-large-screen {
+        font-size: 1em;
+        
     }
 
   }
@@ -118,28 +126,34 @@
     
     padding-left: 0.5em;
     color: map-get($colors-rule, first-color);
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-family: "Oswald", sans-serif;
     font-weight: 100;
-    transition: padding-left 250ms linear, border-left 250ms linear,border-right 250ms linear, font-size 250ms linear;
+    transition: padding-left 250ms linear, border-left 250ms linear,border-right 250ms linear, font-size 250ms linear ;
 
     
+    //responsive pour ecran superieur à large
+    @include under-large-screen{
+        font-size: 1em;
+        
+    }
 
     //responsive pour ecran superieur à large
     @include upper-large-screen{
         font-size: 1.2em;
         &:hover{
-            padding-left: 1em ;
-            border-left: 6px solid map-get($colors-rule, second-color) ;
-            border-right: 6px solid map-get($colors-rule, second-color) ;
+            padding-left: 1em;
+            border-left: 10px solid map-get($colors-rule, second-color) ;
+            border-right: 10px solid map-get($colors-rule, second-color) ;
         }
     }
+
   }
 
   
 }
 
-//concerne le menu buregr
+//concerne le menu burger
 .button-link-menu-burger {
 
   display: flex;
@@ -148,15 +162,16 @@
   align-items: center;
 
   position: relative;
+  width: 100%;
 
   
 
   &__text {
-   
+    
     color: map-get($colors-rule, fifth-color);
     text-transform: uppercase;
     font-family: "Oswald", sans-serif;
-    font-weight: 100;
+    padding: 0.5em
 
   }  
 
@@ -181,7 +196,7 @@
     
     text-transform: capitalize;
     font-family: "Oswald", sans-serif;
-    font-weight: 100;
+    //font-weight: lighter;
 
     
   }  

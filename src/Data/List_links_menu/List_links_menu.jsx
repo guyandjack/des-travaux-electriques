@@ -24,7 +24,7 @@ let listLinksMenu = [
     },
       
     {
-        url: "/nemo",
+        url: "/contact",
         text: "contact",
         urlImg: undefined
     }

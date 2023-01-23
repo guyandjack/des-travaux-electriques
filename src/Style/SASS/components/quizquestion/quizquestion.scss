@@ -1,0 +1,35 @@
+//Feuille de style du composant "QuizQuestion"
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+//Import des "mixins" qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+.container-question{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+
+    .question{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 1em;
+        
+
+        &__label{
+            font-style: italic;
+        }
+
+        &__input{
+
+            &:checked{
+                color: map-get($colors-rule, third-color );
+            }
+        }
+    }
+}

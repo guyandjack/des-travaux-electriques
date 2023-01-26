@@ -19,7 +19,7 @@ import { PageTGBT } from "./Pages/TGBT/TGBT.jsx";
 import { PageContact } from "../src/Pages/Contact/Contact.jsx";
 import { PageCGU } from "../src/Pages/CGU/CGU.jsx";
 import { PageTrucEtAstuce } from "../src/Pages/Truc_Et_Astuce/Truc_Et_Astuce.jsx";
-import { PageQuiz } from "../src/Pages/Quiz/Quiz.jsx";
+import { PageQuizPC } from "./Pages/QuizPC/PageQuizPC.jsx";
 import { PageErreur } from "../src/Pages/Erreur_404/Erreur_404.jsx";
 
 //Import des composants enfants
@@ -45,7 +45,7 @@ function App() {
           <Route path="/cgu" element={<PageCGU />}></Route>
           <Route path="/truc-astuce" element={<PageTrucEtAstuce />}></Route>
           <Route path="/disjoncteur" element={<PageDisjoncteurMagnetoThermique />}></Route>
-          <Route path="/quiz" element={<PageQuiz />}></Route>
+          <Route path="/quiz" element={<PageQuizPC />}></Route>
           <Route path="/*" element={<PageErreur />}></Route>
         </Routes>
 

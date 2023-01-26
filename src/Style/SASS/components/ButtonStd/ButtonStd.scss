@@ -1,0 +1,75 @@
+//Feuille de style du composant "BouttonStd"
+
+//Import de la charte de couleur
+@import "../../../SASS/utils/colors-rule/colors-rule.scss";
+
+.button{
+       
+    &__std{
+        padding: 1em;
+        font-size: 1.2em;
+        border: none;
+     
+    }
+
+    .first-bg{
+        background-color: map-get($colors-rule, first-color);
+        
+         &:hover{
+            background-color: darken(map-get($colors-rule, first-color), 10%);
+        }
+    }
+    
+    .second-bg{
+        background-color: map-get($colors-rule, second-color);
+         &:hover{
+            background-color: darken(map-get($colors-rule, first-color), 10%);
+        }
+    }
+    
+    .third-bg{
+        background-color: map-get($colors-rule, third-color);
+         &:hover{
+            background-color: darken(map-get($colors-rule, first-color), 10%);
+        }
+    }
+    
+    .fourth-bg{
+        background-color: map-get($colors-rule, fourth-color);
+         &:hover{
+            background-color: darken(map-get($colors-rule, first-color), 10%);
+        }
+    }
+    
+    .fifth-bg{
+        background-color: map-get($colors-rule, fifth-color);
+         &:hover{
+            background-color: darken(map-get($colors-rule, first-color), 10%);
+        }
+    }
+    
+    .first-text{
+        color: map-get($colors-rule, first-color);
+         
+    }
+    
+    .second-text{
+        color: map-get($colors-rule, second-color);
+         
+    }
+    
+    .third-text{
+        color: map-get($colors-rule, third-color);
+         
+    }
+    
+    .fourth-text{
+        color: map-get($colors-rule, fourth-color);
+         
+    }
+    
+    .fifth-text{
+        color: map-get($colors-rule, fifth-color);
+         
+    }
+}

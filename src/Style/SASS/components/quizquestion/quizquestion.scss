@@ -3,7 +3,7 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
-//Import des "mixins" qui gerent le responsive
+//Import des "mixins" qui gérent le responsive
 @import "../../utils/mixins/responsive/responsive.scss";
 
 .container-question{
@@ -28,7 +28,7 @@
         &__input{
 
             &:checked{
-                color: map-get($colors-rule, third-color );
+                color: map-get($colors-rule, third-color);
             }
         }
     }

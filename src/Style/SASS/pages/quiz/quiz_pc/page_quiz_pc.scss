@@ -1,0 +1,18 @@
+//feuille de style de la "page quiz-PC"
+
+
+//Import des "mixins" qui gérent le responsive
+@import "../../../utils/mixins/responsive/responsive.scss";
+
+//Importation de la charte de couleur
+@import "../../../utils/colors-rule/colors-rule.scss";
+
+
+
+.quiz-pc{
+    &__error{
+        padding: 1em;
+        font-size: 1.2em;
+        color: map-get($colors-rule, second-color );
+    }
+}

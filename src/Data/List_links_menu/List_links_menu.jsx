@@ -22,6 +22,12 @@ let listLinksMenu = [
         urlImg: null,
         
     },
+    {
+        url: "/quiz",
+        text: "quiz ",
+        urlImg: null,
+        
+    },
       
     {
         url: "/contact",

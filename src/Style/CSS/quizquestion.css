@@ -12,26 +12,87 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+  margin: 1em 0em;
 }
-.container-question .question {
+.container-question .question-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 100%;
+  margin-bottom: 2em;
+}
+.container-question .question-header__title {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.container-question .question-header__split {
+  margin: 1em 0em 2em 0em;
+  border-bottom: 2px solid #4c443e;
+  width: 100%;
+}
+.container-question .question-header__text {
+  width: 100%;
+  font-size: 1.2em;
+  -ms-flex-item-align: left;
+      align-self: left;
+  font-weight: 400;
+}
+.container-question .proposition {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-direction: reverse;
+      -ms-flex-flow: row-reverse;
+          flex-flow: row-reverse;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 1em;
+  margin-top: 1em;
+  width: 100%;
 }
-.container-question .question__label {
+.container-question .proposition__label {
+  width: auto;
+  font-size: 1.3em;
   font-style: italic;
 }
-.container-question .question__input:checked {
-  color: #0F8064;
+.container-question .proposition__input {
+  margin-right: 2em;
+}
+.container-question .proposition .icon-result {
+  width: 2em;
+  height: 2em;
+  margin: 0em 2em 0em 1em;
+}
+.container-question .solution {
+  margin: 4em 0em;
+  width: 50%;
+}
+.container-question .solution__title, .container-question .solution__text {
+  color: #0267C1;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.3em;
+}
+.container-question .solution__title {
+  border-bottom: 2px solid #0267C1;
+  margin-bottom: 1em;
+}
+.container-question .solution__text {
+  word-spacing: 0.5em;
+  line-height: 1.5em;
 }

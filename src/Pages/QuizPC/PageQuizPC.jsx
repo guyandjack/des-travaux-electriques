@@ -3,6 +3,9 @@
 //Import des hooks
 import { useState, useEffect } from "react";
 
+//Import du module link
+import { Link } from "react-router-dom";
+
 //Import de la liste de questions du quiz "prise de courant et circuits dédiés"
 import { ContentQuizPC } from "../../Data/ContentQuiz/ContentQuizPC/ContentQuizPC.jsx";
 
@@ -16,76 +19,284 @@ import { QuizQuestion } from "../../Components/QuizQuestion/QuizQuestion.jsx";
 import "../../Style/CSS/page_quiz_pc.css";
 
 function PageQuizPC() {
-
+  /******************* declaration des constantes et variables **************** */
 
   const [isvalid, setisvalid] = useState(false);
 
   const [userResponse, setUserResponse] = useState({});
-  console.log("userresponse du la page quizz: " + userResponse.ur);
-  console.log("goodresponse du la page quizz: " + userResponse.gr);
-  console.log("id de la question: " + userResponse.id);
 
-  const [userResponseArray, setUserResponseArray] = useState([]);
+  const [messageError, setMessageError] = useState(false);
+
+  const [userFinalResult, setUserFinalResult] = useState({});
+
+  console.log(userFinalResult);
 
   //nombre total de question
   let numberTotalQuestion = ContentQuizPC.length;
-  let resultNumber;
 
-  //Apres chaque reponse du user on stock l id et le score dans le localstorage
-  useEffect(() => {
-    let resultQuestion = 0;
-    
-    let idQuestion = userResponse.id;
-    console.log(idQuestion)
+  //tableau contenant la reponse du user à une question(idquestion, idproposition, userresponsevalue)
+  let arrayUserResponses;
 
-    //initialisation de l'objet de reponses
-    let arrayUserResponses;
+  /*********************déclaration des Functions unitaires de la logique du quiz***************************/
 
-    //si la propriete userResponse n' existe pas
-    if (!localStorage.getItem("userResponses")) {
-      arrayUserResponses = {};
-    } else {
-      arrayUserResponses = JSON.parse(localStorage.getItem("userResponses"));
+  //Enregistre un élémment dans le localStorage (ajout ou remplacement)
+
+  function storeInLocalStorage(updateValue) {
+    arrayUserResponses = getFromLocalStorge("userResponsesQuizPC");
+    console.log(arrayUserResponses);
+
+    //check si une reponse a deja ete donnée
+    let index = arrayUserResponses.findIndex(
+      (element) => element.idq === updateValue.idq
+    );
+
+    //si oui la réponse existante est remplacé par la nouvelle
+    if (index > -1) {
+      arrayUserResponses.splice(index, 1, updateValue);
     }
 
-    //test si la reponse du user est correct
-    if(userResponse.ur && userResponse.gr){
-      if (userResponse.ur === userResponse.gr) {
-        resultQuestion = 1;
-      }
+    //Si non on ajoute la nouvelle valeur
+    else {
+      arrayUserResponses.push(updateValue);
     }
 
-    //mise à jour du tableau avec la nouvelle reponse
-    if (idQuestion !== undefined) {
-
-      arrayUserResponses[idQuestion] = resultQuestion;
-      console.log(arrayUserResponses);
-
-      localStorage.setItem("userResponses", JSON.stringify(arrayUserResponses));
-    }
-  }, [userResponse]);
-
-  function valideResponse(e) {
-    console.log("bug de click");
-    e.preventDefault();
-    //let allQuestions = document.querySelectorAll("div.container-question");
-    //console.log(allQuestions)
-
-    /*allQuestions.forEach((question) => {
-      let checkedResponse = question.querySelectorAll("input[type='radio']:checked").length;
-      console.log(checkedResponse)
-      if (checkedResponse < 1) {
-        return
-        
-      }
-      else {
-        userResponseArray = JSON.parse(localStorage.getItem("userResponses"));
-        console.log(userResponseArray);
-        setisvalid(true);
-      }
-
-    })*/
+    //mise à jour des reponses dans le local storage
+    localStorage.setItem(
+      "userResponsesQuizPC",
+      JSON.stringify(arrayUserResponses)
+    );
   }
+
+  //Recupère un élément du localStorage : (retourne un tableau ou -1)
+  function getFromLocalStorge(key) {
+    if (!localStorage.getItem(key)) {
+      return [];
+    }
+
+    let array = JSON.parse(localStorage.getItem(key));
+    return array;
+  }
+
+  /******* à faire apres chaque réponse de l' utilisateur *******/
+
+  //determine la valeur de la reponse du user
+  function responseValue() {
+    // Initialisation de la réponse user à 0 (réponse fausse)
+    let resultQuestion = "0";
+
+    //Recuperation des donnees du statelocal apres chaque reponse selectionnée
+    let idQuestion = userResponse.idq;
+    let idInput = userResponse.idi;
+    let userSelect = userResponse.ur;
+    console.log(userSelect);
+    let rightResponse = userResponse.gr;
+
+    //Test si les proprietees existent
+    if (userSelect && rightResponse) {
+      //Si la reponse du user est correct
+      if (userSelect.toString() === rightResponse) {
+        resultQuestion = "1";
+      }
+    }
+
+    //mise à jour du tableau avec la nouvelle réponse
+    if (idQuestion !== undefined) {
+      let updateValue = {
+        idq: idQuestion,
+        idi: idInput,
+        result: resultQuestion,
+      };
+      console.log(updateValue);
+      //enregistrement dans le local storage
+      storeInLocalStorage(updateValue);
+    }
+  }
+
+  /******** à faire à chaque rechargement de la page ***** */
+
+  /*********Initialisation du quiz*********/
+
+  //Initialisation du quiz
+  function InitQuiz() {
+    //si la propriete userResponseQuizPC n' existe pas on initialise avec un tableau vide
+    if (!localStorage.getItem("userResponsesQuizPC")) {
+      arrayUserResponses = [];
+
+      //si la propriete existe on initialise avec le tableau "userresponsesQuizPC" du local storage
+    } else {
+      arrayUserResponses = getFromLocalStorge("userResponsesQuizPC");
+      console.log(arrayUserResponses);
+      //on passe l' etat des inputs à "checked", cela mémorise les choix précédent du user
+      InputUserChecked(arrayUserResponses);
+    }
+  }
+
+  //Permet de restaurer le choix de l' utilisateur au rechargement de la page si le quiz n'est pas validé
+  function InputUserChecked(arrayResponses) {
+    if (arrayResponses.length > 0) {
+      arrayResponses.forEach((userSelect) => {
+        let input = document.getElementById(userSelect.idi);
+        console.log(input);
+        if (input !== null) {
+          input.setAttribute("checked", "checked");
+        }
+      });
+    }
+  }
+
+  /******* operation à réaliser après validation des réponses ********/
+
+  //Contrôle si le user à répondu à toutes les questions:(retourne un boolean)
+  //-1-
+
+  function checkIfInputChecked() {
+    let allQuestions = document.querySelectorAll("div.container-question");
+    
+
+    let nbrOfFlag = 0;
+
+    for (let question of allQuestions) {
+      let checkedResponse = question.querySelector(
+        "input[type='radio']:checked"
+      );
+
+      if (checkedResponse === null) {
+        question.classList.add("color-error");
+        nbrOfFlag = nbrOfFlag - 1;
+      } else {
+        question.classList.remove("color-error");
+        nbrOfFlag = nbrOfFlag + 1;
+      }
+    }
+    console.log(nbrOfFlag)
+    return nbrOfFlag===numberTotalQuestion? true: false
+  }
+
+  // calcule le score du user :(retourne un nombre entier ou un boolean)
+  //-2-
+  function calulateFinalScore(key) {
+    arrayUserResponses = getFromLocalStorge(key);
+    console.log(arrayUserResponses);
+    if (arrayUserResponses.length === 0) {
+      return -1;
+    }
+
+    let score = 0;
+    arrayUserResponses.forEach((response) => {
+      console.log(response);
+      score = score + parseInt(response.result, 10);
+
+      console.log(typeof score);
+    });
+    return score;
+  }
+
+  //Desactive tous les boutons radio
+  //-3-
+  function disabledAllInputs() {
+    let AllInputs = document.querySelectorAll("input[type='radio']");
+    AllInputs.forEach((input) => {
+      input.setAttribute("disabled", "true");
+    });
+  }
+
+  //Affiche le score et les commentaires :(retourne un commentaire et une class de style)
+  //-4-
+  function displayScore(userScore) {
+    console.log(userScore);
+    userFinalResult.finalResult = userScore;
+
+    if (userScore < 1) {
+      userFinalResult.textEval =
+        "A un professionnel ...faire appel tu dois....";
+      userFinalResult.colorUserResult = " bad-result";
+    }
+
+    if (
+      Math.round((userScore / numberTotalQuestion) * 100) < 25 &&
+      Math.round((userScore / numberTotalQuestion) * 100) > 0
+    ) {
+      userFinalResult.textEval =
+        "Mon jeune apprenti, etudier tu dois encore....Que la force soit avec toi...";
+      userFinalResult.colorUserResult = " bad-result";
+    }
+
+    if (
+      Math.round((userScore / numberTotalQuestion) * 100) >= 25 &&
+      Math.round((userScore / numberTotalQuestion) * 100) < 50
+    ) {
+      userFinalResult.textEval = "Mon cher padawan, en progres tu es....";
+      userFinalResult.colorUserResult = " bad-result";
+    }
+
+    if (
+      Math.round((userScore / numberTotalQuestion) * 100) >= 50 &&
+      Math.round((userScore / numberTotalQuestion) * 100) < 75
+    ) {
+      userFinalResult.textEval = "perceverer tu dois pour devenir un jedi....";
+      userFinalResult.colorUserResult = " medium-result";
+    }
+
+    if (
+      Math.round((userScore / numberTotalQuestion) * 100) >= 75 &&
+      Math.round((userScore / numberTotalQuestion) * 100) < 100
+    ) {
+      userFinalResult.textEval = "Te voila elu au rang de jedi";
+      userFinalResult.colorUserResult = " good-result";
+    }
+
+    if (Math.round((userScore / numberTotalQuestion) * 100) === 100) {
+      userFinalResult.textEval = "La force est puissante en toi";
+      userFinalResult.colorUserResult = " good-result";
+    }
+
+    console.log(userFinalResult);
+    setUserFinalResult(userFinalResult);
+  }
+
+  /********fonctions globales********** */
+  /************************************* */
+
+  //permet le controle et l' afffichage du score final apres validation des reponses
+  function valideResponse() {
+    let flag = checkIfInputChecked();
+    console.log(flag)
+    if (!flag) {
+      setMessageError(true)
+      return
+    }
+    let finalScore = calulateFinalScore("userResponsesQuizPC");
+    console.log(typeof finalScore);
+    disabledAllInputs();
+    displayScore(finalScore);
+    console.log(userFinalResult);
+    console.log(typeof userFinalResult.finalResult);
+    setMessageError(false);
+    setisvalid(true);
+  }
+
+  //Permet de relancer le quiz à zero.
+  function resetQuiz(e) {
+    e.preventDefault();
+
+    localStorage.removeItem("userResponsesQuizPC");
+    window.location.reload();
+  }
+
+  //gestion des effets de board
+  useEffect(() => {
+    //Initialisation du quiz
+    InitQuiz();
+
+    //Creer un écouteur d' évenement sur le bouton valider reponse
+    let btnValid = document.querySelector("button[type='button']");
+    btnValid.addEventListener("click", (evt) => {
+      valideResponse();
+    });
+
+    //determine la valeur de la reponse du user
+    responseValue();
+  }, [userResponse]);
 
   return (
     <div className="quiz-pc">
@@ -100,9 +311,10 @@ function PageQuizPC() {
       <form className="quiz-pc__form">
         {ContentQuizPC.map((element, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="quiz-pc__form__question">
               <QuizQuestion
-                idq={element.idQ}
+                numberQuestion={index + 1}
+                idquestion={element.idQ}
                 textQuestion={element.textQuestion}
                 proposition1={element.proposition1}
                 proposition2={element.proposition2}
@@ -110,10 +322,16 @@ function PageQuizPC() {
                 proposition4={element.proposition4}
                 proposition5={element.proposition5}
                 goodresponse={element.goodresponse}
-                idinput={element.idQ + index}
-                idlabel={element.idQ + index}
+                textSolution={element.textSolution}
+                idinput1={element.idQ + "-" + index + "-1"}
+                idinput2={element.idQ + "-" + index + "-2"}
+                idinput3={element.idQ + "-" + index + "-3"}
+                idinput4={element.idQ + "-" + index + "-4"}
+                idinput5={element.idQ + "-" + index + "-5"}
                 responseUser={userResponse}
                 setResponseUser={setUserResponse}
+                valid={isvalid}
+                setValid={setisvalid}
               />
             </div>
           );
@@ -124,23 +342,49 @@ function PageQuizPC() {
           text="Valider vos réponses"
           colorbg="first"
           colortext="fifth"
-          onClick={(evt) => {valideResponse(evt)}}
         ></ButtonStd>
-      </form>
 
-      {isvalid ? (
-        <div className="quiz-pc__resultat">
-          <p className="quiz-pc__resultat__text">{"felicitation"}</p>
+        {isvalid ? (
+          <div className="quiz-pc__resultat">
+            
 
-          <div className="quiz-pc__resultat__rate">
-            {(resultNumber / numberTotalQuestion) * 100 + " %"}
+            <div
+              className={
+                "quiz-pc__resultat__rate" + `${userFinalResult.colorUserResult}`
+              }
+            >
+              
+              {"Votre score est de : "}
+              {userFinalResult.finalResult >= 1
+                ? Math.round(
+                    (userFinalResult.finalResult / numberTotalQuestion) * 100
+                  ) + " %"
+                : " 0 %"}
+            </div>
+
+            <div
+              className="quiz-pc__resultat__btn-reset"
+              onClick={(evt) => {
+                resetQuiz(evt);
+              }}
+            >
+              <ButtonStd
+                btntype="reset"
+                name="resetquiz"
+                text="Relancer le quiz"
+                colorbg="second"
+                colortext="fifth"
+              ></ButtonStd>
+            </div>
           </div>
-        </div>
-      ) : (
-        <p className="quiz-pc__error">
-          Veuillez répondre à toute les questions!!!
-        </p>
-      )}
+        ) : null}
+
+        {messageError ? (
+          <p className="quiz-pc__error">
+            Veuillez répondre à toute les questions!!!
+          </p>
+        ) : null}
+      </form>
     </div>
   );
 }

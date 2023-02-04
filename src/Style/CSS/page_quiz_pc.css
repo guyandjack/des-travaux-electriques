@@ -1,5 +1,93 @@
+.quiz-pc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.quiz-pc__title {
+  margin: 1em 0em 4em 0em;
+  width: 100%;
+}
+.quiz-pc__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  background-color: #FDFAED;
+  padding: 1em;
+}
+.quiz-pc__form__question {
+  margin: 2em 0em;
+  width: 100%;
+}
+.quiz-pc__resultat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.quiz-pc__resultat__text {
+  font-size: 1.1em;
+  padding: 1em;
+  color: #302B27;
+}
+.quiz-pc__resultat__rate {
+  margin: 1em 0em;
+  width: 50%;
+  font-size: 1.5em;
+  text-align: center;
+  padding: 1em;
+  border-radius: 0.3em;
+  font-weight: 600;
+}
+.quiz-pc__resultat__btn-reset {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
 .quiz-pc__error {
   padding: 1em;
   font-size: 1.2em;
   color: #B74701;
+}
+.quiz-pc .color-error {
+  color: #B74701;
+}
+.quiz-pc .bad-result {
+  background-color: #B74701;
+}
+.quiz-pc .medium-result {
+  background-color: #0267C1;
+}
+.quiz-pc .good-result {
+  background-color: #0F8064;
 }

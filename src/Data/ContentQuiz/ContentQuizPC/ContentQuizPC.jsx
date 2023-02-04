@@ -1,7 +1,6 @@
 //Contenu du quiz sur "les prises de courant et circuits spécialisés"
 
-//Import de composants enfants
-import { QuizQuestion } from "../../../Components/QuizQuestion/QuizQuestion.jsx";
+
 
 let ContentQuizPC = [
   {
@@ -10,30 +9,34 @@ let ContentQuizPC = [
     proposition1: "oui",
     proposition2: "non",
     goodresponse: "oui",
+    textSolution: "Oui, en effet la NFC-1500 autorise de câbler un circuit prise en 1.5mm, mais avec un disjoncteur max de 16A."
+    
   },
 
   {
     idQ: "pc2",
     textQuestion:
       "Quelle est la hauteur minimum en cm par rapport au sol pour implanter une prise dans un mur?",
-    proposition1: "5",
+    proposition1: "oui",
     proposition2: "10",
     proposition3: "15",
     proposition4: "20",
-    proposition5: "40",
-    goodresponse: "5",
+    proposition5: "non",
+    goodresponse: "oui",
+    textSolution: "5cm au dessus du sol fini est le minimum autorisé, bien qu'en pratique on est entre 30cm et 40cm du sol fini."
   },
 
   {
     idQ: "pc3",
     textQuestion:
       "Quelle est la hauteur minimum en cm par rapport au plan de travail pour implanter une prise dans la credense?",
-    proposition1: "5",
+    proposition1: "oups",
     proposition2: "10",
     proposition3: "15",
     proposition4: "3",
     proposition5: "",
-    goodresponse: "5",
+    goodresponse: "oups",
+    textSolution: "5cm est encore la bonne réponse"
   },
 
   {
@@ -46,6 +49,7 @@ let ContentQuizPC = [
     proposition4: "",
     proposition5: "",
     goodresponse: "oui",
+    textSolution: "oui , 16A c' est le maximun autorisé"
   },
 
   {
@@ -58,6 +62,7 @@ let ContentQuizPC = [
     proposition4: "12",
     proposition5: "16",
     goodresponse: "12",
+    textSolution:"Toujours d' apres la NFC-1500 on peut aller jusqu'à 12 socles de prise avec un circuit câbler en 2.5 mm2"
   },
 
   {
@@ -70,6 +75,7 @@ let ContentQuizPC = [
     proposition4: "c'est limite mais ca passe",
 
     goodresponse: "non la norme l'interdit",
+    textSolution: "Interdiction absolue, un cable 1.5mm2 ne peut supporter un courant nominal supérieur à 16A"
   },
 
   {
@@ -81,6 +87,7 @@ let ContentQuizPC = [
     proposition3: "NFC-14500",
     proposition4: "NFC-15500",
     goodresponse: "NFC-1500",
+    textSolution:"C' est la NFC-1500"
   },
 ];
 

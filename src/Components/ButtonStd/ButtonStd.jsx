@@ -5,7 +5,7 @@ import "../../Style/CSS/ButtonStd.css";
 
 //Fonction "ButtonStd"
 
-function ButtonStd({ btntype, text, colorbg, colortext }) {
+function ButtonStd({ btntype, nom, text, colorbg, colortext }) {
 
     let classColorBg;
     let classColorText;
@@ -64,7 +64,7 @@ function ButtonStd({ btntype, text, colorbg, colortext }) {
         
     return (
         <div className="button">
-            <button className={classButtonStd + classColorBg + classColorText} type={btntype}>{text}</button>
+            <button className={classButtonStd + classColorBg + classColorText} type={btntype} name={nom}>{text}</button>
         </div>
     )
 }

@@ -11,25 +11,99 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
+    width: 100%;
+    margin: 1em 0em;
+    
 
-
-    .question{
-        display: flex;
-        flex-flow: row nowrap;
+    .question-header{
+            display: flex;
+        flex-flow: column nowrap;
         justify-content: flex-start;
+        align-items: flex-start;
+        width: 100%;
+        margin-bottom: 2em;
+
+        &__title{
+            font-size: 1.5em;
+            font-weight: 600;
+            
+        }
+
+        &__split{
+            margin: 1em 0em 2em 0em;
+            border-bottom: 2px solid lighten(map-get($colors-rule, fourth-color ),10%);
+            width: 100%;
+        }
+
+        &__text{
+
+            width: 100%;
+            font-size: 1.2em;
+            align-self: left;
+            font-weight: 400;
+            
+        }
+    }
+
+
+    .proposition{
+        display: flex;
+        flex-flow:row-reverse;
+        justify-content: flex-end;
         align-items: center;
-        font-size: 1em;
+        margin-top: 1em;
+        width:100%;
+       // border: 2px solid red;
         
 
         &__label{
+            width:auto;
+            //margin-right: 1em;
+            font-size: 1.3em;
             font-style: italic;
+            //border: 2px solid green;
+
         }
 
         &__input{
+            
+            margin-right: 2em;
+            //border: 2px solid blue;
 
-            &:checked{
-                color: map-get($colors-rule, third-color);
-            }
         }
+
+        .icon-result{
+            width: 2em;
+            height: 2em;
+            margin:0em 2em 0em 1em;
+        }
+    }
+
+    .solution{
+        
+        margin: 4em 0em;
+        width: 50%;
+
+        &__title, &__text{
+
+            color: map-get($colors-rule, first-color );
+            font-style: italic;
+            font-weight: 400;
+            font-size: 1.3em;
+
+        }
+
+        &__title{
+            border-bottom: 2px solid map-get($colors-rule, first-color ) ;
+            margin-bottom: 1em;
+        }
+
+        &__text{
+            word-spacing:0.5em;
+            line-height: 1.5em; 
+        }
+
+       
+        
     }
 }

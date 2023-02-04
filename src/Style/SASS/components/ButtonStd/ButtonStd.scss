@@ -23,28 +23,28 @@
     .second-bg{
         background-color: map-get($colors-rule, second-color);
          &:hover{
-            background-color: darken(map-get($colors-rule, first-color), 10%);
+            background-color: darken(map-get($colors-rule, second-color), 10%);
         }
     }
     
     .third-bg{
         background-color: map-get($colors-rule, third-color);
          &:hover{
-            background-color: darken(map-get($colors-rule, first-color), 10%);
+            background-color: darken(map-get($colors-rule, third-color), 10%);
         }
     }
     
     .fourth-bg{
         background-color: map-get($colors-rule, fourth-color);
          &:hover{
-            background-color: darken(map-get($colors-rule, first-color), 10%);
+            background-color: darken(map-get($colors-rule, fourth-color), 10%);
         }
     }
     
     .fifth-bg{
         background-color: map-get($colors-rule, fifth-color);
          &:hover{
-            background-color: darken(map-get($colors-rule, first-color), 10%);
+            background-color: darken(map-get($colors-rule, fifth-color), 10%);
         }
     }
     

@@ -72,6 +72,13 @@
 }
 .container-question .proposition__input {
   margin-right: 2em;
+  width: 1em;
+  height: 1em;
+  border: 2px solid #685d55;
+  border-radius: 50%;
+}
+.container-question .proposition__input:checked {
+  background-color: #0267C1;
 }
 .container-question .proposition .icon-result {
   width: 2em;

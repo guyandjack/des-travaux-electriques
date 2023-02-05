@@ -6,11 +6,11 @@
 //Animation
 @keyframes landing {
     0%{
-        margin-top: 0em;
+        transform:translateY(-5em);
         opacity: 0;
     }
     100%{
-        margin-top: 2em;
+       transform:translateY(0em);
         opacity: 1;
     }
 }
@@ -21,27 +21,59 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
-    width: 70%;
-    margin: 0px auto;
+    width: 50%;
+    margin: 2em auto;
+    padding: 1em;
+    box-shadow: 0px 0px 20px  lighten(map-get($colors-rule, fourth-color ),0%);
+    animation: landing 500ms linear 0s 1 normal forwards;
+    
 
     &__text{
+        text-align: center;
         margin: 2em 0em;
-        font-size: 1.5em;
+        font-size: 1.1em;
         font-style: italic;
+        color:map-get($colors-rule, fourth-color);
+        word-spacing: 0.2em;
+        line-height: 2em;
+    }
+
+    .cont-label-input{
+        display: flex;
+        flex-flow:column;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 2em 0em;
+        width:100%;
+        animation: landing 500ms linear 0.1s 1 normal forwards;
+    }
+
+    .form-label{
+        width: 50%;
+        font-weight: 600;
+        text-transform: capitalize;
+        text-align: left;
         color:map-get($colors-rule, fourth-color);
     }
 
-    &__input{
-        width: 40%;
-        height:3em;
-        border-radius: 0.5em;
+    .form-input{
+        width: 50%;
+        height:2em;
         padding: 0.5em;
-        margin-top: 2em;
-        font-size: 1.2em;
+        border-bottom: 2px solid map-get($colors-rule, first-color);
+        font-size: 1em;
         color:map-get($colors-rule, fourth-color);
-        animation: landing 500ms linear 0s 1 normal forwards;
-       
+        background:none;
+        transition: border-bottom 250ms linear;
+
+        
     }
+    
+    .form-input:focus{
+        
+        border-bottom: 2px solid lighten(map-get($colors-rule, first-color),50%);
+    }
+
     
     &__flag{
         margin: 0.5em 0em;
@@ -50,17 +82,26 @@
         
     }
 
-    &__submit{
-        
-        padding: 1em;
-        border-radius: 0.5em;
+    
+    .textarea{
+        resize: none;
+        margin-top: 1em;
+        width:50%;
+        height: 200px;
+        border: 2px solid map-get($colors-rule, first-color );
+        padding: 0.5em;
+        transition: border 250ms linear;
     }
 
-    .textarea{
-        width:80%;
-        height: 200px;
-        resize: none;
+    .textarea:focus{
+        
+        border: 2px solid lighten(map-get($colors-rule, first-color),50%);
     }
+
+    .cont-valid-btn{
+       animation: landing 250ms linear 0s 1 normal forwards;
+    }
+
 
     .invalid-text{
         color:map-get($colors-rule, second-color);
@@ -70,14 +111,17 @@
         color:map-get($colors-rule, third-color);
     }
 
-    .invalid-border{
-        border:2px solid map-get($colors-rule, second-color);
-        //box-shadow: 0px 0px 4px map-get($colors-rule, second-color);
-    }
+    
 
     .valid-border{
+        border-bottom:2px solid map-get($colors-rule, third-color);
+        color: map-get($colors-rule, third-color);
+       
+    }
+    
+    .valid-border-textarea{
         border:2px solid map-get($colors-rule, third-color);
-        box-shadow: 0px 0px 6px map-get($colors-rule, third-color);
+        color: map-get($colors-rule, third-color);
     }
 
 

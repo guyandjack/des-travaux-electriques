@@ -12,6 +12,7 @@ import "../../Style/CSS/quizquestion.css";
 //Function "QuizQuestion"
 
 function QuizQuestion({
+  indexQuestion,
   numberQuestion,
   idquestion,
   textQuestion,
@@ -70,10 +71,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition1 === ContentQuizPC[0].goodresponse  ? (
+            {proposition1 === ContentQuizPC[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition1 !== ContentQuizPC[0].goodresponse  ? (
+            {proposition1 !== ContentQuizPC[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>
@@ -101,10 +102,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition2 == ContentQuizPC[1].goodresponse ? (
+            {proposition2 == ContentQuizPC[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition2 !== ContentQuizPC[1].goodresponse ? (
+            {proposition2 !== ContentQuizPC[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>
@@ -132,10 +133,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition3 === ContentQuizPC[2].goodresponse  ? (
+            {proposition3 === ContentQuizPC[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition3 !== ContentQuizPC[2].goodresponse ? (
+            {proposition3 !== ContentQuizPC[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>
@@ -163,10 +164,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition4 === ContentQuizPC[3].goodresponse  ? (
+            {proposition4 === ContentQuizPC[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition4 !== ContentQuizPC[3].goodresponse  ? (
+            {proposition4 !== ContentQuizPC[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>
@@ -194,10 +195,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition5 === ContentQuizPC[4].goodresponse ? (
+            {proposition5 === ContentQuizPC[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition5 !== ContentQuizPC[4].goodresponse ? (
+            {proposition5 !== ContentQuizPC[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>

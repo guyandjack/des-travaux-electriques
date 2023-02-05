@@ -64,7 +64,12 @@ function ButtonStd({ btntype, nom, text, colorbg, colortext }) {
         
     return (
         <div className="button">
-            <button className={classButtonStd + classColorBg + classColorText} type={btntype} name={nom}>{text}</button>
+            <button
+                className={classButtonStd + classColorBg + classColorText}
+                type={btntype}
+                name={nom}>
+                {text}
+            </button>
         </div>
     )
 }

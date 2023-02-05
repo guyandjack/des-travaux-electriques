@@ -191,12 +191,16 @@ function PageQuizPC() {
     return score;
   }
 
-  //Desactive tous les boutons radio
+  //Desactive tous les boutons radio non selectionnés
   //-3-
   function disabledAllInputs() {
     let AllInputs = document.querySelectorAll("input[type='radio']");
+    let AllInputsChecked = document.querySelectorAll("input[type='radio']:checked");
     AllInputs.forEach((input) => {
       input.setAttribute("disabled", "true");
+    });
+    AllInputsChecked.forEach((input) => {
+      input.removeAttribute("disabled");
     });
   }
 
@@ -313,6 +317,7 @@ function PageQuizPC() {
           return (
             <div key={index} className="quiz-pc__form__question">
               <QuizQuestion
+                indexQuestion={index}
                 numberQuestion={index + 1}
                 idquestion={element.idQ}
                 textQuestion={element.textQuestion}

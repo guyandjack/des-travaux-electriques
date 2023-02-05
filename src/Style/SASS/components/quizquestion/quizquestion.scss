@@ -68,8 +68,16 @@
         &__input{
             
             margin-right: 2em;
-            //border: 2px solid blue;
+            width:1em;
+            height:1em;
+            border: 2px solid lighten(map-get($colors-rule, fourth-color ),20%);
+            border-radius: 50%;
+            
 
+        }
+
+        &__input:checked{
+            background-color: map-get($colors-rule, first-color);
         }
 
         .icon-result{

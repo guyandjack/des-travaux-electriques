@@ -38,7 +38,7 @@
 }
 .container-question .question-header__split {
   margin: 1em 0em 2em 0em;
-  border-bottom: 2px solid #4c443e;
+  border-bottom: 2px solid #414141;
   width: 100%;
 }
 .container-question .question-header__text {
@@ -74,7 +74,7 @@
   margin-right: 2em;
   width: 1em;
   height: 1em;
-  border: 2px solid #685d55;
+  border: 2px solid #5a5a5a;
   border-radius: 50%;
 }
 .container-question .proposition__input:checked {

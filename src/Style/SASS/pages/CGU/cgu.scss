@@ -5,8 +5,10 @@
 
 .cgu{
 
-    width: 100%;
-    margin: 0px auto;
+    width: 70%;
+    margin: 2em auto;
+    padding: 2em;
+    //background-color: lighten(map-get($colors-rule, second-color ),50%);
     
 
     &__title{
@@ -15,7 +17,7 @@
         color: map-get($colors-rule , fourth-color);
         font-family: 'Oswald', sans-serif;
         font-size: 3em;
-        margin: 1em 0%;
+        margin: 1em 0em 2em 0em;
         text-transform: uppercase;
        
     }
@@ -32,18 +34,30 @@
         &__li{
 
             width: 100%;
+            padding: 2em 1em;
+            //margin: 1em 0em 1em 0em;
+            //border-top: 2px solid black;
+           //border-bottom: 2px solid black;
 
         }
 
-        .article-title{
+        .article-number{
             font-family: 'Oswald', sans-serif;
             font-size: 1.5em;
             margin: 1em 0em;
         }
+        
+        .article-title{
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2em;
+            color: map-get($colors-rule , first-color);
+        
+        }
 
         .article-content{
             font-size: 1.2em;
-            line-height: 1.5em;
+            line-height: 2em;
+            text-align: justify;
            
         }
 
@@ -55,5 +69,9 @@
             width: 30%;
         }
         
+    }
+
+    .bg-dark{
+        background-color:lighten( map-get($colors-rule, fourth-color), 80%);
     }
 }

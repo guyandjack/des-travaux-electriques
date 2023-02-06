@@ -35,11 +35,11 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  background-color: #B74701;
+  background-color: #EFA00B;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 100%;
           flex: 1 1 100%;
-  border-bottom: 2px solid #c64d01;
+  border-bottom: 2px solid #f4a715;
 }
 .menu-burger .schema {
   display: -webkit-box;

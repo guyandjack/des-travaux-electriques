@@ -10,41 +10,41 @@
   background-color: #014c8f;
 }
 .button .second-bg {
-  background-color: #B74701;
+  background-color: #EFA00B;
 }
 .button .second-bg:hover {
-  background-color: #843301;
+  background-color: #be7f09;
 }
 .button .third-bg {
-  background-color: #0F8064;
+  background-color: #3A7D44;
 }
 .button .third-bg:hover {
-  background-color: #0a5240;
+  background-color: #2a5a31;
 }
 .button .fourth-bg {
-  background-color: #302B27;
+  background-color: #272727;
 }
 .button .fourth-bg:hover {
-  background-color: #141210;
+  background-color: #0e0e0e;
 }
 .button .fifth-bg {
-  background-color: #FDFAED;
+  background-color: #FBFFFE;
 }
 .button .fifth-bg:hover {
-  background-color: #f8edbf;
+  background-color: #c8fff1;
 }
 .button .first-text {
   color: #0267C1;
 }
 .button .second-text {
-  color: #B74701;
+  color: #EFA00B;
 }
 .button .third-text {
-  color: #0F8064;
+  color: #3A7D44;
 }
 .button .fourth-text {
-  color: #302B27;
+  color: #272727;
 }
 .button .fifth-text {
-  color: #FDFAED;
+  color: #FBFFFE;
 }

@@ -33,7 +33,7 @@
       -ms-flex-align: center;
           align-items: center;
   width: 50%;
-  background-color: #FDFAED;
+  background-color: #FBFFFE;
   padding: 1em;
 }
 .quiz-pc__form__question {
@@ -59,7 +59,7 @@
 .quiz-pc__resultat__text {
   font-size: 1.1em;
   padding: 1em;
-  color: #302B27;
+  color: #272727;
 }
 .quiz-pc__resultat__rate {
   margin: 1em 0em;
@@ -77,17 +77,17 @@
 .quiz-pc__error {
   padding: 1em;
   font-size: 1.2em;
-  color: #B74701;
+  color: #EFA00B;
 }
 .quiz-pc .color-error {
-  color: #B74701;
+  color: #EFA00B;
 }
 .quiz-pc .bad-result {
-  background-color: #B74701;
+  background-color: #EFA00B;
 }
 .quiz-pc .medium-result {
   background-color: #0267C1;
 }
 .quiz-pc .good-result {
-  background-color: #0F8064;
+  background-color: #3A7D44;
 }

@@ -24,7 +24,7 @@
   -o-transition: font-size 250ms linear;
   transition: font-size 250ms linear;
   line-height: 2em;
-  color: #302B27;
+  color: #272727;
 }
 @media screen and (max-width: 992px) {
   .error__404 {

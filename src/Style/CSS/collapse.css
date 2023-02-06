@@ -32,7 +32,7 @@
   font-family: "Oswald", sans-serif;
   font-size: 1.1em;
   text-transform: uppercase;
-  color: #302B27;
+  color: #272727;
 }
 .collapse__content {
   display: none;
@@ -41,8 +41,8 @@
   padding: 0em;
   border-radius: 2em;
   border: none;
-  background-color: #FDFAED;
-  color: #302B27;
+  background-color: #FBFFFE;
+  color: #272727;
   -webkit-transition: max-height 300ms linear, opacity 200ms linear;
   -o-transition: max-height 300ms linear, opacity 200ms linear;
   transition: max-height 300ms linear, opacity 200ms linear;
@@ -72,32 +72,32 @@
   border: 2px solid #0267C1;
 }
 .collapse .second-color-title {
-  border: 2px solid #B74701;
+  border: 2px solid #EFA00B;
 }
 .collapse .second-color-title:hover {
-  border-right: 6px solid #B74701;
-  border-left: 6px solid #B74701;
+  border-right: 6px solid #EFA00B;
+  border-left: 6px solid #EFA00B;
 }
 .collapse .second-color-content {
-  border: 2px solid #B74701;
+  border: 2px solid #EFA00B;
 }
 .collapse .third-color-title {
-  border: 2px solid #0F8064;
+  border: 2px solid #3A7D44;
 }
 .collapse .third-color-title:hover {
-  border-right: 6px solid #0F8064;
-  border-left: 6px solid #0F8064;
+  border-right: 6px solid #3A7D44;
+  border-left: 6px solid #3A7D44;
 }
 .collapse .third-color-content {
-  border: 2px solid #0F8064;
+  border: 2px solid #3A7D44;
 }
 .collapse .fourth-color-title {
-  border: 2px solid #302B27;
+  border: 2px solid #272727;
 }
 .collapse .fourth-color-title:hover {
-  border-right: 6px solid #302B27;
-  border-left: 6px solid #302B27;
+  border-right: 6px solid #272727;
+  border-left: 6px solid #272727;
 }
 .collapse .fourth-color-content {
-  border: 2px solid #302B27;
+  border: 2px solid #272727;
 }

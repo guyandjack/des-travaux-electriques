@@ -8,18 +8,21 @@ import "../../Style/CSS/cgu.css";
 
 //Fonction "CGU"
 function PageCGU() {
+  let classBgLi = "cgu__list__li"
+  let classBgColor = " bg-dark";
+
   return (
     <div className="cgu">
       <h1 className="cgu__title">Conditions générales d'Utilisation</h1>
       <ul className="cgu__list">
         {CGUContent.map((document, index) => {
           return(
-          <li id={index} className="cgu__list__li" key={index}>
+          <li key={index} id={index} className={((index + 1)%2===0)?(classBgLi + classBgColor ):(classBgLi)} >
             
             
-            <p className="article-title">{document.title}</p>
-            <p className="article-content">{document.content}</p>
-            <hr className="article-split"></hr>
+            <div className="article-number">Article{" " + (index + 1) + " :"}<span className="article-title">{" " + document.title}</span></div>
+            <div className="article-content">{document.content}</div>
+            
               
 
           </li>

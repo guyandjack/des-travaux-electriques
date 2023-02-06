@@ -12,17 +12,17 @@ function Footer() {
     <footer className="footer">
       <ul className="footer__menu">
         <li className="footer__menu__li">
-          <a href="/cgu#" className="footer__menu__li__link">
+          <a href="/cgu" className="footer__menu__li__link">
             CGU
           </a>
         </li>
         <li className="footer__menu__li">
-          <a href="/cgu#1" className="footer__menu__li__link">
+          <a href="/cgu#2" className="footer__menu__li__link">
             Mentions Légales
           </a>
         </li>
         <li className="footer__menu__li">
-          <a href="/cgu#6" className="footer__menu__li__link">
+          <a href="/cgu#9" className="footer__menu__li__link">
             Politique de confidencialité
           </a>
         </li>

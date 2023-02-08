@@ -13,15 +13,19 @@
     flex-flow:column nowrap;
     justify-content: flex-start;
     align-items: center;
+
     width: 100%;
+    
 
     .title-home, .title-page{
-
+        width: 100%;
+        text-align: center;
         font-family: 'Oswald', sans-serif;
         text-transform: uppercase;
         color: map-get($colors-rule, fourth-color);
         font-size: 3em;
-        margin: 1em 0em;
+        margin: 0em 0em 2em 0em;
+        
 
         //responsive pour ecran inferieur à "large"
         @include under-large-screen{
@@ -57,11 +61,12 @@
 
     .text-home, .text-page {
         
-        width: 80%;
-        font-size: 2em;
+        width: 100%;
+        font-size: 1.5em;
         font-style: italic;
         color: map-get($colors-rule, fourth-color);
         text-align: center;
+        
 
         //responsive pour ecran inferieur à large
         @include under-large-screen{

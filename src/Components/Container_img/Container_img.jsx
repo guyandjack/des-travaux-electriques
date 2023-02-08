@@ -1,9 +1,14 @@
 //Composant "Containeur_img"
 
+
+
+//Import des feuilles de style
+import "../../Style/CSS/container_img.css";
+
 //Fonction "ContainerImg"
 
 function ContainerImg({
-  displaytype,
+  width,
   src1,
   alt1,
   figcap1,
@@ -11,20 +16,22 @@ function ContainerImg({
   alt2,
   figcap2,
 }) {
-  let classContainer = "container-img";
-  let classDisplayFlow = displaytype === "row" ? "row" : "column";
+  let classContainer = "main-container";
+  
 
   return (
-    <figure className={classContainer + classDisplayFlow}>
-      <div className="cont-img2">
-        <img className="img" src={src1} alt={alt1}></img>
-        <figcaption className="figcaption">{figcap1}</figcaption>
+    <figure className={classContainer}>
+      <div className="container">
+        <img className="container__img" src={src1} alt={alt1} width={width}></img>
+        <figcaption className="container__figcaption">{figcap1}</figcaption>
       </div>
 
-      <div className="cont-img2">
-        <img className="img" src={src2} alt={alt2}></img>
-        <figcaption className="figcaption">{figcap2}</figcaption>
-      </div>
+      {src2 ? (
+        <div className="container">
+          <img className="container__img" src={src2} alt={alt2} width={width}></img>
+          <figcaption className="container__figcaption">{figcap2}</figcaption>
+        </div>
+      ) : null}
     </figure>
   );
 }

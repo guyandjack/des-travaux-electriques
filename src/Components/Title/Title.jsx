@@ -16,7 +16,7 @@ function Title({ pagetype, title, text }) {
         <div className="title">
             
             <h1 className={classPageType}>{title}</h1>
-            <p className={classText}>{text}</p>
+            <div className={classText}>{text}</div>
             
         </div>
     )

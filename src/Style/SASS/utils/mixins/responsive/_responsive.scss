@@ -9,6 +9,12 @@
     @content;
   }
 }
+//mixin pour les ecrans superieurs à "small"
+@mixin upper-small-screen {
+  @media screen and (min-width: map-get($break-points, small-max)) {
+    @content;
+  }
+}
 
 //mixin pour les ecrans inferieur à "medium"
 @mixin under-medium-screen {

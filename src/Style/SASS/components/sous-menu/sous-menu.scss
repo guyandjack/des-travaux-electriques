@@ -19,7 +19,7 @@
     left : 0px;
     z-index: 10;
     
-    width: 100%;
+    width: 300%;
     //border-radius: 10px;
     overflow: hidden;
     height: 0px;
@@ -28,10 +28,7 @@
 
     
 
-    //responsive pour ecran inferieur à large
-    @include under-large-screen{
-        width: 150%;
-    }
+    
     
     
     &__li{

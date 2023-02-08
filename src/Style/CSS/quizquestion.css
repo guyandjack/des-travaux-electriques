@@ -87,7 +87,8 @@
 }
 .container-question .solution {
   margin: 4em 0em;
-  width: 50%;
+  width: 100%;
+  max-width: 500px;
 }
 .container-question .solution__title, .container-question .solution__text {
   color: #0267C1;

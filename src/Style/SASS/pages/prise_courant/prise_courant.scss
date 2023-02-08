@@ -1,14 +1,90 @@
 //Feuille de style pour la page "PriseDeCourant"
 
+//Import des mixins qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
 .prise-courant{
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
-
+    width: 100%;
     
+    
+    .container-title{
+        width: 100%;
+        margin: 1em 0em;
 
-    .container-collapse{
-        margin-top: 2em ;
+        @include medium-screen{
+            width: 80%;
+             margin: 2em 0em;
+        }
+
+        @include large-screen{
+            width: 70%;
+             margin: 3em 0em;
+        }
+
+        @include upper-large-screen{
+            width: 60%;
+             margin: 10em 0em 5em 0em;
+        }
     }
+    
+    
+    .container-collapse{
+        margin: 2em 0em;
+        width: 100%;
+        max-width: 500px;
+
+        @include upper-medium-screen{
+            width:90%;
+            max-width: 1000px;
+        }
+
+        
+    }
+
+    .container-image-pc{
+        width:80%;
+        max-width: 250px;
+        
+
+        @include upper-medium-screen{
+        max-width: 800px;
+       
+        }
+
+        
+    }
+    .container-image-schemapc{
+        width:100%;
+        max-width: 500px;
+
+        @include upper-medium-screen{
+        max-width: 900px;
+       
+        }
+
+
+    }
+    .container-image-comptagepc{
+        width:100%;
+        max-width: 500px;
+
+        @include upper-medium-screen{
+        max-width: 900px;
+        
+        }
+
+    }
+
+    .text-quiz{
+        margin:2em 0em;
+        
+    }
+    
 }

@@ -19,11 +19,14 @@ function Collapse({ idCollapse, title, content, color }) {
         collapseTitle.addEventListener("click", function () { setIsCliked(!isCliked) });
     }, [isCliked]);
 
+    //Class de style des elements
     let defaultClassContent = "collapse__content";
     let defaultClassTitle = "collapse__title";
     let addClass;
     let colorClassTitle;
     let colorClassContent;
+
+    //url des images
 
    
 

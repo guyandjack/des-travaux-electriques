@@ -13,18 +13,13 @@
   top: 100%;
   left: 0px;
   z-index: 10;
-  width: 100%;
+  width: 300%;
   overflow: hidden;
   height: 0px;
   -webkit-transition: height 250ms linear;
   -o-transition: height 250ms linear;
   transition: height 250ms linear;
   background-color: white;
-}
-@media screen and (max-width: 992px) {
-  .sous-menu {
-    width: 150%;
-  }
 }
 .sous-menu__li {
   width: 100%;

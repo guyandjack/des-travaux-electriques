@@ -24,9 +24,15 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
-    width: 50%;
+    width: 100%;
+    max-width: 500px;
     background-color: map-get($colors-rule, fifth-color);
     padding: 1em;
+
+    @include upper-medium-screen{
+      width:80%;
+      max-width: 800px;
+    }
 
     &__question {
       margin: 2em 0em;
@@ -53,7 +59,7 @@
 
     &__rate {
         margin: 1em 0em;
-        width: 50%;
+        width: fit-content;
         font-size: 1.5em;
         text-align: center;
         padding: 1em;

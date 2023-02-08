@@ -32,9 +32,16 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 50%;
+  width: 100%;
+  max-width: 500px;
   background-color: #FBFFFE;
   padding: 1em;
+}
+@media screen and (min-width: 769px) {
+  .quiz-pc__form {
+    width: 80%;
+    max-width: 800px;
+  }
 }
 .quiz-pc__form__question {
   margin: 2em 0em;
@@ -63,7 +70,9 @@
 }
 .quiz-pc__resultat__rate {
   margin: 1em 0em;
-  width: 50%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   font-size: 1.5em;
   text-align: center;
   padding: 1em;

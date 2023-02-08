@@ -13,7 +13,8 @@
     align-items: center;
     height: 100px;
     width: 100%;
-    
+    margin-bottom: 2em;
+    background-color: lighten(map-get($colors-rule, fourth-color ),10%);
    
 
     &__logo{

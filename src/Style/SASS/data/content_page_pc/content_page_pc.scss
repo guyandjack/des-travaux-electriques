@@ -1,0 +1,57 @@
+//Feuille de style pour les données de la page "prise de courant"
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+//style du contenu des collapse
+
+.description, .precaution{
+
+    counter-set: compteur ;
+
+    &__text{
+       margin-top: 0.5em;
+        font-size: 1.2em;
+        font-weight: 600;
+        font-style: italic;
+        color:  map-get($colors-rule, second-color );
+    }
+             
+    &__li::before{
+        content:counter(compteur);
+        display:inline-block;
+        color: map-get($colors-rule, first-color );
+        font-weight: 600;
+        font-size: 1.1em;
+        width:2em;
+        text-align: right;
+        margin-right: 1em;
+        //border:1px solid red;
+    }
+
+    &__li{
+        counter-increment: compteur;
+        margin-top: 0.5em;
+        font-size: 1.2em;
+
+    }
+
+    .important{
+        color:  darken(map-get($colors-rule, second-color ),0%);
+        
+    }
+}
+
+.principe, .astuce, .savoir{
+    font-size: 1.2em;
+
+    &__text {
+        line-height: 1.5em;
+        margin: 0.5em 0em;
+    }
+}
+
+//style du contenu du
+
+
+

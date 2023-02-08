@@ -15,11 +15,13 @@
   width: 100%;
 }
 .title .title-home, .title .title-page {
+  width: 100%;
+  text-align: center;
   font-family: "Oswald", sans-serif;
   text-transform: uppercase;
   color: #272727;
   font-size: 3em;
-  margin: 1em 0em;
+  margin: 0em 0em 2em 0em;
 }
 @media screen and (max-width: 992px) {
   .title .title-home, .title .title-page {
@@ -50,8 +52,8 @@
   }
 }
 .title .text-home, .title .text-page {
-  width: 80%;
-  font-size: 2em;
+  width: 100%;
+  font-size: 1.5em;
   font-style: italic;
   color: #272727;
   text-align: center;

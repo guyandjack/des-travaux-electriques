@@ -1,4 +1,4 @@
-//Feuille de style pour la page "PriseDeCourant"
+//Feuille de style de la page "circuitspecialise"
 
 //Import des mixins qui gerent le responsive
 @import "../../utils/mixins/responsive/responsive.scss";
@@ -6,14 +6,16 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
-.prise-courant{
+.circuit-specialise{
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
+
     width: 100%;
+
     
-    
+
     .container-title{
         width: 100%;
         margin: 1em 0em;
@@ -86,5 +88,6 @@
         margin:2em 0em;
         
     }
-    
+
+
 }

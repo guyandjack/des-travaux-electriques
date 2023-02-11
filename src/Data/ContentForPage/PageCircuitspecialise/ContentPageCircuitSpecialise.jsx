@@ -12,7 +12,7 @@ let ContentTextPageCircuitSpecialise = {
     <div>
       <p>
         Avant toute intervention, veillez mettre hors tension le circuit
-        concerné au niveau du <Link to="/tgbt"> tableau de répartition </Link>{" "}
+        concerné au niveau du <Link to="/tgbt"> tableau de répartition </Link>
         et de vérifier ensuite l' absence de tension avec un VAT (vérificateur
         d'absence de tension) au point d' intervention.
       </p>
@@ -36,7 +36,7 @@ let ContentTextPageCircuitSpecialise = {
         proximité des arrivées et évacuations d’eau pour le lave-vaisselle et
         machine à laver. Les autres circuits spécialisés seront installés en
         fonction des besoins de l’occupant et de la configuration du logement.
-        Liste non hexaustive des circuits spécialisés
+        Liste non hexaustive des circuits spécialisés.
         <ul>
           <li>plaque de cuisson</li>
           <li>four</li>
@@ -211,25 +211,60 @@ let ContentTextPageCircuitSpecialise = {
 /**** url des contenus media de la page ***** */
 
 let ContentImagePageCircuitSpecialise = {
+
+    //Vignette
   plaqueCuisson: {
-    small: "/Asset/images_page_circuitspecialise/png",
-    medium: "/Asset/images_page_circuitspecialise/png",
-    large: "/Asset/images_page_circuitspecialise/png",
+    small:
+      "/Asset/images_page_circuitspecialise/plaque-cuisson/img-plaque-cuisson.png",
+    medium:
+      "/Asset/images_page_circuitspecialise/plaque-cuisson/img-plaque-cuisson.png",
+    large:
+      "/Asset/images_page_circuitspecialise/plaque-cuisson/img-plaque-cuisson.png",
   },
   cumulus: {
-    small: "/Asset/images_page_circuitspecialise/ng",
-    medium: "/Asset/images_page_circuitspecialise/ng",
-    large: "/Asset/images_page_circuitspecialise/ng",
+    small: "/Asset/images_page_circuitspecialise/cumulus/img-cumulus.png",
+    medium: "/Asset/images_page_circuitspecialise/cumulus/img-cumulus.png",
+    large: "/Asset/images_page_circuitspecialise/cumulus/img-cumulus.png",
   },
   chauffage: {
-    small: "/Asset/images_page_circuitspecialise/g",
-    medium: "/Asset/images_page_circuitspecialise/ng",
-    large: "/Asset/images_page_circuitspecialise/ng",
+    small:
+      "/Asset/images_page_circuitspecialise/chauffage/img-radiateur-electrique.png",
+    medium:
+      "/Asset/images_page_circuitspecialise/chauffage/img-radiateur-electrique.png",
+    large:
+      "/Asset/images_page_circuitspecialise/chauffage/img-radiateur-electrique.png",
   },
   laveLinge: {
-    small: "/Asset/images_page_circuitspecialise/px.png",
-    medium: "/Asset/images_page_circuitspecialise/0px.png",
-    large: "/Asset/images_page_circuitspecialise/0px.png",
+    small: "/Asset/images_page_circuitspecialise/lave-linge/img-lave-linge.png",
+    medium:
+      "/Asset/images_page_circuitspecialise/lave-linge/img-lave-linge.png",
+    large: "/Asset/images_page_circuitspecialise/lave-linge/img-lave-linge.png",
+    },
+  
+  //Schema
+  schemalaveLinge: {
+    small: "/Asset/images_page_circuitspecialise/lave-linge/schema-lave-linge-600px.png",
+    medium:
+      "/Asset/images_page_circuitspecialise/lave-linge/schema-lave-linge-1000px.png",
+    large: "/Asset/images_page_circuitspecialise/lave-linge/schema-lave-linge-1500px.png",
+  },
+  schemaCumulus: {
+    small: "/Asset/images_page_circuitspecialise/lave-linge/schema-cumulus-600px.png",
+    medium:
+      "/Asset/images_page_circuitspecialise/lave-linge/schema-cumulus-1000px.png",
+    large: "/Asset/images_page_circuitspecialise/lave-linge/schema-cumulus-1500px.png",
+  },
+  schemaChauffage: {
+    small: "/Asset/images_page_circuitspecialise/chauffage/schema-chauffage-600px.png",
+    medium:
+      "/Asset/images_page_circuitspecialise/chauffage/schema-chauffage-1000px.png",
+    large: "/Asset/images_page_circuitspecialise/chauffage/schema-chauffage-1500px.png",
+  },
+  schemaPlaqueCuisson: {
+    small: "/Asset/images_page_circuitspecialise/plaque-cuisson/schema-plaque-cuisson-600px.png",
+    medium:
+      "/Asset/images_page_circuitspecialise/plaque-cuisson/schema-plaque-cuisson-1000px.png",
+    large: "/Asset/images_page_circuitspecialise/plaque-cuisson/schema-plaque-cuisson-1500px.png",
   },
 };
 

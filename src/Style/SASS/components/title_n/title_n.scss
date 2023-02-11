@@ -1,0 +1,27 @@
+//Feuille de style du composant titleN
+
+//Import des mixins qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.title-n{
+    width:100%;
+
+    .first-color{
+        color: map-get($colors-rule, first-color );
+    }
+    .second-color{
+        color: map-get($colors-rule, second-color );
+    }
+    .third-color{
+        color: map-get($colors-rule, third-color );
+    }
+    .fourth-color{
+        color: map-get($colors-rule, fourth-color );
+    }
+    .fifth-color{
+        color: map-get($colors-rule, fifth-color );
+    }
+}

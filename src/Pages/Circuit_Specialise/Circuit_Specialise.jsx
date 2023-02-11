@@ -1,4 +1,4 @@
-/*//Page "circuits spécialiés"
+//Page "circuits spécialiés"
 
 //Import des hooks
 import { useState, useEffect } from "react";
@@ -9,29 +9,30 @@ import { Link } from "react-router-dom";
 //Import du contenu de la page
 import {
   ContentTextPageCircuitSpecialise,
-  ContentImagePagePC16ACircuitSpecialise,
-} from "../../Data/ContentForPage/ContentPageCircuitSpecialise/ContentPageCircuitSpecialise.jsx";
+  ContentImagePageCircuitSpecialise,
+} from "../../Data/ContentForPage/PageCircuitSpecialise/ContentPageCircuitSpecialise.jsx";
 
 //Import des composants enfants
 import { Title } from "../../Components/Title/Title.jsx";
 import { Collapse } from "../../Components/Collapse/Collapse.jsx";
 import { ContainerImg } from "../../Components/Container_img/Container_img.jsx";
 import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
+import { TitleHN } from "../../Components/Title/TitleHN/TitleHN.jsx";
 
 //Import des feuilles de style
-import "../../Style/CSS/circuit-specialise.css";
+import "../../Style/CSS/circuit_specialise.css";
 
-//Fonction "PagePC16A"
+//Fonction "PageCircuitSpecialise"
 function PageCircuitSpecialise() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [imageSize, setImageSize] = useState("");
 
   //url image
 
-  let plaqueDeCuisson = ContentImagePageCircuitSpecialise.comptage_pc[imageSize];
-  let chauffage = ContentImagePageCircuitSpecialise.schema_pc[imageSize];
-  let cumulus = ContentImagePageCircuitSpecialise.pc_front_face[imageSize];
-  let  laveLinge /*= ContentImagePageCircuitSpecialise.pc_back_face[imageSize];
+  let plaqueDeCuisson = ContentImagePageCircuitSpecialise.plaqueCuisson[imageSize];
+  let chauffage = ContentImagePageCircuitSpecialise.chauffage[imageSize];
+  let cumulus = ContentImagePageCircuitSpecialise.cumulus[imageSize];
+  let  laveLinge = ContentImagePageCircuitSpecialise.laveLinge[imageSize];
 
   useEffect(() => {
     getImageSize();
@@ -56,24 +57,37 @@ function PageCircuitSpecialise() {
   }
 
   return (
-    <div className="prise-courant">
+      <div className="circuit-specialise">
+          
       <div className="container-title">
         <Title
           pagetype="page"
-          title="prise de courant 16A / 20A"
-          text={ContentTextPagePC16A.introductionTexte}
+          title="Circuits specialisés et/ou dédiés"
+          text={ContentTextPageCircuitSpecialise.introductionTexte}
         ></Title>
       </div>
 
-      <div className="container-image-pc">
+      <div className="container-image">
         <ContainerImg
           displaytype={"row"}
-          src1={pcFront}
-          alt1={"Prise de courant 16A face avant"}
-          figcap1={"Prise de courant 16A face avant"}
-          src2={pcBack}
-          alt2={"Prise de courant 16A face arrière"}
-          figcap2={"Prise de courant 16A face arrière"}
+          src1={plaqueDeCuisson}
+                  alt1={"Plaque de cuisson"}
+                  figcap1={"Plaque de cuisson"}
+          src2={chauffage}
+          alt2={"Chauffage electrique"}
+          figcap2={"Chauffage electrique"}
+        />
+          </div>
+          
+      <div className="container-image">
+        <ContainerImg
+          displaytype={"row"}
+          src1={cumulus}
+                  alt1={"Chauffe eau à accumulation"}
+          figcap1={"Chauffe eau à accumulation"}
+          src2={laveLinge}
+          alt2={"Lave linge"}
+          figcap2={"Lave linge"}
         />
       </div>
 
@@ -81,17 +95,19 @@ function PageCircuitSpecialise() {
         <Collapse
           idCollapse="description"
           title="description du matériel"
-          content={ContentTextPagePC16A.collapseDescription}
+          content={ContentTextPageCircuitSpecialise.collapseDescription}
           color="fourth"
         ></Collapse>
       </div>
 
-      <div className="container-image-schemapc">
+       
+          
+      <div className="container-image-schema">
         <ContainerImg
           displaytype={"row"}
-          src1={schemaPC}
-          alt1={"Schéma de câblage d' une prise de courant 16A "}
-          figcap1={"Schéma de câblage d' une prise de courant 16A "}
+          src1={plaqueDeCuisson}
+          alt1={"Schéma de câblage d'une plaque de cuisson "}
+          figcap1={"Schéma de câblage d'une plaque de cuisson "}
         />
       </div>
 
@@ -99,7 +115,7 @@ function PageCircuitSpecialise() {
         <Collapse
           idCollapse="principe"
           title="principe de fonctionnement"
-          content={ContentTextPagePC16A.collapsePrincipe}
+          content={ContentTextPageCircuitSpecialise.collapsePrincipe}
           color="first"
         ></Collapse>
       </div>
@@ -108,7 +124,7 @@ function PageCircuitSpecialise() {
         <Collapse
           idCollapse="precaution"
           title="precautions"
-          content={ContentTextPagePC16A.collapsePrecaution}
+          content={ContentTextPageCircuitSpecialise.collapsePrecaution}
           color="second"
         ></Collapse>
       </div>
@@ -117,15 +133,15 @@ function PageCircuitSpecialise() {
         <Collapse
           idCollapse="astuce"
           title="trucs & astuces"
-          content={ContentTextPagePC16A.collapseAstuce}
+          content={ContentTextPageCircuitSpecialise.collapseAstuce}
           color="third"
         ></Collapse>
       </div>
 
-      <div className="container-image-comptagepc">
+      <div className="container-image">
         <ContainerImg
           displaytype={"row"}
-          src1={comptagePrise}
+          src1={chauffage}
           alt1={"Equivalence et comptage du nombre de prise "}
           figcap1={"Equivalence et comptage du nombre de prise "}
         />
@@ -135,7 +151,7 @@ function PageCircuitSpecialise() {
         <Collapse
           idCollapse="savoir"
           title="En savoir plus..."
-          content={ContentTextPagePC16A.collapseSavoir}
+          content={ContentTextPageCircuitSpecialise.collapseSavoir}
           color="fourth"
         ></Collapse>
       </div>
@@ -155,4 +171,3 @@ function PageCircuitSpecialise() {
 }
 
 export { PageCircuitSpecialise };
-*/

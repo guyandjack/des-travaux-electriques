@@ -1,4 +1,4 @@
-.prise-courant {
+.circuit-specialise {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,66 +14,66 @@
           align-items: center;
   width: 100%;
 }
-.prise-courant .container-title {
+.circuit-specialise .container-title {
   width: 100%;
   margin: 1em 0em;
 }
 @media screen and (min-width: 576px) and (max-width: 768px) {
-  .prise-courant .container-title {
+  .circuit-specialise .container-title {
     width: 80%;
     margin: 2em 0em;
   }
 }
 @media screen and (min-width: 769px) and (max-width: 992px) {
-  .prise-courant .container-title {
+  .circuit-specialise .container-title {
     width: 70%;
     margin: 3em 0em;
   }
 }
 @media screen and (min-width: 993px) {
-  .prise-courant .container-title {
+  .circuit-specialise .container-title {
     width: 60%;
     margin: 10em 0em 5em 0em;
   }
 }
-.prise-courant .container-collapse {
+.circuit-specialise .container-collapse {
   margin: 2em 0em;
   width: 100%;
   max-width: 500px;
 }
 @media screen and (min-width: 769px) {
-  .prise-courant .container-collapse {
+  .circuit-specialise .container-collapse {
     width: 90%;
     max-width: 1000px;
   }
 }
-.prise-courant .container-image-header {
+.circuit-specialise .container-image-header {
   width: 80%;
   max-width: 250px;
 }
 @media screen and (min-width: 769px) {
-  .prise-courant .container-image-header {
+  .circuit-specialise .container-image-header {
     max-width: 800px;
   }
 }
-.prise-courant .container-image-schema {
+.circuit-specialise .container-image-schema {
   width: 100%;
   max-width: 500px;
 }
 @media screen and (min-width: 769px) {
-  .prise-courant .container-image-schema {
+  .circuit-specialise .container-image-schema {
     max-width: 900px;
   }
 }
-.prise-courant .container-image-main {
+.circuit-specialise .container-image-main {
   width: 100%;
   max-width: 500px;
 }
 @media screen and (min-width: 769px) {
-  .prise-courant .container-image-main {
+  .circuit-specialise .container-image-main {
     max-width: 900px;
   }
 }
-.prise-courant .text-quiz {
+.circuit-specialise .text-quiz {
   margin: 2em 0em;
 }

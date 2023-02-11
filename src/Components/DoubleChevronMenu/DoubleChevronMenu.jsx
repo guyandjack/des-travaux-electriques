@@ -9,33 +9,34 @@ import "../../Style/CSS/double_chevron_menu.css";
 function DoubleChevronMenu({ isClick, color }) {
 
     
-    let urlImg;
+    let colorChevron;
+    let chevronSize = " arrow-size"
     let addClassChevron = " rotate";
     let classContainerChevron = "container-chevron";
 
     switch (color) {
         case "first-color": {
-            urlImg = "/Asset/image_component_header/double-chevron-menu-first-color.png";
+            colorChevron = " first-color";
             break
        }
         case "second-color": {
-            urlImg = "/Asset/image_component_header/double-chevron-menu-second-color.png";
+            colorChevron = " second-color";
             break
        }
         case "third-color": {
-            urlImg = "/Asset/image_component_header/double-chevron-menu-third-color.png";
+            colorChevron = " third-color";
             break
        }
         case "fourth-color": {
-            urlImg = "/Asset/image_component_header/double-chevron-menu-fourth-color.png";
+            colorChevron = " fourth-color";
             break
        }
         case "fifth-color": {
-            urlImg = "/Asset/image_component_header/double-chevron-menu-fifth-color.png";
+            colorChevron = " fifth-color";
             break
         }
         default: {
-            urlImg = "/Asset/image_component_header/double-chevron-menu-first-color.png";
+            colorChevron = " first-color";
         }
    }
 
@@ -43,11 +44,11 @@ function DoubleChevronMenu({ isClick, color }) {
     <div
       className={
         isClick
-          ? classContainerChevron + addClassChevron
-          : classContainerChevron
+          ? classContainerChevron  + addClassChevron
+          : classContainerChevron 
       }
     >
-        <img className="img-size" src={urlImg} alt="fleche du menu déroulant"></img>
+        <span className={chevronSize + colorChevron} > ▼ </span>
       
     </div>
     )

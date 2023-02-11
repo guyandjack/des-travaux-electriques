@@ -69,13 +69,13 @@ function PagePC16A() {
         <div className="container-title">
           <Title
             pagetype="page"
-            title="prise de courant 16A / 20A"
+            title="prise de courant 16A"
             text={ContentTextPagePC16A.introductionTexte}>
             
             </Title>
         </div>
         
-        <div className="container-image-pc">
+        <div className="container-image-header">
           <ContainerImg
             displaytype={"row"}
             src1={pcFront}
@@ -96,7 +96,7 @@ function PagePC16A() {
           ></Collapse>
         </div>
 
-        <div className="container-image-schemapc">
+        <div className="container-image-schema">
         <ContainerImg
           displaytype={"row"}
           src1={schemaPC}
@@ -132,7 +132,7 @@ function PagePC16A() {
           ></Collapse>
         </div>
 
-        <div className="container-image-comptagepc">
+        <div className="container-image-main">
         <ContainerImg
           displaytype={"row"}
           src1={comptagePrise}

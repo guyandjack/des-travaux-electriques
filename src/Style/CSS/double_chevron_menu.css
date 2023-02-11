@@ -26,13 +26,31 @@
           transform: rotateZ(180deg);
 }
 
-.img-size {
-  width: 1.2em;
-  height: 1.2em;
+.arrow-size {
+  font-size: 1em;
 }
 @media screen and (max-width: 992px) {
-  .img-size {
-    width: 1em;
-    height: 1em;
+  .arrow-size {
+    font-size: 1.2em;
   }
+}
+
+.first-color {
+  color: #0267C1;
+}
+
+.second-color {
+  color: #EFA00B;
+}
+
+.third-color {
+  color: #3A7D44;
+}
+
+.fourth-color {
+  color: #272727;
+}
+
+.fifth-color {
+  color: #FBFFFE;
 }

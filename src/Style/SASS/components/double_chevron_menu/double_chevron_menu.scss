@@ -24,13 +24,27 @@
     transform: rotateZ(180deg);
 }
 
-.img-size{
-    width: 1.2em;
-    height: 1.2em;
+.arrow-size{
+    font-size: 1em;
 
-    //responsive pour ecran inderieur à "large"
+    //responsive pour ecran superieur à "medium"
     @include under-large-screen{
-        width: 1em;
-        height: 1em;
+        font-size: 1.2em;
     }
+}
+
+.first-color{
+    color: map-get($colors-rule, first-color );
+}
+.second-color{
+    color: map-get($colors-rule, second-color );
+}
+.third-color{
+    color: map-get($colors-rule, third-color );
+}
+.fourth-color{
+    color: map-get($colors-rule, fourth-color );
+}
+.fifth-color{
+    color: map-get($colors-rule, fifth-color );
 }

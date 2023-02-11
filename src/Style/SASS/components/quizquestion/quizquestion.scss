@@ -21,7 +21,7 @@
         justify-content: flex-start;
         align-items: flex-start;
         width: 100%;
-        margin-bottom: 2em;
+        margin-bottom: 4em;
 
         &__title{
             font-size: 1.5em;
@@ -31,7 +31,7 @@
 
         &__split{
             margin: 1em 0em 2em 0em;
-            border-bottom: 2px solid lighten(map-get($colors-rule, fourth-color ),10%);
+            border-bottom: 2px solid lighten(map-get($colors-rule, fourth-color ),20%);
             width: 100%;
         }
 
@@ -41,6 +41,8 @@
             font-size: 1.2em;
             align-self: left;
             font-weight: 400;
+            padding: 0.5em;
+            background-color: lighten(map-get($colors-rule, fourth-color ),80%);
             
         }
     }

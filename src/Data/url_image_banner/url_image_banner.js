@@ -4,7 +4,7 @@
 
 const urlImgBanner = {
   home: {
-    medium: "/Asset/images_page_home/ampoule-grise.jpg",
+    medium: "/Asset/images_page_home/grande-ampoule.jpg",
     large: "",
     xlarge: "",
     xxlarge: "",

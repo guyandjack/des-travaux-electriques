@@ -38,8 +38,8 @@
   width: fit-content;
   margin-right: 5em;
   height: 100%;
-  border-top: 6px solid #414141;
-  border-bottom: 6px solid #414141;
+  border-top: 6px solid #272727;
+  border-bottom: 6px solid #272727;
   -webkit-transition: border-top 250ms linear, border-bottom 250ms linear;
   -o-transition: border-top 250ms linear, border-bottom 250ms linear;
   transition: border-top 250ms linear, border-bottom 250ms linear;

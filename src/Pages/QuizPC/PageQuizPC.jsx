@@ -67,6 +67,17 @@ function PageQuizPC() {
     );
   }
 
+  //Efface un element du local storage
+  function deleteElementInLocalStorage(key) {
+    
+    if (!localStorage.getItem(key)) {
+      return false
+    }
+
+    localStorage.removeItem(key);
+    return true
+  }
+
   //Recupère un élément du localStorage : (retourne un tableau ou -1)
   function getFromLocalStorge(key) {
     if (!localStorage.getItem(key)) {
@@ -264,25 +275,23 @@ function PageQuizPC() {
   //permet le controle et l' afffichage du score final apres validation des reponses
   function valideResponse() {
     let flag = checkIfInputChecked();
-    console.log(flag)
+   
     if (!flag) {
       setMessageError(true)
       return
     }
     let finalScore = calulateFinalScore("userResponsesQuizPC");
-    console.log(typeof finalScore);
+    
     disabledAllInputs();
     displayScore(finalScore);
-    console.log(userFinalResult);
-    console.log(typeof userFinalResult.finalResult);
     setMessageError(false);
+    deleteElementInLocalStorage("userResponsesQuizPC");
     setisvalid(true);
   }
 
   //Permet de relancer le quiz à zero.
   function resetQuiz(e) {
     e.preventDefault();
-
     localStorage.removeItem("userResponsesQuizPC");
     window.location.reload();
   }
@@ -292,13 +301,13 @@ function PageQuizPC() {
     //Initialisation du quiz
     InitQuiz();
 
-    //Creer un écouteur d' évenement sur le bouton valider reponse
+    //Créer un écouteur d' évenement sur le bouton valider reponse
     let btnValid = document.querySelector("button[type='button']");
     btnValid.addEventListener("click", (evt) => {
       valideResponse();
     });
 
-    //determine la valeur de la reponse du user
+    //determine la valeur de la réponse du user
     responseValue();
   }, [userResponse]);
 
@@ -308,7 +317,8 @@ function PageQuizPC() {
         <Title
           pagetype="page"
           title="quiz"
-          text="Petit test de connaissance sur les prises électriques"
+          text="« Petit test de connaissance sur les prises électriques »"
+          urlimg="/Asset/images_page_pc_16A/img-title-pc-250px.png"
         ></Title>
       </div>
 

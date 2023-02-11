@@ -30,7 +30,7 @@
       -ms-flex-align: start;
           align-items: flex-start;
   width: 100%;
-  margin-bottom: 2em;
+  margin-bottom: 4em;
 }
 .container-question .question-header__title {
   font-size: 1.5em;
@@ -38,7 +38,7 @@
 }
 .container-question .question-header__split {
   margin: 1em 0em 2em 0em;
-  border-bottom: 2px solid #414141;
+  border-bottom: 2px solid #5a5a5a;
   width: 100%;
 }
 .container-question .question-header__text {
@@ -47,6 +47,8 @@
   -ms-flex-item-align: left;
       align-self: left;
   font-weight: 400;
+  padding: 0.5em;
+  background-color: #f3f3f3;
 }
 .container-question .proposition {
   display: -webkit-box;

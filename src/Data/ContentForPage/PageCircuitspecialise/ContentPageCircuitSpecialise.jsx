@@ -16,83 +16,61 @@ let ContentTextPageCircuitSpecialise = {
         et de vérifier ensuite l' absence de tension avec un VAT (vérificateur
         d'absence de tension) au point d' intervention.
       </p>
-      <div>
-        <p>Pour respecter les règles de sécurité électrique du logement,
-        l’installation doit comporter plusieurs circuits spécialisés afin
-        d’alimenter certains équipements et plus particulièrement les appareils
-                    électroménagers de forte puissance.</p>
-                <p>Un circuit électrique spécialisé est
-        un circuit qui fournit une alimentation spécifique à un seul équipement.</p>
-        <p>Il comporte une protection, une boîte de connexion avec sortie de câble
-        32A pour la table cuisson et une prise de courant pour les autres
-                    appareils.</p>
-                Dans un logement, la norme électrique impose l’installation
-        d’au moins quatre circuits spécialisés : un circuit dans la cuisine pour
-        la plaque de cuisson ou la cuisinière, avec une boîte de 32 A avec
-        sortie de câble adaptée en monophasé ou 20 A en triphasé ; trois
-        circuits spécialisés avec des prises de 16 A pour alimenter des
-        équipements comme le lave-vaisselle, le lave-linge, le sèche linge ou
-        encore le four. La norme recommande de prévoir une prise spécialisée à
-        proximité des arrivées et évacuations d’eau pour le lave-vaisselle et
-        machine à laver. Les autres circuits spécialisés seront installés en
-        fonction des besoins de l’occupant et de la configuration du logement.
-        Liste non hexaustive des circuits spécialisés.
-        <ul>
-          <li>plaque de cuisson</li>
-          <li>four</li>
-          <li>cuisinière</li>
-          <li>lave-vaisselle</li>
-          <li>lave-linge / sèche-linge</li>
-          <li>congélateur</li>
-          <li> hotte</li>
-          <li>chauffe-eau</li>
-          <li>pompe à chaleur</li>
-          <li>ventilation</li>
-          <li>spa / sauna / piscine</li>
-          <li>IRVE</li>
-          <li>cave à vins</li>
-          <li>portail / porte de garage</li>
-          <li>interphone</li>
-          <li>volets roulants/stores</li>
-          <li>tableaux divisionnaires</li>
-          <li>
-            circuits extérieurs (éclairage, prises de courant non attenantes au
-            logement).
-          </li>
-        </ul>
-      </div>
     </div>
   ),
 
   collapseDescription: (
-    <ol className="description">
-      <li className="description__li">Fiche de connexion à la terre</li>
-      <li className="description__li">
-        Obturateur de securite, pour éviter les contacts direct avec les fiches
-      </li>
-      <li className="description__li">
-        Puit de securite, pour éviter les contacts direct avec les fiches males
-        lors de la connexion.
-      </li>
-      <li className="description__li">
-        La lettre " T " et ou le pictogramme indique la connexion avec la terre.
-      </li>
-      <li className="description__li">
-        La lettre " L " indique la connexion avec la phase.
-      </li>
-      <li className="description__li">Levier de deconnexion.</li>
-      <li className="description__li">
-        Connecteur rapide, pas besoins d' outils pour connecter ou déconnecter
-        le cable électrique
-      </li>
-      <li className="description__li">
-        La lettre " N " indique la connexion avec le neutre.
-      </li>
-      <li className="description__li">Materiel certifié Norme Francaise</li>
-      <li className="description__li">
-        Tension et courant maximal d' utilisation
-      </li>
-    </ol>
+    <div>
+      <p>
+        Pour respecter les règles de sécurité électrique du logement,
+        l’installation doit comporter plusieurs circuits spécialisés afin
+        d’alimenter certains équipements et plus particulièrement les appareils
+        électroménagers de forte puissance.
+      </p>
+      <p>
+        Un circuit électrique spécialisé est un circuit qui fournit une
+        alimentation spécifique à un seul équipement.
+      </p>
+      <p>
+        Il comporte une protection, une boîte de connexion avec sortie de câble
+        32A pour la table cuisson et une prise de courant pour les autres
+        appareils.
+      </p>
+      Dans un logement, la norme électrique impose l’installation d’au moins
+      quatre circuits spécialisés : un circuit dans la cuisine pour la plaque de
+      cuisson ou la cuisinière, avec une boîte de 32 A avec sortie de câble
+      adaptée en monophasé ou 20 A en triphasé ; trois circuits spécialisés avec
+      des prises de 16 A pour alimenter des équipements comme le lave-vaisselle,
+      le lave-linge, le sèche linge ou encore le four. La norme recommande de
+      prévoir une prise spécialisée à proximité des arrivées et évacuations
+      d’eau pour le lave-vaisselle et machine à laver. Les autres circuits
+      spécialisés seront installés en fonction des besoins de l’occupant et de
+      la configuration du logement. Liste non hexaustive des circuits
+      spécialisés.
+      <ul>
+        <li>plaque de cuisson</li>
+        <li>four</li>
+        <li>cuisinière</li>
+        <li>lave-vaisselle</li>
+        <li>lave-linge / sèche-linge</li>
+        <li>congélateur</li>
+        <li> hotte</li>
+        <li>chauffe-eau</li>
+        <li>pompe à chaleur</li>
+        <li>ventilation</li>
+        <li>spa / sauna / piscine</li>
+        <li>IRVE</li>
+        <li>cave à vins</li>
+        <li>portail / porte de garage</li>
+        <li>interphone</li>
+        <li>volets roulants/stores</li>
+        <li>tableaux divisionnaires</li>
+        <li>
+          circuits extérieurs (éclairage, prises de courant non attenantes au
+          logement).
+        </li>
+      </ul>
+    </div>
   ),
 
   collapsePrincipe: (
@@ -211,60 +189,69 @@ let ContentTextPageCircuitSpecialise = {
 /**** url des contenus media de la page ***** */
 
 let ContentImagePageCircuitSpecialise = {
-
-    //Vignette
+  //Vignette
   plaqueCuisson: {
     small:
-      "/Asset/images_page_circuitspecialise/plaque-cuisson/img-plaque-cuisson.png",
+      "/Asset/images_page_circuit_specialise/plaque-cuisson/img-plaque-cuisson.png",
     medium:
-      "/Asset/images_page_circuitspecialise/plaque-cuisson/img-plaque-cuisson.png",
+      "/Asset/images_page_circuit_specialise/plaque-cuisson/img-plaque-cuisson.png",
     large:
-      "/Asset/images_page_circuitspecialise/plaque-cuisson/img-plaque-cuisson.png",
+      "/Asset/images_page_circuit_specialise/plaque-cuisson/img-plaque-cuisson.png",
   },
   cumulus: {
-    small: "/Asset/images_page_circuitspecialise/cumulus/img-cumulus.png",
-    medium: "/Asset/images_page_circuitspecialise/cumulus/img-cumulus.png",
-    large: "/Asset/images_page_circuitspecialise/cumulus/img-cumulus.png",
+    small: "/Asset/images_page_circuit_specialise/cumulus/img-cumulus.png",
+    medium: "/Asset/images_page_circuit_specialise/cumulus/img-cumulus.png",
+    large: "/Asset/images_page_circuit_specialise/cumulus/img-cumulus.png",
   },
   chauffage: {
     small:
-      "/Asset/images_page_circuitspecialise/chauffage/img-radiateur-electrique.png",
+      "/Asset/images_page_circuit_specialise/chauffage/img-radiateur-electrique.png",
     medium:
-      "/Asset/images_page_circuitspecialise/chauffage/img-radiateur-electrique.png",
+      "/Asset/images_page_circuit_specialise/chauffage/img-radiateur-electrique.png",
     large:
-      "/Asset/images_page_circuitspecialise/chauffage/img-radiateur-electrique.png",
+      "/Asset/images_page_circuit_specialise/chauffage/img-radiateur-electrique.png",
   },
   laveLinge: {
-    small: "/Asset/images_page_circuitspecialise/lave-linge/img-lave-linge.png",
+    small:
+      "/Asset/images_page_circuit_specialise/lave-linge/img-lave-linge.png",
     medium:
-      "/Asset/images_page_circuitspecialise/lave-linge/img-lave-linge.png",
-    large: "/Asset/images_page_circuitspecialise/lave-linge/img-lave-linge.png",
-    },
-  
+      "/Asset/images_page_circuit_specialise/lave-linge/img-lave-linge.png",
+    large:
+      "/Asset/images_page_circuit_specialise/lave-linge/img-lave-linge.png",
+  },
+
   //Schema
   schemalaveLinge: {
-    small: "/Asset/images_page_circuitspecialise/lave-linge/schema-lave-linge-600px.png",
+    small:
+      "/Asset/images_page_circuit_specialise/lave-linge/schema-lave-linge-600px.png",
     medium:
-      "/Asset/images_page_circuitspecialise/lave-linge/schema-lave-linge-1000px.png",
-    large: "/Asset/images_page_circuitspecialise/lave-linge/schema-lave-linge-1500px.png",
+      "/Asset/images_page_circuit_specialise/lave-linge/schema-lave-linge-1000px.png",
+    large:
+      "/Asset/images_page_circuit_specialise/lave-linge/schema-lave-linge-1500px.png",
   },
   schemaCumulus: {
-    small: "/Asset/images_page_circuitspecialise/lave-linge/schema-cumulus-600px.png",
+    small:
+      "/Asset/images_page_circuit_specialise/lave-linge/schema-cumulus-600px.png",
     medium:
-      "/Asset/images_page_circuitspecialise/lave-linge/schema-cumulus-1000px.png",
-    large: "/Asset/images_page_circuitspecialise/lave-linge/schema-cumulus-1500px.png",
+      "/Asset/images_page_circuit_specialise/lave-linge/schema-cumulus-1000px.png",
+    large:
+      "/Asset/images_page_circuit_specialise/lave-linge/schema-cumulus-1500px.png",
   },
   schemaChauffage: {
-    small: "/Asset/images_page_circuitspecialise/chauffage/schema-chauffage-600px.png",
+    small:
+      "/Asset/images_page_circuit_specialise/chauffage/schema-chauffage-600px.png",
     medium:
-      "/Asset/images_page_circuitspecialise/chauffage/schema-chauffage-1000px.png",
-    large: "/Asset/images_page_circuitspecialise/chauffage/schema-chauffage-1500px.png",
+      "/Asset/images_page_circuit_specialise/chauffage/schema-chauffage-1000px.png",
+    large:
+      "/Asset/images_page_circuit_specialise/chauffage/schema-chauffage-1500px.png",
   },
   schemaPlaqueCuisson: {
-    small: "/Asset/images_page_circuitspecialise/plaque-cuisson/schema-plaque-cuisson-600px.png",
+    small:
+      "/Asset/images_page_circuit_specialise/plaque-cuisson/schema-plaque-cuisson-600px.png",
     medium:
-      "/Asset/images_page_circuitspecialise/plaque-cuisson/schema-plaque-cuisson-1000px.png",
-    large: "/Asset/images_page_circuitspecialise/plaque-cuisson/schema-plaque-cuisson-1500px.png",
+      "/Asset/images_page_circuit_specialise/plaque-cuisson/schema-plaque-cuisson-1000px.png",
+    large:
+      "/Asset/images_page_circuit_specialise/plaque-cuisson/schema-plaque-cuisson-1500px.png",
   },
 };
 

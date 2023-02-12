@@ -50,11 +50,8 @@
 .circuit-specialise .container-image-header {
   width: 80%;
   max-width: 250px;
-}
-@media screen and (min-width: 769px) {
-  .circuit-specialise .container-image-header {
-    max-width: 800px;
-  }
+  max-height: 250px;
+  border: 2px solid red;
 }
 .circuit-specialise .container-image-schema {
   width: 100%;

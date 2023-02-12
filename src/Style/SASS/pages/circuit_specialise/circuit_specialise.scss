@@ -53,12 +53,11 @@
     .container-image-header{
         width:80%;
         max-width: 250px;
+        max-height: 250px;
+        border: 2px solid red;
         
 
-        @include upper-medium-screen{
-        max-width: 800px;
-       
-        }
+        
 
         
     }

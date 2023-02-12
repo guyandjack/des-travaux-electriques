@@ -3,6 +3,9 @@
 //Import des "hooks"
 import { useState, useEffect } from "react";
 
+//Import des composants enfants
+import { DoubleChevronMenu } from "../DoubleChevronMenu/DoubleChevronMenu";
+
 
 //Import des feuilles de style
 import "../../Style/CSS/collapse.css";
@@ -56,15 +59,15 @@ function Collapse({ idCollapse, title, content, color }) {
     }
 
     return (
-        <div className="collapse">
-            
-            <div id={idCollapse} className={defaultClassTitle + colorClassTitle}>
-                {title}
-                <img className="chevron" src="" alt=""></img>
-            </div>
-            <div className={defaultClassContent + addClass + colorClassContent}>{content}</div>
-
+      <div className="collapse">
+        <div id={idCollapse} className={defaultClassTitle + colorClassTitle}>
+          {title}
+          <DoubleChevronMenu isClick={isCliked} color={colorClassTitle} />
         </div>
+        <div className={defaultClassContent + addClass + colorClassContent}>
+          {content}
+        </div>
+      </div>
     );
 }
 

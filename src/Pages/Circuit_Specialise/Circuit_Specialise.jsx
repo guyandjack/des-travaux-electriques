@@ -33,6 +33,8 @@ function PageCircuitSpecialise() {
   let chauffage = ContentImagePageCircuitSpecialise.chauffage[imageSize];
   let cumulus = ContentImagePageCircuitSpecialise.cumulus[imageSize];
   let  laveLinge = ContentImagePageCircuitSpecialise.laveLinge[imageSize];
+  
+  let schemaPlaqueDeCuisson = ContentImagePageCircuitSpecialise.schemaPlaqueCuisson[imageSize];
 
   useEffect(() => {
     getImageSize();
@@ -57,8 +59,7 @@ function PageCircuitSpecialise() {
   }
 
   return (
-      <div className="circuit-specialise">
-          
+    <div className="circuit-specialise">
       <div className="container-title">
         <Title
           pagetype="page"
@@ -67,45 +68,23 @@ function PageCircuitSpecialise() {
         ></Title>
       </div>
 
-      <div className="container-image">
-        <ContainerImg
-          displaytype={"row"}
-          src1={plaqueDeCuisson}
-                  alt1={"Plaque de cuisson"}
-                  figcap1={"Plaque de cuisson"}
-          src2={chauffage}
-          alt2={"Chauffage electrique"}
-          figcap2={"Chauffage electrique"}
-        />
-          </div>
-          
-      <div className="container-image">
-        <ContainerImg
-          displaytype={"row"}
-          src1={cumulus}
-                  alt1={"Chauffe eau à accumulation"}
-          figcap1={"Chauffe eau à accumulation"}
-          src2={laveLinge}
-          alt2={"Lave linge"}
-          figcap2={"Lave linge"}
-        />
-      </div>
+
+
+      
 
       <div className="container-collapse">
         <Collapse
           idCollapse="description"
-          title="description du matériel"
+          title="Circuit dedié ou circuit spécialisé ?"
           content={ContentTextPageCircuitSpecialise.collapseDescription}
           color="fourth"
         ></Collapse>
       </div>
 
-       
-          
       <div className="container-image-schema">
         <ContainerImg
           displaytype={"row"}
-          src1={plaqueDeCuisson}
+          src1={schemaPlaqueDeCuisson}
           alt1={"Schéma de câblage d'une plaque de cuisson "}
           figcap1={"Schéma de câblage d'une plaque de cuisson "}
         />
@@ -138,12 +117,12 @@ function PageCircuitSpecialise() {
         ></Collapse>
       </div>
 
-      <div className="container-image">
+      <div className="container-image-header">
         <ContainerImg
           displaytype={"row"}
-          src1={chauffage}
-          alt1={"Equivalence et comptage du nombre de prise "}
-          figcap1={"Equivalence et comptage du nombre de prise "}
+          src1={cumulus}
+          alt1={"Chauffe eau à accumulation"}
+          figcap1={"Chauffe eau à accumulation"}
         />
       </div>
 

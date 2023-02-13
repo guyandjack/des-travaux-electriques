@@ -125,4 +125,20 @@
         border: 2px solid map-get($colors-rule, fourth-color);
 
     }
+
+    .first{
+        color:map-get($colors-rule, first-color);
+    }
+    .second{
+        color:map-get($colors-rule, second-color);
+    }
+    .third{
+        color:map-get($colors-rule, third-color);
+    }
+    .fourth{
+        color:map-get($colors-rule, fourth-color);
+    }
+    .fifth{
+        color:map-get($colors-rule, fifth-color);
+    }
 }

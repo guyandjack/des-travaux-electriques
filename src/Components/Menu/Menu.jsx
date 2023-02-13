@@ -13,7 +13,7 @@ import { listLinksMenu } from "../../Data/List_links_menu/List_links_menu.jsx";
 import "../../Utils/break_point/break_point.js";
 
 //Import des composants enfants
-import { DoubleChevronMenu } from "../DoubleChevronMenu/DoubleChevronMenu.jsx";
+import { ChevronMenu } from "../ChevronMenu/ChevronMenu.jsx";
 import { ButtonLink } from "../Button_Link/Button_Link.jsx";
 import { SousMenu } from "../Sous_menu/Sous_menu.jsx";
 
@@ -60,7 +60,7 @@ function Menu() {
             >
             <ButtonLink classLink={classLien} text={element.text} />
             </div>
-            <DoubleChevronMenu isClick={isClicked} color="second-color" />
+            <ChevronMenu isClick={isClicked} color="second" />
             <SousMenu click={isClicked} />
           </li>
         );

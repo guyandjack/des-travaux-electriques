@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 
 //Import des composants enfants
-import { DoubleChevronMenu } from "../DoubleChevronMenu/DoubleChevronMenu";
+import { ChevronMenu } from "../ChevronMenu/ChevronMenu";
 
 
 //Import des feuilles de style
@@ -13,7 +13,7 @@ import "../../Style/CSS/collapse.css";
 
 //Function "Collapse"
 
-function Collapse({ idCollapse, title, content, color }) {
+function Collapse({ idCollapse, title, content, color, colorText }) {
 
     const [isCliked, setIsCliked] = useState(false);
     
@@ -28,6 +28,7 @@ function Collapse({ idCollapse, title, content, color }) {
     let addClass;
     let colorClassTitle;
     let colorClassContent;
+    let colorClassText =  colorText;
 
     //url des images
 
@@ -44,25 +45,31 @@ function Collapse({ idCollapse, title, content, color }) {
     if (color === "first") {
         colorClassTitle = " first-color-title";
         colorClassContent = " first-color-content";
-    }
+           }
     if (color === "second") {
         colorClassTitle = " second-color-title";
         colorClassContent = " second-color-content";
-    }
+            }
     if (color === "third") {
         colorClassTitle = " third-color-title";
         colorClassContent = " third-color-content";
-    }
+           }
     if (color === "fourth") {
         colorClassTitle = " fourth-color-title";
         colorClassContent = " fourth-color-content";
+        
     }
+
+    if (color === "fifth") {
+        colorClassTitle = " fifth-color-title";
+        colorClassContent = " fifth-color-content";
+            }
 
     return (
       <div className="collapse">
         <div id={idCollapse} className={defaultClassTitle + colorClassTitle}>
           {title}
-          <DoubleChevronMenu isClick={isCliked} color={colorClassTitle} />
+          <ChevronMenu isClick={isCliked} color={colorClassText} />
         </div>
         <div className={defaultClassContent + addClass + colorClassContent}>
           {content}

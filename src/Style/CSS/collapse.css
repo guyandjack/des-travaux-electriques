@@ -114,3 +114,18 @@
 .collapse .fourth-color-content {
   border: 2px solid #272727;
 }
+.collapse .first {
+  color: #0267C1;
+}
+.collapse .second {
+  color: #EFA00B;
+}
+.collapse .third {
+  color: #3A7D44;
+}
+.collapse .fourth {
+  color: #272727;
+}
+.collapse .fifth {
+  color: #FBFFFE;
+}

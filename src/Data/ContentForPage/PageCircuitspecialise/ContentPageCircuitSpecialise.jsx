@@ -4,186 +4,338 @@
 import { Link } from "react-router-dom";
 
 //Import des feuilles de style
-import "../../../Style/CSS/content_page_pc.css";
+import "../../../Style/CSS/content_page_circuit_specialise.css";
 
 /*** contenu textuel de la page ******* */
 let ContentTextPageCircuitSpecialise = {
-  introductionTexte: (
-    <div>
-      <p>
-        Avant toute intervention, veillez mettre hors tension le circuit
-        concerné au niveau du <Link to="/tgbt"> tableau de répartition </Link>
-        et de vérifier ensuite l' absence de tension avec un VAT (vérificateur
-        d'absence de tension) au point d' intervention.
-      </p>
-    </div>
-  ),
-
-  collapseDescription: (
-    <div>
-      <p>
-        Pour respecter les règles de sécurité électrique du logement,
-        l’installation doit comporter plusieurs circuits spécialisés afin
-        d’alimenter certains équipements et plus particulièrement les appareils
-        électroménagers de forte puissance.
-      </p>
-      <p>
-        Un circuit électrique spécialisé est un circuit qui fournit une
-        alimentation spécifique à un seul équipement.
-      </p>
-      <p>
-        Il comporte une protection, une boîte de connexion avec sortie de câble
-        32A pour la table cuisson et une prise de courant pour les autres
-        appareils.
-      </p>
-      Dans un logement, la norme électrique impose l’installation d’au moins
-      quatre circuits spécialisés : un circuit dans la cuisine pour la plaque de
-      cuisson ou la cuisinière, avec une boîte de 32 A avec sortie de câble
-      adaptée en monophasé ou 20 A en triphasé ; trois circuits spécialisés avec
-      des prises de 16 A pour alimenter des équipements comme le lave-vaisselle,
-      le lave-linge, le sèche linge ou encore le four. La norme recommande de
-      prévoir une prise spécialisée à proximité des arrivées et évacuations
-      d’eau pour le lave-vaisselle et machine à laver. Les autres circuits
-      spécialisés seront installés en fonction des besoins de l’occupant et de
-      la configuration du logement. Liste non hexaustive des circuits
-      spécialisés.
-      <ul>
-        <li>plaque de cuisson</li>
-        <li>four</li>
-        <li>cuisinière</li>
-        <li>lave-vaisselle</li>
-        <li>lave-linge / sèche-linge</li>
-        <li>congélateur</li>
-        <li> hotte</li>
-        <li>chauffe-eau</li>
-        <li>pompe à chaleur</li>
-        <li>ventilation</li>
-        <li>spa / sauna / piscine</li>
-        <li>IRVE</li>
-        <li>cave à vins</li>
-        <li>portail / porte de garage</li>
-        <li>interphone</li>
-        <li>volets roulants/stores</li>
-        <li>tableaux divisionnaires</li>
-        <li>
-          circuits extérieurs (éclairage, prises de courant non attenantes au
-          logement).
-        </li>
-      </ul>
-    </div>
-  ),
-
-  collapsePrincipe: (
-    <div className="principe">
-      <p className="principe__text">
-        <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
-        assure la protection des personnes contre les contacts directs et
-        indirects avec un conducteur actif.
-      </p>
-      <p className="principe__text">
-        Dans notre exemple c' est un interrupteur différentiel haute sensibilité
-        63A 30mA.Ce dernier est placé en amont de circuit 1 et circuit 2.
-      </p>
-      <p className="principe__text">
-        <Link to="/disjoncteur">Les disjoncteurs magnéto-thermique </Link>
-        protègent notre installation contre les courts-circuits et surcharges.
-      </p>
-      <p className="principe__text">
-        Le principe de câblage est simple, on doit respecter les couleurs. Dans
-        la boite de dérivation on connecte les conducteurs de même type entre
-        eux.Phase avec phase, neutre avec neutre, terre avec terre.
-      </p>
-    </div>
-  ),
-
-  collapsePrecaution: (
-    <div>
-      <ul className="precaution">
-        <p className="precaution__text">
-          Obligation de respecter les points suivants:
+  plaqueDeCuisson: {
+    introductionTexte: (
+      <div>
+        <p>
+          Avant toute intervention, veillez mettre hors tension le circuit
+          concerné au niveau du <Link to="/tgbt"> tableau de répartition </Link>
+          et de vérifier ensuite l' absence de tension avec un VAT (vérificateur
+          d'absence de tension) au point d' intervention.
         </p>
-        <li key="1" className="precaution__li">
-          Si utilisation d' une section de
-          <span className="important"> 1.5mm² </span>, on peut placer un
-          <span className="important"> disjoncteur de 16A max.</span>
-        </li>
-        <li key="2" className="precaution__li">
-          Si utilisation d' une section de
-          <span className="important"> 2.5mm² </span> , on peut placer un{" "}
-          <span className="important"> disjoncteur de 20A max </span>.
-        </li>
-        <li key="3" className="precaution__li">
-          Avec un disjoncteur 16A et une section 1.5mm² on peut placer 8 prises
-          max.
-        </li>
-        <li key="4" className="precaution__li">
-          Avec disjoncteur 20A et section 2.5mm² on peut placer 12 prises max.
-        </li>
-        <li key="5" className="precaution__li">
-          Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
-          jaune, bicolor vert/jaune
-        </li>
-        <li key="6" className="precaution__li">
-          Neutre c'est bleu obligatoirement
-        </li>
-        <li key="7" className="precaution__li">
-          Terre c'est bicolor vert/jaune obligatoirement
-        </li>
-      </ul>
-    </div>
-  ),
-  collapseAstuce: (
-    <div className="astuce">
-      <p className="astuce__text">
-        Dans la pratique on utilise uniquement des conducteurs de 2.5mm² pour un
-        circuit PC(même si la norme autorise du 1.5mm²)
-      </p>
+      </div>
+    ),
 
-      <p className="astuce__text">
-        Le comptage des prises se fait socle par socle, même pour des boitiers
-        munis de plusieurs prises(voir schéma equivalence PC)
-      </p>
+    collapseDescription: (
+      <div className="description">
+        <p className="description__text">
+          Pour respecter les règles de sécurité électrique du logement,
+          l’installation doit comporter plusieurs circuits spécialisés afin
+          d’alimenter certains équipements et plus particulièrement les
+          appareils électroménagers de forte puissance.
+        </p>
+        <p className="description__text">
+          Un circuit électrique spécialisé est un circuit qui fournit une
+          alimentation spécifique à un seul équipement.
+        </p>
+        <p className="description__text">
+          Il comporte une protection, une boîte de connexion avec sortie de
+          câble 32A pour la table cuisson et une prise de courant pour les
+          autres appareils.
+        </p>
+        <p className="description__text">
+          Dans un logement, la norme électrique impose l’installation d’au moins
+          quatre circuits spécialisés : un circuit dans la cuisine pour la
+          plaque de cuisson ou la cuisinière, avec une boîte de 32 A avec sortie
+          de câble adaptée en monophasé ou 20 A en triphasé ; trois circuits
+          spécialisés avec des prises de 16 A pour alimenter des équipements
+          comme le lave-vaisselle, le lave-linge, le sèche linge ou encore le
+          four. La norme recommande de prévoir une prise spécialisée à proximité
+          des arrivées et évacuations d’eau pour le lave-vaisselle et machine à
+          laver. Les autres circuits spécialisés seront installés en fonction
+          des besoins de l’occupant et de la configuration du logement. Liste
+          non hexaustive des circuits spécialisés.
+        </p>
+        <ul className="description-list">
+          <li className="description-list__li">plaque de cuisson</li>
+          <li className="description-list__li">four</li>
+          <li className="description-list__li">cuisinière</li>
+          <li className="description-list__li">lave-vaisselle</li>
+          <li className="description-list__li">lave-linge / sèche-linge</li>
+          <li className="description-list__li">congélateur</li>
+          <li className="description-list__li"> hotte</li>
+          <li className="description-list__li">chauffe-eau</li>
+          <li className="description-list__li">pompe à chaleur</li>
+          <li className="description-list__li">ventilation</li>
+          <li className="description-list__li">spa / sauna / piscine</li>
+          <li className="description-list__li">IRVE</li>
+          <li className="description-list__li">cave à vins</li>
+          <li className="description-list__li">portail / porte de garage</li>
+          <li className="description-list__li">interphone</li>
+          <li className="description-list__li">volets roulants/stores</li>
+          <li className="description-list__li">tableaux divisionnaires</li>
+          <li className="description-list__li">
+            circuits extérieurs (éclairage, prises de courant non attenantes au
+            logement).
+          </li>
+        </ul>
+      </div>
+    ),
 
-      <p className="astuce__text">
-        Pour les locaux humide et à l' extérieur utilisez des prises étanches
-        avec un<Link to="/ip"> indice de protection </Link> IPX4, voir IPX5 si
-        l' emplacement est susceptible d' être arrosé au jet d'eau.
-      </p>
+    collapsePrincipe: (
+      <div className="principe">
+        <p className="principe__text">
+          <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
+          assure la protection des personnes contre les contacts directs et
+          indirects avec un conducteur actif.
+        </p>
+        <p className="principe__text">
+          Dans notre exemple c' est un interrupteur différentiel « dédié » à
+          haute sensibilité 32A 30mA.Ce dernier est placé en amont de circuit 1.
+        </p>
+        <p className="principe__text">
+          <Link to="/disjoncteur">Les disjoncteurs magnéto-thermique </Link>
+          protègent notre installation contre les courts-circuits et surcharges.
+        </p>
+        <p className="principe__text">
+          Le principe de câblage est simple, on doit respecter les couleurs.
+          Dans la boite de dérivation on connecte les conducteurs de même type
+          entre eux.Phase avec phase, neutre avec neutre, terre avec terre.
+        </p>
+      </div>
+    ),
 
-      <p className="astuce__text">
-        Dans la pratique, la hauteur d' implantation des prises est autour de
-        35cm. Pensez à votre vieux dos...
-      </p>
+    collapsePrecaution: (
+      <div>
+        <ul className="precaution">
+          <p className="precaution__text">
+            Obligation de respecter les points suivants:
+          </p>
 
-      <p className="astuce__text">
-        Dans les pieces qui contiennent douche ou baignoire, pensez à implanter
-        vos prises <Link to="/sdb">"Hors Volume"</Link>. Sauf la prise rasoir,
-        qui peut etre en <Link to="/sdb"> volume 2 </Link>si elle est alimenté
-        par un transformateur d' isolation.
-      </p>
-    </div>
-  ),
-  collapseSavoir: (
-    <div className="savoir">
-      <p className="savoir__text">
-        La hauteur minimum de l' axe d' une prise est de 5cm par rapport au sol
-        fini.
-      </p>
-      <p className="savoir__text">
-        Même hauteur pour une prise au dessus du plan de travail de la cuisine.
-      </p>
-      <p className="savoir__text">
-        Cette hauteur est augmenté à 12cm pour un boitier de prise 32A.(plaque
-        de cuisson)
-      </p>
+          <li key="1" className="precaution__li">
+            Utilisation d' une section de
+            <span className="important"> 6mm² minimum</span> avec un
+            <span className="important"> disjoncteur de 32A</span>.
+          </li>
 
-      <p className="savoir__text">
-        Pour les locaux comme véranda, sous-sol, vide sanitaire, buanderie et à
-        l'exterieur un<Link to="/ip"> indice de protection </Link>adapté est
-        exigé pour les apareillages.
-      </p>
-    </div>
-  ),
+          <li key="5" className="precaution__li">
+            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
+            jaune, bicolor vert/jaune
+          </li>
+          <li key="6" className="precaution__li">
+            Neutre c'est bleu obligatoirement
+          </li>
+          <li key="7" className="precaution__li">
+            Terre c'est bicolor vert/jaune obligatoirement
+          </li>
+        </ul>
+      </div>
+    ),
+    collapseAstuce: (
+      <div className="astuce">
+        <p className="astuce__text">
+          Dans la pratique on utilise des conducteurs de 6mm² souple.Cela permet
+          une connection plus aisé dans la boite d'encastrement.Les fils sont
+          beaucoup plus facile à manipuler.
+        </p>
+
+        <p className="astuce__text">
+          Prevoyez de faire la connection avec des connecteurs rapides pour fils
+          souple. Ils ont la caracteristique d' avoir des leviers pour établir
+          vérouiller et deverouiller la connection.
+        </p>
+
+        <p className="astuce__text">
+          Comme pour les prises classiques, utilisez des connecteurs rapides
+          transparents, cela permet de vérifier rapidement si la connection est
+          bien établi.
+        </p>
+      </div>
+    ),
+    collapseSavoir: (
+      <div className="savoir">
+        <p className="savoir__text">
+          La hauteur minimum de l' axe d' une prise ou boite d' encastrement 32A
+          est de 12cm par rapport au sol fini.
+        </p>
+        <p className="savoir__text">
+          Veillez à implanter votre prise ou sortie de câble à 60cm de toute
+          arrivé ou évacuation d'eau.
+        </p>
+      </div>
+    ),
+  },
+
+  cumulus: {
+    collapsePrincipe: (
+      <div className="principe">
+        <p className="principe__text">
+          Le but du jeux et de faire fonctionner votre cumulus pendant les
+          heures creuses, quand le prix du Kwh est plus faible.
+        </p>
+        <p className="principe__text">
+          Pour ce faire il faut que votre compteur d'énergie ait l'option double
+          tarif. Cette option est appelée aussi « heures pleines/heures creuses
+          », « tarif jour/nuit », « HP/HC ».
+        </p>
+        <p className="principe__text">
+          Nous avons dans cet exemple un interrupteur differentiel 63A type AC
+          pour la protection des personnes. Le disjonteur 2A protege la bobine
+          du contacteur HP/HC. Le disjoncteur 20A protege quand à lui le circuit
+          du cumulus. Le contacteur, pour faire simple, fonctionne comme un
+          interrupteur.Il ouvre ou ferme le circuit de puissance (cumulus)
+          suivant si sa bobine est hors tension ou sous tension. Quand EDF emet
+          le signal « Heure creuse » le contact sec du compteur se ferme et la
+          bobine du conctacteur jour/nuit est alimenté. Le conctacteur s'
+          enclenche et le cumulus est sous tension, alimenté via le disjoncteur
+          20A.
+        </p>
+      </div>
+    ),
+
+    collapsePrecaution: (
+      <div>
+        <ul className="precaution">
+          <p className="precaution__text">
+            Obligation de respecter les points suivants:
+          </p>
+
+          <li key="1" className="precaution__li">
+            Utilisation d' une section de
+            <span className="important"> 2.5² minimum</span> avec un
+            <span className="important"> disjoncteur max de 20A</span>pour le
+            circuit du cumulus.
+          </li>
+          <li key="1" className="precaution__li">
+            Utilisation d' une section de
+            <span className="important"> 1.5mm²</span> avec un
+            <span className="important"> disjoncteur max de 2A</span>pour le
+            circuit de commande du contacteur.
+          </li>
+
+          <li key="5" className="precaution__li">
+            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
+            jaune, bicolor vert/jaune
+          </li>
+          <li key="6" className="precaution__li">
+            Neutre c'est bleu obligatoirement
+          </li>
+          <li key="7" className="precaution__li">
+            Terre c'est bicolor vert/jaune obligatoirement
+          </li>
+        </ul>
+      </div>
+    ),
+    collapseAstuce: <div className="astuce"></div>,
+    collapseSavoir: (
+      <div className="savoir">
+        <p className="savoir__text">
+          La signal est emit par edf, à des heures differentes suivant les
+          regions de votre residenece.
+        </p>
+      </div>
+    ),
+  },
+  chauffage: {
+    collapsePrincipe: (
+      <div className="principe">
+        <p className="principe__text">
+          Pour cet exemple de cablâge de chauffage on utilise deux dispositifs
+          de protection.En effet ici la puissance de l' ensemble des radiateurs
+          est de 3 * 2000 = 6000w (6Kw).
+        </p>
+        <p className="principe__text">
+          Un disjoncteur de 20A peut etre utilise avec un consomateur de 230 *
+          20 = 4,600w (4.6Kw).On se laisse toujours une marge de securité et on
+          arrondi à 4Kw.Il nous faut rajouter un disjoncteur pour protéger le
+          circuit du dernier radiateur.
+        </p>
+        <p className="principe__text">
+          Nous avons dans cet exemple un interrupteur differentiel 63A type AC
+          pour la protection des personnes.
+        </p>
+      </div>
+    ),
+
+    collapsePrecaution: (
+      <div>
+        <ul className="precaution">
+          <p className="precaution__text">
+            Obligation de respecter les points suivants:
+          </p>
+
+          <li key="1" className="precaution__li">
+            Utilisation d' une section de
+            <span className="important"> 2.5² minimum</span> avec un
+            <span className="important"> disjoncteur max de 20A</span>
+          </li>
+          <li key="1" className="precaution__li">
+            Utilisation d' une section de
+            <span className="important"> 1.5mm²</span> avec un
+            <span className="important"> disjoncteur max de 16A</span>
+          </li>
+
+          <li key="5" className="precaution__li">
+            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
+            jaune, bicolor vert/jaune
+          </li>
+          <li key="6" className="precaution__li">
+            Neutre c'est bleu obligatoirement
+          </li>
+          <li key="7" className="precaution__li">
+            Terre c'est bicolor vert/jaune obligatoirement
+          </li>
+        </ul>
+      </div>
+    ),
+    collapseAstuce: <div className="astuce"></div>,
+    collapseSavoir: (
+      <div className="savoir">
+        <p className="savoir__text">
+          Les radiateurs électriques sont tres énergivore, même si des progres
+          ont été réalisé sur les rendements.Pour economiser sur le chauffage il
+          faut d' abord isoler correctement votre résidence.(plafond, mur,
+          sol..).
+        </p>
+      </div>
+    ),
+  },
+
+  laveLinge: {
+    collapsePrincipe: <div className="principe"></div>,
+
+    collapsePrecaution: (
+      <div>
+        <ul className="precaution">
+          <p className="precaution__text">
+            Obligation de respecter les points suivants:
+          </p>
+
+          <li key="1" className="precaution__li">
+            Utilisation d' une section de
+            <span className="important"> 2.5² minimum</span> avec un
+            <span className="important"> disjoncteur max de 20A</span>
+          </li>
+          <li key="1" className="precaution__li">
+            Utilisation d' une section de
+            <span className="important"> 1.5mm²</span> avec un
+            <span className="important"> disjoncteur max de 16A</span>
+          </li>
+
+          <li key="5" className="precaution__li">
+            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
+            jaune, bicolor vert/jaune
+          </li>
+          <li key="6" className="precaution__li">
+            Neutre c'est bleu obligatoirement
+          </li>
+          <li key="7" className="precaution__li">
+            Terre c'est bicolor vert/jaune obligatoirement
+          </li>
+        </ul>
+      </div>
+    ),
+    collapseAstuce: <div className="astuce"></div>,
+    collapseSavoir: (
+      <div className="savoir">
+        <p className="savoir__text"></p>
+      </div>
+    ),
+  },
 };
 
 /**** url des contenus media de la page ***** */
@@ -231,11 +383,11 @@ let ContentImagePageCircuitSpecialise = {
   },
   schemaCumulus: {
     small:
-      "/Asset/images_page_circuit_specialise/lave-linge/schema-cumulus-600px.png",
+      "/Asset/images_page_circuit_specialise/cumulus/schema-cumulus-600px.png",
     medium:
-      "/Asset/images_page_circuit_specialise/lave-linge/schema-cumulus-1000px.png",
+      "/Asset/images_page_circuit_specialise/cumulus/schema-cumulus-1000px.png",
     large:
-      "/Asset/images_page_circuit_specialise/lave-linge/schema-cumulus-1500px.png",
+      "/Asset/images_page_circuit_specialise/cumulus/schema-cumulus-1500px.png",
   },
   schemaChauffage: {
     small:

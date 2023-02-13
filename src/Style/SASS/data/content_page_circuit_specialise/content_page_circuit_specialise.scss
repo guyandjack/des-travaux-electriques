@@ -1,0 +1,64 @@
+//Feuille de style pour les données de la page "circuit specialise"
+
+//Import des mixins qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+//style du contenu des collapse
+
+.description, .precaution{
+
+    counter-set: compteur ;
+
+    &__li::before{
+        content:counter(compteur);
+        display:inline-block;
+        color: map-get($colors-rule, first-color);
+        font-weight: 600;
+        font-size: 1.1em;
+        width:2em;
+        text-align: right;
+        margin-right: 1em;
+        //border:1px solid red;
+    }
+
+    &__li{
+        counter-increment: compteur;
+        margin-top: 0.5em;
+        font-size: 1.1em;
+
+    }
+
+    .important{
+        color:  map-get($colors-rule, second-color );
+        
+    }
+}
+
+.principe, .astuce, .savoir, .description, .precaution{
+
+    font-size: 1em;
+
+    @include upper-medium-screen{
+        font-size: 1.1em;
+    }
+
+    &__text {
+        line-height: 1.5em;
+        margin: 0.5em 0em;
+    }
+
+     .important{
+        color:  map-get($colors-rule, second-color );
+        
+    }
+
+   
+}
+
+//style du contenu du
+
+
+

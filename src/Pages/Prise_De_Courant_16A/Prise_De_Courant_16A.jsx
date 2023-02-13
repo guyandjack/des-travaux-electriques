@@ -93,6 +93,7 @@ function PagePC16A() {
             title="description du matériel"
             content={ContentTextPagePC16A.collapseDescription}
             color="fourth"
+            colorText="fifth"
           ></Collapse>
         </div>
 
@@ -111,6 +112,7 @@ function PagePC16A() {
             title="principe de fonctionnement"
             content={ContentTextPagePC16A.collapsePrincipe}
             color="first"
+            colorText="fifth"
           ></Collapse>
         </div>
 
@@ -120,6 +122,7 @@ function PagePC16A() {
             title="precautions"
             content={ContentTextPagePC16A.collapsePrecaution}
             color="second"
+            colorText="fifth"
           ></Collapse>
         </div>
 
@@ -129,6 +132,7 @@ function PagePC16A() {
             title="trucs & astuces"
             content={ContentTextPagePC16A.collapseAstuce}
             color="third"
+            colorText="fifth"
           ></Collapse>
         </div>
 
@@ -147,6 +151,7 @@ function PagePC16A() {
             title="En savoir plus..."
             content={ContentTextPagePC16A.collapseSavoir}
             color="fourth"
+            colorText="fifth"
           ></Collapse>
         </div>
 

@@ -6,87 +6,97 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
-.circuit-specialise{
+.circuit-specialise {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+
+  .container-title {
+    width: 100%;
+    margin: 1em 0em;
+
+    @include medium-screen {
+      width: 80%;
+      margin: 2em 0em;
+    }
+
+    @include large-screen {
+      width: 70%;
+      margin: 3em 0em;
+    }
+
+    @include upper-large-screen {
+      width: 60%;
+      margin: 10em 0em 5em 0em;
+    }
+  }
+
+  .section {
+    
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
 
     width: 100%;
+    margin: 4em 0em 0em 0em;
+   
 
+    @include upper-medium-screen {
+      width: 60%;
+     
+    }
+  }
+
+  .container-undertitle {
+    width: fit-content;
+    padding: 1em;
+    
+    margin: 3em 0em;
+    align-self: flex-start;
+    text-align: left;
+    border-left: 10px solid map-get($colors-rule, second-color);
+    border-right: 10px solid map-get($colors-rule, second-color);
+  }
+
+  .container-collapse {
+    margin: 2em 0em;
+    width: 100%;
+    max-width: 500px;
+
+    @include upper-medium-screen {
+      width: 90%;
+      max-width: 1000px;
+    }
+  }
+
+  .container-image-header {
+    width: 80%;
+    max-width: 250px;
+    max-height: 250px;
+  }
+  .container-image-schema {
+    width: 100%;
+    max-width: 500px;
     
 
-    .container-title{
-        width: 100%;
-        margin: 1em 0em;
-
-        @include medium-screen{
-            width: 80%;
-             margin: 2em 0em;
-        }
-
-        @include large-screen{
-            width: 70%;
-             margin: 3em 0em;
-        }
-
-        @include upper-large-screen{
-            width: 60%;
-             margin: 10em 0em 5em 0em;
-        }
+    @include upper-medium-screen {
+      max-width: 900px;
     }
-    
-    
-    .container-collapse{
-        margin: 2em 0em;
-        width: 100%;
-        max-width: 500px;
+  }
+  .container-image-main {
+    width: 100%;
+    max-width: 500px;
 
-        @include upper-medium-screen{
-            width:90%;
-            max-width: 1000px;
-        }
-
-        
+    @include upper-medium-screen {
+      max-width: 900px;
     }
+  }
 
-    .container-image-header{
-        width:80%;
-        max-width: 250px;
-        max-height: 250px;
-        border: 2px solid red;
-        
-
-        
-
-        
-    }
-    .container-image-schema{
-        width:100%;
-        max-width: 500px;
-
-        @include upper-medium-screen{
-        max-width: 900px;
-       
-        }
-
-
-    }
-    .container-image-main{
-        width:100%;
-        max-width: 500px;
-
-        @include upper-medium-screen{
-        max-width: 900px;
-        
-        }
-
-    }
-
-    .text-quiz{
-        margin:2em 0em;
-        
-    }
-
-
+  .text-quiz {
+    margin: 2em 0em;
+  }
 }

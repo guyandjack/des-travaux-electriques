@@ -13,7 +13,7 @@ import { listLinksMenu } from "../../Data/List_links_menu/List_links_menu.jsx";
 import "../../Utils/break_point/break_point.js";
 
 //Import des composants enfants
-import { DoubleChevronMenu } from "../DoubleChevronMenu/DoubleChevronMenu.jsx";
+import { ChevronMenu } from "../ChevronMenu/ChevronMenu.jsx";
 import { ButtonLink } from "../Button_Link/Button_Link.jsx";
 import { SousMenuBurger } from "../Sous_menu_burger/Sous_menu_burger.jsx";
 
@@ -65,7 +65,7 @@ function MenuBurger({ click }) {
             >
               <div className="schema">
                 <ButtonLink classLink={classLien} text={element.text} />
-                <DoubleChevronMenu isClick={schemaClicked} color="fifth-color" />
+                <ChevronMenu isClick={schemaClicked} color="fifth" />
               </div>
                 <SousMenuBurger click={schemaClicked} />
             </li>

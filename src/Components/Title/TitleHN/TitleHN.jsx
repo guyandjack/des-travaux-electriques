@@ -13,8 +13,13 @@ function TitleHN({ titleText, titleLevel, size, color }) {
   const [update, setUpdate] = useState(false);
 
   useEffect(() => {
-    let element = document.querySelector(".title-n").firstChild();
-    element.style.fontSize = size + "em";
+    let titleList = document.querySelectorAll(".title-n");
+    
+    titleList.forEach(title => {
+      
+      title.firstElementChild.style.fontSize = size + "em";
+      title.firstElementChild.style.color = colorTitle;
+    })
   },[]);
 
   let classTitle = "title-n";

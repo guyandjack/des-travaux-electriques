@@ -1,14 +1,14 @@
-.description, .precaution {
+.prise-courant .description, .prise-courant .precaution {
   counter-set: compteur;
 }
-.description__text, .precaution__text {
+.prise-courant .description__text, .prise-courant .precaution__text {
   margin-top: 0.5em;
   font-size: 1.2em;
   font-weight: 600;
   font-style: italic;
   color: #EFA00B;
 }
-.description__li::before, .precaution__li::before {
+.prise-courant .description__li::before, .prise-courant .precaution__li::before {
   content: counter(compteur);
   display: inline-block;
   color: #0267C1;
@@ -18,19 +18,18 @@
   text-align: right;
   margin-right: 1em;
 }
-.description__li, .precaution__li {
+.prise-courant .description__li, .prise-courant .precaution__li {
   counter-increment: compteur;
   margin-top: 0.5em;
   font-size: 1.2em;
 }
-.description .important, .precaution .important {
+.prise-courant .description .important, .prise-courant .precaution .important {
   color: #efa00b;
 }
-
-.principe, .astuce, .savoir {
+.prise-courant .principe, .prise-courant .astuce, .prise-courant .savoir {
   font-size: 1.2em;
 }
-.principe__text, .astuce__text, .savoir__text {
+.prise-courant .principe__text, .prise-courant .astuce__text, .prise-courant .savoir__text {
   line-height: 1.5em;
   margin: 0.5em 0em;
 }

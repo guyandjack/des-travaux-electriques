@@ -6,7 +6,7 @@
 import { useState, useEffect } from "react";
 
 //Import de la liste des liens
-import { ListLinksSousMenu } from "../../Data/List_links_sous_menu/List_links_sous_menu.jsx";
+import { ListLinksSousMenuSchema } from "../../Data/List_links_sous_menu/List_links_sous_menu.jsx";
 
 //Import des composants enfants
 import { ButtonLink } from "../Button_Link/Button_Link.jsx";
@@ -32,7 +32,7 @@ function SousMenuBurger({ click }) {
 
   return (
     <ul className={classSousMenu + classAdd}>
-      {ListLinksSousMenu.map((element, index) => {
+      {ListLinksSousMenuSchema.map((element, index) => {
         return (
           <li key={index} id={refId + index} className="sous-menu-burger__li">
             <ButtonLink

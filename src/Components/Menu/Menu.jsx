@@ -27,11 +27,12 @@ function Menu() {
 
   let refId = "link";
   let classLien = "button-link-menu";
-  let urlNull = "";
+  
 
   return (
     <ul className="menu">
       {listLinksMenu.map((element, index) => {
+        
         return element.url !== null ? (
           <li key={index} id={refId + index} className="menu__li">
             <ButtonLink
@@ -52,16 +53,11 @@ function Menu() {
               setIsClicked(!isClicked);
             }}
           >
-            <div
-              className="schema"
-              /*onClick={() => {
-                setIsClicked(!isClicked);
-              }}*/
-            >
-            <ButtonLink classLink={classLien} text={element.text} />
+            <div className="schema">
+              <ButtonLink classLink={classLien} text={element.text} />
             </div>
             <ChevronMenu isClick={isClicked} color="second" />
-            <SousMenu click={isClicked} />
+            <SousMenu click={isClicked} type={element.sousMenuType} />
           </li>
         );
       })}

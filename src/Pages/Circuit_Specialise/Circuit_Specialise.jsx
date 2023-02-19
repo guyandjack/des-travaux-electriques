@@ -41,8 +41,7 @@ function PageCircuitSpecialise() {
     ContentImagePageCircuitSpecialise.schemaPlaqueCuisson[imageSize];
   let schemaCumulus =
     ContentImagePageCircuitSpecialise.schemaCumulus[imageSize];
-  let schemaChauffage =
-    ContentImagePageCircuitSpecialise.schemaChauffage[imageSize];
+  
   let schemaLaveLinge =
     ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
 
@@ -73,7 +72,7 @@ function PageCircuitSpecialise() {
       <div className="container-title">
         <Title
           pagetype="page"
-          title="Circuits specialisés et/ou dédiés"
+          title="Circuits spécialisés"
           text={
             ContentTextPageCircuitSpecialise.plaqueDeCuisson.introductionTexte
           }
@@ -83,7 +82,7 @@ function PageCircuitSpecialise() {
       <div className="container-collapse">
         <Collapse
           idCollapse="description"
-          title="Circuit dedié ou circuit spécialisé ?"
+          title="Circuits spécialisés... ?"
           content={
             ContentTextPageCircuitSpecialise.plaqueDeCuisson.collapseDescription
           }
@@ -92,8 +91,8 @@ function PageCircuitSpecialise() {
         ></Collapse>
       </div>
 
-      <section className="section">
-        <div className="container-undertitle">
+      <section id="cuisson" className="section">
+        <div  className="container-undertitle">
           <TitleHN
             titleText="Circuit spécialisé « Plaque de cuisson »"
             titleLevel={2}
@@ -160,10 +159,10 @@ function PageCircuitSpecialise() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container-undertitle">
+      <section id="cumulus" className="section color-section">
+        <div  className="container-undertitle">
           <TitleHN
-            titleText="Circuit dédié « cumulus »"
+            titleText="Circuit spécialisé « cumulus »"
             titleLevel={2}
             size={2}
             color="fourth"
@@ -221,73 +220,12 @@ function PageCircuitSpecialise() {
         </div>
       </section>
 
-      <section className="section">
-        <div className="container-undertitle">
+      
+
+      <section id="lave-linge" className="section color-section">
+        <div  className="container-undertitle">
           <TitleHN
-            titleText="Circuit dédié « chauffage »"
-            titleLevel={2}
-            size={2}
-            color="fourth"
-          />
-        </div>
-
-        <div className="container-image-schema">
-          <ContainerImg
-            src1={schemaChauffage}
-            alt1={"Schéma de câblage d'un chauffage "}
-            figcap1={"Schéma de câblage d'un chauffage "}
-          />
-        </div>
-
-        <div className="container-collapse">
-          <Collapse
-            idCollapse="chauffage-principe"
-            title="principe de fonctionnement"
-            content={
-              ContentTextPageCircuitSpecialise.chauffage.collapsePrincipe
-            }
-            color="first"
-            colorText="fifth"
-          ></Collapse>
-        </div>
-
-        <div className="container-collapse">
-          <Collapse
-            idCollapse="chauffage-precaution"
-            title="precautions"
-            content={
-              ContentTextPageCircuitSpecialise.chauffage.collapsePrecaution
-            }
-            color="second"
-            colorText="fifth"
-          ></Collapse>
-        </div>
-
-        <div className="container-collapse">
-          <Collapse
-            idCollapse="chauffage-astuce"
-            title="trucs & astuces"
-            content={ContentTextPageCircuitSpecialise.chauffage.collapseAstuce}
-            color="third"
-            colorText="fifth"
-          ></Collapse>
-        </div>
-
-        <div className="container-collapse">
-          <Collapse
-            idCollapse="chauffage-savoir"
-            title="En savoir plus..."
-            content={ContentTextPageCircuitSpecialise.chauffage.collapseSavoir}
-            color="fourth"
-            colorText="fifth"
-          ></Collapse>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container-undertitle">
-          <TitleHN
-            titleText="Circuit dédié « lave-linge »"
+            titleText="Circuit spécialisé « lave-linge »"
             titleLevel={2}
             size={2}
             color="fourth"
@@ -307,7 +245,7 @@ function PageCircuitSpecialise() {
             idCollapse="lave-linge-principe"
             title="principe de fonctionnement"
             content={
-              ContentTextPageCircuitSpecialise.chauffage.collapsePrincipe
+              ContentTextPageCircuitSpecialise.laveLinge.collapsePrincipe
             }
             color="first"
             colorText="fifth"
@@ -319,7 +257,7 @@ function PageCircuitSpecialise() {
             idCollapse="lave-linge-precaution"
             title="precautions"
             content={
-              ContentTextPageCircuitSpecialise.chauffage.collapsePrecaution
+              ContentTextPageCircuitSpecialise.laveLinge.collapsePrecaution
             }
             color="second"
             colorText="fifth"
@@ -330,7 +268,7 @@ function PageCircuitSpecialise() {
           <Collapse
             idCollapse="lave-linge-astuce"
             title="trucs & astuces"
-            content={ContentTextPageCircuitSpecialise.chauffage.collapseAstuce}
+            content={ContentTextPageCircuitSpecialise.laveLinge.collapseAstuce}
             color="third"
             colorText="fifth"
           ></Collapse>
@@ -340,7 +278,7 @@ function PageCircuitSpecialise() {
           <Collapse
             idCollapse="lave-linge-savoir"
             title="En savoir plus..."
-            content={ContentTextPageCircuitSpecialise.chauffage.collapseSavoir}
+            content={ContentTextPageCircuitSpecialise.laveLinge.collapseSavoir}
             color="fourth"
             colorText="fifth"
           ></Collapse>

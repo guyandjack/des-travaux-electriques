@@ -1,37 +1,47 @@
-.description, .precaution {
+.circuit-specialise .description, .circuit-specialise .precaution {
   counter-set: compteur;
 }
-.description__li::before, .precaution__li::before {
+.circuit-specialise .description__li::before, .circuit-specialise .precaution__li::before {
   content: counter(compteur);
   display: inline-block;
   color: #0267C1;
   font-weight: 600;
-  font-size: 1.1em;
+  font-size: 1em;
   width: 2em;
   text-align: right;
   margin-right: 1em;
 }
-.description__li, .precaution__li {
+.circuit-specialise .description__li, .circuit-specialise .precaution__li {
   counter-increment: compteur;
   margin-top: 0.5em;
-  font-size: 1.1em;
-}
-.description .important, .precaution .important {
-  color: #EFA00B;
-}
-
-.principe, .astuce, .savoir, .description, .precaution {
   font-size: 1em;
 }
-@media screen and (min-width: 769px) {
-  .principe, .astuce, .savoir, .description, .precaution {
-    font-size: 1.1em;
-  }
+.circuit-specialise .description .important, .circuit-specialise .precaution .important {
+  color: #EFA00B;
 }
-.principe__text, .astuce__text, .savoir__text, .description__text, .precaution__text {
+.circuit-specialise .description__text, .circuit-specialise .principe__text, .circuit-specialise .astuce__text, .circuit-specialise .savoir__text, .circuit-specialise .precaution__text {
+  font-size: 1em;
   line-height: 1.5em;
   margin: 0.5em 0em;
 }
-.principe .important, .astuce .important, .savoir .important, .description .important, .precaution .important {
+@media screen and (min-width: 769px) {
+  .circuit-specialise .description__text, .circuit-specialise .principe__text, .circuit-specialise .astuce__text, .circuit-specialise .savoir__text, .circuit-specialise .precaution__text {
+    font-size: 1em;
+  }
+}
+.circuit-specialise .important {
   color: #EFA00B;
+}
+.circuit-specialise .description-list {
+  margin: 0.5em 0em;
+  padding: 1em;
+  background-color: #f3f3f3;
+}
+.circuit-specialise .description-list__li {
+  list-style-type: disc;
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+.circuit-specialise .description-list__li__span {
+  margin-left: 3em;
 }

@@ -4,7 +4,11 @@
 import { useState, useEffect } from "react";
 
 //Import de la liste des liens
-import { ListLinksSousMenu } from "../../Data/List_links_sous_menu/List_links_sous_menu.jsx";
+import {
+  ListLinksSousMenuSchema,
+  ListLinksSousMenuQuiz,
+  ListLinksSousMenuTheorie,
+} from "../../Data/List_links_sous_menu/List_links_sous_menu.jsx";
 
 //Import des composants enfants
 import { ButtonLink } from "../Button_Link/Button_Link.jsx";
@@ -14,9 +18,22 @@ import "../../Style/CSS/sous-menu.css";
 
 //Fonction "SousMenu"
 
-function SousMenu({ click }) {
+function SousMenu({ click, type }) {
+
+  let sousMenu; 
+  if (type !== null) {
+    
+    if (type === "schema") {
+      sousMenu = ListLinksSousMenuSchema;
+    }
+    else if (type === "quiz") {
+      sousMenu = ListLinksSousMenuQuiz;
+    }
+    else if (type === "theorie") {
+      sousMenu = ListLinksSousMenuTheorie;
+    }
+  }
    
-  
       
   let classSousMenu = "sous-menu";
   let classAdd;
@@ -36,7 +53,7 @@ function SousMenu({ click }) {
       
     <ul className={classSousMenu + classAdd}>
       
-        {ListLinksSousMenu.map((element, index) => {
+        {sousMenu.map((element, index) => {
 
             return (
                     

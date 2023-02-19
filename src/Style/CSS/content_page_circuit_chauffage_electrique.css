@@ -1,0 +1,50 @@
+.description, .precaution {
+  counter-set: compteur;
+}
+.description__li::before, .precaution__li::before {
+  content: counter(compteur);
+  display: inline-block;
+  color: #0267C1;
+  font-weight: 600;
+  font-size: 1em;
+  width: 2em;
+  text-align: right;
+  margin-right: 1em;
+}
+.description__li, .precaution__li {
+  counter-increment: compteur;
+  margin-top: 0.5em;
+  font-size: 1em;
+}
+.description .important, .precaution .important {
+  color: #EFA00B;
+}
+
+.description__text, .principe__text, .astuce__text, .savoir__text, .precaution__text {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0.5em 0em;
+}
+@media screen and (min-width: 769px) {
+  .description__text, .principe__text, .astuce__text, .savoir__text, .precaution__text {
+    font-size: 1em;
+  }
+}
+
+.important {
+  color: #EFA00B;
+}
+
+.description-list {
+  margin: 0.5em 0em;
+  padding: 1em;
+  background-color: #f3f3f3;
+}
+.description-list__li {
+  list-style-type: disc;
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+.description-list__li__span {
+  margin-left: 3em;
+}

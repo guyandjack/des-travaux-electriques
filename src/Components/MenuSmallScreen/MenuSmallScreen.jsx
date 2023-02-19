@@ -22,7 +22,7 @@ function MenuSmallScreen() {
   let menuIcon = "__icon";
   let menuBanner = "__banner";
   let containerMenuBurger = "__container-menu-burger";
-  let urlIcon = "/Asset/image_component_header/icon-menu-burger-fifth-color.png";
+  let urlIcon = "/Asset/images_component_header/icon-menu-burger-fifth-color.png";
 
   let classDisplay
 
@@ -31,7 +31,7 @@ function MenuSmallScreen() {
       <img
         className={menuSmallScreen + menuIcon}
         src={urlIcon}
-        alt="/Asset/image_component_header/icon-menu-burger-fifth-color"
+        alt=""
         onClick={() => {
           setIsClicked(!isClicked);
         }}

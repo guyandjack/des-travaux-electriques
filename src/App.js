@@ -9,6 +9,7 @@ import { NavContextProvider } from "./Utils/context/Nav_context.jsx";
 //Import des pages de l'application
 import { PageHome } from "../src/Pages/Home/PageHome.jsx";
 import { PagePC16A } from "../src/Pages/Prise_De_Courant_16A/Prise_De_Courant_16A";
+import { PageChauffageElectrique, PageCircuitChauffageElectrique } from "../src/Pages/Circuit_Chauffage_Electrique/Circuit_Chauffage_Electrique.jsx";
 import { PageCircuitSpecialise } from "../src/Pages/Circuit_Specialise/Circuit_Specialise.jsx";
 import { PageCircuitEclairage } from "../src/Pages/Circuit_Eclairage/Circuit_Eclairage.jsx";
 import { PageDisjoncteurMagnetoThermique } from "../src/Pages/DisjoncteurMagnetoThermique/DisjoncteurMagnetoThermique.jsx";
@@ -35,6 +36,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<PageHome />}></Route>
           <Route path="/pc16a" element={<PagePC16A />}></Route>
+          <Route path="/chauffage-electrique" element={<PageCircuitChauffageElectrique />}></Route>
           <Route path="/circuit-specialise" element={<PageCircuitSpecialise />}></Route>
           <Route path="/circuit-eclairage"  element={<PageCircuitEclairage />}></Route>
           <Route path="/db" element={<PageDisjoncteurDeBranchement />}></Route>
@@ -45,7 +47,7 @@ function App() {
           <Route path="/cgu" element={<PageCGU />}></Route>
           <Route path="/truc-astuce" element={<PageTrucEtAstuce />}></Route>
           <Route path="/disjoncteur" element={<PageDisjoncteurMagnetoThermique />}></Route>
-          <Route path="/quiz" element={<PageQuizPC />}></Route>
+          <Route path="/quiz-pc16a" element={<PageQuizPC />}></Route>
           <Route path="/*" element={<PageErreur />}></Route>
         </Routes>
 

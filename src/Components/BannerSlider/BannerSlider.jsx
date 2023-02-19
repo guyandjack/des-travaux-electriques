@@ -2,7 +2,7 @@
 
 
 //Import des composant à faire défiler
-import { ListLinksSousMenu } from "../../Data/List_links_sous_menu/List_links_sous_menu.jsx";
+import { ListLinksSousMenuSchema } from "../../Data/List_links_sous_menu/List_links_sous_menu.jsx";
 
 
 //Import des composants enfants
@@ -22,7 +22,7 @@ function BannerSlider() {
     return (
       
         <ul className="banner-slider">
-          {ListLinksSousMenu.map((element, index) => {
+          {ListLinksSousMenuSchema.map((element, index) => {
             return (
               <li key={index} id={refId + index} className="banner-slider__li">
                 

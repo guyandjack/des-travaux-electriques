@@ -29,49 +29,65 @@ let ContentTextPageCircuitSpecialise = {
           appareils électroménagers de forte puissance.
         </p>
         <p className="description__text">
-          Un circuit électrique spécialisé est un circuit qui fournit une
+          Un circuit électrique « spécialisé » est un circuit qui fournit une
           alimentation spécifique à un seul équipement.
         </p>
-        <p className="description__text">
-          Il comporte une protection, une boîte de connexion avec sortie de
-          câble 32A pour la table cuisson et une prise de courant pour les
-          autres appareils.
-        </p>
+
+        <p className="description__text">Le circuit du cumulus par exemple.</p>
+
         <p className="description__text">
           Dans un logement, la norme électrique impose l’installation d’au moins
-          quatre circuits spécialisés : un circuit dans la cuisine pour la
-          plaque de cuisson ou la cuisinière, avec une boîte de 32 A avec sortie
-          de câble adaptée en monophasé ou 20 A en triphasé ; trois circuits
-          spécialisés avec des prises de 16 A pour alimenter des équipements
-          comme le lave-vaisselle, le lave-linge, le sèche linge ou encore le
-          four. La norme recommande de prévoir une prise spécialisée à proximité
-          des arrivées et évacuations d’eau pour le lave-vaisselle et machine à
-          laver. Les autres circuits spécialisés seront installés en fonction
-          des besoins de l’occupant et de la configuration du logement. Liste
-          non hexaustive des circuits spécialisés.
+          quatre circuits spécialisés :
         </p>
         <ul className="description-list">
-          <li className="description-list__li">plaque de cuisson</li>
+          <li className="description-list__li">
+            Un circuit dans la cuisine pour la plaque de cuisson ou la
+            cuisinière.
+          </li>
+          <li className="description-list__li">
+            Trois circuits spécialisés avec des prises de 16 A pour alimenter
+            des équipements électroménagers.
+          </li>
+        </ul>
+        <p className="description__text">
+          La norme recommande de prévoir une prise spécialisée à proximité des
+          arrivées et évacuations d’eau pour le lave-vaisselle et machine à
+          laver. Les autres circuits spécialisés seront installés en fonction
+          des besoins de l’occupant et de la configuration du logement.
+        </p>
+        <p>
+          Liste non hexaustive des différents circuits spécialisés d' un
+          logement:
+        </p>
+
+        <ul className="description-list">
+          <li className="description-list__li">
+            <a href="/circuit-specialise#cuisson">
+              plaque de cuisson ou cuisinière
+            </a>
+          </li>
           <li className="description-list__li">four</li>
-          <li className="description-list__li">cuisinière</li>
           <li className="description-list__li">lave-vaisselle</li>
-          <li className="description-list__li">lave-linge / sèche-linge</li>
+          <li className="description-list__li">
+            <a href="/circuit-specialise#lave-linge">
+              lave-linge / sèche-linge
+            </a>
+          </li>
           <li className="description-list__li">congélateur</li>
-          <li className="description-list__li"> hotte</li>
-          <li className="description-list__li">chauffe-eau</li>
+          <li className="description-list__li">hotte</li>
+          <li className="description-list__li">
+            <a href="/circuit-specialise#cumulus">chauffe-eau</a>
+          </li>
           <li className="description-list__li">pompe à chaleur</li>
           <li className="description-list__li">ventilation</li>
           <li className="description-list__li">spa / sauna / piscine</li>
-          <li className="description-list__li">IRVE</li>
+          <li className="description-list__li">
+            IRVE(Infrastructure de recharge de véhicules électriques)
+          </li>
           <li className="description-list__li">cave à vins</li>
           <li className="description-list__li">portail / porte de garage</li>
           <li className="description-list__li">interphone</li>
-          <li className="description-list__li">volets roulants/stores</li>
           <li className="description-list__li">tableaux divisionnaires</li>
-          <li className="description-list__li">
-            circuits extérieurs (éclairage, prises de courant non attenantes au
-            logement).
-          </li>
         </ul>
       </div>
     ),
@@ -150,7 +166,7 @@ let ContentTextPageCircuitSpecialise = {
       <div className="savoir">
         <p className="savoir__text">
           La hauteur minimum de l' axe d' une prise ou boite d' encastrement 32A
-          est de 12cm par rapport au sol fini.
+          monophasé ou 20A triphasé est de 12cm par rapport au sol fini.
         </p>
         <p className="savoir__text">
           Veillez à implanter votre prise ou sortie de câble à 60cm de toute
@@ -230,23 +246,25 @@ let ContentTextPageCircuitSpecialise = {
       </div>
     ),
   },
-  chauffage: {
+  
+
+  laveLinge: {
     collapsePrincipe: (
       <div className="principe">
         <p className="principe__text">
-          Pour cet exemple de cablâge de chauffage on utilise deux dispositifs
-          de protection.En effet ici la puissance de l' ensemble des radiateurs
-          est de 3 * 2000 = 6000w (6Kw).
+          <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
+          assure la protection des personnes contre les contacts directs et
+          indirects avec un conducteur actif.
         </p>
         <p className="principe__text">
-          Un disjoncteur de 20A peut etre utilise avec un consomateur de 230 *
-          20 = 4,600w (4.6Kw).On se laisse toujours une marge de securité et on
-          arrondi à 4Kw.Il nous faut rajouter un disjoncteur pour protéger le
-          circuit du dernier radiateur.
+          Dans notre exemple c' est un interrupteur différentiel de type A, avec
+          un courant assigné max de 63A, et une sensibilite de 30mA.Ce dernier
+          est placé en amont du circuit 1.
         </p>
         <p className="principe__text">
-          Nous avons dans cet exemple un interrupteur differentiel 63A type AC
-          pour la protection des personnes.
+          <Link to="/disjoncteur">Le disjoncteur magnéto-thermique </Link>
+          protège notre circuit contre les courts-circuits et surcharges. Il
+          alimente uniquement la prise 16A pour notre lave-linge.
         </p>
       </div>
     ),
@@ -261,78 +279,50 @@ let ContentTextPageCircuitSpecialise = {
           <li key="1" className="precaution__li">
             Utilisation d' une section de
             <span className="important"> 2.5² minimum</span> avec un
-            <span className="important"> disjoncteur max de 20A</span>
+            <span className="important"> disjoncteur max de 20A</span>.
           </li>
-          <li key="1" className="precaution__li">
-            Utilisation d' une section de
-            <span className="important"> 1.5mm²</span> avec un
-            <span className="important"> disjoncteur max de 16A</span>
+
+          <li key="3" className="precaution__li">
+            Disjoncteur dédié uniquement pour le lave-linge.Pas de raccord
+            possible avec un autre appareillage.
           </li>
 
           <li key="5" className="precaution__li">
-            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
-            jaune, bicolor vert/jaune
+            Interrupteur ou disjoncteur différentiel{" "}
+            <span className="important">de type A( ou F, ou B)</span>.
           </li>
           <li key="6" className="precaution__li">
-            Neutre c'est bleu obligatoirement
+            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
+            jaune, bicolor vert/jaune.
           </li>
           <li key="7" className="precaution__li">
-            Terre c'est bicolor vert/jaune obligatoirement
+            Neutre c'est bleu obligatoirement.
+          </li>
+          <li key="8" className="precaution__li">
+            Terre c'est bicolor vert/jaune obligatoirement.
           </li>
         </ul>
       </div>
     ),
-    collapseAstuce: <div className="astuce"></div>,
+    collapseAstuce: (
+      <div className="astuce">
+        <p className="astuce__text">
+          Veillez à implanter votre prise de courant ou sortie de câble à 60cm
+          de l' arrivé et evacuation d' eau de votre lave-linge.
+        </p>
+        <p className="astuce__text">
+          Utiliser uniquement une section de 2.5mm² pour les circuits dédiés
+          alimantant une prise 16A ou boîte sortie de câble.
+        </p>
+      </div>
+    ),
     collapseSavoir: (
       <div className="savoir">
         <p className="savoir__text">
-          Les radiateurs électriques sont tres énergivore, même si des progres
-          ont été réalisé sur les rendements.Pour economiser sur le chauffage il
-          faut d' abord isoler correctement votre résidence.(plafond, mur,
-          sol..).
+          Il est possible d' utiliser, un disjoncteur 20A avec une prise 16A
+          pour un circuit dédié. Au même titre qu' il est possible d' utiliser
+          jusqu' à 12 prises 16A avec un disjoncteur de 20A.
         </p>
-      </div>
-    ),
-  },
-
-  laveLinge: {
-    collapsePrincipe: <div className="principe"></div>,
-
-    collapsePrecaution: (
-      <div>
-        <ul className="precaution">
-          <p className="precaution__text">
-            Obligation de respecter les points suivants:
-          </p>
-
-          <li key="1" className="precaution__li">
-            Utilisation d' une section de
-            <span className="important"> 2.5² minimum</span> avec un
-            <span className="important"> disjoncteur max de 20A</span>
-          </li>
-          <li key="1" className="precaution__li">
-            Utilisation d' une section de
-            <span className="important"> 1.5mm²</span> avec un
-            <span className="important"> disjoncteur max de 16A</span>
-          </li>
-
-          <li key="5" className="precaution__li">
-            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
-            jaune, bicolor vert/jaune
-          </li>
-          <li key="6" className="precaution__li">
-            Neutre c'est bleu obligatoirement
-          </li>
-          <li key="7" className="precaution__li">
-            Terre c'est bicolor vert/jaune obligatoirement
-          </li>
-        </ul>
-      </div>
-    ),
-    collapseAstuce: <div className="astuce"></div>,
-    collapseSavoir: (
-      <div className="savoir">
-        <p className="savoir__text"></p>
       </div>
     ),
   },

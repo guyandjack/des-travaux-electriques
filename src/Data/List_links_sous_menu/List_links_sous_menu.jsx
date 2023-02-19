@@ -1,10 +1,16 @@
-// Informations pour les liens de la banner-slider
+// Contenu des lien des sous-menu
 
-let ListLinksSousMenu = [
+let ListLinksSousMenuSchema = [
   {
     url: "/pc16a",
     text: "Prise de courant",
     urlImg: "/Asset/images_page_prise_de_courant_16A/pc-face-avant.png",
+    
+  },
+  {
+    url: "/chauffage-electrique",
+    text: "Circuit chauffage ",
+    urlImg: "/Asset/images_page_circuit_chauffage/img-radiateur-electrique.png",
     
   },
 
@@ -17,7 +23,7 @@ let ListLinksSousMenu = [
   {
     url: "/circuit-eclairage",
     text: "Circuits éclairage",
-    urlImg: "Asset/image_page_circuit_eclairage/ampoule-led.webp",
+    urlImg: "Asset/images_page_circuit_eclairage/ampoule-allume.png",
   },
 
   {
@@ -50,4 +56,56 @@ let ListLinksSousMenu = [
   },
 ];
 
-export { ListLinksSousMenu };
+let ListLinksSousMenuQuiz = [
+  {
+    url: "/quiz-pc16a",
+    text: "quiz 'prise de courant'",
+    urlImg: "/Asset/images_page_prise_de_courant_16A/pc-face-avant.png",
+  },
+  {
+    url: "/quiz-chauffage-electrique",
+    text: " quiz 'circuit chauffage' ",
+    urlImg: "/Asset/images_page_circuit_chauffage/img-radiateur-electrique.png",
+  },
+
+  {
+    url: "/quiz-circuit-specialise",
+    text: "quiz 'Circuits specialisés'",
+    urlImg: "/Asset/image_page_circuit_specialise/radiateur-electrique.png",
+  },
+];
+
+let ListLinksSousMenuTheorie = [
+  {
+    url: "/indice-de-protection",
+    text: "Indice de protection",
+    urlImg: "/Asset/images_page_prise_de_courant_16A/pc-face-avant.png",
+  },
+  {
+    url: "/section-conducteur",
+    text: "Section des conducteurs ",
+    urlImg: "/Asset/images_page_circuit_chauffage/img-radiateur-electrique.png",
+  },
+
+  {
+    url: "/classe-appareillage",
+    text: "classe des appareillages élctriques",
+    urlImg: "/Asset/image_page_circuit_specialise/radiateur-electrique.png",
+  },
+  {
+    url: "/protections-des-personnes",
+    text: "protection des personnes",
+    urlImg: "/Asset/image_page_circuit_specialise/radiateur-electrique.png",
+  },
+  {
+    url: "/protection-des-biens",
+    text: "protection des biens",
+    urlImg: "/Asset/image_page_circuit_specialise/radiateur-electrique.png",
+  },
+];
+
+export {
+  ListLinksSousMenuSchema,
+  ListLinksSousMenuQuiz,
+  ListLinksSousMenuTheorie,
+};

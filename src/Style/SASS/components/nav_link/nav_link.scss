@@ -1,16 +1,75 @@
 //Feuille de style du composant "NavLink"
 
-.nav-link{
-    display: flex;
-        flex-flow: column nowrap;
-        justify-content: flex-start;
-        align-items: flex-start;
+//Import des "mixins" qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
 
-        padding: 1em;
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
 
-    .nav-link-img{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
+.nav-link {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  //padding: 1em;
+  height: 100%;
+
+  .nav-link-text{
+    //text-align: center;
+    //font-family: "Oswald", sans-serif;
+    text-transform:capitalize;
+    font-size: 1em;
+    //responsive pour écran supérieur à large.
+    @include upper-large-screen{
+        font-size: 1.2em;
     }
+  }
+
+  .nav-link-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    
+  }
+
+  .first-bg {
+    background-color: map-get($colors-rule, first-color);
+  }
+
+  .second-bg {
+    background-color: map-get($colors-rule, second-color);
+  }
+
+  .third-bg {
+    background-color: map-get($colors-rule, third-color);
+  }
+
+  .fourth-bg {
+    background-color: map-get($colors-rule, fourth-color);
+  }
+
+  .fifth-bg {
+    background-color: map-get($colors-rule, fifth-color);
+  }
+
+  .first-text {
+    color: map-get($colors-rule, first-color);
+  }
+
+  .second-text {
+    color: map-get($colors-rule, second-color);
+  }
+
+  .third-text {
+    color: map-get($colors-rule, third-color);
+  }
+
+  .fourth-text {
+    color: map-get($colors-rule, fourth-color);
+  }
+
+  .fifth-text {
+    color: map-get($colors-rule, fifth-color);
+  }
 }

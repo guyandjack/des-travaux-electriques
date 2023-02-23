@@ -1,0 +1,120 @@
+//Feuille de style du composant "NavCollaspe"
+
+//Import des "mixins" qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.nav-collapse {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  .nav-collapse-title {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav-collapse-chevron {
+    margin-left: 1em;
+    font-size: 1em;
+    transition: transform 250ms linear, font-size 250ms linear;
+
+    //responsive poue ecran superieur à large
+    @include upper-large-screen {
+      font-size: 1.1em;
+    }
+  }
+
+  .chevron-animation {
+    transform: rotateZ(180deg);
+  }
+
+  .collapse-list {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: left;
+
+    width: 100%;
+    max-height: 0px;
+    opacity: 0;
+    overflow: hidden;
+
+    transition: max-height 300ms linear, opacity 350ms linear,
+      border-top 300ms linear;
+
+    //responsive pour ecran superieur à small
+    @include upper-small-screen {
+      position: absolute;
+      top: 100%;
+      width: 150%;
+      z-index: 10;
+    }
+
+    &__li {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      align-items: center;
+      //height: 100%;
+      width: 100%;
+      padding: 1em 0em 1em 1em;
+      background-color: lighten(map-get($colors-rule, second-color), 45%);
+      transition: background-color 300ms linear, padding-left 300ms linear;
+
+      
+
+      &:hover {
+        //responsive pour écran small
+        @include upper-small-screen {
+          padding-left: 2em;
+          background-color: lighten(map-get($colors-rule, second-color), 35%);
+        }
+      }
+
+      
+    }
+  }
+
+  .display {
+    max-height: 500px;
+    opacity: 1;
+    border-top: 4px solid map-get($colors-rule, second-color);
+    border-bottom: 4px solid map-get($colors-rule, second-color);
+    
+    //responsive pour ecran supérieur à small
+    @include upper-small-screen {
+        border-bottom: none;
+        box-shadow: 0px 0px 15px map-get($colors-rule, fourth-color);
+    }
+  }
+
+  .first-text {
+    color: map-get($colors-rule, first-color);
+  }
+
+  .second-text {
+    color: map-get($colors-rule, second-color);
+  }
+
+  .third-text {
+    color: map-get($colors-rule, third-color);
+  }
+
+  .fourth-text {
+    color: map-get($colors-rule, fourth-color);
+  }
+
+  .fifth-text {
+    color: map-get($colors-rule, fifth-color);
+  }
+}

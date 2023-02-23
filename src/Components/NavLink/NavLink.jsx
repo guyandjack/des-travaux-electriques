@@ -11,7 +11,7 @@
  *****************************************/
 
 //Import du module Link
-import { Link } from "react";
+import { Link } from "react-router-dom";
 
 //Import des breakpoints
 import "../../Utils/break_point/break_point.js";
@@ -22,87 +22,92 @@ import "../../Style/CSS/nav_link.css";
 //Fonction "NavLink"
 
 function NavLink({ urlTo, urlImg, text, colorText, colorBg }) {
-  let classColorText = "";
-  let classColorBg = "";
-  let contentAlt = "lien vers ";
+    let classColorText = "";
+    let classColorBg = "";
+    let classText = "nav-link-text";
+    let contentAlt = "lien vers ";
 
-  // determination de la couleur du text
+  // détermination de la couleur du text
   switch (colorText) {
     case "first": {
-      classColorText = "first-color";
+      classColorText = " first-text";
       break;
     }
 
     case "second": {
-      classColorText = "second-color";
+      classColorText = " second-text";
 
       break;
     }
     case "third": {
-      classColorText = "third-color";
+      classColorText = " third-text";
 
       break;
     }
     case "fourth": {
-      classColorText = "fourth-color";
+      classColorText = " fourth-text";
 
       break;
     }
     case "fifth": {
-      classColorText = "fifth-color";
+      classColorText = " fifth-text";
 
       break;
     }
     default: {
-      classColorText = "first-color";
+      classColorText = "";
     }
   }
 
   // determination de la couleur de fond
   switch (colorBg) {
     case "first": {
-      classColorBg = " first-color";
+      classColorBg = " first-bg";
       break;
     }
 
     case "second": {
-      classColorBg = " second-color";
+      classColorBg = " second-bg";
 
       break;
     }
     case "third": {
-      classColorBg = " third-color";
+      classColorBg = " third-bg";
 
       break;
     }
     case "fourth": {
-      classColorBg = " fourth-color";
+      classColorBg = " fourth-bg";
 
       break;
     }
     case "fifth": {
-      classColorBg = " fifth-color";
+      classColorBg = " fifth-bg";
 
       break;
     }
     default: {
-      classColorBg = " first-color";
+      classColorBg = "";
     }
   }
   return (
     <div className="nav-link">
       {urlImg ? (
         <Link to={urlTo}>
-          <img
-            className="nav-link-img"
-            src={urlImg}
-            alt={contentAlt + text}
-          ></img>
+          <div className="container-link">
+            <img
+              className="nav-link-img"
+              src={urlImg}
+              alt={contentAlt + text}
+            ></img>
+            <p className={classText + classColorText + classColorBg}>{text}</p>
+          </div>
         </Link>
-      ) : null}
-      <Link to={urlTo}>
-        <p className={classColorText + classColorBg}>{text}</p>
-      </Link>
+      ) : (
+        <Link to={urlTo}>
+          <p className={classText + classColorText + classColorBg}>{text}</p>
+        </Link>
+      )}
     </div>
   );
 }

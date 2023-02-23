@@ -1,8 +1,53 @@
 //Feuille de style du composant "NavMenu"
 
-.nav-menu{
+//Import des "mixins" qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.nav-menu {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: 100%;
+  
+  //responsive pour ecran superieur à small screen
+  @include upper-small-screen{
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+      height: 100%;
+  }
+
+  &__li {
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
+    position: relative;
+
+    padding: 0.5em 0em 0.5em 0em;
+    width: 100%;
+
+    //responsive pour ecran superieur a small
+    @include upper-small-screen{
+
+        border-top: 0px solid map-get($colors-rule, second-color);
+        height: 100%;
+    
+        transition: border-top 250ms linear 0s;
+    
+        &:hover {
+          border-top: 8px solid map-get($colors-rule, second-color);
+        }
+    }
+
+
+    //responsive pour ecran inferieur à large
+    @include under-large-screen {
+      flex: 1 1 auto;
+    }
+  }
 }

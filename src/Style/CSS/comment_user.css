@@ -1,0 +1,92 @@
+.container-comment-user .comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  width: 100%;
+  background-color: white;
+}
+.container-comment-user .comment-user .container-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 0.5em;
+}
+.container-comment-user .comment-user .container-info .comment-user-firstname,
+.container-comment-user .comment-user .container-info .comment-user-date {
+  font-family: "Oswald", sans-serif;
+  padding: 0.5em;
+}
+.container-comment-user .comment-user .container-info .comment-user-firstname {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 20%;
+          flex: 0 1 20%;
+  font-size: 1.4em;
+  color: #747474;
+  text-transform: capitalize;
+}
+.container-comment-user .comment-user .container-info .comment-user-date {
+  font-size: 1em;
+}
+.container-comment-user .comment-user .container-info .comment-user-text {
+  text-align: left;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 70%;
+          flex: 0 1 70%;
+  font-size: 1.3em;
+  padding: 1.5em;
+}
+.container-comment-user .comment-user .container-button {
+  position: absolute;
+  right: 2em;
+  bottom: 0em;
+  -webkit-transform: translateY(50%);
+      -ms-transform: translateY(50%);
+          transform: translateY(50%);
+  overflow: hidden;
+  border-radius: 1em;
+}
+.container-comment-user .hide {
+  display: none;
+}
+
+.container-form-response {
+  margin: 0em;
+  max-height: 0px;
+  overflow: hidden;
+  -webkit-transition: max-height 250ms linear;
+  -o-transition: max-height 250ms linear;
+  transition: max-height 250ms linear;
+}
+
+.display {
+  margin: 4em 0em 4em 0em;
+  max-height: 1500px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  -webkit-transition-duration: 250ms;
+       -o-transition-duration: 250ms;
+          transition-duration: 250ms;
+}

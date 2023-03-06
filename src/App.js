@@ -43,7 +43,7 @@ function App() {
           <Route path="/ddr" element={<PageDispositifDifferentiel />}></Route>
           <Route path="/tc" element={<PageTableauDeCommunication />}></Route>
           <Route path="/tgbt" element={<PageTGBT />}></Route>
-          <Route path="/contact" element={<PageContact />}></Route>
+          <Route path="/contact/*" element={<PageContact />}></Route>
           <Route path="/cgu" element={<PageCGU />}></Route>
           <Route path="/truc-astuce" element={<PageTrucEtAstuce />}></Route>
           <Route path="/disjoncteur" element={<PageDisjoncteurMagnetoThermique />}></Route>

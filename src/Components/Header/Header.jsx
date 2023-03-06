@@ -1,18 +1,13 @@
 //Composant "Header"
 
-//Import des "hook"
-import { useState } from "react";
-
 
 
 //Import des composants enfants
-//import { Menu } from "../Menu/Menu.jsx";
+
 import { NavMenu } from "../NavMenu/NavMenu.jsx";
 import { NavCollapse } from "../NavCollapse/NavCollapse.jsx";
 import { NavLink } from "../NavLink/NavLink.jsx";
 
-//Import des breakPoints
-import { breakPoint } from "../../Utils/break_point/break_point.js";
 
 //Import des feuilles de style
 import "../../Style/CSS/header.css";

@@ -77,3 +77,16 @@
 .prise-courant .text-quiz {
   margin: 2em 0em;
 }
+.prise-courant .container-form {
+  width: 100%;
+  max-width: 800px;
+}
+.prise-courant .container-comment {
+  width: 100%;
+  max-width: 800px;
+}
+.prise-courant .container-comment .comment-li {
+  margin: 8em 0em;
+  -webkit-box-shadow: 0px 0px 20px #272727;
+          box-shadow: 0px 0px 20px #272727;
+}

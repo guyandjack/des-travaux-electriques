@@ -1,0 +1,50 @@
+//feuille de style de la page contact
+
+//Import des "mixins" qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.container-form{
+
+    position: relative;
+
+    .comment-stored{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        
+        
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 3em;
+        background-color: map-get($colors-rule, third-color);
+        width: fit-content;
+        
+        &__text{
+            color: map-get($colors-rule, fifth-color );
+            font-size: 1em;
+        }
+        
+        &__cross{
+            position:absolute;
+            top: 0.5em;
+            right: 0.5em;
+            color: map-get($colors-rule, fifth-color );
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0.2em;
+            box-shadow: 0px 0px 10px map-get($colors-rule, fourth-color);
+            cursor: pointer;
+        }
+
+    }
+
+    .hide{
+        display: none;
+    }
+}

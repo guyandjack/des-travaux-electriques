@@ -2,6 +2,9 @@
   padding: 1em;
   font-size: 1.2em;
   border: none;
+  -webkit-transition: background-color 250ms linear;
+  -o-transition: background-color 250ms linear;
+  transition: background-color 250ms linear;
 }
 .button .first-bg {
   background-color: #0267C1;
@@ -47,4 +50,11 @@
 }
 .button .fifth-text {
   color: #FBFFFE;
+}
+.button .disabled {
+  opacity: 0.4;
+  background-color: #EFA00B;
+}
+.button .disabled:hover {
+  background-color: #EFA00B;
 }

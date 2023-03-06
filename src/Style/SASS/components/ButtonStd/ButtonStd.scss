@@ -9,7 +9,9 @@
         padding: 1em;
         font-size: 1.2em;
         border: none;
-     
+        
+        transition: background-color 250ms linear;
+        
     }
 
     .first-bg{
@@ -71,5 +73,15 @@
     .fifth-text{
         color: map-get($colors-rule, fifth-color);
          
+    }
+
+    .disabled{
+        opacity: 0.4;
+
+         background-color: map-get($colors-rule, second-color);
+
+         &:hover{
+            background-color: map-get($colors-rule, second-color);
+        }
     }
 }

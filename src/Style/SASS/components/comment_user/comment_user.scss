@@ -1,0 +1,88 @@
+//Feuille de style du composant "CommentUser"
+
+//Import des mixin qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+.container-comment-user {
+    
+    
+  .comment-user {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: relative;
+    width: 100%;
+    background-color: lighten(map-get($colors-rule, fourth-color), 85%);
+
+    .container-info {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-start;
+      align-items: center;
+
+      width: 100%;
+      padding: 0.5em;
+
+      .comment-user-firstname,
+      .comment-user-date {
+        font-family: "Oswald", sans-serif;
+        padding: 0.5em;
+      }
+
+      .comment-user-firstname {
+        flex: 0 1 20%;
+        font-size: 1.4em;
+        color: lighten(map-get($colors-rule, fourth-color), 30%);
+        text-transform: capitalize;
+      }
+
+      .comment-user-date {
+        font-size: 1em;
+      }
+
+      .comment-user-text {
+        text-align: left;
+
+        flex: 0 1 70%;
+
+        font-size: 1.3em;
+        padding: 1.5em;
+      }
+    }
+
+    .container-button {
+      position: absolute;
+      right: 2em;
+      bottom: 0em;
+      transform: translateY(50%);
+      overflow: hidden;
+      border-radius: 1em;
+    }
+ }
+
+  .hide {
+    display: none;
+  }
+}
+
+.container-form-response {
+    
+    margin: 0em;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 250ms linear;
+}
+
+.display {
+   
+ margin: 4em 0em 4em 0em;
+ max-height: 1500px;
+ height:fit-content;
+ transition-duration: 250ms;
+ 
+}

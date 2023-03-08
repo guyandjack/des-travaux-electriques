@@ -167,7 +167,13 @@
             cursor: pointer;
         }
 
+        
+
     }
+
+    .unsaved{
+           background-color: map-get($colors-rule, second-color); 
+        }
 
     .hide{
         display: none;

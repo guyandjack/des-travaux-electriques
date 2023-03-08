@@ -80,7 +80,7 @@
   transition: max-height 250ms linear;
 }
 
-.display {
+.display-form-response {
   margin: 4em 0em 4em 0em;
   max-height: 1500px;
   height: -webkit-fit-content;

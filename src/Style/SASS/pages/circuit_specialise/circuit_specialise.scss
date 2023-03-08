@@ -109,4 +109,22 @@
   .text-quiz {
     margin: 2em 0em;
   }
+
+  .container-form{
+        width:100%;
+        max-width: 800px;
+        //border:2px solid red;
+    }
+
+    .container-comment{
+        width:100%;
+        max-width: 800px;
+        //border:2px solid red;
+
+        .comment-li{
+            margin: 8em 0em;
+            box-shadow: 0px 0px 20px map-get($colors-rule, fourth-color );
+           
+        }
+    }
 }

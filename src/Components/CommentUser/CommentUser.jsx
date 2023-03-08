@@ -11,10 +11,11 @@ import "../../Style/CSS/comment_user.css";
 //Fonction "CommentUser"
 function CommentUser({ firstname, date, text }) {
   let classContainerFormResponse = "container-form-response";
-  let classDisplay = "display";
+  let classDisplay = "display-form-response";
   let actualUrl = window.location.href;
   let splitUrl = actualUrl.split("/");
-  let refForm = splitUrl[splitUrl.length - 1];
+    let refForm = splitUrl[splitUrl.length - 1];
+    
 
   function displayFormResponse(e) {
     let parent = e.parentElement;

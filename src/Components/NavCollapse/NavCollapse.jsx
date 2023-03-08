@@ -90,7 +90,7 @@ function NavCollapse({ urlTo, urlImg, text, colorText, colorBg, children }) {
       setIsSmallScreen(false);
     }
 
-    console.log(isSmallScreen);
+    
   }
 
   window.addEventListener("resize", () => {

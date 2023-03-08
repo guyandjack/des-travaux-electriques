@@ -12,6 +12,8 @@ import "../../Style/CSS/formulaire.css";
 //Fonction "Formulaire"
 
 function Formulaire({ formref, isResponse, responseTo }) {
+
+  
   //Class css des élements du DOM
   let form = "form";
   let form_input = "form-input";
@@ -23,46 +25,36 @@ function Formulaire({ formref, isResponse, responseTo }) {
   let invalid_text = " invalid-text";
   let invalid_border = " invalid-border";
   let classHide = "hide";
-  let classDisplay = "display";
+  let classDisplay = "display-form-response";
 
   let messageLastName = "";
   let messageFirstName = "";
   let messageMail = "";
   let messageMsg = "";
-  let messageForm = "";
+  
   let contentPlaceHolder =
     "Vos commentaires et suggestions permetrons d'améliorer l' expérience utilisateur de nos futurs visiteurs";
 
+  //Message d' erreur des differents champs du formulaire
   const [lastName, setLastname] = useState(messageLastName);
   const [firstName, setFirstname] = useState(messageFirstName);
   const [mail, setMail] = useState(messageMail);
   const [msg, setMsg] = useState(messageMsg);
-  const [refForm, setRefForm] = useState(messageForm);
+  
   const [userUrl, setUserUrl] = useState();
 
+  //Boolean qui indique la validité des champs du formulaire
   const [isValidLastName, setisValidLastName] = useState(false);
   const [isValidFirstName, setisValidFirstName] = useState(false);
   const [isValidMail, setisValidMail] = useState(false);
   const [isValidMsg, setisValidMsg] = useState(false);
-  const [isValidRef, setisValidRef] = useState(false);
+  
 
   const [isdisabled, setIsDisabled] = useState("disabled");
-  const [isComment, setIsComment] = useState(false);
+  const [isCommentStored, setIsCommentStored] = useState();
   const [isValidButton, setIsValidButton] = useState(false);
 
-  //Valide l' input caché contenant la ref du formulaire
-  function validInputHidden() {
-    let valueHidden = document.querySelector("input[name='ref-form']").value;
-    if (masqueAlphaNum.test(valueHidden) !== true || !valueHidden) {
-      messageForm = "Formulaire non reconnu";
-      setRefForm(messageForm);
-      setisValidRef(false);
-    } else {
-      messageForm = "";
-      setRefForm(messageForm);
-      setisValidRef(true);
-    }
-  }
+  
 
   //recupere l' url courante
   function getUserUrl() {
@@ -71,7 +63,6 @@ function Formulaire({ formref, isResponse, responseTo }) {
 
   //valide le button submit en fonction de l'etat des inputs utilisateur
   useEffect(() => {
-    validInputHidden();
     getUserUrl();
 
     //validation de l' envoi du commentaire
@@ -79,17 +70,24 @@ function Formulaire({ formref, isResponse, responseTo }) {
     let params = new URLSearchParams(url.search);
 
     if (params.has("comment")) {
-      setIsComment(true);
-    } else {
-      setIsComment(false);
-    }
+      let commentValue = params.get("comment");
+
+      if (commentValue === "unsaved") {
+        setIsCommentStored(false);
+      }
+
+      if (commentValue === "saved") {
+        setIsCommentStored(true);
+      }
+    } 
+
+    
 
     if (
       isValidLastName === true &&
       isValidFirstName === true &&
       isValidMail === true &&
-      isValidMsg === true &&
-      isValidRef === true
+      isValidMsg === true
     ) {
       setIsDisabled("");
       setIsValidButton(true);
@@ -97,13 +95,13 @@ function Formulaire({ formref, isResponse, responseTo }) {
       setIsDisabled("disabled");
       setIsValidButton(false);
     }
-  });
+  }, [isValidLastName, isValidFirstName, isValidMail, isValidMsg]);
 
   //Motif qui autorise lettres majuscules et minuscules uniquement
   let masqueText = /^[A-Za-z_'.-]{2,20}$/;
 
   //Motif alphanumerique
-  let masqueAlphaNum = /^[a-z0-9-]{2,10}$/;
+  //let masqueAlphaNum = /^[a-z0-9-]{2,10}$/;
 
   //Motif qui autorise une adresse mail qui peut commencer par:
   //0 ou 4 chiffres
@@ -133,7 +131,7 @@ function Formulaire({ formref, isResponse, responseTo }) {
 
   //Valide l' input "firstName"
   function validFirstName(e) {
-    if (masqueText.test(e.target.value) !== true || e.target.value.length < 2) {
+    if (masqueText.test(e.target.value) !== true ) {
       messageFirstName = "Veuillez entrer un prénom valide";
       setisValidFirstName(false);
       setFirstname(messageFirstName);
@@ -146,7 +144,7 @@ function Formulaire({ formref, isResponse, responseTo }) {
 
   //Valide l' input "mail"
   function validMail(e) {
-    if (masqueMail.test(e.target.value) !== true || e.target.value.length < 5) {
+    if (masqueMail.test(e.target.value) !== true ) {
       messageMail = "Veuillez entrer un email valide";
       setisValidMail(false);
       setMail(messageMail);
@@ -160,9 +158,7 @@ function Formulaire({ formref, isResponse, responseTo }) {
   //Valide le message utilisateur
   function validMessage(e) {
     if (
-      masqueMessage.test(e.target.value) !== true ||
-      e.target.value.length < 10 ||
-      e.target.value.length > 200
+      masqueMessage.test(e.target.value) !== true    
     ) {
       messageMsg = "Nbr de carracteres incorrects ou carracteres non autorisés";
       setisValidMsg(false);
@@ -174,40 +170,44 @@ function Formulaire({ formref, isResponse, responseTo }) {
     }
   }
 
+  
+
+  //permet de cacher le popup de validation du commentaire enregistré
   function hide(evt) {
     let parent = evt.parentElement;
     parent.classList.add(classHide);
   }
-  
-  //fonction qui modifie la class du conteneur du formulaire
+
+  //positionne la hauteur à 0px du conteneur du formulaire
   function hideResponseForm(e) {
     let parent = e.parentElement;
     let form = parent.parentElement;
     let containerForm = form.parentElement;
     containerForm.classList.remove(classDisplay);
-
-}
+  }
 
   return (
     <form
       className={form}
       method="post"
-      action="http://localhost:3500/api/form-check"
+      action="http://localhost:3500/api/comment"
     >
       {isResponse ? (
         <div className="form__text-response">
           <p className="form__text">Répondre à {responseTo}</p>
-          <div onClick={(evt)=>{hideResponseForm(evt.currentTarget)}}>
-          <ButtonStd
-            btntype="button"
-            nom="btn-cancel-response"
-            text="Annuler votre réponse"
-            colorbg="second"
-            colortext="fifth"
-            
-          />
+          <div
+            onClick={(evt) => {
+              hideResponseForm(evt.currentTarget);
+            }}
+          >
+            <ButtonStd
+              btntype="button"
+              nom="btn-cancel-response"
+              text="Annuler votre réponse"
+              colorbg="second"
+              colortext="fifth"
+            />
           </div>
-          
         </div>
       ) : (
         <p className="form__text">
@@ -317,16 +317,9 @@ function Formulaire({ formref, isResponse, responseTo }) {
         {msg}
       </p>
 
-      <input type="hidden" name="ref-form" value={formref}></input>
-      <p
-        className={
-          isValidMsg ? form_flag + valid_text : form_flag + invalid_text
-        }
-      >
-        {refForm}
-      </p>
-
       <input type="hidden" name="userurl" value={userUrl}></input>
+      <input type="hidden" name="formref" value={formref}></input>
+      <input type="hidden" name="isresponse" value={isResponse}></input>
 
       <div className="cont-valid-btn">
         <ButtonStd
@@ -339,10 +332,26 @@ function Formulaire({ formref, isResponse, responseTo }) {
         ></ButtonStd>
       </div>
 
-      {isComment ? (
+      {isCommentStored === true ? (
         <div className="comment-stored">
           <span className="comment-stored__text">
             Votre commentaire a été envoyé
+          </span>
+          <span
+            className="comment-stored__cross"
+            onClick={(e) => {
+              hide(e.currentTarget);
+            }}
+          >
+            X
+          </span>
+        </div>
+      ) : null}
+
+      {isCommentStored === false ? (
+        <div className="comment-stored unsave">
+          <span className="comment-stored__text">
+            Commentaire non publié
           </span>
           <span
             className="comment-stored__cross"

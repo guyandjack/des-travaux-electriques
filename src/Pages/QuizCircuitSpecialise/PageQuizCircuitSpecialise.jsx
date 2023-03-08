@@ -1,4 +1,4 @@
-//Page Quiz-Prise courant
+//Page Quiz-Circuit-Specialisé
 
 //Import des hooks
 import { useState, useEffect } from "react";
@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //Import de la liste de questions du quiz "prise de courant et circuits dédiés"
-import { ContentQuizPC } from "../../Data/ContentQuiz/ContentQuizPC/ContentQuizPC.jsx";
+import { ContentQuizCircuitSpecialise } from "../../Data/ContentQuiz/ContentQuizCircuitSpecialise/ContentQuizCircuitSpecialise.jsx";
 
 //Import des composants enfants
 
@@ -18,7 +18,7 @@ import { QuizQuestion } from "../../Components/QuizQuestion/QuizQuestion.jsx";
 //import des feuilles de style
 import "../../Style/CSS/page_quiz_pc.css";
 
-function PageQuizPC() {
+function PageQuizCircuitSpecialise() {
   /******************* declaration des constantes et variables **************** */
 
   const [isvalid, setisvalid] = useState(false);
@@ -32,7 +32,7 @@ function PageQuizPC() {
   
 
   //nombre total de question
-  let numberTotalQuestion = ContentQuizPC.length;
+  let numberTotalQuestion = ContentQuizCircuitSpecialise.length;
 
   //tableau contenant la reponse du user à une question(idquestion, idproposition, userresponsevalue)
   let arrayUserResponses;
@@ -62,23 +62,22 @@ function PageQuizPC() {
 
     //mise à jour des reponses dans le local storage
     localStorage.setItem(
-      "userResponsesQuizPC",
+      "userResponsesQuizCircuitSpecialise",
       JSON.stringify(arrayUserResponses)
     );
   }
 
   //Efface un element du local storage
   function deleteElementInLocalStorage(key) {
-    
     if (!localStorage.getItem(key)) {
-      return false
+      return false;
     }
 
     localStorage.removeItem(key);
-    return true
+    return true;
   }
 
-  //Recupère un élément du localStorage : (retourne un tableau ou -1)
+  //Recupère un élément du localStorage : (retourne un tableau ou un tableau vide)
   function getFromLocalStorge(key) {
     if (!localStorage.getItem(key)) {
       return [];
@@ -99,7 +98,6 @@ function PageQuizPC() {
     let idQuestion = userResponse.idq;
     let idInput = userResponse.idi;
     let userSelect = userResponse.ur;
-    console.log(userSelect);
     let rightResponse = userResponse.gr;
 
     //Test si les proprietees existent
@@ -117,7 +115,7 @@ function PageQuizPC() {
         idi: idInput,
         result: resultQuestion,
       };
-      console.log(updateValue);
+      
       //enregistrement dans le local storage
       storeInLocalStorage(updateValue);
     }
@@ -130,13 +128,13 @@ function PageQuizPC() {
   //Initialisation du quiz
   function InitQuiz() {
     //si la propriete userResponseQuizPC n' existe pas on initialise avec un tableau vide
-    if (!localStorage.getItem("userResponsesQuizPC")) {
+    if (!localStorage.getItem("userResponsesQuizCircuitSpecialise")) {
       arrayUserResponses = [];
 
       //si la propriete existe on initialise avec le tableau "userresponsesQuizPC" du local storage
     } else {
-      arrayUserResponses = getFromLocalStorge("userResponsesQuizPC");
-      console.log(arrayUserResponses);
+      arrayUserResponses = getFromLocalStorge("userResponsesQuizCircuitSpecialise");
+      
       //on passe l' etat des inputs à "checked", cela mémorise les choix précédent du user
       InputUserChecked(arrayUserResponses);
     }
@@ -147,7 +145,7 @@ function PageQuizPC() {
     if (arrayResponses.length > 0) {
       arrayResponses.forEach((userSelect) => {
         let input = document.getElementById(userSelect.idi);
-        console.log(input);
+        
         if (input !== null) {
           input.setAttribute("checked", "checked");
         }
@@ -162,7 +160,6 @@ function PageQuizPC() {
 
   function checkIfInputChecked() {
     let allQuestions = document.querySelectorAll("div.container-question");
-    
 
     let nbrOfFlag = 0;
 
@@ -179,25 +176,25 @@ function PageQuizPC() {
         nbrOfFlag = nbrOfFlag + 1;
       }
     }
-    console.log(nbrOfFlag)
-    return nbrOfFlag===numberTotalQuestion? true: false
+    
+    return nbrOfFlag === numberTotalQuestion ? true : false;
   }
 
   // calcule le score du user :(retourne un nombre entier ou un boolean)
   //-2-
   function calulateFinalScore(key) {
     arrayUserResponses = getFromLocalStorge(key);
-    console.log(arrayUserResponses);
+    
     if (arrayUserResponses.length === 0) {
       return -1;
     }
 
     let score = 0;
     arrayUserResponses.forEach((response) => {
-      console.log(response);
+      
       score = score + parseInt(response.result, 10);
 
-      console.log(typeof score);
+      
     });
     return score;
   }
@@ -206,7 +203,9 @@ function PageQuizPC() {
   //-3-
   function disabledAllInputs() {
     let AllInputs = document.querySelectorAll("input[type='radio']");
-    let AllInputsChecked = document.querySelectorAll("input[type='radio']:checked");
+    let AllInputsChecked = document.querySelectorAll(
+      "input[type='radio']:checked"
+    );
     AllInputs.forEach((input) => {
       input.setAttribute("disabled", "true");
     });
@@ -218,7 +217,7 @@ function PageQuizPC() {
   //Affiche le score et les commentaires :(retourne un commentaire et une class de style)
   //-4-
   function displayScore(userScore) {
-    console.log(userScore);
+    
     userFinalResult.finalResult = userScore;
 
     if (userScore < 1) {
@@ -275,24 +274,24 @@ function PageQuizPC() {
   //permet le controle et l' afffichage du score final apres validation des reponses
   function valideResponse() {
     let flag = checkIfInputChecked();
-   
+
     if (!flag) {
-      setMessageError(true)
-      return
+      setMessageError(true);
+      return;
     }
-    let finalScore = calulateFinalScore("userResponsesQuizPC");
-    
+    let finalScore = calulateFinalScore("userResponsesQuizCircuitSpecialise");
+
     disabledAllInputs();
     displayScore(finalScore);
     setMessageError(false);
-    deleteElementInLocalStorage("userResponsesQuizPC");
+    deleteElementInLocalStorage("userResponsesQuizCircuitSpecialise");
     setisvalid(true);
   }
 
   //Permet de relancer le quiz à zero.
   function resetQuiz(e) {
     e.preventDefault();
-    localStorage.removeItem("userResponsesQuizPC");
+    localStorage.removeItem("userResponsesQuizCircuitSpecialise");
     window.location.reload();
   }
 
@@ -317,13 +316,13 @@ function PageQuizPC() {
         <Title
           pagetype="page"
           title="quiz"
-          text="« Petit test de connaissance sur les prises électriques »"
-          urlimg="/Asset/images_page_pc_16A/img-title-pc-250px.png"
+          text="« Petit test de connaissance sur les circuits spécialisés »"
+          urlimg="/Asset/images_page_circuit_specialise/lave-linge/img-lave-linge.png"
         ></Title>
       </div>
 
       <form className="quiz-pc__form">
-        {ContentQuizPC.map((element, index) => {
+        {ContentQuizCircuitSpecialise.map((element, index) => {
           return (
             <div key={index} className="quiz-pc__form__question">
               <QuizQuestion
@@ -361,14 +360,11 @@ function PageQuizPC() {
 
         {isvalid ? (
           <div className="quiz-pc__resultat">
-            
-
             <div
               className={
                 "quiz-pc__resultat__rate" + `${userFinalResult.colorUserResult}`
               }
             >
-              
               {"Votre score est de : "}
               {userFinalResult.finalResult >= 1
                 ? Math.round(
@@ -404,4 +400,4 @@ function PageQuizPC() {
   );
 }
 
-export { PageQuizPC };
+export { PageQuizCircuitSpecialise };

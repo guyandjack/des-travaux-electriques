@@ -109,3 +109,16 @@
 .circuit-specialise .text-quiz {
   margin: 2em 0em;
 }
+.circuit-specialise .container-form {
+  width: 100%;
+  max-width: 800px;
+}
+.circuit-specialise .container-comment {
+  width: 100%;
+  max-width: 800px;
+}
+.circuit-specialise .container-comment .comment-li {
+  margin: 8em 0em;
+  -webkit-box-shadow: 0px 0px 20px #272727;
+          box-shadow: 0px 0px 20px #272727;
+}

@@ -18,14 +18,18 @@ import { Collapse } from "../../Components/Collapse/Collapse.jsx";
 import { ContainerImg } from "../../Components/Container_img/Container_img.jsx";
 import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
 import { TitleHN } from "../../Components/Title/TitleHN/TitleHN.jsx";
+import { Formulaire } from "../../Components/Formulaire/Formulaire.jsx";
+import { CommentUser } from "../../Components/CommentUser/CommentUser.jsx";
 
 //Import des feuilles de style
 import "../../Style/CSS/circuit_specialise.css";
 
 //Fonction "PageCircuitSpecialise"
 function PageCircuitSpecialise() {
+
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [imageSize, setImageSize] = useState("");
+  const [arrayComments, setArrayComments] = useState([]);
 
   //url image.
 
@@ -41,10 +45,11 @@ function PageCircuitSpecialise() {
     ContentImagePageCircuitSpecialise.schemaPlaqueCuisson[imageSize];
   let schemaCumulus =
     ContentImagePageCircuitSpecialise.schemaCumulus[imageSize];
-  
+
   let schemaLaveLinge =
     ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
-
+  
+  //determine la taille de l' ecran pour les images responsives
   useEffect(() => {
     getImageSize();
     window.addEventListener("resize", () => {
@@ -52,9 +57,26 @@ function PageCircuitSpecialise() {
     });
   }, [windowSize]);
 
+  //realise une requette sur l' api pour recuperer les commentaires de la page
+  useEffect(() => {
+    
+    let refForm = "circuit-specialise";
+
+    fetch("http://localhost:3500/api/comment/" + refForm)
+      .then((response) => {
+        response.json().then((responses) => {
+          console.log(responses);
+          setArrayComments(responses);
+        });
+      })
+
+      .catch((error) => {
+        console.log("msg erreur requette api: " + error);
+      });
+  }, []);
+
   function getImageSize() {
     let newSizeScreen = window.innerWidth;
-    console.log(newSizeScreen);
 
     if (newSizeScreen < 575) {
       setImageSize("small");
@@ -66,6 +88,12 @@ function PageCircuitSpecialise() {
       setImageSize("large");
     }
   }
+
+  //recupere l url de la page et extrait la reference du formulaire.
+  //la refenrence d'un formulaire correspond à une page specifique.
+  let actualUrl = window.location.href;
+  let splitUrl = actualUrl.split("/");
+  let refForm = splitUrl[splitUrl.length - 1];
 
   return (
     <div className="circuit-specialise">
@@ -92,7 +120,7 @@ function PageCircuitSpecialise() {
       </div>
 
       <section id="cuisson" className="section">
-        <div  className="container-undertitle">
+        <div className="container-undertitle">
           <TitleHN
             titleText="Circuit spécialisé « Plaque de cuisson »"
             titleLevel={2}
@@ -160,7 +188,7 @@ function PageCircuitSpecialise() {
       </section>
 
       <section id="cumulus" className="section color-section">
-        <div  className="container-undertitle">
+        <div className="container-undertitle">
           <TitleHN
             titleText="Circuit spécialisé « cumulus »"
             titleLevel={2}
@@ -220,10 +248,8 @@ function PageCircuitSpecialise() {
         </div>
       </section>
 
-      
-
       <section id="lave-linge" className="section color-section">
-        <div  className="container-undertitle">
+        <div className="container-undertitle">
           <TitleHN
             titleText="Circuit spécialisé « lave-linge »"
             titleLevel={2}
@@ -286,15 +312,35 @@ function PageCircuitSpecialise() {
       </section>
 
       <div className="text-quiz">
-        <Link to="/quiz">
+        <Link to="/quiz/circuit-specialise">
           <ButtonStd
             btntype="button"
-            text="Lancer le 'Quiz'"
+            text="Testez vos connaissances avec le 'Quiz'"
             colorbg="third"
             colortext="fifth"
           ></ButtonStd>
         </Link>
       </div>
+
+      <div id="form" className="container-form">
+        <Formulaire formref={refForm} isResponse={false} responseTo={null} />
+      </div>
+
+      <ul id="" className="container-comment">
+        {arrayComments.length > 0
+          ? arrayComments.map((comment, index) => {
+              return (
+                <li key={index} className="comment-li">
+                  <CommentUser
+                    firstname={comment.firstname}
+                    date={comment.date}
+                    text={comment.comment}
+                  />
+                </li>
+              );
+            })
+          : null}
+      </ul>
     </div>
   );
 }

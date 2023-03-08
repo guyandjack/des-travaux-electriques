@@ -21,6 +21,7 @@ import { PageContact } from "../src/Pages/Contact/Contact.jsx";
 import { PageCGU } from "../src/Pages/CGU/CGU.jsx";
 import { PageTrucEtAstuce } from "../src/Pages/Truc_Et_Astuce/Truc_Et_Astuce.jsx";
 import { PageQuizPC } from "./Pages/QuizPC/PageQuizPC.jsx";
+import { PageQuizCircuitSpecialise } from "./Pages/QuizCircuitSpecialise/PageQuizCircuitSpecialise.jsx";
 import { PageErreur } from "../src/Pages/Erreur_404/Erreur_404.jsx";
 
 //Import des composants enfants
@@ -35,9 +36,9 @@ function App() {
 
         <Routes>
           <Route exact path="/" element={<PageHome />}></Route>
-          <Route path="/pc16a" element={<PagePC16A />}></Route>
+          <Route path="/schema/pc16a" element={<PagePC16A />}></Route>
           <Route path="/chauffage-electrique" element={<PageCircuitChauffageElectrique />}></Route>
-          <Route path="/circuit-specialise" element={<PageCircuitSpecialise />}></Route>
+          <Route path="/schema/circuit-specialise" element={<PageCircuitSpecialise />}></Route>
           <Route path="/circuit-eclairage"  element={<PageCircuitEclairage />}></Route>
           <Route path="/db" element={<PageDisjoncteurDeBranchement />}></Route>
           <Route path="/ddr" element={<PageDispositifDifferentiel />}></Route>
@@ -47,7 +48,8 @@ function App() {
           <Route path="/cgu" element={<PageCGU />}></Route>
           <Route path="/truc-astuce" element={<PageTrucEtAstuce />}></Route>
           <Route path="/disjoncteur" element={<PageDisjoncteurMagnetoThermique />}></Route>
-          <Route path="/quiz-pc16a" element={<PageQuizPC />}></Route>
+          <Route path="/quiz/pc16a" element={<PageQuizPC />}></Route>
+          <Route path="/quiz/circuit-specialise" element={<PageQuizCircuitSpecialise />}></Route>
           <Route path="/*" element={<PageErreur />}></Route>
         </Routes>
 

@@ -61,28 +61,28 @@ function Header() {
             </NavCollapse>
             <NavCollapse urlImg="" text="Schéma" colorText="second" colorBg="">
               <NavLink
-                urlTo="/pc16a"
+                urlTo="/schema/pc16a"
                 urlImg=""
                 text="Prise de courant 16A"
                 colorText="fourth"
                 colorBg=""
               />
               <NavLink
-                urlTo="/circuit-specialise"
+                urlTo="/schema/circuit-specialise"
                 urlImg=""
                 text="Circuits spécialisés"
                 colorText="fourth"
                 colorBg=""
               />
               <NavLink
-                urlTo="/circuit-eclairage"
+                urlTo="/schema/circuit-eclairage"
                 urlImg=""
                 text="Circuit éclairage"
                 colorText="fourth"
                 colorBg=""
               />
               <NavLink
-                urlTo="/protection-des-personnes"
+                urlTo="/schema/protection-des-personnes"
                 urlImg=""
                 text="Protection des personnes"
                 colorText="fourth"
@@ -105,13 +105,7 @@ function Header() {
                 colorBg=""
               />
             </NavCollapse>
-            <NavLink
-              urlTo="/contact"
-              urlImg=""
-              text="Contact"
-              colorText="second"
-              colorBg=""
-            />
+            
           </NavMenu>
         </div>
       </nav>

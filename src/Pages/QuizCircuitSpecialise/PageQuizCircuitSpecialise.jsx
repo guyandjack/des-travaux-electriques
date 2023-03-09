@@ -32,8 +32,6 @@ function PageQuizCircuitSpecialise() {
 
   const [userFinalResult, setUserFinalResult] = useState({});
 
-  
-
   //nombre total de question
   let numberTotalQuestion = ContentQuizCircuitSpecialise.length;
 
@@ -45,7 +43,9 @@ function PageQuizCircuitSpecialise() {
   //Enregistre un élémment dans le localStorage (ajout ou remplacement)
 
   function storeInLocalStorage(updateValue) {
-    arrayUserResponses = getFromLocalStorge("userResponsesQuizCircuitSpecialise");
+    arrayUserResponses = getFromLocalStorge(
+      "userResponsesQuizCircuitSpecialise"
+    );
     console.log(arrayUserResponses);
 
     //check si une reponse a deja ete donnée
@@ -118,7 +118,7 @@ function PageQuizCircuitSpecialise() {
         idi: idInput,
         result: resultQuestion,
       };
-      
+
       //enregistrement dans le local storage
       storeInLocalStorage(updateValue);
     }
@@ -136,8 +136,10 @@ function PageQuizCircuitSpecialise() {
 
       //si la propriete existe on initialise avec le tableau "userresponsesQuizPC" du local storage
     } else {
-      arrayUserResponses = getFromLocalStorge("userResponsesQuizCircuitSpecialise");
-      
+      arrayUserResponses = getFromLocalStorge(
+        "userResponsesQuizCircuitSpecialise"
+      );
+
       //on passe l' etat des inputs à "checked", cela mémorise les choix précédent du user
       InputUserChecked(arrayUserResponses);
     }
@@ -148,7 +150,7 @@ function PageQuizCircuitSpecialise() {
     if (arrayResponses.length > 0) {
       arrayResponses.forEach((userSelect) => {
         let input = document.getElementById(userSelect.idi);
-        
+
         if (input !== null) {
           input.setAttribute("checked", "checked");
         }
@@ -179,7 +181,7 @@ function PageQuizCircuitSpecialise() {
         nbrOfFlag = nbrOfFlag + 1;
       }
     }
-    
+
     return nbrOfFlag === numberTotalQuestion ? true : false;
   }
 
@@ -187,22 +189,19 @@ function PageQuizCircuitSpecialise() {
   //-2-
   function calulateFinalScore(key) {
     arrayUserResponses = getFromLocalStorge(key);
-    
+
     if (arrayUserResponses.length === 0) {
       return -1;
     }
 
     let score = 0;
     arrayUserResponses.forEach((response) => {
-      
       score = score + parseInt(response.result, 10);
-
-      
     });
     return score;
   }
 
-  //Desactive tous les boutons radio non selectionnés 
+  //Desactive tous les boutons radio non selectionnés
   //-3-
   function disabledAllInputs() {
     let AllInputs = document.querySelectorAll("input[type='radio']");
@@ -220,7 +219,6 @@ function PageQuizCircuitSpecialise() {
   //Affiche le score et les commentaires :(retourne un commentaire et une class de style)
   //-4-
   function displayScore(userScore) {
-    
     userFinalResult.finalResult = userScore;
 
     if (userScore < 1) {
@@ -353,12 +351,14 @@ function PageQuizCircuitSpecialise() {
           );
         })}
 
-        <ButtonStd
-          btntype="button"
-          text="Valider vos réponses"
-          colorbg="first"
-          colortext="fifth"
-        ></ButtonStd>
+        {!isvalid ? (
+          <ButtonStd
+            btntype="button"
+            text="Valider vos réponses"
+            colorbg="first"
+            colortext="fifth"
+          ></ButtonStd>
+        ) : null}
 
         {isvalid ? (
           <div className="quiz-pc__resultat">

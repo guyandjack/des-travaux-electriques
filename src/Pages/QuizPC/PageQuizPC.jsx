@@ -353,12 +353,13 @@ function PageQuizPC() {
           );
         })}
 
-        <ButtonStd
+        {!isvalid ? <ButtonStd
           btntype="button"
           text="Valider vos réponses"
           colorbg="first"
           colortext="fifth"
         ></ButtonStd>
+          : null}
 
         {isvalid ? (
           <div className="quiz-pc__resultat">

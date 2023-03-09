@@ -91,14 +91,14 @@ function Header() {
             </NavCollapse>
             <NavCollapse urlImg="" text="Quiz" colorText="second" colorBg="">
               <NavLink
-                urlTo="/quiz-pc16a"
+                urlTo="/quiz/pc16a"
                 urlImg=""
                 text="Quiz-Prise de courant"
                 colorText="fourth"
                 colorBg=""
               />
               <NavLink
-                urlTo="/quiz-circuit-spécialisé"
+                urlTo="/quiz/circuit-specialise"
                 urlImg=""
                 text="Quiz-circuits spécialisés"
                 colorText="fourth"

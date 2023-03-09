@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 //Import de la liste de questions du quiz "prise de courant et circuits dédiés"
 import { ContentQuizCircuitSpecialise } from "../../Data/ContentQuiz/ContentQuizCircuitSpecialise/ContentQuizCircuitSpecialise.jsx";
 
+//Import des commentaires relatif aux resultats du quiz
+import { commentResult } from "../../Data/ContentQuiz/CommentResult/CommentResult.js";
+
 //Import des composants enfants
 
 import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
@@ -42,7 +45,7 @@ function PageQuizCircuitSpecialise() {
   //Enregistre un élémment dans le localStorage (ajout ou remplacement)
 
   function storeInLocalStorage(updateValue) {
-    arrayUserResponses = getFromLocalStorge("userResponsesQuizPC");
+    arrayUserResponses = getFromLocalStorge("userResponsesQuizCircuitSpecialise");
     console.log(arrayUserResponses);
 
     //check si une reponse a deja ete donnée
@@ -180,7 +183,7 @@ function PageQuizCircuitSpecialise() {
     return nbrOfFlag === numberTotalQuestion ? true : false;
   }
 
-  // calcule le score du user :(retourne un nombre entier ou un boolean)
+  // calcule le score du user :(retourne un nombre entier positif ou negatif)
   //-2-
   function calulateFinalScore(key) {
     arrayUserResponses = getFromLocalStorge(key);
@@ -199,7 +202,7 @@ function PageQuizCircuitSpecialise() {
     return score;
   }
 
-  //Desactive tous les boutons radio non selectionnés
+  //Desactive tous les boutons radio non selectionnés 
   //-3-
   function disabledAllInputs() {
     let AllInputs = document.querySelectorAll("input[type='radio']");
@@ -221,8 +224,7 @@ function PageQuizCircuitSpecialise() {
     userFinalResult.finalResult = userScore;
 
     if (userScore < 1) {
-      userFinalResult.textEval =
-        "A un professionnel ...faire appel tu dois....";
+      userFinalResult.textEval = commentResult.level1;
       userFinalResult.colorUserResult = " bad-result";
     }
 
@@ -230,8 +232,7 @@ function PageQuizCircuitSpecialise() {
       Math.round((userScore / numberTotalQuestion) * 100) < 25 &&
       Math.round((userScore / numberTotalQuestion) * 100) > 0
     ) {
-      userFinalResult.textEval =
-        "Mon jeune apprenti, etudier tu dois encore....Que la force soit avec toi...";
+      userFinalResult.textEval = commentResult.level2;
       userFinalResult.colorUserResult = " bad-result";
     }
 
@@ -239,7 +240,7 @@ function PageQuizCircuitSpecialise() {
       Math.round((userScore / numberTotalQuestion) * 100) >= 25 &&
       Math.round((userScore / numberTotalQuestion) * 100) < 50
     ) {
-      userFinalResult.textEval = "Mon cher padawan, en progres tu es....";
+      userFinalResult.textEval = commentResult.level3;
       userFinalResult.colorUserResult = " bad-result";
     }
 
@@ -247,7 +248,7 @@ function PageQuizCircuitSpecialise() {
       Math.round((userScore / numberTotalQuestion) * 100) >= 50 &&
       Math.round((userScore / numberTotalQuestion) * 100) < 75
     ) {
-      userFinalResult.textEval = "perceverer tu dois pour devenir un jedi....";
+      userFinalResult.textEval = commentResult.level4;
       userFinalResult.colorUserResult = " medium-result";
     }
 
@@ -255,12 +256,12 @@ function PageQuizCircuitSpecialise() {
       Math.round((userScore / numberTotalQuestion) * 100) >= 75 &&
       Math.round((userScore / numberTotalQuestion) * 100) < 100
     ) {
-      userFinalResult.textEval = "Te voila elu au rang de jedi";
+      userFinalResult.textEval = commentResult.level5;
       userFinalResult.colorUserResult = " good-result";
     }
 
     if (Math.round((userScore / numberTotalQuestion) * 100) === 100) {
-      userFinalResult.textEval = "La force est puissante en toi";
+      userFinalResult.textEval = commentResult.level6;
       userFinalResult.colorUserResult = " good-result";
     }
 
@@ -326,6 +327,7 @@ function PageQuizCircuitSpecialise() {
           return (
             <div key={index} className="quiz-pc__form__question">
               <QuizQuestion
+                contentQuiz={ContentQuizCircuitSpecialise}
                 indexQuestion={index}
                 numberQuestion={index + 1}
                 idquestion={element.idQ}
@@ -372,6 +374,9 @@ function PageQuizCircuitSpecialise() {
                   ) + " %"
                 : " 0 %"}
             </div>
+            <div>
+              <p>{userFinalResult.textEval}</p>
+            </div>
 
             <div
               className="quiz-pc__resultat__btn-reset"
@@ -383,7 +388,7 @@ function PageQuizCircuitSpecialise() {
                 btntype="reset"
                 name="resetquiz"
                 text="Relancer le quiz"
-                colorbg="second"
+                colorbg="third"
                 colortext="fifth"
               ></ButtonStd>
             </div>

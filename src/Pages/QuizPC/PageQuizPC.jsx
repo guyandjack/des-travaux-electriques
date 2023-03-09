@@ -99,7 +99,7 @@ function PageQuizPC() {
     let idQuestion = userResponse.idq;
     let idInput = userResponse.idi;
     let userSelect = userResponse.ur;
-    console.log(userSelect);
+    
     let rightResponse = userResponse.gr;
 
     //Test si les proprietees existent
@@ -327,6 +327,7 @@ function PageQuizPC() {
           return (
             <div key={index} className="quiz-pc__form__question">
               <QuizQuestion
+                contentQuiz={ContentQuizPC}
                 indexQuestion={index}
                 numberQuestion={index + 1}
                 idquestion={element.idQ}
@@ -387,7 +388,7 @@ function PageQuizPC() {
                 btntype="reset"
                 name="resetquiz"
                 text="Relancer le quiz"
-                colorbg="second"
+                colorbg="third"
                 colortext="fifth"
               ></ButtonStd>
             </div>

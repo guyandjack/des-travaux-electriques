@@ -3,8 +3,7 @@
 //Import des hooks
 import { useState, useEffect } from "react";
 
-//Import de la liste de questions du quiz "prise de courant et circuits dédiés"
-import { ContentQuizPC } from "../../Data/ContentQuiz/ContentQuizPC/ContentQuizPC.jsx";
+
 
 //Import des feuilles de style
 import "../../Style/CSS/quizquestion.css";
@@ -12,6 +11,7 @@ import "../../Style/CSS/quizquestion.css";
 //Function "QuizQuestion"
 
 function QuizQuestion({
+  contentQuiz,
   indexQuestion,
   numberQuestion,
   idquestion,
@@ -71,10 +71,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition1 === ContentQuizPC[indexQuestion].goodresponse && valid  ? (
+            {proposition1 === contentQuiz[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition1 !== ContentQuizPC[indexQuestion].goodresponse && valid  ? (
+            {proposition1 !== contentQuiz[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>
@@ -102,10 +102,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition2 == ContentQuizPC[indexQuestion].goodresponse && valid ? (
+            {proposition2 == contentQuiz[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition2 !== ContentQuizPC[indexQuestion].goodresponse && valid ? (
+            {proposition2 !== contentQuiz[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>
@@ -133,10 +133,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition3 === ContentQuizPC[indexQuestion].goodresponse && valid  ? (
+            {proposition3 === contentQuiz[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition3 !== ContentQuizPC[indexQuestion].goodresponse && valid ? (
+            {proposition3 !== contentQuiz[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>
@@ -164,10 +164,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition4 === ContentQuizPC[indexQuestion].goodresponse && valid  ? (
+            {proposition4 === contentQuiz[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition4 !== ContentQuizPC[indexQuestion].goodresponse && valid  ? (
+            {proposition4 !== contentQuiz[indexQuestion].goodresponse && valid  ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>
@@ -195,10 +195,10 @@ function QuizQuestion({
             }}
           ></input>
           <div>
-            {proposition5 === ContentQuizPC[indexQuestion].goodresponse && valid ? (
+            {proposition5 === contentQuiz[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={validIcon} alt=""></img>
             ) : null}
-            {proposition5 !== ContentQuizPC[indexQuestion].goodresponse && valid ? (
+            {proposition5 !== contentQuiz[indexQuestion].goodresponse && valid ? (
               <img className="icon-result" src={invalidIcon} alt=""></img>
             ) : null}
           </div>

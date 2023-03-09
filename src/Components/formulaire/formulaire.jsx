@@ -11,7 +11,7 @@ import "../../Style/CSS/formulaire.css";
 
 //Fonction "Formulaire"
 
-function Formulaire({ formref, isResponse, responseTo }) {
+function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
 
   
   //Class css des élements du DOM
@@ -318,8 +318,13 @@ function Formulaire({ formref, isResponse, responseTo }) {
       </p>
 
       <input type="hidden" name="userurl" value={userUrl}></input>
-      <input type="hidden" name="formref" value={formref}></input>
+      <input type="hidden" name="pageref" value={pageRef}></input>
       <input type="hidden" name="isresponse" value={isResponse}></input>
+      {isResponse ? (
+        <input type="hidden" name="responseIdTo" value={responseIdTo}></input>
+      ) : (
+        <input type="hidden" name="responseIdTo" value={null}></input>
+      )}
 
       <div className="cont-valid-btn">
         <ButtonStd
@@ -350,9 +355,7 @@ function Formulaire({ formref, isResponse, responseTo }) {
 
       {isCommentStored === false ? (
         <div className="comment-stored unsave">
-          <span className="comment-stored__text">
-            Commentaire non publié
-          </span>
+          <span className="comment-stored__text">Commentaire non publié</span>
           <span
             className="comment-stored__cross"
             onClick={(e) => {

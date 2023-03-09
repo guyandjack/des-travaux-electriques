@@ -11,8 +11,9 @@ const commentSchema = mongoose.Schema({
     comment: { type: String, required: true },
     adressIp: { type: String, required: true },
     date: { type: String, required: true },
-    formref: {type: String, required: true},
-    isresponse: { type: Boolean, required: true }
+    pageref: {type: String, required: true},
+    isresponse: { type: Boolean, required: true },
+    originalcommentid : { type: String, required: false}
     
 });
 

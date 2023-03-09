@@ -9,12 +9,12 @@ import { Formulaire } from "../Formulaire/Formulaire.jsx";
 import "../../Style/CSS/comment_user.css";
 
 //Fonction "CommentUser"
-function CommentUser({ firstname, date, text }) {
+function CommentUser({ firstname, date, text, idcommentoriginal }) {
   let classContainerFormResponse = "container-form-response";
   let classDisplay = "display-form-response";
   let actualUrl = window.location.href;
   let splitUrl = actualUrl.split("/");
-    let refForm = splitUrl[splitUrl.length - 1];
+    let refPage = splitUrl[splitUrl.length - 1];
     
 
   function displayFormResponse(e) {
@@ -50,9 +50,10 @@ function CommentUser({ firstname, date, text }) {
       </div>
       <div className={classContainerFormResponse}>
         <Formulaire
-          formref={refForm}
+          pageRef={refPage}
           isResponse={true}
           responseTo={firstname}
+          responseIdTo={idcommentoriginal}
         />
       </div>
     </div>

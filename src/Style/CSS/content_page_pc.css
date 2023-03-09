@@ -1,6 +1,7 @@
 .prise-courant .description, .prise-courant .precaution {
   counter-set: compteur;
 }
+
 .prise-courant .description__text, .prise-courant .precaution__text {
   margin-top: 0.5em;
   font-size: 1.2em;
@@ -8,6 +9,7 @@
   font-style: italic;
   color: #EFA00B;
 }
+
 .prise-courant .description__li::before, .prise-courant .precaution__li::before {
   content: counter(compteur);
   display: inline-block;
@@ -18,17 +20,21 @@
   text-align: right;
   margin-right: 1em;
 }
+
 .prise-courant .description__li, .prise-courant .precaution__li {
   counter-increment: compteur;
   margin-top: 0.5em;
   font-size: 1.2em;
 }
+
 .prise-courant .description .important, .prise-courant .precaution .important {
   color: #efa00b;
 }
+
 .prise-courant .principe, .prise-courant .astuce, .prise-courant .savoir {
   font-size: 1.2em;
 }
+
 .prise-courant .principe__text, .prise-courant .astuce__text, .prise-courant .savoir__text {
   line-height: 1.5em;
   margin: 0.5em 0em;

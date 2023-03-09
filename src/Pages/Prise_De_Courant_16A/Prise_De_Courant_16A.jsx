@@ -84,7 +84,7 @@ function PagePC16A() {
   //la refenrence d'un formulaire correspond à une page specifique.
   let actualUrl = window.location.href;
   let splitUrl = actualUrl.split("/");
-  let refForm = splitUrl[splitUrl.length - 1];
+  let refPage = splitUrl[splitUrl.length - 1];
   
 
   return (
@@ -188,17 +188,19 @@ function PagePC16A() {
         </Link>
       </div>
       <div id="form" className="container-form">
-        <Formulaire formref={refForm} isResponse={false} responseTo={null} />
+        <Formulaire pageref={refPage} isResponse={false} responseTo={null} />
       </div>
       <ul id="" className="container-comment">
         {arrayComments.length > 0
           ? arrayComments.map((comment, index) => {
+            console.log(comment._id)
               return (
                 <li key={index} className="comment-li">
                   <CommentUser
                     firstname={comment.firstname}
                     date={comment.date}
                     text={comment.comment}
+                    idcommentoriginal={comment._id}
                   />
                 </li>
               );

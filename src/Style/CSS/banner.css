@@ -20,11 +20,13 @@
   -o-transition: border-radius 250ms linear;
   transition: border-radius 250ms linear;
 }
+
 @media screen and (max-width: 575px) {
   .banner {
     border-radius: 0em;
   }
 }
+
 .banner__backgroundcolor, .banner__img {
   position: absolute;
   top: 0px;
@@ -33,20 +35,25 @@
   height: 100%;
   border-radius: 1.5em;
 }
+
 @media screen and (max-width: 575px) {
   .banner__backgroundcolor, .banner__img {
     border-radius: 0em;
   }
 }
+
 .banner__backgroundcolor {
   background-color: #EFA00B;
 }
+
 .banner__img {
   opacity: 0.9;
 }
+
 .banner__title {
   z-index: 10;
 }
+
 @media screen and (max-width: 575px) {
   .banner__title {
     font-size: 1.5em;
@@ -54,67 +61,82 @@
     margin-bottom: 0.5em;
   }
 }
+
 @media screen and (min-width: 576px) and (max-width: 768px) {
   .banner__title {
     font-size: 1.5em;
   }
 }
+
 @media screen and (min-width: 769px) and (max-width: 992px) {
   .banner__title {
     font-size: 2em;
   }
 }
+
 @media screen and (min-width: 993px) and (max-width: 1500px) {
   .banner__title {
     font-size: 2.2em;
   }
 }
+
 @media screen and (min-width: 1501px) {
   .banner__title {
     font-size: 3em;
   }
 }
+
 .banner__text {
   z-index: 10;
 }
+
 @media screen and (max-width: 575px) {
   .banner__text {
     font-size: 1em;
     margin-left: 4em;
   }
 }
+
 @media screen and (min-width: 576px) and (max-width: 768px) {
   .banner__text {
     font-size: 1.5em;
   }
 }
+
 @media screen and (min-width: 769px) and (max-width: 992px) {
   .banner__text {
     font-size: 1em;
   }
 }
+
 @media screen and (min-width: 993px) and (max-width: 1500px) {
   .banner__text {
     font-size: 2em;
   }
 }
+
 @media screen and (min-width: 1501px) {
   .banner__text {
     font-size: 2em;
   }
 }
+
 .banner .color-first {
   color: #0267C1;
 }
+
 .banner .color-second {
   color: #EFA00B;
 }
+
 .banner .color-third {
   color: #3A7D44;
 }
+
 .banner .color-fourth {
   color: #272727;
 }
+
 .banner .color-fifth {
   color: #FBFFFE;
 }

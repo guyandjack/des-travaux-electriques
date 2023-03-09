@@ -3,15 +3,17 @@
   margin: 2em auto;
   padding: 2em;
 }
+
 .cgu__title {
   width: 100%;
   text-align: center;
   color: #272727;
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 3em;
   margin: 1em 0em 2em 0em;
   text-transform: uppercase;
 }
+
 .cgu__list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -29,25 +31,30 @@
   width: 80%;
   margin: 0px auto;
 }
+
 .cgu__list__li {
   width: 100%;
   padding: 2em 1em;
 }
+
 .cgu__list .article-number {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 1.5em;
   margin: 1em 0em;
 }
+
 .cgu__list .article-title {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
   color: #0267C1;
 }
+
 .cgu__list .article-content {
   font-size: 1.2em;
   line-height: 2em;
   text-align: justify;
 }
+
 .cgu__list .article-split {
   height: 1px;
   color: #EFA00B;
@@ -55,6 +62,7 @@
   margin: 4em auto;
   width: 30%;
 }
+
 .cgu .bg-dark {
   background-color: #f3f3f3;
 }

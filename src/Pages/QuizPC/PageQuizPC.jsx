@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 //Import de la liste de questions du quiz "prise de courant et circuits dédiés"
 import { ContentQuizPC } from "../../Data/ContentQuiz/ContentQuizPC/ContentQuizPC.jsx";
 
+//Import des commentaires relatif aux resultats du quiz
+import { commentResult } from "../../Data/ContentQuiz/CommentResult/CommentResult.js";
+
 //Import des composants enfants
 
 import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
@@ -222,8 +225,7 @@ function PageQuizPC() {
     userFinalResult.finalResult = userScore;
 
     if (userScore < 1) {
-      userFinalResult.textEval =
-        "A un professionnel ...faire appel tu dois....";
+      userFinalResult.textEval = commentResult.level1;
       userFinalResult.colorUserResult = " bad-result";
     }
 
@@ -231,8 +233,7 @@ function PageQuizPC() {
       Math.round((userScore / numberTotalQuestion) * 100) < 25 &&
       Math.round((userScore / numberTotalQuestion) * 100) > 0
     ) {
-      userFinalResult.textEval =
-        "Mon jeune apprenti, etudier tu dois encore....Que la force soit avec toi...";
+      userFinalResult.textEval = commentResult.level2;
       userFinalResult.colorUserResult = " bad-result";
     }
 
@@ -240,7 +241,7 @@ function PageQuizPC() {
       Math.round((userScore / numberTotalQuestion) * 100) >= 25 &&
       Math.round((userScore / numberTotalQuestion) * 100) < 50
     ) {
-      userFinalResult.textEval = "Mon cher padawan, en progres tu es....";
+      userFinalResult.textEval = commentResult.level3;
       userFinalResult.colorUserResult = " bad-result";
     }
 
@@ -248,7 +249,7 @@ function PageQuizPC() {
       Math.round((userScore / numberTotalQuestion) * 100) >= 50 &&
       Math.round((userScore / numberTotalQuestion) * 100) < 75
     ) {
-      userFinalResult.textEval = "perceverer tu dois pour devenir un jedi....";
+      userFinalResult.textEval = commentResult.level4;
       userFinalResult.colorUserResult = " medium-result";
     }
 
@@ -256,12 +257,12 @@ function PageQuizPC() {
       Math.round((userScore / numberTotalQuestion) * 100) >= 75 &&
       Math.round((userScore / numberTotalQuestion) * 100) < 100
     ) {
-      userFinalResult.textEval = "Te voila elu au rang de jedi";
+      userFinalResult.textEval = commentResult.level5;
       userFinalResult.colorUserResult = " good-result";
     }
 
     if (Math.round((userScore / numberTotalQuestion) * 100) === 100) {
-      userFinalResult.textEval = "La force est puissante en toi";
+      userFinalResult.textEval = commentResult.level6;
       userFinalResult.colorUserResult = " good-result";
     }
 
@@ -353,30 +354,31 @@ function PageQuizPC() {
           );
         })}
 
-        {!isvalid ? <ButtonStd
-          btntype="button"
-          text="Valider vos réponses"
-          colorbg="first"
-          colortext="fifth"
-        ></ButtonStd>
-          : null}
+        {!isvalid ? (
+          <ButtonStd
+            btntype="button"
+            text="Valider vos réponses"
+            colorbg="first"
+            colortext="fifth"
+          ></ButtonStd>
+        ) : null}
 
         {isvalid ? (
           <div className="quiz-pc__resultat">
-            
-
             <div
               className={
                 "quiz-pc__resultat__rate" + `${userFinalResult.colorUserResult}`
               }
             >
-              
               {"Votre score est de : "}
               {userFinalResult.finalResult >= 1
                 ? Math.round(
                     (userFinalResult.finalResult / numberTotalQuestion) * 100
                   ) + " %"
                 : " 0 %"}
+            </div>
+            <div>
+              <p>{userFinalResult.textEval}</p>
             </div>
 
             <div

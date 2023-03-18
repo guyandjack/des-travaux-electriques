@@ -27,7 +27,7 @@ import "../../Style/CSS/prise_courant.css";
 function PagePC16A() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [imageSize, setImageSize] = useState("");
-  const [arrayComments, setArrayComments] = useState([]);
+  const [arrayComments, setArrayComments] = useState({});
 
   //url image
 
@@ -35,6 +35,9 @@ function PagePC16A() {
   let schemaPC = ContentImagePagePC16A.schema_pc[imageSize];
   let pcFront = ContentImagePagePC16A.pc_front_face[imageSize];
   let pcBack = ContentImagePagePC16A.pc_back_face[imageSize];
+
+  //constante
+  const refPage = "pc16a";
 
   //tableau qui contient les commentaires
 
@@ -48,15 +51,17 @@ function PagePC16A() {
   //realise une requette sur l' api pour recuperer les commentaires de la page
   useEffect(() => {
     
-    let refForm = "pc16a";
+    
    
 
-    fetch("http://localhost:3500/api/comment/" + refForm)
+    fetch("http://localhost:3500/api/comment/" + refPage)
       .then((response) => {
         response.json()
           .then((responses) => {
-          console.log(responses);
-          setArrayComments(responses);
+
+            console.log(responses);
+            setArrayComments(responses);
+            console.log(arrayComments);
           
         });
       })
@@ -80,11 +85,6 @@ function PagePC16A() {
     }
   }
 
-  //recupere l url de la page et extrait la reference du formulaire.
-  //la refenrence d'un formulaire correspond à une page specifique.
-  let actualUrl = window.location.href;
-  let splitUrl = actualUrl.split("/");
-  let refPage = splitUrl[splitUrl.length - 1];
   
 
   return (
@@ -188,12 +188,12 @@ function PagePC16A() {
         </Link>
       </div>
       <div id="form" className="container-form">
-        <Formulaire pageref={refPage} isResponse={false} responseTo={null} />
+        <Formulaire pageRef={refPage} isResponse={false} responseTo={null}  />
       </div>
       <ul id="" className="container-comment">
         {arrayComments.length > 0
           ? arrayComments.map((comment, index) => {
-            console.log(comment._id)
+           console.log(comment.comment)
               return (
                 <li key={index} className="comment-li">
                   <CommentUser

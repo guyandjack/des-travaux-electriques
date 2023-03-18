@@ -14,7 +14,10 @@ function CommentUser({ firstname, date, text, idcommentoriginal }) {
   let classDisplay = "display-form-response";
   let actualUrl = window.location.href;
   let splitUrl = actualUrl.split("/");
-    let refPage = splitUrl[splitUrl.length - 1];
+  let refPage = splitUrl[splitUrl.length - 1];
+  let classContainerComment = "container-comment-user";
+  let classColorResponse = (idcommentoriginal == "" ? "" : " class-response");
+  let classCommentUser = "comment-user";
     
 
   function displayFormResponse(e) {
@@ -23,8 +26,8 @@ function CommentUser({ firstname, date, text, idcommentoriginal }) {
   }
 
   return (
-    <div className="container-comment-user">
-      <div className="comment-user">
+    <div className={classContainerComment}>
+      <div className={classCommentUser + classColorResponse}>
         <div className="container-info">
           <p className="comment-user-firstname">{firstname}</p>
           <p className="comment-user-date">{date}</p>

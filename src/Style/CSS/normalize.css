@@ -263,7 +263,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type="checkbox"],
+[type="checkbox"]
+,
 [type="radio"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

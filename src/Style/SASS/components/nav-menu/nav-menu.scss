@@ -25,11 +25,12 @@
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    align-items: center;
+    align-items:center;
     position: relative;
 
     padding: 0.5em 0em 0.5em 0em;
     width: 100%;
+    border: 2px solid red;
 
     //responsive pour ecran superieur a small
     @include upper-small-screen{

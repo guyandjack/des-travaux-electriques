@@ -1,5 +1,7 @@
 //Composant "Header"
 
+//Import des hook
+import { useState, useEffect } from "react";
 
 
 //Import des composants enfants
@@ -7,6 +9,8 @@
 import { NavMenu } from "../NavMenu/NavMenu.jsx";
 import { NavCollapse } from "../NavCollapse/NavCollapse.jsx";
 import { NavLink } from "../NavLink/NavLink.jsx";
+import { Banner } from "../Banner/Banner.jsx";
+
 
 
 //Import des feuilles de style
@@ -14,12 +18,41 @@ import "../../Style/CSS/header.css";
 
 //Fonction "Header"
 function Header() {
+
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   
+  useEffect(() => {
+    getScreenSize();
+    
+    
+  }, [isSmallScreen]);
+
+
+  function getScreenSize() {
+    let screenSize = window.innerWidth;
+    
+    if (screenSize < 579) {
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
+    }
+  }
+
+     window.addEventListener("resize", () => {
+    getScreenSize();
+  });
 
   return (
     <header>
+      {isSmallScreen ? <Banner
+        title={"Travaux elec"}
+        text={""}
+        textcolor={"first"}
+        imgUrl={""}
+
+        /> : null}
       <nav className="header">
-        <img className="header__logo" src="" alt=""></img>
+        {isSmallScreen? null : <img className="header__logo" src="" alt=""></img> }
         <div className="header__container-menu">
           <NavMenu>
             <NavLink

@@ -103,19 +103,27 @@ function NavCollapse({ urlTo, urlImg, text, colorText, colorBg, children }) {
       onClick={(e) => {
         activeCollapseByClick(e.currentTarget);
       }}
-      onMouseLeave={!isSmallScreen? ((e) => {
-          closeCollapse(e.currentTarget);
-      }) : null}
+      onMouseLeave={
+        !isSmallScreen
+          ? (e) => {
+              closeCollapse(e.currentTarget);
+            }
+          : null
+      }
     >
       <div className="nav-collapse-title">
-        <NavLink
-          urlTo={urlTo}
-          urlImg={urlImg}
-          text={text}
-          colorText={colorText}
-          colorBg={colorBg}
-        />
-        <span className={classChevron + classColorText}> ▼ </span>
+        <div className="container-navlink">
+          <NavLink
+            urlTo={urlTo}
+            urlImg={urlImg}
+            text={text}
+            colorText={colorText}
+            colorBg={colorBg}
+          />
+        </div>
+        <div className="container-chevron">
+          <span className={classChevron + classColorText}> ▼ </span>
+        </div>
       </div>
       {children ? (
         <ul className={classList}>

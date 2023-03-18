@@ -13,7 +13,8 @@ const commentSchema = mongoose.Schema({
     date: { type: String, required: true },
     pageref: {type: String, required: true},
     isresponse: { type: Boolean, required: true },
-    originalcommentid : { type: String, required: false}
+    originalcommentid: { type: String, required: true },
+    userdata:{type: String, required: false}
     
 });
 

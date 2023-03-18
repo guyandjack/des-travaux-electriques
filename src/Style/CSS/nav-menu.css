@@ -14,6 +14,7 @@
           align-items: center;
   width: 100%;
 }
+
 @media screen and (min-width: 576px) {
   .nav-menu {
     -webkit-box-orient: horizontal;
@@ -26,6 +27,7 @@
     height: 100%;
   }
 }
+
 .nav-menu__li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,7 +45,9 @@
   position: relative;
   padding: 0.5em 0em 0.5em 0em;
   width: 100%;
+  border: 2px solid red;
 }
+
 @media screen and (min-width: 576px) {
   .nav-menu__li {
     border-top: 0px solid #EFA00B;
@@ -56,6 +60,7 @@
     border-top: 8px solid #EFA00B;
   }
 }
+
 @media screen and (max-width: 992px) {
   .nav-menu__li {
     -webkit-box-flex: 1;

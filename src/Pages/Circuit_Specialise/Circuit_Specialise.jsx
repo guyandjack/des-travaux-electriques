@@ -26,7 +26,6 @@ import "../../Style/CSS/circuit_specialise.css";
 
 //Fonction "PageCircuitSpecialise"
 function PageCircuitSpecialise() {
-
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [imageSize, setImageSize] = useState("");
   const [arrayComments, setArrayComments] = useState([]);
@@ -39,6 +38,9 @@ function PageCircuitSpecialise() {
   let cumulus = ContentImagePageCircuitSpecialise.cumulus[imageSize];
   let laveLinge = ContentImagePageCircuitSpecialise.laveLinge[imageSize];
 
+  //constante
+  const refPage = "circuit-specialise";
+
   //url image schema.
 
   let schemaPlaqueDeCuisson =
@@ -48,7 +50,7 @@ function PageCircuitSpecialise() {
 
   let schemaLaveLinge =
     ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
-  
+
   //determine la taille de l' ecran pour les images responsives
   useEffect(() => {
     getImageSize();
@@ -60,13 +62,13 @@ function PageCircuitSpecialise() {
   //realise une requette sur l' api pour recuperer les commentaires de la page
   useEffect(() => {
     
-    let refForm = "circuit-specialise";
 
-    fetch("http://localhost:3500/api/comment/" + refForm)
+    fetch("http://localhost:3500/api/comment/" + refPage)
       .then((response) => {
         response.json().then((responses) => {
-          console.log(responses);
           setArrayComments(responses);
+          console.log(arrayComments[0].originalcommentid);
+
         });
       })
 
@@ -89,12 +91,7 @@ function PageCircuitSpecialise() {
     }
   }
 
-  //recupere l url de la page et extrait la reference du formulaire.
-  //la refenrence d'un formulaire correspond à une page specifique.
-  let actualUrl = window.location.href;
-  let splitUrl = actualUrl.split("/");
-  let refForm = splitUrl[splitUrl.length - 1];
-
+  
   return (
     <div className="circuit-specialise">
       <div className="container-title">
@@ -323,7 +320,7 @@ function PageCircuitSpecialise() {
       </div>
 
       <div id="form" className="container-form">
-        <Formulaire formref={refForm} isResponse={false} responseTo={null} />
+        <Formulaire pageRef={refPage} isResponse={false} responseTo={null} />
       </div>
 
       <ul id="" className="container-comment">
@@ -335,6 +332,7 @@ function PageCircuitSpecialise() {
                     firstname={comment.firstname}
                     date={comment.date}
                     text={comment.comment}
+                    idcommentoriginal={comment.originalcommentid}
                   />
                 </li>
               );

@@ -8,6 +8,7 @@
 
 .container-comment-user {
     
+  
     
   .comment-user {
     display: flex;
@@ -67,6 +68,11 @@
 
   .hide {
     display: none;
+  }
+
+  .class-response{
+    background-color: lighten(map-get($colors-rule, third-color ),60%);
+    //transform: translateX(10%);
   }
 
  

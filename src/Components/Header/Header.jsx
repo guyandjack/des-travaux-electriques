@@ -69,7 +69,7 @@ function Header() {
             <NavLink
               urlTo="/"
               urlImg=""
-              text="Accueil"
+              text="accueil"
               tailleText="1.2em"
               colorText="second"
               colorBg=""
@@ -146,7 +146,7 @@ function Header() {
               <NavLink
                 urlTo="/quiz/pc16a"
                 urlImg=""
-                text="Quiz - Prise de courant'"
+                text="Quiz - «Prise de courant»"
                 colorText="fourth"
                 tailleText="1em"
                 colorBg=""
@@ -154,7 +154,7 @@ function Header() {
               <NavLink
                 urlTo="/quiz/circuit-specialise"
                 urlImg=""
-                text="Quiz-circuits spécialisés"
+                text="Quiz - «circuits spécialisés»"
                 colorText="fourth"
                 tailleText="1em"
                 colorBg=""

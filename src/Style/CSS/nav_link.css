@@ -16,14 +16,8 @@
 }
 
 .nav-link .nav-link-text {
+  font-family: "Oswald", sans-serif;
   text-transform: capitalize;
-  font-size: 1em;
-}
-
-@media screen and (min-width: 993px) {
-  .nav-link .nav-link-text {
-    font-size: 1.1em;
-  }
 }
 
 .nav-link .nav-link-img {

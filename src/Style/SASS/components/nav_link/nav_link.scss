@@ -14,16 +14,14 @@
 
   //padding: 1em;
   height: 100%;
+  
 
   .nav-link-text{
     //text-align: center;
-    //font-family: "Oswald", sans-serif;
+    font-family: "Oswald", sans-serif;
     text-transform:capitalize;
-    font-size: 1em;
-    //responsive pour écran supérieur à large.
-    @include upper-large-screen{
-        font-size: 1.1em;
-    }
+    
+    
   }
 
   .nav-link-img {

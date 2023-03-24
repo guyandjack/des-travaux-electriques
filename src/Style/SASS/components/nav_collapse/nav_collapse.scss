@@ -12,11 +12,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-
-  //responsive pour ecran superieur à large
-  @include upper-large-screen {
-    font-size: 1.1em;
-  }
+  
 
   width: 100%;
   height: 100%;
@@ -30,7 +26,7 @@
     //border: 2px solid green;
     width: 30%;
 
-    //responsive poue ecran superieur à large
+    //responsive pour ecran supérieur à large
     @include upper-large-screen {
       width: auto;
     }
@@ -54,7 +50,7 @@
     transition: transform 250ms linear, font-size 250ms linear;
     //border: 2px solid blue;
 
-    //responsive poue ecran superieur à large
+    //responsive pour ecran superieur à large
     @include upper-large-screen {
       font-size: 1.1em;
     }
@@ -75,13 +71,13 @@
     overflow: hidden;
 
     transition: max-height 300ms linear, opacity 350ms linear,
-      border-top 300ms linear;
+    border-top 300ms linear;
 
     //responsive pour ecran superieur à small
     @include upper-small-screen {
       position: absolute;
       top: 100%;
-      width: 250%;
+      width: 200%;
       z-index: 10;
     }
 

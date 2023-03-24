@@ -18,6 +18,7 @@ function CommentUser({ firstname, date, text, idcommentoriginal }) {
   let classContainerComment = "container-comment-user";
   let classColorResponse = (idcommentoriginal == "" ? "" : " class-response");
   let classCommentUser = "comment-user";
+  let bolleanTrue = true;
     
 
   function displayFormResponse(e) {
@@ -54,9 +55,9 @@ function CommentUser({ firstname, date, text, idcommentoriginal }) {
       <div className={classContainerFormResponse}>
         <Formulaire
           pageRef={refPage}
-          isResponse={true}
+          isResponse={bolleanTrue}
           responseTo={firstname}
-          responseIdTo={idcommentoriginal}
+          responseIdTo={true}
         />
       </div>
     </div>

@@ -12,6 +12,7 @@
             transform: translateX(0%);
   }
 }
+
 @keyframes hover {
   0% {
     -webkit-transform: translateX(-1%);
@@ -26,6 +27,7 @@
             transform: translateX(0%);
   }
 }
+
 .button-link-banner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -42,17 +44,21 @@
           align-items: flex-start;
   position: relative;
 }
+
 .button-link-banner:hover > .button-link-banner__text {
   border: 2px solid #3A7D44;
   color: #3A7D44;
 }
+
 .button-link-banner:hover > .button-link-banner__img {
   border: 2px solid #3A7D44;
 }
+
 .button-link-banner:hover {
   -webkit-animation: hover 100ms linear 0s 2 normal forwards;
           animation: hover 100ms linear 0s 2 normal forwards;
 }
+
 .button-link-banner__text {
   background-color: #FBFFFE;
   color: #0267C1;
@@ -64,12 +70,14 @@
   font-weight: 100;
   font-size: 1.2em;
 }
+
 @media screen and (max-width: 992px) {
   .button-link-banner__text {
     font-size: 1em;
     text-transform: capitalize;
   }
 }
+
 .button-link-banner__img {
   border: 2px solid #0267C1;
   border-radius: 50%;
@@ -96,6 +104,7 @@
           align-items: center;
   position: relative;
 }
+
 .button-link-menu__text {
   text-transform: capitalize;
   font-family: "Oswald", sans-serif;
@@ -106,6 +115,7 @@
   -o-transition: font-size 250ms linear;
   transition: font-size 250ms linear;
 }
+
 @media screen and (max-width: 992px) {
   .button-link-menu__text {
     font-size: 1em;
@@ -128,6 +138,7 @@
           align-items: center;
   position: relative;
 }
+
 .button-link-sous-menu__text {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 100%;
@@ -137,15 +148,17 @@
   text-transform: capitalize;
   font-family: "Oswald", sans-serif;
   font-weight: 100;
-  -webkit-transition: padding-left 250ms linear, border-left 250ms linear, border-right 250ms linear, font-size 250ms linear;
-  -o-transition: padding-left 250ms linear, border-left 250ms linear, border-right 250ms linear, font-size 250ms linear;
-  transition: padding-left 250ms linear, border-left 250ms linear, border-right 250ms linear, font-size 250ms linear;
+  -webkit-transition: padding-left 250ms linear, border-left 250ms linear,border-right 250ms linear, font-size 250ms linear;
+  -o-transition: padding-left 250ms linear, border-left 250ms linear,border-right 250ms linear, font-size 250ms linear;
+  transition: padding-left 250ms linear, border-left 250ms linear,border-right 250ms linear, font-size 250ms linear;
 }
+
 @media screen and (max-width: 992px) {
   .button-link-sous-menu__text {
     font-size: 1em;
   }
 }
+
 @media screen and (min-width: 993px) {
   .button-link-sous-menu__text {
     font-size: 1.2em;
@@ -174,6 +187,7 @@
   position: relative;
   width: 100%;
 }
+
 .button-link-menu-burger__text {
   color: #FBFFFE;
   text-transform: uppercase;
@@ -197,6 +211,7 @@
           align-items: flex-start;
   position: relative;
 }
+
 .button-link-sous-menu-burger__text {
   color: #FBFFFE;
   text-transform: capitalize;

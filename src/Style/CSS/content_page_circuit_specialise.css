@@ -1,6 +1,7 @@
 .circuit-specialise .description, .circuit-specialise .precaution {
   counter-set: compteur;
 }
+
 .circuit-specialise .description__li::before, .circuit-specialise .precaution__li::before {
   content: counter(compteur);
   display: inline-block;
@@ -11,37 +12,45 @@
   text-align: right;
   margin-right: 1em;
 }
+
 .circuit-specialise .description__li, .circuit-specialise .precaution__li {
   counter-increment: compteur;
   margin-top: 0.5em;
   font-size: 1em;
 }
+
 .circuit-specialise .description .important, .circuit-specialise .precaution .important {
   color: #EFA00B;
 }
+
 .circuit-specialise .description__text, .circuit-specialise .principe__text, .circuit-specialise .astuce__text, .circuit-specialise .savoir__text, .circuit-specialise .precaution__text {
   font-size: 1em;
   line-height: 1.5em;
   margin: 0.5em 0em;
 }
+
 @media screen and (min-width: 769px) {
   .circuit-specialise .description__text, .circuit-specialise .principe__text, .circuit-specialise .astuce__text, .circuit-specialise .savoir__text, .circuit-specialise .precaution__text {
     font-size: 1em;
   }
 }
+
 .circuit-specialise .important {
   color: #EFA00B;
 }
+
 .circuit-specialise .description-list {
   margin: 0.5em 0em;
   padding: 1em;
   background-color: #f3f3f3;
 }
+
 .circuit-specialise .description-list__li {
   list-style-type: disc;
   margin-top: 0.5em;
   margin-left: 1em;
 }
+
 .circuit-specialise .description-list__li__span {
   margin-left: 3em;
 }

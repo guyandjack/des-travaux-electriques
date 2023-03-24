@@ -15,6 +15,7 @@
   width: 100%;
   margin: 1em 0em;
 }
+
 .container-question .question-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -32,24 +33,29 @@
   width: 100%;
   margin-bottom: 4em;
 }
+
 .container-question .question-header__title {
   font-size: 1.5em;
   font-weight: 600;
 }
+
 .container-question .question-header__split {
   margin: 1em 0em 2em 0em;
   border-bottom: 2px solid #5a5a5a;
   width: 100%;
 }
+
 .container-question .question-header__text {
   width: 100%;
   font-size: 1.2em;
   -ms-flex-item-align: left;
+      -ms-grid-row-align: left;
       align-self: left;
   font-weight: 400;
   padding: 0.5em;
   background-color: #f3f3f3;
 }
+
 .container-question .proposition {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -67,11 +73,13 @@
   margin-top: 1em;
   width: 100%;
 }
+
 .container-question .proposition__label {
   width: auto;
   font-size: 1.3em;
   font-style: italic;
 }
+
 .container-question .proposition__input {
   margin-right: 2em;
   width: 1em;
@@ -79,29 +87,35 @@
   border: 2px solid #5a5a5a;
   border-radius: 50%;
 }
+
 .container-question .proposition__input:checked {
   background-color: #0267C1;
 }
+
 .container-question .proposition .icon-result {
   width: 2em;
   height: 2em;
   margin: 0em 2em 0em 1em;
 }
+
 .container-question .solution {
   margin: 4em 0em;
   width: 100%;
   max-width: 500px;
 }
+
 .container-question .solution__title, .container-question .solution__text {
   color: #0267C1;
   font-style: italic;
   font-weight: 400;
   font-size: 1.3em;
 }
+
 .container-question .solution__title {
   border-bottom: 2px solid #0267C1;
   margin-bottom: 1em;
 }
+
 .container-question .solution__text {
   word-spacing: 0.5em;
   line-height: 1.5em;

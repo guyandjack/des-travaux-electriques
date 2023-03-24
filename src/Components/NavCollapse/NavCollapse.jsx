@@ -22,7 +22,7 @@ import "../../Style/CSS/nav_collapse.css";
 
 //Fonction "NavCollapse"
 
-function NavCollapse({ urlTo, urlImg, text, colorText, colorBg, children }) {
+function NavCollapse({ urlTo, urlImg, text, colorText, sizePolice, colorBg, children }) {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
@@ -32,6 +32,7 @@ function NavCollapse({ urlTo, urlImg, text, colorText, colorBg, children }) {
   let classList = "collapse-list";
   let classListHide = "display";
   let classColorText = "";
+  let sizeText = 1;
   let classChevron = "nav-collapse-chevron";
   let classChevronAnimation = "chevron-animation";
   let screenSize;
@@ -118,6 +119,7 @@ function NavCollapse({ urlTo, urlImg, text, colorText, colorBg, children }) {
             urlImg={urlImg}
             text={text}
             colorText={colorText}
+            tailleText={sizePolice}
             colorBg={colorBg}
           />
         </div>

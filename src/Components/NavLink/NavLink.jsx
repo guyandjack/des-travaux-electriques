@@ -7,8 +7,12 @@
  * l' url de l' image qui lui est associé
  * le contenu textuel
  * la couleur du text
+ * la taille du text
  * la couleur de fond
  *****************************************/
+
+//Import des hooks
+import { useState, useEffect } from "react";
 
 //Import du module Link
 import { Link } from "react-router-dom";
@@ -21,7 +25,9 @@ import "../../Style/CSS/nav_link.css";
 
 //Fonction "NavLink"
 
-function NavLink({ urlTo, urlImg, text, colorText, colorBg }) {
+function NavLink({ urlTo, urlImg, text, colorText, tailleText, colorBg }) {
+
+
     let classColorText = "";
     let classColorBg = "";
     let classText = "nav-link-text";
@@ -100,12 +106,12 @@ function NavLink({ urlTo, urlImg, text, colorText, colorBg }) {
               src={urlImg}
               alt={contentAlt + text}
             ></img>
-            <p className={classText + classColorText + classColorBg}>{text}</p>
+            <p style={{fontSize:tailleText}} className={classText + classColorText + classColorBg}>{text}</p>
           </div>
         </Link>
       ) : (
         <Link to={urlTo}>
-          <p className={classText + classColorText + classColorBg}>{text}</p>
+          <p style={{fontSize:tailleText}}  className={classText + classColorText + classColorBg}>{text}</p>
         </Link>
       )}
     </div>

@@ -29,6 +29,7 @@
 .arrow-size {
   font-size: 1em;
 }
+
 @media screen and (max-width: 992px) {
   .arrow-size {
     font-size: 1.2em;

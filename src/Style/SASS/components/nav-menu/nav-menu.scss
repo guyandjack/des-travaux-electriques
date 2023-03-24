@@ -30,25 +30,32 @@
 
     padding: 0.5em 0em 0.5em 0em;
     width: 100%;
-    border: 2px solid red;
+    
+    //border: 2px solid red;
 
-    //responsive pour ecran superieur a small
+    //responsive pour écran superieur a small
     @include upper-small-screen{
-
+        //border: 2px solid red;
+        margin: 0em 1em;
+        width: 15%;
         border-top: 0px solid map-get($colors-rule, second-color);
+        border-bottom: 0px solid map-get($colors-rule, second-color);
         height: 100%;
     
-        transition: border-top 250ms linear 0s;
+        transition: border-top 250ms linear 0s, border-bottom 250ms linear 0s;
     
         &:hover {
-          border-top: 8px solid map-get($colors-rule, second-color);
+          border-top: 6px solid map-get($colors-rule, second-color);
+          //border-bottom: 4px solid map-get($colors-rule, second-color);
+         // border-radius: 1em;
+        
         }
     }
 
 
     //responsive pour ecran inferieur à large
-    @include under-large-screen {
+    /*@include under-large-screen {
       flex: 1 1 auto;
-    }
+    }*/
   }
 }

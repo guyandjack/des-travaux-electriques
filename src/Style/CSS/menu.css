@@ -18,6 +18,7 @@
   position: relative;
   height: 100%;
 }
+
 .menu__li {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -44,11 +45,13 @@
   -o-transition: border-top 250ms linear, border-bottom 250ms linear;
   transition: border-top 250ms linear, border-bottom 250ms linear;
 }
+
 @media screen and (max-width: 992px) {
   .menu__li {
     margin-right: 2em;
   }
 }
+
 .menu__li:hover {
   border-top: 6px solid #EFA00B;
   border-bottom: 6px solid #EFA00B;

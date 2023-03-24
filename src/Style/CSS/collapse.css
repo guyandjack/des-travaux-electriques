@@ -14,6 +14,7 @@
           align-items: flex-start;
   width: 100%;
 }
+
 .collapse__title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -33,7 +34,7 @@
   width: fit-content;
   padding: 1em;
   border-radius: 1.1em;
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 1em;
   text-transform: uppercase;
   color: #FBFFFE;
@@ -41,11 +42,13 @@
   -o-transition: background-color 250ms linear;
   transition: background-color 250ms linear;
 }
+
 @media screen and (min-width: 769px) {
   .collapse__title {
     font-size: 1.1em;
   }
 }
+
 .collapse__content {
   display: none;
   width: 100%;
@@ -59,17 +62,20 @@
   -o-transition: max-height 300ms linear, opacity 200ms linear;
   transition: max-height 300ms linear, opacity 200ms linear;
 }
+
 @media screen and (min-width: 769px) {
   .collapse__content {
     font-size: 1.1em;
   }
 }
+
 .collapse .display {
   display: block;
   max-height: 1000px;
   height: auto;
   padding: 1em;
 }
+
 .collapse .hide {
   display: block;
   max-height: 0px;
@@ -78,54 +84,71 @@
   padding: 0em;
   opacity: 0;
 }
+
 .collapse .first-color-title {
   background-color: #0267C1;
 }
+
 .collapse .first-color-title:hover {
   background-color: #0382f3;
 }
+
 .collapse .first-color-content {
   border: 2px solid #0267C1;
 }
+
 .collapse .second-color-title {
   background-color: #EFA00B;
 }
+
 .collapse .second-color-title:hover {
   background-color: #f6b437;
 }
+
 .collapse .second-color-content {
   border: 2px solid #EFA00B;
 }
+
 .collapse .third-color-title {
   background-color: #3A7D44;
 }
+
 .collapse .third-color-title:hover {
   background-color: #4aa057;
 }
+
 .collapse .third-color-content {
   border: 2px solid #3A7D44;
 }
+
 .collapse .fourth-color-title {
   background-color: #272727;
 }
+
 .collapse .fourth-color-title:hover {
   background-color: #414141;
 }
+
 .collapse .fourth-color-content {
   border: 2px solid #272727;
 }
+
 .collapse .first {
   color: #0267C1;
 }
+
 .collapse .second {
   color: #EFA00B;
 }
+
 .collapse .third {
   color: #3A7D44;
 }
+
 .collapse .fourth {
   color: #272727;
 }
+
 .collapse .fifth {
   color: #FBFFFE;
 }

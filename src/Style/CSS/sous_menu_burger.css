@@ -18,6 +18,7 @@
   -o-transition: max-height 300ms linear;
   transition: max-height 300ms linear;
 }
+
 .sous-menu-burger__li {
   width: 100%;
   padding: 0.5em;

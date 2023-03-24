@@ -35,6 +35,8 @@ exports.checkDataForm = (req, res, next) => {
   //suivi de lettres minuscules ou majuscules entre 2 et 10 caracteres
   let masqueMail = /^[0-9]{0,4}[0-9a-z_'.-]{2,30}@[0-9a-z_'.-]{2,15}\.[0-9a-zA-Z_'.-]{2,15}$/;
 
+  let masqueCheckBox = /^[o][k]$/;
+
   //Motif qui autorise des nombres, lettres minuscules et majuscules, point, trait d'union, apotrophe, espace et underscore de 10 a 200 caracteres
   let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!\n\s ]{10,200}$/;
 
@@ -139,7 +141,7 @@ exports.checkDataForm = (req, res, next) => {
       return true;
     }
 
-    if (masqueText.test(userData) !== true) {
+    if (masqueCheckBox.test(userData) !== true) {
       return false;
     } else {
       return true;
@@ -202,10 +204,7 @@ exports.checkDataForm = (req, res, next) => {
         
         res
           .status(201)
-          .cookie("user", "connected", {
-            domain: "http://localhost:3000",
-            maxAge: 600000,
-          })
+          
           
           .redirect(userUrl + "/?comment=saved");
       })

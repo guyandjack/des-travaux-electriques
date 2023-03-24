@@ -27,7 +27,7 @@
   }
 }
 
-.banner__backgroundcolor, .banner__img {
+.banner__background-img, .banner__img {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -37,13 +37,9 @@
 }
 
 @media screen and (max-width: 575px) {
-  .banner__backgroundcolor, .banner__img {
+  .banner__background-img, .banner__img {
     border-radius: 0em;
   }
-}
-
-.banner__backgroundcolor {
-  background-color: #EFA00B;
 }
 
 .banner__img {
@@ -121,22 +117,42 @@
   }
 }
 
-.banner .color-first {
+.banner .color-text-first {
   color: #0267C1;
 }
 
-.banner .color-second {
+.banner .color-text-second {
   color: #EFA00B;
 }
 
-.banner .color-third {
+.banner .color-text-third {
   color: #3A7D44;
 }
 
-.banner .color-fourth {
+.banner .color-text-fourth {
   color: #272727;
 }
 
-.banner .color-fifth {
+.banner .color-text-fifth {
   color: #FBFFFE;
+}
+
+.banner .color-bg-first {
+  background-color: #0267C1;
+}
+
+.banner .color-bg-second {
+  background-color: #EFA00B;
+}
+
+.banner .color-bg-third {
+  background-color: #3A7D44;
+}
+
+.banner .color-bg-fourth {
+  background-color: #272727;
+}
+
+.banner .color-bg-fifth {
+  background-color: #FBFFFE;
 }

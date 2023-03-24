@@ -4,7 +4,7 @@
 @import "../../utils/colors-rule/colors-rule.scss";
 
 //Import des "mixins" qui gerent le responsive design
-@import "../../utils/mixins/responsive/_responsive.scss";
+@import "../../utils/mixins/responsive/responsive.scss";
 
 
 .banner{
@@ -25,7 +25,7 @@
       border-radius: 0em;
     }
     
-    &__backgroundcolor, &__img{
+    &__background-img, &__img{
 
       position:absolute;
       top:0px;
@@ -37,15 +37,10 @@
       //responsive pour ecran small
       @include small-screen{
       border-radius:0em;
-    }
-      
-    }
+      }
 
-    &__backgroundcolor{
-      
-      background-color: map-get($colors-rule, second-color);
     }
-
+     
     &__img{
       
       opacity: 0.9;
@@ -57,8 +52,6 @@
 
       z-index: 10;      
       
-      
-
       //responsive small-screen
       @include small-screen {
         font-size: 1.5em;
@@ -126,20 +119,38 @@
     }
   }
 
-  .color-first{
-    color: map-get($colors-rule, first-color )
+  .color-text-first{
+    color: map-get($colors-rule, first-color)
   }
-  .color-second{
+  .color-text-second{
     color: map-get($colors-rule, second-color )
   }
-  .color-third{
+  .color-text-third{
     color: map-get($colors-rule, third-color )
   }
-  .color-fourth{
+  .color-text-fourth{
     color: map-get($colors-rule, fourth-color )
   }
-  .color-fifth{
+  .color-text-fifth{
     color: map-get($colors-rule, fifth-color )
+  }
+
+
+
+  .color-bg-first{
+    background-color: map-get($colors-rule, first-color )
+  }
+  .color-bg-second{
+    background-color: map-get($colors-rule, second-color )
+  }
+  .color-bg-third{
+    background-color: map-get($colors-rule, third-color )
+  }
+  .color-bg-fourth{
+    background-color: map-get($colors-rule, fourth-color )
+  }
+  .color-bg-fifth{
+    background-color: map-get($colors-rule, fifth-color )
   }
 
 }

@@ -43,7 +43,7 @@ function PageHome() {
     <div className={classHome}>
       
       <div className={classHome + classHomeBanner + classLargeScreen}>
-        <Banner pagename="home" text=""></Banner>
+        <Banner pagename="home" text="" colorbackground="first"></Banner>
       </div>
 
       <div className={classHome + classHomeTitle + classLargeScreen}>

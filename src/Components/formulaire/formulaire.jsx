@@ -12,6 +12,7 @@ import "../../Style/CSS/formulaire.css";
 //Fonction "Formulaire"
 
 function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
+  console.log(responseIdTo);
   //Class css des élements du DOM
   let form = "form";
   let form_input = "form-input";
@@ -321,7 +322,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       <input type="hidden" name="userurl" value={userUrl}></input>
       <input type="hidden" name="pageref" value={pageRef}></input>
       <input type="hidden" name="isresponse" value={isResponse}></input>
-      {isResponse ? (
+      {isResponse == true && responseIdTo ? (
         <input
           type="hidden"
           name="originalcommentid"

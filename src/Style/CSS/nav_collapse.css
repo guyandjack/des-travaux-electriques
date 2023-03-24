@@ -15,7 +15,6 @@
   position: relative;
   width: 100%;
   height: 100%;
-  border: 2px solid pink;
 }
 
 @media screen and (min-width: 993px) {
@@ -38,15 +37,19 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 2px solid green;
   width: 30%;
+}
+
+@media screen and (min-width: 993px) {
+  .nav-collapse .nav-collapse-title {
+    width: auto;
+  }
 }
 
 .nav-collapse .nav-collapse-title .container-navlink {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 50%;
-          flex: 0 1 50%;
-  border: 2px solid yellow;
+      -ms-flex: 0 1 30%;
+          flex: 0 1 30%;
   text-align: left;
 }
 
@@ -54,7 +57,6 @@
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
-  border: 2px solid yellow;
   text-align: left;
 }
 
@@ -65,7 +67,6 @@
   -o-transition: transform 250ms linear, font-size 250ms linear;
   transition: transform 250ms linear, font-size 250ms linear;
   transition: transform 250ms linear, font-size 250ms linear, -webkit-transform 250ms linear;
-  border: 2px solid blue;
 }
 
 @media screen and (min-width: 993px) {
@@ -107,7 +108,7 @@
   .nav-collapse .collapse-list {
     position: absolute;
     top: 100%;
-    width: 150%;
+    width: 250%;
     z-index: 10;
   }
 }
@@ -128,7 +129,7 @@
           align-items: center;
   width: 100%;
   padding: 1em 0em 1em 1em;
-  background-color: #fef4e2;
+  background-color: #f3f3f3;
   -webkit-transition: background-color 300ms linear, padding-left 300ms linear;
   -o-transition: background-color 300ms linear, padding-left 300ms linear;
   transition: background-color 300ms linear, padding-left 300ms linear;
@@ -137,7 +138,7 @@
 @media screen and (min-width: 576px) {
   .nav-collapse .collapse-list__li:hover {
     padding-left: 2em;
-    background-color: #fbe2b1;
+    background-color: #f7bd50;
   }
 }
 
@@ -150,9 +151,8 @@
 
 @media screen and (min-width: 576px) {
   .nav-collapse .display {
-    border-bottom: none;
-    -webkit-box-shadow: 0px 0px 15px #272727;
-            box-shadow: 0px 0px 15px #272727;
+    border-top: 6px solid #EFA00B;
+    border-bottom: 6px solid #EFA00B;
   }
 }
 

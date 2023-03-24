@@ -16,11 +16,13 @@
   width: 100%;
   height: 1000px;
 }
+
 @media screen and (max-width: 575px) {
   .home {
     height: 100px;
   }
 }
+
 .home__banner, .home__title {
   position: absolute;
   top: 0%;
@@ -28,12 +30,15 @@
   width: 100%;
   height: 100%;
 }
+
 .home__title {
   top: 3em;
 }
+
 .home__banner {
   overflow-x: clip;
 }
+
 .home__window {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -59,9 +64,11 @@
   overflow-y: visible;
   background-color: white;
 }
+
 .home .home-hide {
   display: none;
 }
+
 .home .home-display {
   display: -webkit-box;
   display: -ms-flexbox;

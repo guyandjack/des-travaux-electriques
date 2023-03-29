@@ -13,9 +13,6 @@ const commentRouter = require("../routes/commentRoutes.js");
 //Import du fichier de parametrage des header pour le securityCORS
 const securityCORS = require("../middelware/securityCORS.js");
 
-
-
-
 //code principal
 
 //déclaration de notre application avec la méthode express

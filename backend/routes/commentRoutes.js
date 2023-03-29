@@ -11,17 +11,14 @@ const commentControler = require("../controlers/commentControler.js");
 
 /****************** route "POST" ************************ */
 
-//route pour enregistrer un nouveau commentaire classique ou reponse
+//route pour enregistrer un nouveau commentaire 
 routerComment.post("/", commentControler.checkDataForm);
-
-
 
 
 /****************** route "GET" ************************ */
 
 // route pour recuperer les commentaires de la page client consulté
 routerComment.get("/:ref", commentControler.getAllCommentsForOnePage);
-
 
 
 module.exports = routerComment;

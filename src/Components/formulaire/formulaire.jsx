@@ -57,6 +57,11 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     setUserUrl(window.location.href);
   }
 
+  //effet de bord qui recupere un flag du derveur suite à l' enregistrement reussi d'un commentaire
+  useEffect(() => {
+    
+  })
+
   //valide le button submit en fonction de l'etat des inputs utilisateur
   useEffect(() => {
     getUserUrl();

@@ -51,9 +51,6 @@ function PagePC16A() {
   //realise une requette sur l' api pour recuperer les commentaires de la page
   useEffect(() => {
     
-    
-   
-
     fetch("http://localhost:3500/api/comment/" + refPage)
       .then((response) => {
         response.json()

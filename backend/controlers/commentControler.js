@@ -1,4 +1,4 @@
-/**************  ensemble de midelwares qui gérent la logique des commentaires**********************/
+/**************  ensemble des midelwares qui gérent la logique des commentaires**********************/
 
 //import du model mongoDB pour les commentaires
 const { model } = require("mongoose");
@@ -14,16 +14,14 @@ exports.checkDataForm = (req, res, next) => {
   let comment = req.body.comment;
   let userUrl = req.body.userurl;
   let refPage = req.body.pageref;
-  console.log("valeur de pageref : " + refPage);
   let isResponse = req.body.isresponse;
   let OriginalCommentId = req.body.originalcommentid;
-  
   let userData = req.body.userdata;
 
   //Motif qui autorise lettres majuscules, minuscules, undescore, apostrophe,point, et trait d'union.entre 2 et 20 carracteres.
   let masqueText = /^[A-Za-z_'.-]{2,30}$/;
 
-  //Motif qui autorise lettres majuscules / minuscules / nombres
+  //Motif qui autorise lettres majuscules / minuscules / nombres entre 2 et 20 carracteres.
   let masqueAlphaNumerique = /^[0-9A-Za-z_'.-]{2,30}$/;
 
   //Motif qui autorise une adresse mail qui peut commencer par:
@@ -33,12 +31,14 @@ exports.checkDataForm = (req, res, next) => {
   //suivi de lettres minuscules,ou underscore, ou point, ou trait d'union entre, ou apostrophe, virgule, point-virgule, double point 2 et 10 carracteres
   //suivi d' un point
   //suivi de lettres minuscules ou majuscules entre 2 et 10 caracteres
-  let masqueMail = /^[0-9]{0,4}[0-9a-z_'.-]{2,30}@[0-9a-z_'.-]{2,15}\.[0-9a-zA-Z_'.-]{2,15}$/;
+  let masqueMail = /^[0-9]{0,4}[0-9a-z_'.-]{2,30}@[0-9a-z_'.-]{2,20}\.[0-9a-zA-Z_'.-]{2,15}$/;
 
   let masqueCheckBox = /^[o][k]$/;
 
-  //Motif qui autorise des nombres, lettres minuscules et majuscules, point, trait d'union, apotrophe, espace et underscore de 10 a 200 caracteres
+  //Motif qui autorise des nombres, lettres minuscules et majuscules, point, trait d'union, apotrophe, espace et underscore, retour a la ligne de 10 a 200 caracteres
   let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!\n\s ]{10,200}$/;
+
+  /*************** fonctions de controle et de validation des inputs utilisateur *********** */
 
   //Valide l' input "lastName"
   function validLastName() {
@@ -82,7 +82,6 @@ exports.checkDataForm = (req, res, next) => {
   //Valide le message utilisateur
   function validMessage() {
     if (
-      !comment ||
       masqueMessage.test(comment) !== true ||
       comment === null ||
       comment === "undefined"
@@ -117,16 +116,11 @@ exports.checkDataForm = (req, res, next) => {
 
   //Valide l' id du commentaire original
   function validOriginalCommentId() {
-
     console.log("valeur originalCommentId: " + OriginalCommentId);
 
-    if (OriginalCommentId < 1 ){
-      return false
+    if (OriginalCommentId < 1) {
+      return true;
     }
-
-    /*if (OriginalCommentId == null || OriginalCommentId=="")   {
-      return false;
-    }*/
 
     if (masqueAlphaNumerique.test(OriginalCommentId) !== true) {
       return false;
@@ -137,7 +131,9 @@ exports.checkDataForm = (req, res, next) => {
 
   //valide l' autorisation d' enregistrer une session
   function validCheckbox() {
-    if (userData === null || userData === "undefined" || !userData) {
+    //si le checkbox n'est pas coché le formulaire ne renvoi rien, on force le retour à true pour la suite du script
+
+    if (userData == null || userData == "undefined") {
       return true;
     }
 
@@ -148,8 +144,31 @@ exports.checkDataForm = (req, res, next) => {
     }
   }
 
-  
+  //formate la date en une chaine de carractere personalisée
+  function setFormatedDate() {
+    let formatDate = new Intl.DateTimeFormat("fr-FR", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      hour12: false,
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    let date = new Date();
+    console.log(formatDate.format(date));
+    let dateStringOriginal = formatDate.format(date);
+    let dateStringSplited = dateStringOriginal.split(",");
+    console.log(dateStringSplited);
+    dateStringSplited.splice(1, 0, ", à ");
+    dateStringSplited.splice(0, 0, "Le ");
 
+    console.log(dateStringSplited);
+    let dateStringFormated = dateStringSplited.join("");
+    return dateStringFormated;
+  }
+
+  //Lance les procedures de test de chaque input utilisateur
   let testLastname = validLastName();
   let testFirstname = validFirstName();
   let testMail = validMail();
@@ -181,32 +200,25 @@ exports.checkDataForm = (req, res, next) => {
     testCommentId &&
     testCheckbox
   ) {
-    let formatDate = new Intl.DateTimeFormat("fr-FR", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-      hour12: false,
-      at: " à ",
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    let date = new Date();
-    req.body.date = formatDate.format(date);
+    //Formatage de la date
+    req.body.date = setFormatedDate();
+
+    //recuperation de l' adresse ip de l' utilisateur
     req.body.adressIp = req.ip;
     const comment = new modelComment({
       ...req.body,
     });
 
+    
+
+    //Enregistrement dans la base de données
     comment
       .save()
       .then(() => {
-        
         res
           .status(201)
+          .json({ message: "comment saved" })
           
-          
-          .redirect(userUrl + "/?comment=saved");
       })
       .catch((error) => {
         res
@@ -219,52 +231,43 @@ exports.checkDataForm = (req, res, next) => {
   }
 };
 
-
-
-
 //Middelware qui récupere et trie l' ensemble des commentaires pour la page consultée
 exports.getAllCommentsForOnePage = (req, res, next) => {
-
   let arrayOfOriginalsComments = [];
   let arrayOfResponsesComments = [];
   let filteredArray = [];
 
-
-// filtre les commentaires originaux et reponses , retourne un tableau à afficher
+  // filtre les commentaires originaux et reponses , retourne un tableau à afficher
   function filterArray(originalsComments, responsesComments) {
-
-    console.log("arg1 de la function: " + originalsComments)
-    console.log("arg2 de la function: " + responsesComments)
+    console.log("arg1 de la function: " + originalsComments);
+    console.log("arg2 de la function: " + responsesComments);
 
     let arrayOfmatch = [];
-//boucle qui itère sur le tableau des comments originals
-    for (let iorigin = 0; iorigin < originalsComments.length; iorigin++){
-
-      //A chaque itération on recherche les commentaires réponses 
-       arrayOfmatch =
-        responsesComments.filter((commentresponse) => commentresponse.originalcommentid == originalsComments[iorigin]._id
-
-      )
-
-        
-        console.log(
-          "tableau  des commentaires responses correspondant:  " + arrayOfmatch
+    //boucle qui itère sur le tableau des comments originals
+    for (let iorigin = 0; iorigin < originalsComments.length; iorigin++) {
+      //A chaque itération on recherche les commentaires réponses
+      arrayOfmatch = responsesComments.filter(
+        (commentresponse) =>
+          commentresponse.originalcommentid == originalsComments[iorigin]._id
       );
-      
+
+      console.log(
+        "tableau  des commentaires responses correspondant:  " + arrayOfmatch
+      );
+
       //Insertion du commentaire original
       filteredArray.push(originalsComments[iorigin]);
       console.log("isertion du commentaire original: " + filteredArray);
-      
+
       //insertion  des commentaitres réponses eventuels
       if (arrayOfmatch.length > 0) {
-          arrayOfmatch.forEach((commentresponse) => {
-          filteredArray.push(commentresponse)
-        })
+        arrayOfmatch.forEach((commentresponse) => {
+          filteredArray.push(commentresponse);
+        });
         console.log("isertion du ou des commets response: " + filteredArray);
       }
-
     }
-    
+
     console.log("tableau filtré à retourner: " + filteredArray);
     return filteredArray;
   }
@@ -294,7 +297,10 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
             "tableau des comments responses : " + arrayOfResponsesComments
           );
           if (arrayOfResponsesComments.length > 0) {
-            let resultarray = filterArray(arrayOfOriginalsComments, arrayOfResponsesComments);
+            let resultarray = filterArray(
+              arrayOfOriginalsComments,
+              arrayOfResponsesComments
+            );
             console.log("tableau à renvoyer: " + resultarray);
             res.status(200).json(resultarray);
           } else {
@@ -314,3 +320,4 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
       });
     });
 };
+

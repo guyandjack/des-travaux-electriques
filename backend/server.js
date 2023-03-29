@@ -1,10 +1,8 @@
-/***** creation d' un derveur node****** */
+/***** creation d'un derveur node****** */
 /***************************************** */
 
 //import du module natif "http"
 const http = require("http");
-
-
 
 //import de l'appli express
 const appli = require("./app/app.js");
@@ -12,7 +10,7 @@ const appli = require("./app/app.js");
 //creation du server avec logique de fonctionnement dans "appli"
 const server = http.createServer(appli);
 
-//determination du port où "appli"
+//détermination du port où "appli"
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
 

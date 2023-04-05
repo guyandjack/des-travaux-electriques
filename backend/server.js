@@ -5,7 +5,7 @@
 const http = require("http");
 
 //import de l'appli express
-const appli = require("./app/app.js");
+const appli = require("./app/app2.js");
 
 //creation du server avec logique de fonctionnement dans "appli"
 const server = http.createServer(appli);

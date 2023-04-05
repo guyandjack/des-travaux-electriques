@@ -5,8 +5,7 @@ const express = require("express");
 const routerComment = express.Router();
 
 //import du fichier qui controle la logique des midellwares concernant les commentaires
-const commentControler = require("../controlers/commentControler.js");
-
+const commentControler = require("../controlers/commentControler2.js");
 
 
 /****************** route "POST" ************************ */

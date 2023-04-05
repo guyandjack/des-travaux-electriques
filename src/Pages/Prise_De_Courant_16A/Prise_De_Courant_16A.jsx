@@ -27,7 +27,7 @@ import "../../Style/CSS/prise_courant.css";
 function PagePC16A() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
   const [imageSize, setImageSize] = useState("");
-  const [arrayComments, setArrayComments] = useState({});
+  const [arrayComments, setArrayComments] = useState([]);
 
   //url image
 
@@ -48,7 +48,7 @@ function PagePC16A() {
     });
   }, [windowSize]);
 
-  //realise une requette sur l' api pour recuperer les commentaires de la page
+  //realise une requette sur l' api pour recuperer les commentaires de la page consultee
   useEffect(() => {
     
     fetch("http://localhost:3500/api/comment/" + refPage)
@@ -57,8 +57,8 @@ function PagePC16A() {
           .then((responses) => {
 
             console.log(responses);
-            setArrayComments(responses);
-            console.log(arrayComments);
+            setArrayComments(JSON.parse(responses));
+            
           
         });
       })
@@ -190,14 +190,14 @@ function PagePC16A() {
       <ul id="" className="container-comment">
         {arrayComments.length > 0
           ? arrayComments.map((comment, index) => {
-           console.log(comment.comment)
+           
               return (
                 <li key={index} className="comment-li">
                   <CommentUser
                     firstname={comment.firstname}
                     date={comment.date}
-                    text={comment.comment}
-                    idcommentoriginal={comment._id}
+                    text={comment.content}
+                    idcommentoriginal={comment.originalcommentid}
                   />
                 </li>
               );

@@ -7,20 +7,26 @@ const mysql = require("mysql");
 
 exports.checkDataForm = (req, res, next) => {
   //recuperation des données issu du formulaire
+  /** donnees de l'utilisateur **/
   let lastName = req.body.lastname;
   let firstName = req.body.firstname;
   let email = req.body.email;
   let comment = req.body.comment;
-  let adressIp = req.ip;
-  let userUrl = req.body.userurl;
-  let refPage = req.body.pageref;
-  let isResponse = req.body.isresponse;
-  let OriginalCommentId = req.body.originalcommentid;
+
+  /** donees "cachees" **/
+  let adressIp = getUserIP(req) // adresse ip de l' utilisateur
+  let refPage = req.body.pageref; // reference de la page dont est issu le formulaire
+  let isResponse = req.body.isresponse; // indique si le commentaire est une reponse
+  let originalCommentId = req.body.originalcommentid; // indique l id du commentaire correspondant a la reponse
   let userData = req.body.userdata;
-  let dateofComment = "NOW()";
+
+  //expressions regulieres
 
   //Motif qui autorise lettres majuscules, minuscules, undescore, apostrophe,point, et trait d'union.entre 2 et 20 carracteres.
   let masqueText = /^[A-Za-z_'.-]{2,30}$/;
+
+  //Motif qui autorise un nombre ou un chiffre
+  let masqueNumber = /^[0-9]{1,3}$/;
 
   //Motif qui autorise lettres majuscules / minuscules / nombres entre 2 et 20 carracteres.
   let masqueAlphaNumerique = /^[0-9A-Za-z_'.-]{2,30}$/;
@@ -34,10 +40,27 @@ exports.checkDataForm = (req, res, next) => {
   //suivi de lettres minuscules ou majuscules entre 2 et 10 caracteres
   let masqueMail = /^[0-9]{0,4}[0-9a-z_'.-]{2,30}@[0-9a-z_'.-]{2,20}\.[0-9a-zA-Z_'.-]{2,15}$/;
 
+  //motif qui autorise "o" suivi de "k"
   let masqueCheckBox = /^[o][k]$/;
 
   //Motif qui autorise des nombres, lettres minuscules et majuscules, point, trait d'union, apotrophe, espace et underscore, retour a la ligne de 10 a 200 caracteres
-  let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!\n\s ]{10,200}$/;
+  let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!ç\n\s ]{10,200}$/;
+
+  /*************** fonctions qui recupere l' id du client *********** */
+  
+  
+  function getUserIP(req) {
+    var ip =
+        req.ip ||
+        req.headers['x-forwarded-for'] ||
+        req.connection.remoteAddress ||
+        req.socket.remoteAddress ||
+        req.connection.socket.remoteAddress;
+    ip = ip.split(',')[0];
+    //ip = ip.split(':').slice(-1); //in case the ip returned in a format: "::ffff:146.xxx.xxx.xxx"
+    return ip;
+}
+  
 
   /*************** fonctions de controle et de validation des inputs utilisateur *********** */
 
@@ -106,30 +129,31 @@ exports.checkDataForm = (req, res, next) => {
     }
   }
 
-  //Valide le boolean qui indique si le commentaire est une réponse à un autre commentaire
+  //Valide un entier qui indique si le commentaire est une réponse à un autre commentaire
   function validBoolean() {
-    if (isResponse == null || isResponse == "undefined") {
-      isResponse = 1;
-      return true;
+    if (isResponse == null || isResponse == "undefined" || !isResponse) {
+      return false;
     }
-    if (isResponse !== true) {
-      isResponse = 0;
-      return true;
+
+    if (masqueNumber.test(isResponse) !== true) {
+      return false;
     } else {
-      isResponse = 1;
       return true;
     }
   }
 
   //Valide l' id du commentaire original
   function validOriginalCommentId() {
-    console.log("valeur originalCommentId: " + OriginalCommentId);
-
-    if (OriginalCommentId < 1) {
+    if (
+      originalCommentId == null ||
+      originalCommentId == "undefined" ||
+      !originalCommentId
+    ) {
+      originalCommentId = -10; //valeur arbitraire pour indiquer que le commentaire est un commentaire original
       return true;
     }
 
-    if (masqueAlphaNumerique.test(OriginalCommentId) !== true) {
+    if (masqueNumber.test(originalCommentId) !== true) {
       return false;
     } else {
       return true;
@@ -149,30 +173,6 @@ exports.checkDataForm = (req, res, next) => {
     } else {
       return true;
     }
-  }
-
-  //formate la date en une chaine de carractere personalisée
-  function setFormatedDate() {
-    let formatDate = new Intl.DateTimeFormat("fr-FR", {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-      hour12: false,
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-    let date = new Date();
-    console.log(formatDate.format(date));
-    let dateStringOriginal = formatDate.format(date);
-    let dateStringSplited = dateStringOriginal.split(",");
-    console.log(dateStringSplited);
-    dateStringSplited.splice(1, 0, ", à ");
-    dateStringSplited.splice(0, 0, "Le ");
-
-    console.log(dateStringSplited);
-    let dateStringFormated = dateStringSplited.join("");
-    return dateStringFormated;
   }
 
   //Lance les procedures de test de chaque input utilisateur
@@ -207,9 +207,6 @@ exports.checkDataForm = (req, res, next) => {
     testCommentId &&
     testCheckbox
   ) {
-    //Formatage de la date
-    req.body.date = setFormatedDate();
-
     //Enregistrement du commentaire dans la base sql
 
     //Option de connexion à la bdd sql "travaux_electriques"
@@ -221,7 +218,7 @@ exports.checkDataForm = (req, res, next) => {
     });
 
     //Requete type "insert"
-    let requeteInsertion = `INSERT INTO comment_user (lastname,firstname,email,content,adress_ip,page_ref,response,original_comment_id,date) VALUES (?,?,?,?,?,?,?,?,?)`;
+    let requeteInsertion = `INSERT INTO comment_user (lastname,firstname,email,content,adressip,pageref,response,originalcommentid,date) VALUES (?,?,?,?,?,?,?,?,NOW())`;
 
     //parametres de la requete "insert"
     let paramInsertion = [
@@ -232,8 +229,7 @@ exports.checkDataForm = (req, res, next) => {
       adressIp,
       refPage,
       isResponse,
-      OriginalCommentId,
-      dateofComment,
+      originalCommentId,
     ];
 
     //Connection à la bdd sql "travaux_electriques"
@@ -265,8 +261,8 @@ exports.checkDataForm = (req, res, next) => {
 
 exports.getAllCommentsForOnePage = (req, res, next) => {
   //récuperation de la référence de la page consulté.
-    let param = req.params.ref;
-  
+  let param = req.params.ref;
+
   //recuperation des commentaires dans la base sql
 
   //Option de connexion à la bdd sql "travaux_electriques"
@@ -279,9 +275,9 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
 
   /************** requetes preparées************* */
 
-  //Requete type "select page comments"
-  let requeteSelectAllCommentsFromPage = `SELECT firstname, content, date, originalcommentid, response FROM comment_user WHERE pageref = ?`;
-
+  //Requete type "select All comments"
+  let requeteSelectAllCommentsFromPage = `SELECT id, firstname, content, date, originalcommentid, response FROM comment_user WHERE pageref = ?`;
+  
   //parametres de la requete "select page comments"
   let paramSelectAllCommentsFromPage = [param];
 
@@ -297,11 +293,10 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
       paramSelectAllCommentsFromPage,
 
       (err, result) => {
-        if (err) {
-          console.log(
-            "impossible de recupérer les commentaires pour cette page: " + err
-          );
 
+        //gestion des erreurs
+        if (err) {
+          
           res.status(500).json({
             message:
               "impossible de recuperer les commentaires originaux pour cette page: " +
@@ -312,10 +307,12 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
           connection.end();
         }
 
-        console.log(
-          "resultat de la requette select: " + JSON.stringify(result)
-        );
-        res.status(201).json(JSON.stringify(result));
+        //gestion du resultat
+
+        //renvoyer au client un objet json  "result"
+
+        res.status(200).json(JSON.stringify(result));
+
         connection.end();
       }
     );

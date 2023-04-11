@@ -9,17 +9,23 @@ import { Formulaire } from "../Formulaire/Formulaire.jsx";
 import "../../Style/CSS/comment_user.css";
 
 //Fonction "CommentUser"
-function CommentUser({ firstname, date, text, idcommentoriginal }) {
+function CommentUser({
+  
+  firstname,
+  text,
+  date,
+  originalfirstname,
+  originaltext,
+  originalcommentid,
+}) {
   let classContainerFormResponse = "container-form-response";
   let classDisplay = "display-form-response";
   let actualUrl = window.location.href;
   let splitUrl = actualUrl.split("/");
   let refPage = splitUrl[splitUrl.length - 1];
   let classContainerComment = "container-comment-user";
-  let classColorResponse = (idcommentoriginal == "" ? "" : " class-response");
+  //let classColorResponse = idcommentoriginal == "" ? "" : " class-response";
   let classCommentUser = "comment-user";
-  let bolleanTrue = true;
-    
 
   function displayFormResponse(e) {
     let parent = e.parentElement;
@@ -28,11 +34,19 @@ function CommentUser({ firstname, date, text, idcommentoriginal }) {
 
   return (
     <div className={classContainerComment}>
-      <div className={classCommentUser + classColorResponse}>
+      <div className={classCommentUser}>
         <div className="container-info">
           <p className="comment-user-firstname">{firstname}</p>
           <p className="comment-user-date">{date}</p>
         </div>
+        {originalfirstname && originaltext ? (
+          <div className={"classContainerCommentOriginal"}>
+            <div className="comment-user-firstname-original">
+              {originalfirstname}
+            </div>
+            <div className="comment-user-text-original">{originaltext}</div>
+          </div>
+        ) : null}
         <div className="container-info">
           <span className="comment-user-text">{text}</span>
         </div>
@@ -55,9 +69,9 @@ function CommentUser({ firstname, date, text, idcommentoriginal }) {
       <div className={classContainerFormResponse}>
         <Formulaire
           pageRef={refPage}
-          isResponse={bolleanTrue}
+          isResponse={1}
           responseTo={firstname}
-          responseIdTo={true}
+          responseIdTo={originalcommentid}
         />
       </div>
     </div>

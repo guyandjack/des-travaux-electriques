@@ -1,10 +1,8 @@
 //utilisation du module express
 const express = require("express");
 
-
 //module qui permet d' acceder au corps de la requête
 const bodyParser = require("body-parser");
-
 
 //import du fichier qui contient la logique des routes pour les commentaires
 const commentRouter = require("../routes/commentRoutes.js");
@@ -16,6 +14,9 @@ const securityCORS = require("../middelware/securityCORS.js");
 
 //déclaration de notre application avec la méthode express
 const app = express();
+
+// permet d' exploiter le contenu json du corps des requettes
+app.use(express.json());
 
 //permet d'acceder au contenu du corps de la requette
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -41,6 +41,12 @@ function PageCircuitSpecialise() {
   //constante
   const refPage = "circuit-specialise";
 
+  //variable
+  let originalFirstname = null;
+  let originalContent = null;
+  let originalCommentId = null;
+  let commentDate = null;
+
   //url image schema.
 
   let schemaPlaqueDeCuisson =
@@ -50,6 +56,8 @@ function PageCircuitSpecialise() {
 
   let schemaLaveLinge =
     ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
+
+  //hooks
 
   //determine la taille de l' ecran pour les images responsives
   useEffect(() => {
@@ -61,14 +69,10 @@ function PageCircuitSpecialise() {
 
   //realise une requette sur l' api pour recuperer les commentaires de la page
   useEffect(() => {
-    
-
     fetch("http://localhost:3500/api/comment/" + refPage)
       .then((response) => {
         response.json().then((responses) => {
-          setArrayComments(responses);
-          console.log(arrayComments[0].originalcommentid);
-
+          setArrayComments(JSON.parse(responses));
         });
       })
 
@@ -77,6 +81,31 @@ function PageCircuitSpecialise() {
       });
   }, []);
 
+  //fonctions
+
+  //Formate une date issu de la bdd mysql
+  function formatDate(dateSql) {
+    //separe les differentes parties de la date dans un tableau
+    let dateSplit = dateSql.split(/[T.:]/);
+
+    //garde les 4 premiers elements de date dans le tableau
+    let dateFormated = dateSplit.splice(0, 3);
+
+    //insertion des carracteres de lisibilite
+    dateFormated.splice(0, 0, "Le ");
+    dateFormated.splice(2, 0, " à ");
+    dateFormated.splice(4, 0, ":");
+
+    //formatage de la partie 'annee' de la date
+    let year = dateFormated[1].split("-").reverse().join("/");
+
+    //Implement de la nouvelle partie 'annee' dans la date
+    dateFormated.splice(1, 1, year);
+
+    return dateFormated;
+  }
+
+  //determine l 'url des images en fonction de la taille d' ecran
   function getImageSize() {
     let newSizeScreen = window.innerWidth;
 
@@ -91,7 +120,6 @@ function PageCircuitSpecialise() {
     }
   }
 
-  
   return (
     <div className="circuit-specialise">
       <div className="container-title">
@@ -320,19 +348,54 @@ function PageCircuitSpecialise() {
       </div>
 
       <div id="form" className="container-form">
-        <Formulaire pageRef={refPage} isResponse={false}  />
+        <Formulaire
+          pageRef={refPage}
+          isResponse={0}
+          responseTo={null}
+          responseIdTo={null}
+        />
       </div>
 
       <ul id="" className="container-comment">
         {arrayComments.length > 0
-          ? arrayComments.map((comment, index) => {
+          ? arrayComments.map((onecomment, index) => {
+              //si "response" est egal à "1" ce commentaire est une réponse.
+              if (onecomment.response == 1) {
+                //recuperation du commentaire original
+                let originalCommentId = onecomment.originalcommentid;
+
+                //formatage de la date
+                commentDate = formatDate(onecomment.date);
+
+                //Seconde itération dans le  tableau des commentaires.
+                //pour trouver un commentaire dont l'id correspond à "originalCommentId"
+                let theFindedCommentOriginal = arrayComments.find(
+                  (findedComment) => findedComment.id == originalCommentId
+                );
+
+                //Recuperation du "prenom" , du "contenu" et de l' "id" du commentaire original
+                originalFirstname = theFindedCommentOriginal.firstname;
+                originalContent = theFindedCommentOriginal.content;
+                originalCommentId = onecomment.id;
+              } else {
+                //resetage du "prenom" , du "contenu" et de l' "id" du commentaire original
+                originalFirstname = "";
+                originalContent = "";
+                originalCommentId = "";
+              }
               return (
                 <li key={index} className="comment-li">
                   <CommentUser
-                    firstname={comment.firstname}
-                    date={comment.date}
-                    text={comment.comment}
-                    idcommentoriginal={comment.originalcommentid}
+                    //props qui contiennent les infos à afficher dans "commentUser":
+                    firstname={onecomment.firstname}
+                    text={onecomment.content}
+                    date={commentDate}
+                    originalfirstname={originalFirstname}
+                    originaltext={originalContent}
+                    //props à transmettre au formulaire contenu dans "commentUser"
+                    originalcommentid={originalCommentId}
+                    //id du commentaire original à envoyer via le formulaire pour la bdd
+                    //Cet id original est l' id du commentaire parent.
                   />
                 </li>
               );

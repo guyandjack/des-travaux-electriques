@@ -12,7 +12,8 @@ import "../../Style/CSS/formulaire.css";
 //Fonction "Formulaire"
 
 function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
-  console.log(responseIdTo);
+  
+
   //Class css des élements du DOM
   let form = "form";
   let form_input = "form-input";
@@ -51,6 +52,11 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   const [isdisabled, setIsDisabled] = useState("disabled");
   const [isCommentStored, setIsCommentStored] = useState();
   const [isValidButton, setIsValidButton] = useState(false);
+  
+  //Valeur des inputs "nom", "prenom", "email" issues du formulaire
+  const [lastNameValue, setLastnameValue] = useState();
+  const [firstNameValue, setFirstNameValue] = useState();
+  const [emailValue, setEmailValue] = useState();
 
   //recupere l' url courante
   function getUserUrl() {
@@ -58,9 +64,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   }
 
   //effet de bord qui recupere un flag du derveur suite à l' enregistrement reussi d'un commentaire
-  useEffect(() => {
-    
-  })
+  useEffect(() => {});
 
   //valide le button submit en fonction de l'etat des inputs utilisateur
   useEffect(() => {
@@ -96,6 +100,40 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     }
   }, [isValidLastName, isValidFirstName, isValidMail, isValidMsg]);
 
+  //Attribut des valeurs par defaut dans les input utilisateurs
+  useEffect(() => {
+
+    if (localStorage.getItem("userData") !== null) {
+      
+      let dataUser = JSON.parse(localStorage.getItem("userData"));
+
+      let listInputName = document.querySelectorAll("input[name=lastname]");
+     
+      let listInputFirstName = document.querySelectorAll("input[name=firstname]");
+
+      let listInputEmail = document.querySelectorAll("input[name=email]");
+
+      listInputName.forEach((inputName => {
+
+        inputName.value = dataUser.userLastname;
+        //inputName.placeholder = dataUser.userLastname;
+
+      }))
+
+      listInputFirstName.forEach((inputFirstName) => {
+        inputFirstName.value = dataUser.userFirstname;
+        //inputName.placeholder = dataUser.userLastname;
+      });
+
+      listInputEmail.forEach((inputEmail) => {
+        inputEmail.value = dataUser.userEmail;
+        //inputName.placeholder = dataUser.userLastname;
+      });
+
+    }
+  },[])
+  
+
   //Motif qui autorise lettres majuscules et minuscules uniquement
   let masqueText = /^[A-Za-z_'.-]{2,20}$/;
 
@@ -109,7 +147,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   let masqueMail = /^[0-9]{0,4}[0-9a-z_'.-]{2,30}@[0-9a-z_'.-]{2,15}\.[0-9a-zA-Z_'.-]{2,15}$/;
 
   //Motif qui autorise des nombres, lettres minuscules et majuscules, point, trait d'union, apotrophe, et underscore de 10 a 200 caracteres
-  let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!\n\s]{10,200}$/;
+  let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!ç\n\s]{10,200}$/;
 
   //Valide l' input "lastName"
   function validLastName(e) {
@@ -121,6 +159,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       messageLastName = "";
       setisValidLastName(true);
       setLastname(messageLastName);
+      setLastnameValue(e.target.value)
     }
   }
 
@@ -134,6 +173,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       messageFirstName = "";
       setisValidFirstName(true);
       setFirstname(messageFirstName);
+      setFirstNameValue(e.target.value);
     }
   }
 
@@ -147,6 +187,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       messageMail = "";
       setisValidMail(true);
       setMail(messageMail);
+      setEmailValue(e.target.value);
     }
   }
 
@@ -160,6 +201,24 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       messageMsg = "";
       setisValidMsg(true);
       setMsg(messageMsg);
+    }
+  }
+
+  //Enregistre les donnees utilisateurs dans le local session
+  function storeUserDataInLocalSession(e) {
+
+    if (e.target.checked && isValidButton == true) {
+      let dataUser = {
+        userLastname : lastNameValue ,
+        userFirstname : firstNameValue,
+        userEmail : emailValue,
+      }
+      localStorage.setItem("userData", JSON.stringify(dataUser));
+
+    }
+
+    if (!e.target.checked && isValidButton == true) {
+      localStorage.removeItem("userData");
     }
   }
 
@@ -193,7 +252,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     >
       {isResponse ? (
         <div className="form__text-response">
-          <p className="form__text">Répondre à {responseTo}</p>
+          <p className="form__text">Répondre à {responseTo + " dont id est : " + responseIdTo}</p>
           <div
             onClick={(evt) => {
               hideResponseForm(evt.currentTarget);
@@ -296,7 +355,9 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
         <label htmlFor="userdata">
           Se souvenir de moi pour un prochain commentaire, durant ma session.
         </label>
-        <input type="checkbox" name="userdata" id="userdata" value="ok" />
+        <input type="checkbox" name="userdata" id="userdata" value="ok" onClick={function (evt) {
+            storeUserDataInLocalSession(evt);
+          }} />
       </div>
 
       <div className="cont-label-input">
@@ -324,17 +385,13 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
         {msg}
       </p>
 
-      <input type="hidden" name="userurl" value={userUrl}></input>
-      <input type="hidden" name="pageref" value={pageRef}></input>
-      <input type="hidden" name="isresponse" value={isResponse}></input>
-      {isResponse == true && responseIdTo ? (
-        <input
-          type="hidden"
-          name="originalcommentid"
-          value={responseIdTo}
-        ></input>
+      <input type="hidden" name="userurl" value={userUrl} />
+      <input type="hidden" name="pageref" value={pageRef} />
+      <input type="hidden" name="isresponse" value={isResponse} />
+      {isResponse == 1 ? (
+        <input type="hidden" name="originalcommentid" value={responseIdTo} />
       ) : (
-        <input type="hidden" name="originalcommentid" value={-1}></input>
+        null
       )}
 
       <div className="cont-valid-btn">

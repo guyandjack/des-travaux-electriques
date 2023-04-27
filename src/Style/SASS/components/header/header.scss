@@ -24,7 +24,7 @@
    
 
     &__logo{
-        flex: 0 1 15%;
+        flex: 0 1 10%;
         width:100px;
         height: 100px;
 
@@ -36,8 +36,16 @@
     }
     
     &__container-menu{
-        flex: 1 1 85%;
+
+        flex: 1 1 75%;
         height: 100%;
+    }
+
+    &__container-div-session{
+        width: auto;
+        height: 100%;
+        margin: 0em 1em;
+        
     }
 
   

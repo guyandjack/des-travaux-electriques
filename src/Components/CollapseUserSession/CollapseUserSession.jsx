@@ -4,12 +4,16 @@
 import { useState, useEffect } from "react";
 
 //Import fichier de style
-//import "../../Style/CSS/collapsestd.css";
+import "../../Style/CSS/collapse_user_session.css";
 
 //Import des functions
 const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 
-function CollapseStd() {
+//Variables
+let urlIcon = "/Asset/icon/personne-svg/person.svg";
+let altIcon = "icon session utilisateur ouverte";
+
+function CollapseUserSession() {
   const [sessionValid, setSessionValid] = useState(false);
   const [userFirstName, setUserFirstName] = useState(null);
 
@@ -35,23 +39,33 @@ function CollapseStd() {
   }
 
   return sessionValid == true ? (
-    <div>
-      <ul>
-        <li>
-          Bonjour {userFirstName}
-          <ul>
-            <li
-              onClick={() => {
-                closeSession();
-              }}
-            >
-              Deconnexion
-            </li>
-          </ul>
+    <div className="container-user-session">
+      <div className="container-icon">
+        
+        <svg className="icon"
+          xmlns="http://www.w3.org/2000/svg"
+          height="48"
+          viewBox="0 96 960 960"
+          width="48"
+        >
+          <path />
+        </svg>
+
+        <p className="text">Bonjour<br></br>{'" '+ userFirstName +' "'}</p>
+      </div>
+
+      <ul className="list">
+        <li
+          className="list-li"
+          onClick={() => {
+            closeSession();
+          }}
+        >
+          Deconnexion
         </li>
       </ul>
     </div>
   ) : null;
 }
 
-export { CollapseStd };
+export { CollapseUserSession };

@@ -14,9 +14,8 @@ import { NavMenu } from "../NavMenu/NavMenu.jsx";
 import { NavCollapse } from "../NavCollapse/NavCollapse.jsx";
 import { NavLink } from "../NavLink/NavLink.jsx";
 import { Banner } from "../Banner/Banner.jsx";
-import { CollapseStd } from "../CollapseStd/CollapseStd.jsx";
-import { TitleHN } from "../Title/TitleHN/TitleHN.jsx";
-import { Title } from "../Title/Title.jsx";
+import { CollapseUserSession } from "../CollapseUserSession/CollapseUserSession.jsx";
+
 
 
 
@@ -67,7 +66,6 @@ function Header() {
         )}
         <div className="header__container-menu">
           <NavMenu>
-            <CollapseStd />
             <NavLink
               urlTo="/"
               urlImg=""
@@ -181,6 +179,10 @@ function Header() {
               />
             </NavCollapse>
           </NavMenu>
+        </div>
+        <div className="header__container-div-session">
+
+            <CollapseUserSession />
         </div>
       </nav>
     </header>

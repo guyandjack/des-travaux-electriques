@@ -28,8 +28,8 @@
 
 .header__logo {
   -webkit-box-flex: 0;
-      -ms-flex: 0 1 15%;
-          flex: 0 1 15%;
+      -ms-flex: 0 1 10%;
+          flex: 0 1 10%;
   width: 100px;
   height: 100px;
 }
@@ -44,7 +44,13 @@
 
 .header__container-menu {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 85%;
-          flex: 1 1 85%;
+      -ms-flex: 1 1 75%;
+          flex: 1 1 75%;
   height: 100%;
+}
+
+.header__container-div-session {
+  width: auto;
+  height: 100%;
+  margin: 0em 1em;
 }

@@ -17,6 +17,7 @@ import { commentResult } from "../../Data/ContentQuiz/CommentResult/CommentResul
 import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
 import { Title } from "../../Components/Title/Title.jsx";
 import { QuizQuestion } from "../../Components/QuizQuestion/QuizQuestion.jsx";
+import { NavLink } from "../../Components/NavLink/NavLink.jsx";
 
 //import des feuilles de style
 import "../../Style/CSS/page_quiz_pc.css";
@@ -31,8 +32,6 @@ function PageQuizPC() {
   const [messageError, setMessageError] = useState(false);
 
   const [userFinalResult, setUserFinalResult] = useState({});
-
-  
 
   //nombre total de question
   let numberTotalQuestion = ContentQuizPC.length;
@@ -72,13 +71,12 @@ function PageQuizPC() {
 
   //Efface un element du local storage
   function deleteElementInLocalStorage(key) {
-    
     if (!localStorage.getItem(key)) {
-      return false
+      return false;
     }
 
     localStorage.removeItem(key);
-    return true
+    return true;
   }
 
   //Recupère un élément du localStorage : (retourne un tableau ou -1)
@@ -102,7 +100,7 @@ function PageQuizPC() {
     let idQuestion = userResponse.idq;
     let idInput = userResponse.idi;
     let userSelect = userResponse.ur;
-    
+
     let rightResponse = userResponse.gr;
 
     //Test si les proprietees existent
@@ -165,7 +163,6 @@ function PageQuizPC() {
 
   function checkIfInputChecked() {
     let allQuestions = document.querySelectorAll("div.container-question");
-    
 
     let nbrOfFlag = 0;
 
@@ -182,8 +179,8 @@ function PageQuizPC() {
         nbrOfFlag = nbrOfFlag + 1;
       }
     }
-    console.log(nbrOfFlag)
-    return nbrOfFlag===numberTotalQuestion? true: false
+    console.log(nbrOfFlag);
+    return nbrOfFlag === numberTotalQuestion ? true : false;
   }
 
   // calcule le score du user :(retourne un nombre entier ou un boolean)
@@ -209,7 +206,9 @@ function PageQuizPC() {
   //-3-
   function disabledAllInputs() {
     let AllInputs = document.querySelectorAll("input[type='radio']");
-    let AllInputsChecked = document.querySelectorAll("input[type='radio']:checked");
+    let AllInputsChecked = document.querySelectorAll(
+      "input[type='radio']:checked"
+    );
     AllInputs.forEach((input) => {
       input.setAttribute("disabled", "true");
     });
@@ -276,13 +275,13 @@ function PageQuizPC() {
   //permet le controle et l' afffichage du score final apres validation des reponses
   function valideResponse() {
     let flag = checkIfInputChecked();
-   
+
     if (!flag) {
-      setMessageError(true)
-      return
+      setMessageError(true);
+      return;
     }
     let finalScore = calulateFinalScore("userResponsesQuizPC");
-    
+
     disabledAllInputs();
     displayScore(finalScore);
     setMessageError(false);
@@ -314,6 +313,16 @@ function PageQuizPC() {
 
   return (
     <div className="quiz-pc">
+      <div className="container-link-back">
+        <NavLink
+          urlTo="/schema/pc16a"
+          urlImg=""
+          text="← Schéma PC16A"
+          tailleText="1.2em"
+          colorText="fourth"
+          colorBg=""
+        ></NavLink>
+      </div>
       <div className="quiz-pc__title">
         <Title
           pagetype="page"
@@ -403,7 +412,18 @@ function PageQuizPC() {
             Veuillez répondre à toute les questions!!!
           </p>
         ) : null}
+
       </form>
+        <div className="container-link-back">
+          <NavLink
+            urlTo="/schema/pc16a"
+            urlImg=""
+            text="← Schéma PC16A"
+            tailleText="1.2em"
+            colorText="fourth"
+            colorBg=""
+          ></NavLink>
+        </div>
     </div>
   );
 }

@@ -1,25 +1,42 @@
 /**************  ensemble des midelwares qui gérent la logique des commentaires**********************/
 
-//import du model mysql
+//import des librairies
 const mysql = require("mysql");
 
 //Midellwares qui controle et enregistre les données issues du formulaire
 
 exports.checkDataForm = (req, res, next) => {
   //recuperation des données issu du formulaire
+
   /** donnees de l'utilisateur **/
   let lastName = req.body.lastname;
+  console.log("valeur de lastname: " + lastName);
   let firstName = req.body.firstname;
+  console.log("valeur de firstname: " + firstName);
   let email = req.body.email;
+  console.log("valeur de email: " + email);
   let comment = req.body.comment;
+  console.log("valeur de comment: " + comment);
+  let userUrl = req.body.userurl;
+  console.log("valeur de userurl: " + userUrl);
 
   /** donees "cachees" **/
-  let adressIp = getUserIP(req) // adresse ip de l' utilisateur
-  let refPage = req.body.pageref; // reference de la page dont est issu le formulaire
-  let isResponse = req.body.isresponse; // indique si le commentaire est une reponse
-  let originalCommentId = req.body.originalcommentid; // indique l id du commentaire correspondant a la reponse
+  let adressIp = getUserIP(req);
+  console.log("valeur de adresse ip: " + adressIp); // adresse ip de l' utilisateur
+  let refPage = req.body.pageref;
+  console.log("valeur de refpage: " + refPage); // reference de la page dont est issu le formulaire
+  let isResponse = req.body.isresponse;
+  console.log("valeur de isresponse: " + isResponse); // indique si le commentaire est une reponse
+  console.log("type de isresponse: " + typeof isResponse); // indique si le commentaire est une reponse
+  let originalCommentId = req.body.originalcommentid;
+  console.log("valeur de originalcommentid: " + originalCommentId); // indique l id du commentaire correspondant a la reponse
   let userData = req.body.userdata;
+  console.log("valeur de userdata: " + userData); //indique si  l' utilisateur souhaite ouvrir une session
 
+
+  //Variables globales
+  let insertID;
+  let flag = false;
   //expressions regulieres
 
   //Motif qui autorise lettres majuscules, minuscules, undescore, apostrophe,point, et trait d'union.entre 2 et 20 carracteres.
@@ -47,20 +64,41 @@ exports.checkDataForm = (req, res, next) => {
   let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!ç\n\s ]{10,200}$/;
 
   /*************** fonctions qui recupere l' id du client *********** */
-  
-  
+  function getUrlUser(requestObject) {
+    let urlUser = Url.parse(requestObject.url, true).pathname;
+    return urlUser;
+  }
+
   function getUserIP(req) {
     var ip =
-        req.ip ||
-        req.headers['x-forwarded-for'] ||
-        req.connection.remoteAddress ||
-        req.socket.remoteAddress ||
-        req.connection.socket.remoteAddress;
-    ip = ip.split(',')[0];
+      req.ip ||
+      req.headers["x-forwarded-for"] ||
+      req.connection.remoteAddress ||
+      req.socket.remoteAddress ||
+      req.connection.socket.remoteAddress;
+    ip = ip.split(",")[0];
     //ip = ip.split(':').slice(-1); //in case the ip returned in a format: "::ffff:146.xxx.xxx.xxx"
     return ip;
-}
-  
+  }
+
+  //creation d' un objet à renvoyer au front end suite à l' enregistrement d' un commentaire
+  function objectResponse() {
+    let object = {};
+
+    if (userData == "ok") {
+      object = {
+        validsession: "ok",
+        userDataName: lastName,
+        userDataFirstname: firstName,
+        userDataEmail: email,
+      };
+    } else {
+      object = {
+        validsession: "no",
+      };
+    }
+    return object;
+  }
 
   /*************** fonctions de controle et de validation des inputs utilisateur *********** */
 
@@ -131,14 +169,10 @@ exports.checkDataForm = (req, res, next) => {
 
   //Valide un entier qui indique si le commentaire est une réponse à un autre commentaire
   function validBoolean() {
-    if (isResponse == null || isResponse == "undefined" || !isResponse) {
-      return false;
-    }
-
-    if (masqueNumber.test(isResponse) !== true) {
-      return false;
-    } else {
+    if (isResponse === 1 || isResponse === 0) {
       return true;
+    } else {
+      return false;
     }
   }
 
@@ -149,7 +183,7 @@ exports.checkDataForm = (req, res, next) => {
       originalCommentId == "undefined" ||
       !originalCommentId
     ) {
-      originalCommentId = -10; //valeur arbitraire pour indiquer que le commentaire est un commentaire original
+      originalCommentId = -1;
       return true;
     }
 
@@ -160,9 +194,9 @@ exports.checkDataForm = (req, res, next) => {
     }
   }
 
-  //valide l' autorisation d' enregistrer une session
+  //valide l' autorisation d' enregistrer une session utilisateur
   function validCheckbox() {
-    //si le checkbox n'est pas coché le formulaire ne renvoi rien, on force le retour à true pour la suite du script
+    //La valeur du checkbox peut etre nulle, ou absente.
 
     if (userData == null || userData == "undefined") {
       return true;
@@ -175,7 +209,7 @@ exports.checkDataForm = (req, res, next) => {
     }
   }
 
-  //Lance les procedures de test de chaque input utilisateur
+  //Lance les procedures de test de chaque input utilisateur et input cachée
   let testLastname = validLastName();
   let testFirstname = validFirstName();
   let testMail = validMail();
@@ -185,7 +219,7 @@ exports.checkDataForm = (req, res, next) => {
   let testCommentId = validOriginalCommentId();
   let testCheckbox = validCheckbox();
 
-  //si les données sont valides on crée une date et recuperation de l IP client,  enregistrement dans la base de données le contenu du formulaire
+  //si les données sont valides enregistrement dans la base de données le contenu du formulaire
 
   console.log("etat de testLastname : " + testLastname);
   console.log("etat de testFirstname : " + testFirstname);
@@ -195,7 +229,6 @@ exports.checkDataForm = (req, res, next) => {
   console.log("etat de testBoolean : " + testBoolean);
   console.log("etat de testCommentId : " + testCommentId);
   console.log("etat de testcheckbox : " + testCheckbox);
-  console.log(typeof testBoolean);
 
   if (
     testLastname &&
@@ -217,10 +250,14 @@ exports.checkDataForm = (req, res, next) => {
       database: "travaux_electriques",
     });
 
-    //Requete type "insert"
+    //Composition des requetes preparees
+
+    //-1- requete pour inserer un commentaire original:
+
+    //Requete -1- type "insert"
     let requeteInsertion = `INSERT INTO comment_user (lastname,firstname,email,content,adressip,pageref,response,originalcommentid,date) VALUES (?,?,?,?,?,?,?,?,NOW())`;
 
-    //parametres de la requete "insert"
+    //parametres de la requete -1- type "insert"
     let paramInsertion = [
       lastName,
       firstName,
@@ -232,29 +269,86 @@ exports.checkDataForm = (req, res, next) => {
       originalCommentId,
     ];
 
+    
+
+
+
+
     //Connection à la bdd sql "travaux_electriques"
     connection.connect(function (err) {
       if (err) {
         return console.error("error de connection: " + err.message);
       }
 
-      console.log("connecte a la bdd");
+      console.log("Connexion à la bdd ´travaux_electriques´ reussie!");
+
+      //requette -1- insertion du commentaire
       connection.query(requeteInsertion, paramInsertion, (err, result) => {
+        //gestion des erreurs
         if (err) {
-          console.log("impossible d' enregistre le commentaire: " + err);
+          console.log("impossible d'enregistre le commentaire: " + err);
 
           res.status(500).json({
-            message: "impossible d' enregistre le commentaire: " + err,
+            message: "impossible d'enregistre le commentaire: " + err,
           });
           //fermeture connection
           connection.end();
         }
 
-        res.status(201).json({ message: "commentaire enregistré!" });
+        //gestion du resultat
+        console.log(
+          "resultat de l'enregistrement du comment ds la bdd: " +
+            JSON.stringify(result)
+        );
+        insertID = result.insertId;
+        console.log("insertid dans la  requette 1 : " + insertID);
+
+        // Requette secondaire facultative: Attribut une valeur à originalcommentid
+        if (isResponse == 0) {
+          console.log("requette 2 lancee");
+          //Un commentaire original doit avoir son originalcommentid egal à son id
+
+          //Requete type "update"
+          let requeteUpdate = `UPDATE comment_user SET originalcommentid = ? WHERE id = ?`;
+
+          //Parametre de la requette -2- type "update"
+          let paramUpdate = [insertID, insertID];
+
+          console.log("valeur du insertid dans la requette 2: " + insertID);
+
+          connection.query(requeteUpdate, paramUpdate, (err, result) => {
+            //gestion des erreurs
+            if (err) {
+              console.log("impossible de modifier le commentaire: " + err);
+
+              res.status(500).json({
+                message: "impossible de modifier le commentaire: " + err,
+              });
+              //fermeture connection
+              connection.end();
+            }
+
+            //gestion du resultat
+            console.log(
+              "resultat de la mise  à jour du comment ds la bdd: " +
+                JSON.stringify(result)
+            );
+          });
+        }
+
+        let resultForClient = objectResponse();
+
+        res.status(201).json(resultForClient);
+
         connection.end();
       });
+
+      
     });
-  }
+
+    
+    
+    }
 };
 
 //Middelware qui recupere tous les commentaires correspondant à la page consultée.
@@ -277,7 +371,7 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
 
   //Requete type "select All comments"
   let requeteSelectAllCommentsFromPage = `SELECT id, firstname, content, date, originalcommentid, response FROM comment_user WHERE pageref = ?`;
-  
+
   //parametres de la requete "select page comments"
   let paramSelectAllCommentsFromPage = [param];
 
@@ -293,13 +387,11 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
       paramSelectAllCommentsFromPage,
 
       (err, result) => {
-
         //gestion des erreurs
         if (err) {
-          
           res.status(500).json({
             message:
-              "impossible de recuperer les commentaires originaux pour cette page: " +
+              "impossible de recuperer les commentaires pour cette page: " +
               err,
           });
 

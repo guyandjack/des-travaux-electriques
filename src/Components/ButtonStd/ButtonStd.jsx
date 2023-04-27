@@ -34,7 +34,7 @@ function ButtonStd({ btntype, nom, text, colorbg, colortext, disabledButton }) {
       break;
 
     default:
-      classColorBg = " first-bg";
+      classColorBg = "";
   }
 
   switch (colortext) {

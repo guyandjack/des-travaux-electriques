@@ -9,11 +9,13 @@ import { ButtonStd } from "../ButtonStd/ButtonStd";
 //Import des feuille de style
 import "../../Style/CSS/formulaire.css";
 
+//Import des fonctions
+const testSession = require("../../Utils/Function/LocalStorage");
+
 //Fonction "Formulaire"
 
 function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
-  
-
+  console.log("valeur du originalcommentid dans 'formulaire': " + responseIdTo);
   //Class css des élements du DOM
   let form = "form";
   let form_input = "form-input";
@@ -41,7 +43,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   const [mail, setMail] = useState(messageMail);
   const [msg, setMsg] = useState(messageMsg);
 
-  const [userUrl, setUserUrl] = useState();
+  //const [userUrl, setUserUrl] = useState();
 
   //Boolean qui indique la validité des champs du formulaire
   const [isValidLastName, setisValidLastName] = useState(false);
@@ -52,40 +54,52 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   const [isdisabled, setIsDisabled] = useState("disabled");
   const [isCommentStored, setIsCommentStored] = useState();
   const [isValidButton, setIsValidButton] = useState(false);
-  
-  //Valeur des inputs "nom", "prenom", "email" issues du formulaire
+
+  //Valeur des inputs "utilisateur" du formulaire
   const [lastNameValue, setLastnameValue] = useState();
   const [firstNameValue, setFirstNameValue] = useState();
   const [emailValue, setEmailValue] = useState();
+  const [contentlValue, setContentlValue] = useState();
+  const [userDataValue, setUserDataValue] = useState("no");
 
-  //recupere l' url courante
-  function getUserUrl() {
-    setUserUrl(window.location.href);
+  //Valeur des inputs "cachees" du formulaire
+  const [userUrlValue, setUserUrlValue] = useState(window.location.href);
+  const [pageRefValue, setPagerefValue] = useState(pageRef);
+  const [isResponseValue, setIsResponseValue] = useState(isResponse);
+  const [originalCommentIdValue, setOriginalCommentIdValue] = useState(
+    responseIdTo
+  );
+
+  //Indique si une session user est ouverte
+  const [isSessionOpen, setIsSessionOpen] = useState(
+    testSession.isSessionOpen()
+  );
+  console.log("session user ouverte?: " + isSessionOpen);
+
+  //si une session est ouverte le formulaire doit renvoyer la valeur "userData" egal à "ok"
+  // on valid ensuite les entrees nom prenom et email
+  if(isSessionOpen == true && userDataValue !== "ok"){
+    setUserDataValue("ok");
+    setisValidLastName(true);
+    setisValidFirstName(true);
+    setisValidMail(true);
   }
 
-  //effet de bord qui recupere un flag du derveur suite à l' enregistrement reussi d'un commentaire
-  useEffect(() => {});
+  //Corps de la requette fetch pour soummission du formulaire
+  let bodyrequest = {
+    lastname: lastNameValue,
+    firstname: firstNameValue,
+    email: emailValue,
+    comment: contentlValue,
+    userurl: userUrlValue,
+    pageref: pageRefValue,
+    isresponse: isResponseValue,
+    originalcommentid: originalCommentIdValue,
+    userdata: userDataValue,
+  };
 
   //valide le button submit en fonction de l'etat des inputs utilisateur
   useEffect(() => {
-    getUserUrl();
-
-    //validation de l' envoi du commentaire
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
-
-    if (params.has("comment")) {
-      let commentValue = params.get("comment");
-
-      if (commentValue === "unsaved") {
-        setIsCommentStored(false);
-      }
-
-      if (commentValue === "saved") {
-        setIsCommentStored(true);
-      }
-    }
-
     if (
       isValidLastName === true &&
       isValidFirstName === true &&
@@ -100,39 +114,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     }
   }, [isValidLastName, isValidFirstName, isValidMail, isValidMsg]);
 
-  //Attribut des valeurs par defaut dans les input utilisateurs
-  useEffect(() => {
-
-    if (localStorage.getItem("userData") !== null) {
-      
-      let dataUser = JSON.parse(localStorage.getItem("userData"));
-
-      let listInputName = document.querySelectorAll("input[name=lastname]");
-     
-      let listInputFirstName = document.querySelectorAll("input[name=firstname]");
-
-      let listInputEmail = document.querySelectorAll("input[name=email]");
-
-      listInputName.forEach((inputName => {
-
-        inputName.value = dataUser.userLastname;
-        //inputName.placeholder = dataUser.userLastname;
-
-      }))
-
-      listInputFirstName.forEach((inputFirstName) => {
-        inputFirstName.value = dataUser.userFirstname;
-        //inputName.placeholder = dataUser.userLastname;
-      });
-
-      listInputEmail.forEach((inputEmail) => {
-        inputEmail.value = dataUser.userEmail;
-        //inputName.placeholder = dataUser.userLastname;
-      });
-
-    }
-  },[])
-  
+  /********************** expressions regulieres ******************/
 
   //Motif qui autorise lettres majuscules et minuscules uniquement
   let masqueText = /^[A-Za-z_'.-]{2,20}$/;
@@ -149,6 +131,32 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   //Motif qui autorise des nombres, lettres minuscules et majuscules, point, trait d'union, apotrophe, et underscore de 10 a 200 caracteres
   let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!ç\n\s]{10,200}$/;
 
+  /********************* declaration des fonctions ************************ */
+
+  //realise une requete "fetch" lors de la soummission du formulaire.
+  function submitForm(e) {
+    //evite la soumission automatique du formulaire
+    e.preventDefault();
+
+    fetch("http://localhost:3500/api/comment/", {
+      headers: {
+        Accept: "application/json, text/plain",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(bodyrequest),
+    })
+      .then((response) => response.json())
+      .then((data) => JSON.stringify(data))
+      .then((datastringed) => localStorage.setItem("session", datastringed))
+      .then(setOriginalCommentIdValue(""))
+      .then(window.location.reload())
+
+      .catch((error) => console.log(error));
+  }
+
+  /****** fonction de validation des inputs user************ */
+
   //Valide l' input "lastName"
   function validLastName(e) {
     if (masqueText.test(e.target.value) !== true || e.target.value.length < 2) {
@@ -159,7 +167,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       messageLastName = "";
       setisValidLastName(true);
       setLastname(messageLastName);
-      setLastnameValue(e.target.value)
+      setLastnameValue(e.target.value);
     }
   }
 
@@ -201,24 +209,18 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       messageMsg = "";
       setisValidMsg(true);
       setMsg(messageMsg);
+      setContentlValue(e.target.value);
     }
   }
 
-  //Enregistre les donnees utilisateurs dans le local session
-  function storeUserDataInLocalSession(e) {
-
-    if (e.target.checked && isValidButton == true) {
-      let dataUser = {
-        userLastname : lastNameValue ,
-        userFirstname : firstNameValue,
-        userEmail : emailValue,
-      }
-      localStorage.setItem("userData", JSON.stringify(dataUser));
-
+  //valid l' autorisation de creer une session user
+  function validSessionUser(e) {
+    if (e.target.checked) {
+      setUserDataValue("ok");
     }
 
-    if (!e.target.checked && isValidButton == true) {
-      localStorage.removeItem("userData");
+    if (!e.target.checked) {
+      setUserDataValue("no");
     }
   }
 
@@ -236,6 +238,11 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     reload();
   }
 
+  //recupere l' url courante
+  function getUserUrl() {
+    setUserUrlValue(window.location.href);
+  }
+
   //positionne la hauteur à 0px du conteneur du formulaire
   function hideResponseForm(e) {
     let parent = e.parentElement;
@@ -248,11 +255,15 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     <form
       className={form}
       method="post"
-      action="http://localhost:3500/api/comment"
+      onSubmit={(evt) => {
+        submitForm(evt);
+      }}
     >
       {isResponse ? (
         <div className="form__text-response">
-          <p className="form__text">Répondre à {responseTo + " dont id est : " + responseIdTo}</p>
+          <p className="form__text">
+            Répondre à {responseTo + " dont id est : " + responseIdTo}
+          </p>
           <div
             onClick={(evt) => {
               hideResponseForm(evt.currentTarget);
@@ -277,7 +288,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
 
       <div className="cont-label-input">
         <label className="form-label" htmlFor="lastname">
-          Nom<span className="requis"> *</span> <span> (Non publié)</span>
+          Nom<span className="requis">*</span> <span> (Non publié)</span>
         </label>
         <input
           className={isValidLastName ? form_input + valid_border : form_input}
@@ -328,7 +339,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       <div className="cont-label-input">
         <label className="form-label" htmlFor="email">
           Email<span className="requis"> *</span>
-          <span> (Non publié)</span>
+          <span>(Non publié)</span>
         </label>
         <input
           className={isValidMail ? form_input + valid_border : form_input}
@@ -351,14 +362,38 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       >
         {mail}
       </p>
-      <div className="container-checkbox">
-        <label htmlFor="userdata">
-          Se souvenir de moi pour un prochain commentaire, durant ma session.
-        </label>
-        <input type="checkbox" name="userdata" id="userdata" value="ok" onClick={function (evt) {
-            storeUserDataInLocalSession(evt);
-          }} />
-      </div>
+      {isSessionOpen == true ? (
+        <div className="container-checkbox">
+          <label htmlFor="userdata">
+            Se souvenir de moi pour un prochain commentaire, durant ma session.
+          </label>
+          <input
+            type="checkbox"
+            name="userdata"
+            id="userdata"
+            value="ok"
+            checked 
+            disabled
+            
+           
+          />
+        </div>
+      ) : (
+        <div className="container-checkbox">
+          <label htmlFor="userdata">
+            Se souvenir de moi pour un prochain commentaire, durant ma session.
+          </label>
+          <input
+            type="checkbox"
+            name="userdata"
+            id="userdata"
+            value="ok"
+            onClick={function (evt) {
+              validSessionUser(evt);
+            }}
+          />
+        </div>
+      )}
 
       <div className="cont-label-input">
         <label className="form-label" htmlFor="comment" min="2" max="200">
@@ -385,14 +420,14 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
         {msg}
       </p>
 
-      <input type="hidden" name="userurl" value={userUrl} />
-      <input type="hidden" name="pageref" value={pageRef} />
-      <input type="hidden" name="isresponse" value={isResponse} />
-      {isResponse == 1 ? (
-        <input type="hidden" name="originalcommentid" value={responseIdTo} />
-      ) : (
-        null
-      )}
+      <input type="hidden" name="userurl" value={userUrlValue} />
+      <input type="hidden" name="pageref" value={pageRefValue} />
+      <input type="hidden" name="isresponse" value={isResponseValue} />
+      <input
+        type="hidden"
+        name="originalcommentid"
+        value={originalCommentIdValue}
+      />
 
       <div className="cont-valid-btn">
         <ButtonStd

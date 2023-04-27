@@ -8,6 +8,9 @@ import { Formulaire } from "../Formulaire/Formulaire.jsx";
 //Import des feuilles de style
 import "../../Style/CSS/comment_user.css";
 
+//Import de fonction
+const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
+
 //Fonction "CommentUser"
 function CommentUser({
   
@@ -26,10 +29,15 @@ function CommentUser({
   let classContainerComment = "container-comment-user";
   //let classColorResponse = idcommentoriginal == "" ? "" : " class-response";
   let classCommentUser = "comment-user";
+  console.log(
+    "valeur du originalcommentid dans 'commentuser': " + originalcommentid
+  );
 
   function displayFormResponse(e) {
     let parent = e.parentElement;
     parent.nextElementSibling.classList.add(classDisplay);
+    //preremplie les inputs utilisateur si une user session est ouverte
+    defaultValueInputUser.setValueInputUser();
   }
 
   return (

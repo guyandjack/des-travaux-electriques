@@ -7,32 +7,50 @@
 @import "../../../utils/colors-rule/colors-rule.scss";
 
 .quiz-pc {
-
   display: flex;
   flex-flow: column nowrap;
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  max-width: 1200px;
+  margin: 0px auto;
 
-  &__title{
-        width: 100%;
-        margin: 1em 0em;
+  .container-link-back {
+    align-self: flex-start;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height:2em;
 
-        @include medium-screen{
-            width: 80%;
-             margin: 2em 0em;
-        }
+    border-top: 0px solid map-get($colors-rule, second-color);
+    padding-top: 10px;
+    transition: border-top 250ms linear;
 
-        @include large-screen{
-            width: 70%;
-             margin: 3em 0em;
-        }
-
-        @include upper-large-screen{
-            width: 60%;
-             margin: 10em 0em 5em 0em;
-        }
+    &:hover {
+      border-top: 6px solid map-get($colors-rule, second-color);
     }
+  }
+
+  &__title {
+    width: 100%;
+    margin: 1em 0em;
+
+    @include medium-screen {
+      width: 80%;
+      margin: 2em 0em;
+    }
+
+    @include large-screen {
+      width: 70%;
+      margin: 3em 0em;
+    }
+
+    @include upper-large-screen {
+      width: 60%;
+      margin: 10em 0em 5em 0em;
+    }
+  }
 
   &__form {
     display: flex;
@@ -44,8 +62,8 @@
     background-color: map-get($colors-rule, fifth-color);
     padding: 1em;
 
-    @include upper-medium-screen{
-      width:80%;
+    @include upper-medium-screen {
+      width: 80%;
       max-width: 800px;
     }
 
@@ -53,42 +71,36 @@
       margin: 2em 0em;
       width: 100%;
     }
-
-    
   }
 
-  &__resultat{
+  &__resultat {
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
     align-items: center;
     width: 100%;
 
-
-    &__text{
-        font-size: 1.1em;
-        padding: 1em;
-        color: map-get($colors-rule, fourth-color );
-       
+    &__text {
+      font-size: 1.1em;
+      padding: 1em;
+      color: map-get($colors-rule, fourth-color);
     }
 
     &__rate {
-        margin: 1em 0em;
-        width: fit-content;
-        font-size: 1.5em;
-        text-align: center;
-        padding: 1em;
-        border-radius: 0.3em;
-        font-weight: 600;
-        //border:4px solid map-get($colors-rule, fourth-color );
-        
+      margin: 1em 0em;
+      width: fit-content;
+      font-size: 1.5em;
+      text-align: center;
+      padding: 1em;
+      border-radius: 0.3em;
+      font-weight: 600;
+      //border:4px solid map-get($colors-rule, fourth-color );
     }
 
-    &__btn-reset{
+    &__btn-reset {
       margin-top: 2em;
-        align-self: flex-end;
+      align-self: flex-end;
     }
-
   }
 
   &__error {
@@ -101,17 +113,15 @@
     color: map-get($colors-rule, second-color);
   }
 
-  .bad-result{
-    background-color: map-get($colors-rule, second-color) ;
+  .bad-result {
+    background-color: map-get($colors-rule, second-color);
   }
 
-  .medium-result{
-    background-color: map-get($colors-rule, first-color) ;
+  .medium-result {
+    background-color: map-get($colors-rule, first-color);
   }
 
-  .good-result{
-    background-color: map-get($colors-rule, third-color) ;
+  .good-result {
+    background-color: map-get($colors-rule, third-color);
   }
-
-  
 }

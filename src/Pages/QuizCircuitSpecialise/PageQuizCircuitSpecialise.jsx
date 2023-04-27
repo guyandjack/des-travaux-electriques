@@ -17,6 +17,7 @@ import { commentResult } from "../../Data/ContentQuiz/CommentResult/CommentResul
 import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
 import { Title } from "../../Components/Title/Title.jsx";
 import { QuizQuestion } from "../../Components/QuizQuestion/QuizQuestion.jsx";
+import { NavLink } from "../../Components/NavLink/NavLink.jsx";
 
 //import des feuilles de style
 import "../../Style/CSS/page_quiz_pc.css";
@@ -311,6 +312,16 @@ function PageQuizCircuitSpecialise() {
 
   return (
     <div className="quiz-pc">
+      <div className="container-link-back">
+        <NavLink
+          urlTo="/schema/circuit-specialise"
+          urlImg=""
+          text="← Schéma Circuits-Specialisés"
+          tailleText="1.2em"
+          colorText="fourth"
+          colorBg=""
+        ></NavLink>
+      </div>
       <div className="quiz-pc__title">
         <Title
           pagetype="page"
@@ -401,6 +412,16 @@ function PageQuizCircuitSpecialise() {
           </p>
         ) : null}
       </form>
+      <div className="container-link-back">
+        <NavLink
+          urlTo="/schema/circuit-specialise"
+          urlImg=""
+          text="← Schéma Circuits-Specialisés"
+          tailleText="1.2em"
+          colorText="fourth"
+          colorBg=""
+        ></NavLink>
+      </div>
     </div>
   );
 }

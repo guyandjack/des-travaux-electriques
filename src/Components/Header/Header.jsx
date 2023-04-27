@@ -14,6 +14,7 @@ import { NavMenu } from "../NavMenu/NavMenu.jsx";
 import { NavCollapse } from "../NavCollapse/NavCollapse.jsx";
 import { NavLink } from "../NavLink/NavLink.jsx";
 import { Banner } from "../Banner/Banner.jsx";
+import { CollapseStd } from "../CollapseStd/CollapseStd.jsx";
 import { TitleHN } from "../Title/TitleHN/TitleHN.jsx";
 import { Title } from "../Title/Title.jsx";
 
@@ -66,6 +67,7 @@ function Header() {
         )}
         <div className="header__container-menu">
           <NavMenu>
+            <CollapseStd />
             <NavLink
               urlTo="/"
               urlImg=""
@@ -74,7 +76,13 @@ function Header() {
               colorText="second"
               colorBg=""
             />
-            <NavCollapse urlImg="" text="norme" colorText="second" sizePolice="1.2em" colorBg="">
+            <NavCollapse
+              urlImg=""
+              text="norme"
+              colorText="second"
+              sizePolice="1.2em"
+              colorBg=""
+            >
               <NavLink
                 urlTo="/ip"
                 urlImg=""
@@ -108,7 +116,13 @@ function Header() {
                 colorBg=""
               />
             </NavCollapse>
-            <NavCollapse urlImg="" text="Schéma" colorText="second" sizePolice="1.2em" colorBg="">
+            <NavCollapse
+              urlImg=""
+              text="Schéma"
+              colorText="second"
+              sizePolice="1.2em"
+              colorBg=""
+            >
               <NavLink
                 urlTo="/schema/pc16a"
                 urlImg=""
@@ -142,7 +156,13 @@ function Header() {
                 colorBg=""
               />
             </NavCollapse>
-            <NavCollapse urlImg="" text="Quiz" colorText="second" sizePolice="1.2em" colorBg="">
+            <NavCollapse
+              urlImg=""
+              text="Quiz"
+              colorText="second"
+              sizePolice="1.2em"
+              colorBg=""
+            >
               <NavLink
                 urlTo="/quiz/pc16a"
                 urlImg=""

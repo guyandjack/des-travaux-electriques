@@ -18,7 +18,7 @@ export function isSessionOpen() {
 }
 
 
-//Attribut des valeurs par defaut issu du local storage dans les inputs utilisateurs
+//Attribut des valeurs par defaut issu du local storage dans les inputs utilisateurs du formulaire principal
 
 export function setValueInputUser() {
     

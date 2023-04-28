@@ -6,13 +6,9 @@ import { useState, useEffect } from "react";
 //Import fichier de style
 import "../../Style/CSS/collapse_user_session.css";
 
-//Import des functions
-const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 
-//Variables
-let urlIcon = "/Asset/icon/personne-svg/person.svg";
-let altIcon = "icon session utilisateur ouverte";
 
+//Function "CollapseUserSession"
 function CollapseUserSession() {
   const [sessionValid, setSessionValid] = useState(false);
   const [userFirstName, setUserFirstName] = useState(null);

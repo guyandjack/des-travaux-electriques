@@ -21,22 +21,24 @@ function CommentUser({
   originaltext,
   originalcommentid,
 }) {
+
+  //Variable de class de style
+  let classContainerComment = "container-comment-user";
+  let classCommentUser = "comment-user";
   let classContainerFormResponse = "container-form-response";
   let classDisplay = "display-form-response";
+
+  //Recupere la referenece de la page dans l' url courante
   let actualUrl = window.location.href;
   let splitUrl = actualUrl.split("/");
   let refPage = splitUrl[splitUrl.length - 1];
-  let classContainerComment = "container-comment-user";
-  //let classColorResponse = idcommentoriginal == "" ? "" : " class-response";
-  let classCommentUser = "comment-user";
-  console.log(
-    "valeur du originalcommentid dans 'commentuser': " + originalcommentid
-  );
+  
+  //Affiche le formulaire pour effectuer une réponse à un commentaire.
 
   function displayFormResponse(e) {
     let parent = e.parentElement;
     parent.nextElementSibling.classList.add(classDisplay);
-    //preremplie les inputs utilisateur si une user session est ouverte
+    //preremplie les inputs utilisateurs si une user session est ouverte
     defaultValueInputUser.setValueInputUser();
   }
 

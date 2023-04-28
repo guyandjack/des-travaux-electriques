@@ -66,23 +66,37 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   const [userUrlValue, setUserUrlValue] = useState(window.location.href);
   const [pageRefValue, setPagerefValue] = useState(pageRef);
   const [isResponseValue, setIsResponseValue] = useState(isResponse);
-  const [originalCommentIdValue, setOriginalCommentIdValue] = useState(
-    responseIdTo
-  );
+  const [originalCommentIdValue, setOriginalCommentIdValue] = useState(responseIdTo);
 
   //Indique si une session user est ouverte
-  const [isSessionOpen, setIsSessionOpen] = useState(
-    testSession.isSessionOpen()
-  );
-  console.log("session user ouverte?: " + isSessionOpen);
+  const [isSessionOpen, setIsSessionOpen] = useState(testSession.isSessionOpen());
 
-  //si une session est ouverte le formulaire doit renvoyer la valeur "userData" egal à "ok"
-  // on valid ensuite les entrees nom prenom et email
-  if(isSessionOpen == true && userDataValue !== "ok"){
-    setUserDataValue("ok");
-    setisValidLastName(true);
-    setisValidFirstName(true);
-    setisValidMail(true);
+  //si une session est ouverte:
+  //le formulaire doit renvoyer la valeur "userData" egal à "ok"
+  //Les states mame, firstname, email doivent etre mis à jour avec le contenu du localstorage pour la soumission du formulaire
+  // on valide ensuite les entrees nom prenom et email pour l'utilisateur (effet visuel)
+
+  if (isSessionOpen == true) {
+    let dataUser = JSON.parse(localStorage.getItem("session"));
+
+    if (userDataValue !== "ok") {
+      setUserDataValue("ok");
+    }
+
+    if (dataUser.userDataName !== lastNameValue) {
+      setLastnameValue(dataUser.userDataName);
+      setisValidLastName(true);
+    }
+
+    if (dataUser.userDataFirstname !== firstNameValue) {
+      setFirstNameValue(dataUser.userDataFirstname);
+      setisValidFirstName(true);
+    }
+
+    if (dataUser.userDataEmail !== emailValue) {
+      setEmailValue(dataUser.userDataEmail);
+      setisValidMail(true);
+    }
   }
 
   //Corps de la requette fetch pour soummission du formulaire
@@ -159,7 +173,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
 
   //Valide l' input "lastName"
   function validLastName(e) {
-    if (masqueText.test(e.target.value) !== true || e.target.value.length < 2) {
+    if (masqueText.test(e.target.value) !== true) {
       messageLastName = "veuillez entrer un nom valide";
       setisValidLastName(false);
       setLastname(messageLastName);
@@ -222,25 +236,6 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     if (!e.target.checked) {
       setUserDataValue("no");
     }
-  }
-
-  //Recharge la page sur l'url de base
-  function reload() {
-    let urlActive = window.location.href;
-    let urlSplited = urlActive.split("/?")[0];
-    document.location.href = urlSplited;
-  }
-
-  //permet de cacher le popup de validation du commentaire enregistré
-  function hide(evt) {
-    let parent = evt.parentElement;
-    parent.classList.add(classHide);
-    reload();
-  }
-
-  //recupere l' url courante
-  function getUserUrl() {
-    setUserUrlValue(window.location.href);
   }
 
   //positionne la hauteur à 0px du conteneur du formulaire
@@ -372,10 +367,8 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             name="userdata"
             id="userdata"
             value="ok"
-            checked 
+            checked
             disabled
-            
-           
           />
         </div>
       ) : (
@@ -439,36 +432,6 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
           disabledButton={isdisabled}
         ></ButtonStd>
       </div>
-
-      {isCommentStored === true ? (
-        <div className="comment-stored">
-          <span className="comment-stored__text">
-            Votre commentaire a été envoyé
-          </span>
-          <span
-            className="comment-stored__cross"
-            onClick={(e) => {
-              hide(e.currentTarget);
-            }}
-          >
-            X
-          </span>
-        </div>
-      ) : null}
-
-      {isCommentStored === false ? (
-        <div className="comment-stored unsave">
-          <span className="comment-stored__text">Commentaire non publié</span>
-          <span
-            className="comment-stored__cross"
-            onClick={(e) => {
-              hide(e.currentTarget);
-            }}
-          >
-            X
-          </span>
-        </div>
-      ) : null}
     </form>
   );
 }

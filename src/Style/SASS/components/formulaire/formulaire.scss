@@ -64,7 +64,11 @@
     }
 
     .form-label{
-        width: 50%;
+        display: flex;
+        flex-flow:column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
         font-weight: 600;
         text-transform: capitalize;
         text-align: left;
@@ -75,7 +79,10 @@
         }
     }
 
-
+    .text-label{
+        
+        width: 50%;
+    }
     .form-input{
         width: 50%;
         height:2em;
@@ -94,6 +101,30 @@
         border-bottom: 2px solid lighten(map-get($colors-rule, first-color),50%);
     }
 
+    .container-checkbox{
+        display: flex;
+        flex-flow:row nowrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    
+        .text-checkbox{
+            width: 80%;
+            //border: 2px solid blue;
+    
+        }
+        .checkbox{
+            
+                all: revert;
+                margin-right: 5%;
+                height: 1em;
+                width: 1em;
+                border: 2px solid gray;
+
+            
+        }
+    }
+
     
     &__flag{
         margin: 0.5em 0em;
@@ -102,20 +133,7 @@
         
     }
 
-    .container-checkbox{
-
-        display: flex;
-        flex-flow:row-reverse wrap;
-        justify-content: flex-start;
-        align-items: center;
-        margin: 2em 0em;
-
-        & > input{
-            
-            all: revert;
-            
-        }
-    }
+    
 
     
     .textarea{

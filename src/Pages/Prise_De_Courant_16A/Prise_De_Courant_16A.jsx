@@ -23,6 +23,8 @@ import { CommentUser } from "../../Components/CommentUser/CommentUser.jsx";
 //Import des feuilles de style
 import "../../Style/CSS/prise_courant.css";
 
+
+
 //Import des fonctions
 const requetsFetch = require("../../Utils/Function/RequeteAPI.js");
 const dateFormat = require("../../Utils/Function/Date.js");
@@ -34,6 +36,7 @@ const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 function PagePC16A() {
   const [imageSize, setImageSize] = useState("");
   const [arrayComments, setArrayComments] = useState([]);
+  let [isFirstTime, setIsFirstTime] = useState(true);
 
   //url image
 
@@ -52,6 +55,7 @@ function PagePC16A() {
   let commentDate = null;
 
   //hooks
+
   //recupere la taille de l' ecran pour les images responsives
   useEffect(() => {
     sizeScreen.giveImageSize(setImageSize);
@@ -61,14 +65,21 @@ function PagePC16A() {
   }, []);
 
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
+  //todo: implementer une com wesocket avec le serveur
   useEffect(() => {
     requetsFetch.fetchCommentsForOnePage(refPage, setArrayComments);
+    setInterval(
+      () => requetsFetch.fetchCommentsForOnePage(refPage, setArrayComments),
+      60000
+    );
   }, []);
 
   //Premplie les inputs user si une session est ouverte
   useEffect(() => {
     defaultValueInputUser.setValueInputUser();
   }, []);
+
+ 
 
   return (
     <div className="prise-courant">
@@ -224,10 +235,7 @@ function PagePC16A() {
               //recuperation de l' "id" du commentaire original
               originalCommentId = onecomment.originalcommentid;
 
-              console.log(
-                "recuperationde l' id original pour un comment: " +
-                  originalCommentId
-              );
+              
               //si "response" est egal à "1" ce commentaire est une réponse.
               if (onecomment.response == 1) {
                 //Seconde itération dans le  tableau des commentaires.
@@ -237,7 +245,6 @@ function PagePC16A() {
                   (findedComment) => findedComment.id == originalCommentId
                 );
 
-                
                 //Un commentaire "reponse" à un "originalcommentid" égal à son "id"
                 originalCommentId = onecomment.id;
 
@@ -255,7 +262,6 @@ function PagePC16A() {
                     date={commentDate}
                     originalfirstname={originalFirstname}
                     originaltext={originalContent}
-
                     //props à transmettre au formulaire contenu dans "commentUser"
                     originalcommentid={originalCommentId}
                     //id du commentaire original à envoyer via le formulaire pour la bdd

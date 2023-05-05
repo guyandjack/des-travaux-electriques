@@ -4,8 +4,7 @@
 export function giveImageSize(setfunction) {
 
     let newSizeScreen = window.innerWidth;
-    console.log("nouvelle taille de l' ecran: " + newSizeScreen)
-
+    
     if (newSizeScreen < 575) {
         setfunction("small");
     }

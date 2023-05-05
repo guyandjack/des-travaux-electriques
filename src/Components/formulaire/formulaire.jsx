@@ -15,7 +15,7 @@ const testSession = require("../../Utils/Function/LocalStorage");
 //Fonction "Formulaire"
 
 function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
-  console.log("valeur du originalcommentid dans 'formulaire': " + responseIdTo);
+  
   //Class css des élements du DOM
   let form = "form";
   let form_input = "form-input";
@@ -66,10 +66,14 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   const [userUrlValue, setUserUrlValue] = useState(window.location.href);
   const [pageRefValue, setPagerefValue] = useState(pageRef);
   const [isResponseValue, setIsResponseValue] = useState(isResponse);
-  const [originalCommentIdValue, setOriginalCommentIdValue] = useState(responseIdTo);
+  const [originalCommentIdValue, setOriginalCommentIdValue] = useState(
+    responseIdTo
+  );
 
   //Indique si une session user est ouverte
-  const [isSessionOpen, setIsSessionOpen] = useState(testSession.isSessionOpen());
+  const [isSessionOpen, setIsSessionOpen] = useState(
+    testSession.isSessionOpen()
+  );
 
   //si une session est ouverte:
   //le formulaire doit renvoyer la valeur "userData" egal à "ok"
@@ -162,7 +166,10 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     })
       .then((response) => response.json())
       .then((data) => JSON.stringify(data))
-      .then((datastringed) => localStorage.setItem("session", datastringed))
+      .then((datastringed) => {
+        localStorage.setItem("session", datastringed);
+        localStorage.setItem("activePage", "0");
+      })
       .then(setOriginalCommentIdValue(""))
       .then(window.location.reload())
 
@@ -282,22 +289,23 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       )}
 
       <div className="cont-label-input">
-        <label className="form-label" htmlFor="lastname">
-          Nom<span className="requis">*</span> <span> (Non publié)</span>
+        <label className="form-label">
+          <p className="text-label">
+            Nom<span className="requis">*</span> <span> (Non publié)</span>
+          </p>
+          <input
+            className={isValidLastName ? form_input + valid_border : form_input}
+            type="text"
+            name="lastname"
+            min="2"
+            max="20"
+            placeholder="Entrez votre nom..."
+            required
+            onChange={function (evt) {
+              validLastName(evt);
+            }}
+          />
         </label>
-        <input
-          className={isValidLastName ? form_input + valid_border : form_input}
-          type="text"
-          name="lastname"
-          id="lastname"
-          min="2"
-          max="20"
-          placeholder="Entrez votre nom..."
-          required
-          onChange={function (evt) {
-            validLastName(evt);
-          }}
-        />
       </div>
       <p
         className={
@@ -307,22 +315,25 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
         {lastName}
       </p>
       <div className="cont-label-input">
-        <label className="form-label" htmlFor="firstname">
-          Prénom<span className="requis"> *</span>
+        <label className="form-label">
+          <p className="text-label">
+            Prénom<span className="requis"> *</span>
+          </p>
+          <input
+            className={
+              isValidFirstName ? form_input + valid_border : form_input
+            }
+            type="text"
+            name="firstname"
+            min="2"
+            max="20"
+            placeholder="Entrez votre prénom..."
+            required
+            onChange={function (evt) {
+              validFirstName(evt);
+            }}
+          />
         </label>
-        <input
-          className={isValidFirstName ? form_input + valid_border : form_input}
-          type="text"
-          name="firstname"
-          id="firstname"
-          min="2"
-          max="20"
-          placeholder="Entrez votre prénom..."
-          required
-          onChange={function (evt) {
-            validFirstName(evt);
-          }}
-        />
       </div>
       <p
         className={
@@ -332,23 +343,24 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
         {firstName}
       </p>
       <div className="cont-label-input">
-        <label className="form-label" htmlFor="email">
-          Email<span className="requis"> *</span>
-          <span>(Non publié)</span>
+        <label className="form-label">
+          <p className="text-label">
+            Email<span className="requis"> *</span>
+            <span>(Non publié)</span>
+          </p>
+          <input
+            className={isValidMail ? form_input + valid_border : form_input}
+            type="email"
+            name="email"
+            min="2"
+            max="55"
+            placeholder="Entrez votre email..."
+            required
+            onChange={function (evt) {
+              validMail(evt);
+            }}
+          />
         </label>
-        <input
-          className={isValidMail ? form_input + valid_border : form_input}
-          type="email"
-          name="email"
-          id="email"
-          min="2"
-          max="55"
-          placeholder="Entrez votre email..."
-          required
-          onChange={function (evt) {
-            validMail(evt);
-          }}
-        />
       </div>
       <p
         className={
@@ -358,52 +370,60 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
         {mail}
       </p>
       {isSessionOpen == true ? (
-        <div className="container-checkbox">
-          <label htmlFor="userdata">
-            Se souvenir de moi pour un prochain commentaire, durant ma session.
+        <div className="cont-label-input">
+          <label className = "container-checkbox">
+            <input
+              className="checkbox"
+              type="checkbox"
+              name="userdata"
+              value="ok"
+              checked
+              disabled
+            />
+            <p className="text-label">
+              Se souvenir de moi pour un prochain commentaire, durant ma
+              session.
+            </p>
           </label>
-          <input
-            type="checkbox"
-            name="userdata"
-            id="userdata"
-            value="ok"
-            checked
-            disabled
-          />
         </div>
       ) : (
-        <div className="container-checkbox">
-          <label htmlFor="userdata">
-            Se souvenir de moi pour un prochain commentaire, durant ma session.
+        <div className="cont-label-input">
+          <label className="container-checkbox">
+            <input
+              className="checkbox"
+              type="checkbox"
+              name="userdata"
+              value="ok"
+              onClick={function (evt) {
+                validSessionUser(evt);
+              }}
+            />
+            <p className="text-checkbox">
+              Se souvenir de moi pour un prochain commentaire, durant ma
+              session.
+            </p>
+
           </label>
-          <input
-            type="checkbox"
-            name="userdata"
-            id="userdata"
-            value="ok"
-            onClick={function (evt) {
-              validSessionUser(evt);
-            }}
-          />
         </div>
       )}
 
       <div className="cont-label-input">
-        <label className="form-label" htmlFor="comment" min="2" max="200">
-          Entrez votre texte...<span className="requis"> *</span>
+        <label className="form-label" min="2" max="200">
+          <p className="text-label">
+            Entrez votre texte...<span className="requis"> *</span>
+          </p>
+          <textarea
+            className={isValidMsg ? textarea + valid_border_textarea : textarea}
+            name="comment"
+            min="10"
+            max="200"
+            placeholder={contentPlaceHolder}
+            required
+            onChange={function (evt) {
+              validMessage(evt);
+            }}
+          ></textarea>
         </label>
-        <textarea
-          className={isValidMsg ? textarea + valid_border_textarea : textarea}
-          name="comment"
-          id="comment"
-          min="10"
-          max="200"
-          placeholder={contentPlaceHolder}
-          required
-          onChange={function (evt) {
-            validMessage(evt);
-          }}
-        ></textarea>
       </div>
       <p
         className={

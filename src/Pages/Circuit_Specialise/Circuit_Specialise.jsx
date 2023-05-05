@@ -24,6 +24,12 @@ import { CommentUser } from "../../Components/CommentUser/CommentUser.jsx";
 //Import des feuilles de style
 import "../../Style/CSS/circuit_specialise.css";
 
+//Import des fonctions
+const requetsFetch = require("../../Utils/Function/RequeteAPI.js");
+const dateFormat = require("../../Utils/Function/Date.js");
+const sizeScreen = require("../../Utils/Function/Size.js");
+const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
+
 //Fonction "PageCircuitSpecialise"
 function PageCircuitSpecialise() {
   const [windowSize, setWindowSize] = useState(window.innerWidth);
@@ -59,66 +65,28 @@ function PageCircuitSpecialise() {
 
   //hooks
 
-  //determine la taille de l' ecran pour les images responsives
+  //recupere la taille de l' ecran pour les images responsives
   useEffect(() => {
-    getImageSize();
+    sizeScreen.giveImageSize(setImageSize);
     window.addEventListener("resize", () => {
-      setWindowSize(window.innerWidth);
+      sizeScreen.giveImageSize(setImageSize);
     });
-  }, [windowSize]);
-
-  //realise une requette sur l' api pour recuperer les commentaires de la page
-  useEffect(() => {
-    fetch("http://localhost:3500/api/comment/" + refPage)
-      .then((response) => {
-        response.json().then((responses) => {
-          setArrayComments(JSON.parse(responses));
-        });
-      })
-
-      .catch((error) => {
-        console.log("msg erreur requette api: " + error);
-      });
   }, []);
 
-  //fonctions
+  //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
+  //todo: implementer une com wesocket avec le serveur
+  useEffect(() => {
+    requetsFetch.fetchCommentsForOnePage(refPage, setArrayComments);
+    setInterval(
+      () => requetsFetch.fetchCommentsForOnePage(refPage, setArrayComments),
+      60000
+    );
+  }, []);
 
-  //Formate une date issu de la bdd mysql
-  function formatDate(dateSql) {
-    //separe les differentes parties de la date dans un tableau
-    let dateSplit = dateSql.split(/[T.:]/);
-
-    //garde les 4 premiers elements de date dans le tableau
-    let dateFormated = dateSplit.splice(0, 3);
-
-    //insertion des carracteres de lisibilite
-    dateFormated.splice(0, 0, "Le ");
-    dateFormated.splice(2, 0, " à ");
-    dateFormated.splice(4, 0, ":");
-
-    //formatage de la partie 'annee' de la date
-    let year = dateFormated[1].split("-").reverse().join("/");
-
-    //Implement de la nouvelle partie 'annee' dans la date
-    dateFormated.splice(1, 1, year);
-
-    return dateFormated;
-  }
-
-  //determine l 'url des images en fonction de la taille d' ecran
-  function getImageSize() {
-    let newSizeScreen = window.innerWidth;
-
-    if (newSizeScreen < 575) {
-      setImageSize("small");
-    }
-    if (newSizeScreen >= 575 && newSizeScreen < 992) {
-      setImageSize("medium");
-    }
-    if (newSizeScreen >= 992) {
-      setImageSize("large");
-    }
-  }
+  //Premplie les inputs user si une session est ouverte
+  useEffect(() => {
+    defaultValueInputUser.setValueInputUser();
+  }, []);
 
   return (
     <div className="circuit-specialise">
@@ -357,32 +325,68 @@ function PageCircuitSpecialise() {
       </div>
 
       <ul id="" className="container-comment">
+        {/****************************** Logique des commentaires:*******************************************
+
+        -1- chaque commentaire s' affiche ds l'ordre chronologique d' enregistrement de la bdd (comme une messagerie/chat)
+
+        -2- Il y a trois types de commentaire
+          Type a: commentaire "original/initial"
+          Type b: commentaire "réponse" à un commentaire "original"
+          Type c: commentaire "réponse" à un commentaire "reponse"
+
+        -3- Distinction des types de commentaire
+          On utilise trois champs de la bdd
+          a) "id"                 du commentaire générer par la bdd lors de l'enregistrement
+          b) "originalcommentid"  determiné par le bakend et inseré dans la bdd lors de l'enregistrement
+          c) "response"           générer par le formulaire qui soumet les infos au backend
+
+        -4- Contenu  des commentaires
+          I) Commentaire Type a
+
+            a) Le "prénom/pseudo" de l' utilisateur issu de la bdd
+            b) La "Date" issu de la bdd formatée par le frontend avec la fonction "formatDate"
+            c) Le contenu textuel du issu de la bdd
+
+          II) Commentaire Type b et Type c
+
+            a) Le "prénom/pseudo" de l' utilisateur issu de la bdd
+            b) La "Date" issu de la bdd formatée par le frontend avec la fonction "formatDate"
+            c) Le contenu textuel du issu de la bdd
+            d) le "prenom/pseudo" du commentaite original/initial
+            e) Le contenu textuel du commentaire original/initial
+
+        
+
+         */}
         {arrayComments.length > 0
           ? arrayComments.map((onecomment, index) => {
+              //reset des variables
+              originalFirstname = null;
+              originalContent = null;
+
+              //formatage de la date
+              commentDate = dateFormat.formatDate(onecomment.date);
+
+              //recuperation de l' "id" du commentaire original
+              originalCommentId = onecomment.originalcommentid;
+
               //si "response" est egal à "1" ce commentaire est une réponse.
               if (onecomment.response == 1) {
-                //recuperation du commentaire original
-                let originalCommentId = onecomment.originalcommentid;
-
-                //formatage de la date
-                commentDate = formatDate(onecomment.date);
-
                 //Seconde itération dans le  tableau des commentaires.
-                //pour trouver un commentaire dont l'id correspond à "originalCommentId"
+                //pour trouver un commentaire dont l'"id" correspond à "originalCommentId"
+                //On recupere ainsi les infos du commentaire original
                 let theFindedCommentOriginal = arrayComments.find(
                   (findedComment) => findedComment.id == originalCommentId
                 );
 
-                //Recuperation du "prenom" , du "contenu" et de l' "id" du commentaire original
+                //Un commentaire "reponse" à un "originalcommentid" égal à son "id"
+                originalCommentId = onecomment.id;
+
+                //Recuperation du "prenom" , du "contenu"  du commentaire "original"
                 originalFirstname = theFindedCommentOriginal.firstname;
                 originalContent = theFindedCommentOriginal.content;
-                originalCommentId = onecomment.id;
-              } else {
-                //resetage du "prenom" , du "contenu" et de l' "id" du commentaire original
-                originalFirstname = "";
-                originalContent = "";
-                originalCommentId = "";
               }
+
               return (
                 <li key={index} className="comment-li">
                   <CommentUser

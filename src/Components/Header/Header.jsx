@@ -10,34 +10,64 @@ import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
 
 //Import des composants enfants
 
+import { SiteIsBuilding } from "../../Components/SiteIsBuilding/SiteIsBuilding.jsx";
+
 import { NavMenu } from "../NavMenu/NavMenu.jsx";
 import { NavCollapse } from "../NavCollapse/NavCollapse.jsx";
 import { NavLink } from "../NavLink/NavLink.jsx";
 import { Banner } from "../Banner/Banner.jsx";
 import { CollapseUserSession } from "../CollapseUserSession/CollapseUserSession.jsx";
 
-
-
-
 //Import des feuilles de style
 import "../../Style/CSS/header.css";
+
+//import des fonction
+import {  pageAperture, pageClosure } from "../../Utils/Function/LocalStorage.js";
 
 
 //Fonction "Header"
 function Header() {
+  //hooks
 
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   
+
+  //Variables
+
+  // Variable pour limiter les re-render45
+  let isFirstTime = true;
+
   useEffect(() => {
     getScreenSize();
-    
-    
   }, [isSmallScreen]);
 
+  //Gere les sessions utilisteurs
+  useEffect(() => {
+   
+    if (isFirstTime == true) {
+      
+      //reference la page consultée dans le local storage
+      pageAperture();
+  
+      //Suite à un évenement fermeture de page on gère la session utilisateur
+      window.addEventListener("beforeunload", () => {
+        //reinitialisation de la variable
+        isFirstTime = true;
+        pageClosure();
+      
+      })
+      //Evite un deuxieme traitement lors du re-render
+      isFirstTime = false;
+    }
+  }, []);
+    
+ 
+
+  //Declaration des fonctions
 
   function getScreenSize() {
     let screenSize = window.innerWidth;
-    
+
     if (screenSize < 579) {
       setIsSmallScreen(true);
     } else {
@@ -45,7 +75,7 @@ function Header() {
     }
   }
 
-     window.addEventListener("resize", () => {
+  window.addEventListener("resize", () => {
     getScreenSize();
   });
 
@@ -61,9 +91,10 @@ function Header() {
         />
       ) : null}
       <nav className="header">
-        {isSmallScreen ? null : (
-          <img className="header__logo" src="" alt=""></img>
-        )}
+        
+        <div className="header__container-div-session">
+          <SiteIsBuilding />
+        </div>
         <div className="header__container-menu">
           <NavMenu>
             <NavLink
@@ -181,8 +212,7 @@ function Header() {
           </NavMenu>
         </div>
         <div className="header__container-div-session">
-
-            <CollapseUserSession />
+          <CollapseUserSession />
         </div>
       </nav>
     </header>

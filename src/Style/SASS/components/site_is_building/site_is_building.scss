@@ -1,0 +1,48 @@
+//Feuille de style du composant "SiteIsBuilding"
+
+//Import des "mixins" qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+@keyframes animBackGround {
+    0%{
+       
+        border: 4px solid map-get($colors-rule, first-color);
+    }
+    50% {
+        border: 4px solid map-get($colors-rule, second-color);
+    }
+    100% {
+        
+        border: 4px solid map-get($colors-rule, third-color);
+    }
+    
+    
+}
+
+.site-building {
+    width: 300px;
+    height: 100%;
+    //border: 4px solid map-get($colors-rule, second-color );
+    animation: animBackGround 15s ease-in-out infinite alternate forwards ;
+
+  .title {
+    padding: 5px;
+    font-size: 1em;
+    color: map-get($colors-rule, second-color);
+  }
+
+  .text {
+    text-transform: lowercase;
+    padding: 0.2em;
+    color: map-get($colors-rule, fifth-color);
+  }
+
+  .text-end {
+    padding: 0.2em;
+    //font-size: 0.5em;
+    color: map-get($colors-rule, second-color);
+  }
+}

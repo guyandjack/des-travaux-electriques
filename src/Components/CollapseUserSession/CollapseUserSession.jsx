@@ -1,4 +1,4 @@
-//Composant "collapseStd"
+//Composant "collapseUserSession"
 
 //import des hooks
 import { useState, useEffect } from "react";
@@ -29,6 +29,7 @@ function CollapseUserSession() {
   //fonction qui efface la clef "session" du localstorage et recharge la page pour cleaner les formulaire
   function closeSession() {
     localStorage.removeItem("session");
+    localStorage.removeItem("activePage");
     setSessionValid(false);
     setUserFirstName(null);
     window.location.reload();

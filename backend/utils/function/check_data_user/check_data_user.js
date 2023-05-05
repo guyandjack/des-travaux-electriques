@@ -7,6 +7,8 @@
 /*********************************************************************************************************
  *                         fonctions qui controlent les data issues du formulaire                        *
  ******************************************************************************************************* */
+//Import du module "mysql"
+const mysql = require("mysql");
 
 //import des regEx pour les fonctions de controle des donées du formulaire
 const regEx = require("../../variables/RegEx/RegEx.js");
@@ -126,7 +128,7 @@ function validCheckbox(userData) {
 }
 
 /********************************************************************************************************
- *                              fonctions diverse les middelware                                        *
+ *                              fonctions diverse du middelware                                        *
  * *****************************************************************************************************/
 
 //Recupere l'adresse ip de l'utilisateur
@@ -163,6 +165,16 @@ function objectResponse(lastName, firstName, email, checkboxvalue) {
   return object;
 }
 
+function createConnexionMysql() {
+    let connection = mysql.createConnection({
+      host: "localhost",
+      user: "admin",
+      password: "Poweradmin65!",
+      database: "travaux_electriques",
+    });
+    return connection
+}
+
 module.exports = {
   validlastname: validLastName,
   validfirstname: validFirstName,
@@ -174,4 +186,5 @@ module.exports = {
   validcheckbox: validCheckbox,
   getuserip: getUserIP,
   objectresponse: objectResponse,
+  createconnexionmysql: createConnexionMysql,
 };

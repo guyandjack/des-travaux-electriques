@@ -1,8 +1,5 @@
 /**************  ensemble des midelwares qui gérent la logique des commentaires**********************/
 
-//import des librairies
-const mysql = require("mysql");
-
 //Import des fonctions de controle des inputs issues du formulaire
 const checkForm = require("../utils/function/check_data_user/check_data_user.js");
 
@@ -77,13 +74,7 @@ exports.checkDataForm = (req, res, next) => {
   ) {
     //Enregistrement du commentaire dans la base sql
 
-    //Option de connexion à la bdd sql "travaux_electriques"
-    let connection = mysql.createConnection({
-      host: "localhost",
-      user: "admin",
-      password: "Poweradmin65!",
-      database: "travaux_electriques",
-    });
+    let connection = checkForm.createconnexionmysql();
 
     //Composition des requetes preparees
 
@@ -187,13 +178,7 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
 
   //recuperation des commentaires dans la base sql
 
-  //Option de connexion à la bdd sql "travaux_electriques"
-  let connection = mysql.createConnection({
-    host: "localhost",
-    user: "admin",
-    password: "Poweradmin65!",
-    database: "travaux_electriques",
-  });
+  let connection = checkForm.createconnexionmysql();
 
   /************** requetes preparées************* */
 
@@ -208,8 +193,8 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
     if (err) {
       return console.error("error de connection: " + err.message);
     }
-
-    console.log("Connecté à la bdd 'travaux_electriques'");
+    let date = new Date();
+    console.log("Connecté à la bdd 'travaux_electriques' à :  " + date);
     connection.query(
       requeteSelectAllCommentsFromPage,
       paramSelectAllCommentsFromPage,

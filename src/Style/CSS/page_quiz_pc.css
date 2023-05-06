@@ -1,4 +1,4 @@
-.quiz-pc {
+.quiz {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17,7 +17,7 @@
   margin: 0px auto;
 }
 
-.quiz-pc .container-link-back {
+.quiz .container-link-back {
   -ms-flex-item-align: start;
       align-self: flex-start;
   display: -webkit-box;
@@ -41,37 +41,37 @@
   transition: border-top 250ms linear;
 }
 
-.quiz-pc .container-link-back:hover {
+.quiz .container-link-back:hover {
   border-top: 6px solid #EFA00B;
 }
 
-.quiz-pc__title {
+.quiz__title {
   width: 100%;
   margin: 1em 0em;
 }
 
 @media screen and (min-width: 576px) and (max-width: 768px) {
-  .quiz-pc__title {
+  .quiz__title {
     width: 80%;
     margin: 2em 0em;
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 992px) {
-  .quiz-pc__title {
+  .quiz__title {
     width: 70%;
     margin: 3em 0em;
   }
 }
 
 @media screen and (min-width: 993px) {
-  .quiz-pc__title {
+  .quiz__title {
     width: 60%;
     margin: 10em 0em 5em 0em;
   }
 }
 
-.quiz-pc__form {
+.quiz__form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,18 +92,18 @@
 }
 
 @media screen and (min-width: 769px) {
-  .quiz-pc__form {
+  .quiz__form {
     width: 80%;
     max-width: 800px;
   }
 }
 
-.quiz-pc__form__question {
+.quiz__form__question {
   margin: 2em 0em;
   width: 100%;
 }
 
-.quiz-pc__resultat {
+.quiz__resultat {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -120,13 +120,13 @@
   width: 100%;
 }
 
-.quiz-pc__resultat__text {
+.quiz__resultat__text {
   font-size: 1.1em;
   padding: 1em;
   color: #272727;
 }
 
-.quiz-pc__resultat__rate {
+.quiz__resultat__rate {
   margin: 1em 0em;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -138,30 +138,30 @@
   font-weight: 600;
 }
 
-.quiz-pc__resultat__btn-reset {
+.quiz__resultat__btn-reset {
   margin-top: 2em;
   -ms-flex-item-align: end;
       align-self: flex-end;
 }
 
-.quiz-pc__error {
+.quiz__error {
   padding: 1em;
   font-size: 1.2em;
   color: #EFA00B;
 }
 
-.quiz-pc .color-error {
+.quiz .color-error {
   color: #EFA00B;
 }
 
-.quiz-pc .bad-result {
+.quiz .bad-result {
   background-color: #EFA00B;
 }
 
-.quiz-pc .medium-result {
+.quiz .medium-result {
   background-color: #0267C1;
 }
 
-.quiz-pc .good-result {
+.quiz .good-result {
   background-color: #3A7D44;
 }

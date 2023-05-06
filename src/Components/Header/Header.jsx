@@ -92,7 +92,7 @@ function Header() {
       ) : null}
       <nav className="header">
         
-        <div className="header__container-div-session">
+        <div className="header__container-div-sitebuilding">
           <SiteIsBuilding />
         </div>
         <div className="header__container-menu">
@@ -105,7 +105,7 @@ function Header() {
               colorText="second"
               colorBg=""
             />
-            <NavCollapse
+            {/*<NavCollapse
               urlImg=""
               text="norme"
               colorText="second"
@@ -144,7 +144,7 @@ function Header() {
                 tailleText="1em"
                 colorBg=""
               />
-            </NavCollapse>
+            </NavCollapse>*/}
             <NavCollapse
               urlImg=""
               text="Schéma"
@@ -168,7 +168,7 @@ function Header() {
                 tailleText="1em"
                 colorBg=""
               />
-              <NavLink
+              {/*<NavLink
                 urlTo="/schema/circuit-eclairage"
                 urlImg=""
                 text="Circuit éclairage"
@@ -183,7 +183,7 @@ function Header() {
                 colorText="fourth"
                 tailleText="1em"
                 colorBg=""
-              />
+              />*/}
             </NavCollapse>
             <NavCollapse
               urlImg=""

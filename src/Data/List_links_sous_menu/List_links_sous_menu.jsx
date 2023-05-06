@@ -2,25 +2,25 @@
 
 let ListLinksSousMenuSchema = [
   {
-    url: "/pc16a",
+    url: "schema/pc16a",
     text: "Prise de courant",
-    urlImg: "/Asset/images_page_prise_de_courant_16A/pc-face-avant.png",
+    urlImg: "/Asset/images_page_pc_16A/pc16A-front.png",
     
   },
-  {
+  /*{
     url: "/chauffage-electrique",
     text: "Circuit chauffage ",
     urlImg: "/Asset/images_page_circuit_chauffage/img-radiateur-electrique.png",
     
-  },
+  },*/
 
   {
-    url: "/circuit-specialise",
+    url: "schema/circuit-specialise",
     text: "Circuits specialisés",
-    urlImg: "/Asset/image_page_circuit_specialise/radiateur-electrique.png",
+    urlImg: "/Asset/images_page_circuit_specialise/lave-linge/img-lave-linge.png",
   },
 
-  {
+  /*{
     url: "/circuit-eclairage",
     text: "Circuits éclairage",
     urlImg: "Asset/images_page_circuit_eclairage/ampoule-allume.png",
@@ -53,7 +53,7 @@ let ListLinksSousMenuSchema = [
     url: "/disjoncteur",
     text: "Disjoncteur magnetothermique",
     urlImg: "Asset/image_page_disjoncteur_magneto_thermique/disjoncteur-16A.png",
-  },
+  },*/
 ];
 
 let ListLinksSousMenuQuiz = [

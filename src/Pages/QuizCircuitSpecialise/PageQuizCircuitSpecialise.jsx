@@ -311,7 +311,7 @@ function PageQuizCircuitSpecialise() {
   }, [userResponse]);
 
   return (
-    <div className="quiz-pc">
+    <div className="quiz">
       <div className="container-link-back">
         <NavLink
           urlTo="/schema/circuit-specialise"
@@ -322,7 +322,7 @@ function PageQuizCircuitSpecialise() {
           colorBg=""
         ></NavLink>
       </div>
-      <div className="quiz-pc__title">
+      <div className="quiz__title">
         <Title
           pagetype="page"
           title="quiz"
@@ -331,10 +331,10 @@ function PageQuizCircuitSpecialise() {
         ></Title>
       </div>
 
-      <form className="quiz-pc__form">
+      <form className="quiz__form">
         {ContentQuizCircuitSpecialise.map((element, index) => {
           return (
-            <div key={index} className="quiz-pc__form__question">
+            <div key={index} className="quiz__form__question">
               <QuizQuestion
                 contentQuiz={ContentQuizCircuitSpecialise}
                 indexQuestion={index}
@@ -372,10 +372,10 @@ function PageQuizCircuitSpecialise() {
         ) : null}
 
         {isvalid ? (
-          <div className="quiz-pc__resultat">
+          <div className="quiz__resultat">
             <div
               className={
-                "quiz-pc__resultat__rate" + `${userFinalResult.colorUserResult}`
+                "quiz__resultat__rate" + `${userFinalResult.colorUserResult}`
               }
             >
               {"Votre score est de : "}
@@ -390,7 +390,7 @@ function PageQuizCircuitSpecialise() {
             </div>
 
             <div
-              className="quiz-pc__resultat__btn-reset"
+              className="quiz__resultat__btn-reset"
               onClick={(evt) => {
                 resetQuiz(evt);
               }}
@@ -407,7 +407,7 @@ function PageQuizCircuitSpecialise() {
         ) : null}
 
         {messageError ? (
-          <p className="quiz-pc__error">
+          <p className="quiz__error">
             Veuillez répondre à toute les questions!!!
           </p>
         ) : null}

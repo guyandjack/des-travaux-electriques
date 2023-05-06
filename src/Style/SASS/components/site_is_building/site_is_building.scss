@@ -6,43 +6,78 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
-@keyframes animBackGround {
-    0%{
-       
-        border: 4px solid map-get($colors-rule, first-color);
-    }
-    50% {
-        border: 4px solid map-get($colors-rule, second-color);
-    }
-    100% {
-        
-        border: 4px solid map-get($colors-rule, third-color);
-    }
-    
-    
-}
-
 .site-building {
-    width: 300px;
-    height: 100%;
-    //border: 4px solid map-get($colors-rule, second-color );
-    animation: animBackGround 15s ease-in-out infinite alternate forwards ;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: center;
 
-  .title {
-    padding: 5px;
-    font-size: 1em;
+  height: 200px;
+  padding: 1em;
+  border: 6px solid map-get($colors-rule, second-color);
+  border-radius: 10px;
+  background-color: lighten(map-get($colors-rule, fourth-color), 15%);
+
+  &__title {
+    flex: 0 0 auto;
+    font-size: 1.5em;
     color: map-get($colors-rule, second-color);
+    margin-bottom: 0.8em;
   }
 
-  .text {
-    text-transform: lowercase;
-    padding: 0.2em;
+  &__text {
+    align-self: flex-start;
+    flex: 0 0 auto;
+    font-size: 1.3em;
     color: map-get($colors-rule, fifth-color);
   }
 
-  .text-end {
-    padding: 0.2em;
-    //font-size: 0.5em;
-    color: map-get($colors-rule, second-color);
+  &__text-end {
+    align-self: flex-start;
+    color: map-get($colors-rule, fifth-color);
+    font-size: 1.4em;
   }
+
+  &__closure {
+    flex: 0 0 auto;
+    align-self: flex-end;
+    font-size: 1em;
+    padding: 5px;
+    color: map-get($colors-rule, fifth-color);
+    border: 2px solid map-get($colors-rule, fifth-color);
+    border-radius: 10px;
+    background-color: lighten (map-get($colors-rule, fourth-color), 100%);
+
+    &:hover {
+      cursor: pointer;
+      background-color: map-get($colors-rule, fourth-color);
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 1em;
+    left: 2em;
+
+    width: 2em;
+    flex: 0 0 auto;
+    align-self: flex-start;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
+  div[name="2"] {
+  position: absolute;
+  top: 1em;
+  left: 100%;
+  transform: translateX(-4em);
+  }
+}
+
+
+.site-building-hide {
+  display: none;
 }

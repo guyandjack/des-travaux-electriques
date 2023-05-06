@@ -6,47 +6,51 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
-.header{
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    height: fit-content;
-    width: 100%;
-    margin-bottom: 2em;
-    background-color: map-get($colors-rule, fourth-color );
+  position: relative;
+  height: fit-content;
+  width: 100%;
+  margin-bottom: 2em;
+  background-color: map-get($colors-rule, fourth-color);
 
-    //responsive pour ecran superieur à small
-    @include upper-small-screen{
-        height: 100px
+  //responsive pour ecran superieur à small
+  @include upper-small-screen {
+    height: 100px;
+  }
+
+  &__logo {
+    flex: 0 1 10%;
+    width: 100px;
+    height: 100px;
+
+    //reponsive pour ecran small
+    @include small-screen {
+      flex: 0 0 0%;
     }
-   
+  }
 
-    &__logo{
-        flex: 0 1 10%;
-        width:100px;
-        height: 100px;
+  &__container-menu {
+    flex: 1 1 75%;
+    height: 100%;
+  }
 
-        //reponsive pour ecran small
-        @include small-screen{
-            flex: 0 0 0%;
-        }
-        
-    }
+  &__container-div-session {
+    width: auto;
+    height: 100%;
+    margin: 0em 1em;
+  }
+
+  &__container-div-sitebuilding {
+    position: fixed;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     
-    &__container-menu{
-
-        flex: 1 1 75%;
-        height: 100%;
-    }
-
-    &__container-div-session{
-        width: auto;
-        height: 100%;
-        margin: 0em 1em;
-        
-    }
-
-  
+  }
 }

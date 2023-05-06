@@ -305,14 +305,14 @@ function PageCircuitSpecialise() {
       </section>
 
       <div className="text-quiz">
-        <Link to="/quiz/circuit-specialise">
+        <a href="/quiz/circuit-specialise">
           <ButtonStd
             btntype="button"
             text="Testez vos connaissances avec le 'Quiz'"
             colorbg="third"
             colortext="fifth"
           ></ButtonStd>
-        </Link>
+        </a>
       </div>
 
       <div id="form" className="container-form">

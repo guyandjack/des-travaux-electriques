@@ -312,7 +312,7 @@ function PageQuizPC() {
   }, [userResponse]);
 
   return (
-    <div className="quiz-pc">
+    <div className="quiz">
       <div className="container-link-back">
         <NavLink
           urlTo="/schema/pc16a"
@@ -323,7 +323,7 @@ function PageQuizPC() {
           colorBg=""
         ></NavLink>
       </div>
-      <div className="quiz-pc__title">
+      <div className="quiz__title">
         <Title
           pagetype="page"
           title="quiz"
@@ -332,10 +332,10 @@ function PageQuizPC() {
         ></Title>
       </div>
 
-      <form className="quiz-pc__form">
+      <form className="quiz__form">
         {ContentQuizPC.map((element, index) => {
           return (
-            <div key={index} className="quiz-pc__form__question">
+            <div key={index} className="quiz__form__question">
               <QuizQuestion
                 contentQuiz={ContentQuizPC}
                 indexQuestion={index}
@@ -373,7 +373,7 @@ function PageQuizPC() {
         ) : null}
 
         {isvalid ? (
-          <div className="quiz-pc__resultat">
+          <div className="quiz__resultat">
             <div
               className={
                 "quiz-pc__resultat__rate" + `${userFinalResult.colorUserResult}`
@@ -391,7 +391,7 @@ function PageQuizPC() {
             </div>
 
             <div
-              className="quiz-pc__resultat__btn-reset"
+              className="quiz__resultat__btn-reset"
               onClick={(evt) => {
                 resetQuiz(evt);
               }}
@@ -408,22 +408,21 @@ function PageQuizPC() {
         ) : null}
 
         {messageError ? (
-          <p className="quiz-pc__error">
+          <p className="quiz__error">
             Veuillez répondre à toute les questions!!!
           </p>
         ) : null}
-
       </form>
-        <div className="container-link-back">
-          <NavLink
-            urlTo="/schema/pc16a"
-            urlImg=""
-            text="← Schéma PC16A"
-            tailleText="1.2em"
-            colorText="fourth"
-            colorBg=""
-          ></NavLink>
-        </div>
+      <div className="container-link-back">
+        <NavLink
+          urlTo="/schema/pc16a"
+          urlImg=""
+          text="← Schéma PC16A"
+          tailleText="1.2em"
+          colorText="fourth"
+          colorBg=""
+        ></NavLink>
+      </div>
     </div>
   );
 }

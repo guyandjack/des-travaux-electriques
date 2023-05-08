@@ -12,10 +12,10 @@ let ContentTextPageCircuitSpecialise = {
     introductionTexte: (
       <div>
         <p>
-          Avant toute intervention, veillez mettre hors tension le circuit
-          concerné au niveau du <Link to="/tgbt"> tableau de répartition </Link>
-          et de vérifier ensuite l' absence de tension avec un VAT (vérificateur
-          d'absence de tension) au point d' intervention.
+          Avant toute intervention, veuillez mettre hors tension le circuit
+          concerné au niveau du <Link to="/tgbt"> tableau de répartition </Link>{" "}
+          et vérifier ensuite l'absence de tension avec un VAT (Vérificateur
+          d'Absence de Tension) au point d'intervention.
         </p>
       </div>
     ),
@@ -45,18 +45,18 @@ let ContentTextPageCircuitSpecialise = {
             cuisinière.
           </li>
           <li className="description-list__li">
-            Trois circuits spécialisés avec des prises de 16 A pour alimenter
-            des équipements électroménagers.
+            Trois circuits spécialisés avec des prises de 16A pour alimenter des
+            équipements électroménagers.
           </li>
         </ul>
         <p className="description__text">
           La norme recommande de prévoir une prise spécialisée à proximité des
-          arrivées et évacuations d’eau pour le lave-vaisselle et machine à
+          arrivées et évacuations d’eau pour le lave-vaisselle et la machine à
           laver. Les autres circuits spécialisés seront installés en fonction
           des besoins de l’occupant et de la configuration du logement.
         </p>
         <p>
-          Liste non hexaustive des différents circuits spécialisés d' un
+          Liste non exhaustive des différents circuits spécialisés d'un
           logement:
         </p>
 
@@ -82,7 +82,7 @@ let ContentTextPageCircuitSpecialise = {
           <li className="description-list__li">ventilation</li>
           <li className="description-list__li">spa / sauna / piscine</li>
           <li className="description-list__li">
-            IRVE(Infrastructure de recharge de véhicules électriques)
+            IRVE(Infrastructure de Recharge de Véhicules Electriques)
           </li>
           <li className="description-list__li">cave à vins</li>
           <li className="description-list__li">portail / porte de garage</li>
@@ -100,17 +100,18 @@ let ContentTextPageCircuitSpecialise = {
           indirects avec un conducteur actif.
         </p>
         <p className="principe__text">
-          Dans notre exemple c' est un interrupteur différentiel « dédié » à
-          haute sensibilité 32A 30mA.Ce dernier est placé en amont de circuit 1.
+          Dans notre exemple c'est un interrupteur différentiel « dédié » à
+          haute sensibilité 32A 30mA. Ce dernier est placé en amont du circuit
+          1.
         </p>
         <p className="principe__text">
-          <Link to="/disjoncteur">Les disjoncteurs magnéto-thermique </Link>
+          <Link to="/disjoncteur">Les disjoncteurs magnétothermiques </Link>
           protègent notre installation contre les courts-circuits et surcharges.
         </p>
         <p className="principe__text">
           Le principe de câblage est simple, on doit respecter les couleurs.
-          Dans la boite de dérivation on connecte les conducteurs de même type
-          entre eux.Phase avec phase, neutre avec neutre, terre avec terre.
+          Dans la boîte de dérivation on connecte les conducteurs de même type
+          entre eux. Phase avec phase, neutre avec neutre, terre avec terre.
         </p>
       </div>
     ),
@@ -123,20 +124,20 @@ let ContentTextPageCircuitSpecialise = {
           </p>
 
           <li key="1" className="precaution__li">
-            Utilisation d' une section de
+            Utilisation d'une section de
             <span className="important"> 6mm² minimum</span> avec un
             <span className="important"> disjoncteur de 32A</span>.
           </li>
 
           <li key="5" className="precaution__li">
-            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
-            jaune, bicolor vert/jaune
+            Phase c'est marron en général ou toute autre couleur sauf bleu,
+            vert, jaune, bicolore vert/jaune
           </li>
           <li key="6" className="precaution__li">
-            Neutre c'est bleu obligatoirement
+            Neutre c'est obligatoirement bleu
           </li>
           <li key="7" className="precaution__li">
-            Terre c'est bicolor vert/jaune obligatoirement
+            Terre c'est obligatoirement bicolore vert/jaune
           </li>
         </ul>
       </div>
@@ -144,33 +145,33 @@ let ContentTextPageCircuitSpecialise = {
     collapseAstuce: (
       <div className="astuce">
         <p className="astuce__text">
-          Dans la pratique on utilise des conducteurs de 6mm² souple.Cela permet
-          une connection plus aisé dans la boite d'encastrement.Les fils sont
-          beaucoup plus facile à manipuler.
+          Dans la pratique on utilise des conducteurs souples de 6mm². Cela
+          permet une connexion plus aisée dans la boîte de raccordement. Les
+          fils sont beaucoup plus faciles à manipuler.
         </p>
 
         <p className="astuce__text">
-          Prevoyez de faire la connection avec des connecteurs rapides pour fils
-          souple. Ils ont la caracteristique d' avoir des leviers pour établir
-          vérouiller et deverouiller la connection.
+          Prévoyez de faire la connexion avec des connecteurs rapides pour fils
+          souples. Ils ont la caractéristique d'avoir des leviers pour
+          verrouiller et déverrouiller la connexion.
         </p>
 
         <p className="astuce__text">
           Comme pour les prises classiques, utilisez des connecteurs rapides
-          transparents, cela permet de vérifier rapidement si la connection est
-          bien établi.
+          transparents, cela permet de vérifier rapidement si la connexion est
+          bien établie.
         </p>
       </div>
     ),
     collapseSavoir: (
       <div className="savoir">
         <p className="savoir__text">
-          La hauteur minimum de l' axe d' une prise ou boite d' encastrement 32A
-          monophasé ou 20A triphasé est de 12cm par rapport au sol fini.
+          La hauteur minimale de l'axe d'une boîte de raccordement 32A
+          monophasée ou 20A triphasée est de 12cm par rapport au sol fini.
         </p>
         <p className="savoir__text">
           Veillez à implanter votre prise ou sortie de câble à 60cm de toute
-          arrivé ou évacuation d'eau.
+          arrivée ou évacuation d'eau.
         </p>
       </div>
     ),
@@ -180,25 +181,25 @@ let ContentTextPageCircuitSpecialise = {
     collapsePrincipe: (
       <div className="principe">
         <p className="principe__text">
-          Le but du jeux et de faire fonctionner votre cumulus pendant les
+          Le but du jeu est de faire fonctionner votre cumulus pendant les
           heures creuses, quand le prix du Kwh est plus faible.
         </p>
         <p className="principe__text">
-          Pour ce faire il faut que votre compteur d'énergie ait l'option double
-          tarif. Cette option est appelée aussi « heures pleines/heures creuses
-          », « tarif jour/nuit », « HP/HC ».
+          Pour ce faire, il faut que votre compteur d'énergie ait l'option
+          double tarif. Cette option est appelée aussi « heures pleines/heures
+          creuses », « tarif jour/nuit », « HP/HC ».
         </p>
         <p className="principe__text">
           Nous avons dans cet exemple un interrupteur differentiel 63A type AC
-          pour la protection des personnes. Le disjonteur 2A protege la bobine
-          du contacteur HP/HC. Le disjoncteur 20A protege quand à lui le circuit
+          pour la protection des personnes. Le disjonteur 2A protège la bobine
+          du contacteur HP/HC. Le disjoncteur 20A protège quant à lui le circuit
           du cumulus. Le contacteur, pour faire simple, fonctionne comme un
-          interrupteur.Il ouvre ou ferme le circuit de puissance (cumulus)
+          interrupteur. Il ouvre ou ferme le circuit de puissance (cumulus)
           suivant si sa bobine est hors tension ou sous tension. Quand EDF emet
-          le signal « Heure creuse » le contact sec du compteur se ferme et la
-          bobine du conctacteur jour/nuit est alimenté. Le conctacteur s'
-          enclenche et le cumulus est sous tension, alimenté via le disjoncteur
-          20A.
+          le signal « heure creuse », le contact sec du compteur se ferme et la
+          bobine du conctacteur jour/nuit est alimentée. Le conctacteur
+          s'enclenche et le cumulus est sous tension, alimenté via le
+          disjoncteur 20A.
         </p>
       </div>
     ),
@@ -211,27 +212,27 @@ let ContentTextPageCircuitSpecialise = {
           </p>
 
           <li key="1" className="precaution__li">
-            Utilisation d' une section de
+            Utilisation d'une section de
             <span className="important"> 2.5² minimum</span> avec un
             <span className="important"> disjoncteur max de 20A</span>pour le
             circuit du cumulus.
           </li>
           <li key="1" className="precaution__li">
-            Utilisation d' une section de
+            Utilisation d'une section de
             <span className="important"> 1.5mm²</span> avec un
             <span className="important"> disjoncteur max de 2A</span>pour le
             circuit de commande du contacteur.
           </li>
 
           <li key="5" className="precaution__li">
-            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
-            jaune, bicolor vert/jaune
+            Phase c'est marron en général ou toute autre couleur sauf bleu,
+            vert, jaune, bicolore vert/jaune.
           </li>
           <li key="6" className="precaution__li">
-            Neutre c'est bleu obligatoirement
+            Neutre c'est obligatoirement bleu.
           </li>
           <li key="7" className="precaution__li">
-            Terre c'est bicolor vert/jaune obligatoirement
+            Terre c'est obligatoirement bicolore vert/jaune
           </li>
         </ul>
       </div>
@@ -240,13 +241,12 @@ let ContentTextPageCircuitSpecialise = {
     collapseSavoir: (
       <div className="savoir">
         <p className="savoir__text">
-          La signal est emit par edf, à des heures differentes suivant les
-          regions de votre residenece.
+          La signal est émis par EDF, à des heures differentes suivant les
+          régions de votre résidence.
         </p>
       </div>
     ),
   },
-  
 
   laveLinge: {
     collapsePrincipe: (
@@ -257,12 +257,12 @@ let ContentTextPageCircuitSpecialise = {
           indirects avec un conducteur actif.
         </p>
         <p className="principe__text">
-          Dans notre exemple c' est un interrupteur différentiel de type A, avec
-          un courant assigné max de 63A, et une sensibilite de 30mA.Ce dernier
-          est placé en amont du circuit 1.
+          Dans notre exemple, c'est un interrupteur différentiel de type A, avec
+          un courant assigné maximal de 63A, et une sensibilite de 30mA. Ce
+          dernier est placé en amont du circuit 1.
         </p>
         <p className="principe__text">
-          <Link to="/disjoncteur">Le disjoncteur magnéto-thermique </Link>
+          <Link to="/disjoncteur">Le disjoncteur magnétothermique </Link>
           protège notre circuit contre les courts-circuits et surcharges. Il
           alimente uniquement la prise 16A pour notre lave-linge.
         </p>
@@ -277,29 +277,29 @@ let ContentTextPageCircuitSpecialise = {
           </p>
 
           <li key="1" className="precaution__li">
-            Utilisation d' une section de
+            Utilisation d'une section de
             <span className="important"> 2.5² minimum</span> avec un
             <span className="important"> disjoncteur max de 20A</span>.
           </li>
 
           <li key="3" className="precaution__li">
-            Disjoncteur dédié uniquement pour le lave-linge.Pas de raccord
-            possible avec un autre appareillage.
+            Disjoncteur dédié uniquement au lave-linge. Pas de raccord possible
+            avec un autre appareillage.
           </li>
 
           <li key="5" className="precaution__li">
-            Interrupteur ou disjoncteur différentiel{" "}
-            <span className="important">de type A( ou F, ou B)</span>.
+            Interrupteur ou disjoncteur différentiel
+            <span className="important">de type A, F ou B)</span>.
           </li>
           <li key="6" className="precaution__li">
-            Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
-            jaune, bicolor vert/jaune.
+            Phase c'est marron en général ou toute autre couleur sauf bleu,
+            vert, jaune, bicolore vert/jaune.
           </li>
           <li key="7" className="precaution__li">
-            Neutre c'est bleu obligatoirement.
+            Neutre c'est obligatoirement bleu .
           </li>
           <li key="8" className="precaution__li">
-            Terre c'est bicolor vert/jaune obligatoirement.
+            Terre c'est obligatoirement bicolore vert/jaune .
           </li>
         </ul>
       </div>
@@ -308,20 +308,20 @@ let ContentTextPageCircuitSpecialise = {
       <div className="astuce">
         <p className="astuce__text">
           Veillez à implanter votre prise de courant ou sortie de câble à 60cm
-          de l' arrivé et evacuation d' eau de votre lave-linge.
+          de l'arrivée et de l'évacuation d'eau de votre lave-linge.
         </p>
         <p className="astuce__text">
-          Utiliser uniquement une section de 2.5mm² pour les circuits dédiés
-          alimantant une prise 16A ou boîte sortie de câble.
+          Utilisez uniquement une section de 2.5mm² pour les circuits dédiés
+          alimentant une prise 16A ou une boîte sortie de câble.
         </p>
       </div>
     ),
     collapseSavoir: (
       <div className="savoir">
         <p className="savoir__text">
-          Il est possible d' utiliser, un disjoncteur 20A avec une prise 16A
-          pour un circuit dédié. Au même titre qu' il est possible d' utiliser
-          jusqu' à 12 prises 16A avec un disjoncteur de 20A.
+          Il est possible d'utiliser un disjoncteur 20A avec une prise 16A pour
+          un circuit dédié. Au même titre qu'il est possible d'utiliser jusqu'à
+          12 prises 16A avec un disjoncteur de 20A.
         </p>
       </div>
     ),

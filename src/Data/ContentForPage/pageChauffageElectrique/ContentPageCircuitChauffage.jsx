@@ -21,7 +21,7 @@ let ContentTextPageCircuitChauffage = {
         placé en amont du circuit 1 et 2.
       </p>
       <p className="principe__text">
-        <Link to="/disjoncteur">Les disjoncteurs magnéto-thermique </Link>
+        <Link to="/disjoncteur">Les disjoncteurs magnétothermiques </Link>
         protègent nos circuits contre les courts-circuits et surcharges.
       </p>
       <p className="principe__text">
@@ -61,7 +61,7 @@ let ContentTextPageCircuitChauffage = {
         </li>
 
         <li key="5" className="precaution__li">
-          Phase c'est maron en général ou toute autre couleur sauf bleu, vert,
+          Phase c'est marron en général ou toute autre couleur sauf bleu, vert,
           jaune, bicolor vert/jaune
         </li>
         <li key="6" className="precaution__li">

@@ -20,6 +20,9 @@ import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
 import { Formulaire } from "../../Components/Formulaire/Formulaire.jsx";
 import { CommentUser } from "../../Components/CommentUser/CommentUser.jsx";
 
+//Import des functions
+import { scrollTo } from "../../Utils/Function/scrollTo.js";
+
 //Import des feuilles de style
 import "../../Style/CSS/prise_courant.css";
 
@@ -55,6 +58,11 @@ function PagePC16A() {
   let commentDate = null;
 
   //hooks
+
+  //Positionne le scroll en haut de page
+  useEffect(() => {
+    scrollTo(".prise-courant");
+  })
 
   //recupere la taille de l' ecran pour les images responsives
   useEffect(() => {
@@ -172,7 +180,7 @@ function PagePC16A() {
       </div>
 
       <div className="text-quiz">
-        <Link to="/quiz/pc16a">
+        <Link to="/schema/pc16a/quiz">
           <ButtonStd
             btntype="button"
             text="Testez vos connaissances avec le 'Quiz'"

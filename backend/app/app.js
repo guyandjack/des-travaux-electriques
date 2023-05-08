@@ -24,13 +24,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Connexion à la base de donnee mongo
 connectDB.connectToMongo();
 
-//parametrage du header de reponse pour annuler la securite "CORS"
+//parametrage du header de reponse pour annuler la sécurité "CORS"
 app.use("/", securityCORS.setHeaderSecurityCORS);
-
 
 //route et logique concernant les commentaires des utilisateurs
 app.use("/api/comment", commentRouter);
-
-
 
 module.exports = app;

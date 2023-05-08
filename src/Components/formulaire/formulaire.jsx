@@ -264,7 +264,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       {isResponse ? (
         <div className="form__text-response">
           <p className="form__text">
-            Répondre à {responseTo + " dont id est : " + responseIdTo}
+            Répondre à <span>{responseTo}</span>
           </p>
           <div
             onClick={(evt) => {
@@ -284,7 +284,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
         <p className="form__text">
           <span>Laisser un commentaire</span>
           <br></br>
-          Vos suggestions serviront à améliorer notre service.
+          Vos suggestions nous permettront d'améliorer notre service.
         </p>
       )}
 
@@ -299,7 +299,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             name="lastname"
             min="2"
             max="20"
-            placeholder="Entrez votre nom..."
+            placeholder="Votre nom..."
             required
             onChange={function (evt) {
               validLastName(evt);
@@ -327,7 +327,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             name="firstname"
             min="2"
             max="20"
-            placeholder="Entrez votre prénom..."
+            placeholder="Votre prénom..."
             required
             onChange={function (evt) {
               validFirstName(evt);
@@ -354,7 +354,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             name="email"
             min="2"
             max="55"
-            placeholder="Entrez votre email..."
+            placeholder="Votre email..."
             required
             onChange={function (evt) {
               validMail(evt);
@@ -371,7 +371,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       </p>
       {isSessionOpen == true ? (
         <div className="cont-label-input">
-          <label className = "container-checkbox">
+          <label className="container-checkbox">
             <input
               className="checkbox"
               type="checkbox"
@@ -381,8 +381,8 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
               disabled
             />
             <p className="text-label">
-              Se souvenir de moi pour un prochain commentaire, durant ma
-              session.
+              Se souvenir de moi si je souhaite rajouter un commentaire pendant
+              la même session.
             </p>
           </label>
         </div>
@@ -399,10 +399,9 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
               }}
             />
             <p className="text-checkbox">
-              Se souvenir de moi pour un prochain commentaire, durant ma
-              session.
+              Se souvenir de moi si je souhaite rajouter un commentaire pendant
+              la même session.
             </p>
-
           </label>
         </div>
       )}
@@ -417,7 +416,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             name="comment"
             min="10"
             max="200"
-            placeholder={contentPlaceHolder}
+            
             required
             onChange={function (evt) {
               validMessage(evt);
@@ -446,7 +445,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
         <ButtonStd
           btntype="submit"
           mom="btn-submit"
-          text="publier votre commentaire"
+          text="Publiez votre commentaire"
           colorbg="first"
           colortext="fifth"
           disabledButton={isdisabled}

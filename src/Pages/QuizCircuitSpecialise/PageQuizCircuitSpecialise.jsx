@@ -12,6 +12,9 @@ import { ContentQuizCircuitSpecialise } from "../../Data/ContentQuiz/ContentQuiz
 //Import des commentaires relatif aux resultats du quiz
 import { commentResult } from "../../Data/ContentQuiz/CommentResult/CommentResult.js";
 
+//Import des fonctions
+import { scrollTo } from "../../Utils/Function/scrollTo.js";
+
 //Import des composants enfants
 
 import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
@@ -296,6 +299,12 @@ function PageQuizCircuitSpecialise() {
   }
 
   //gestion des effets de board
+useEffect(() => {
+  scrollTo(".quiz__title");
+}, []);
+
+
+
   useEffect(() => {
     //Initialisation du quiz
     InitQuiz();
@@ -312,7 +321,7 @@ function PageQuizCircuitSpecialise() {
 
   return (
     <div className="quiz">
-      <div className="container-link-back">
+      <div className="container-link">
         <NavLink
           urlTo="/schema/circuit-specialise"
           urlImg=""
@@ -412,15 +421,32 @@ function PageQuizCircuitSpecialise() {
           </p>
         ) : null}
       </form>
-      <div className="container-link-back">
-        <NavLink
-          urlTo="/schema/circuit-specialise"
-          urlImg=""
-          text="← Schéma Circuits-Specialisés"
-          tailleText="1.2em"
-          colorText="fourth"
-          colorBg=""
-        ></NavLink>
+      <div className="container-link-end">
+        <div className="container-link">
+          <NavLink
+            urlTo="/schema/circuit-specialise"
+            urlImg=""
+            text="← Schéma circuit-specialise"
+            tailleText="1.2em"
+            colorText="fourth"
+            colorBg=""
+          ></NavLink>
+        </div>
+        <div
+          className="container-link"
+          onClick={() => {
+            scrollTo(".quiz");
+          }}
+        >
+          <NavLink
+            urlTo="#"
+            urlImg=""
+            text="↑ Haut de page"
+            tailleText="1.2em"
+            colorText="fourth"
+            colorBg=""
+          ></NavLink>
+        </div>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ app.use(express.json());
 //permet d'acceder au contenu du corps de la requette
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//parametrage du header de reponse pour annuler la securite "CORS"
+//parametrage du header de reponse pour annuler la sécurité "CORS"
 app.use("/", securityCORS.setHeaderSecurityCORS);
 
 //route et logique concernant les commentaires des utilisateurs

@@ -65,7 +65,7 @@ function PageHome() {
       </div>
 
       <div className={classHome + classHomeWindow + classLargeScreen}>
-        <BannerSlider></BannerSlider>
+        {/*<BannerSlider></BannerSlider>*/}
       </div>
     </div>
   );

@@ -21,6 +21,9 @@ import { TitleHN } from "../../Components/Title/TitleHN/TitleHN.jsx";
 import { Formulaire } from "../../Components/Formulaire/Formulaire.jsx";
 import { CommentUser } from "../../Components/CommentUser/CommentUser.jsx";
 
+//Import des functions
+import { scrollTo } from "../../Utils/Function/scrollTo.js";
+
 //Import des feuilles de style
 import "../../Style/CSS/circuit_specialise.css";
 
@@ -64,6 +67,11 @@ function PageCircuitSpecialise() {
     ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
 
   //hooks
+
+  //Positionne le scroll en haut de page
+  useEffect(() => {
+    scrollTo(".circuit-specialise");
+  });
 
   //recupere la taille de l' ecran pour les images responsives
   useEffect(() => {
@@ -305,14 +313,14 @@ function PageCircuitSpecialise() {
       </section>
 
       <div className="text-quiz">
-        <a href="/quiz/circuit-specialise">
+        <Link to="/schema/circuit-specialise/quiz">
           <ButtonStd
             btntype="button"
             text="Testez vos connaissances avec le 'Quiz'"
             colorbg="third"
             colortext="fifth"
           ></ButtonStd>
-        </a>
+        </Link>
       </div>
 
       <div id="form" className="container-form">

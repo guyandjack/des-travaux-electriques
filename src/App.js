@@ -39,19 +39,19 @@ function App() {
         <Routes>
           <Route exact path="/" element={<PageHome />}></Route>
           <Route path="/schema/pc16a" element={<PagePC16A />}></Route>
+          <Route path="/schema/pc16a/quiz" element={<PageQuizPC />}></Route>
           <Route path="/chauffage-electrique" element={<PageCircuitChauffageElectrique />}></Route>
           <Route path="/schema/circuit-specialise" element={<PageCircuitSpecialise />}></Route>
+          <Route path="/schema/circuit-specialise/quiz" element={<PageQuizCircuitSpecialise />}></Route>
           <Route path="/circuit-eclairage"  element={<PageCircuitEclairage />}></Route>
           <Route path="/db" element={<PageDisjoncteurDeBranchement />}></Route>
           <Route path="/ddr" element={<PageDispositifDifferentiel />}></Route>
           <Route path="/tc" element={<PageTableauDeCommunication />}></Route>
           <Route path="/tgbt" element={<PageTGBT />}></Route>
           <Route path="/contact/*" element={<PageContact />}></Route>
-          <Route path="/cgu" element={<PageCGU />}></Route>
+          <Route path="/cgu/*" element={<PageCGU />}></Route>
           <Route path="/truc-astuce" element={<PageTrucEtAstuce />}></Route>
           <Route path="/disjoncteur" element={<PageDisjoncteurMagnetoThermique />}></Route>
-          <Route path="/quiz/pc16a" element={<PageQuizPC />}></Route>
-          <Route path="/quiz/circuit-specialise" element={<PageQuizCircuitSpecialise />}></Route>
           <Route path="/*" element={<PageErreur />}></Route>
         </Routes>
 

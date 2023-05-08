@@ -12,6 +12,9 @@ import { ContentQuizPC } from "../../Data/ContentQuiz/ContentQuizPC/ContentQuizP
 //Import des commentaires relatif aux resultats du quiz
 import { commentResult } from "../../Data/ContentQuiz/CommentResult/CommentResult.js";
 
+//Import des fonctions
+import { scrollTo } from "../../Utils/Function/scrollTo.js";
+
 //Import des composants enfants
 
 import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
@@ -287,6 +290,7 @@ function PageQuizPC() {
     setMessageError(false);
     deleteElementInLocalStorage("userResponsesQuizPC");
     setisvalid(true);
+    scrollTo(".quiz__resultat");
   }
 
   //Permet de relancer le quiz à zero.
@@ -294,9 +298,16 @@ function PageQuizPC() {
     e.preventDefault();
     localStorage.removeItem("userResponsesQuizPC");
     window.location.reload();
+    scrollTo(".quiz__title");
   }
 
   //gestion des effets de board
+
+  useEffect(() => {
+    scrollTo(".quiz__title");
+  },[])
+
+
   useEffect(() => {
     //Initialisation du quiz
     InitQuiz();
@@ -313,7 +324,7 @@ function PageQuizPC() {
 
   return (
     <div className="quiz">
-      <div className="container-link-back">
+      <div className="container-link">
         <NavLink
           urlTo="/schema/pc16a"
           urlImg=""
@@ -327,7 +338,7 @@ function PageQuizPC() {
         <Title
           pagetype="page"
           title="quiz"
-          text="« Petit test de connaissance sur les prises électriques »"
+          text="« Petit test de connaissances sur les prises électriques »"
           urlimg="/Asset/images_page_pc_16A/img-title-pc-250px.png"
         ></Title>
       </div>
@@ -366,7 +377,7 @@ function PageQuizPC() {
         {!isvalid ? (
           <ButtonStd
             btntype="button"
-            text="Valider vos réponses"
+            text="Validez vos réponses"
             colorbg="first"
             colortext="fifth"
           ></ButtonStd>
@@ -376,7 +387,7 @@ function PageQuizPC() {
           <div className="quiz__resultat">
             <div
               className={
-                "quiz-pc__resultat__rate" + `${userFinalResult.colorUserResult}`
+                "quiz__resultat__rate" + `${userFinalResult.colorUserResult}`
               }
             >
               {"Votre score est de : "}
@@ -399,7 +410,7 @@ function PageQuizPC() {
               <ButtonStd
                 btntype="reset"
                 name="resetquiz"
-                text="Relancer le quiz"
+                text="Relancez le quiz"
                 colorbg="third"
                 colortext="fifth"
               ></ButtonStd>
@@ -413,15 +424,27 @@ function PageQuizPC() {
           </p>
         ) : null}
       </form>
-      <div className="container-link-back">
-        <NavLink
-          urlTo="/schema/pc16a"
-          urlImg=""
-          text="← Schéma PC16A"
-          tailleText="1.2em"
-          colorText="fourth"
-          colorBg=""
-        ></NavLink>
+      <div className="container-link-end">
+        <div className="container-link">
+          <NavLink
+            urlTo="/schema/pc16a"
+            urlImg=""
+            text="← Schéma PC16A"
+            tailleText="1.2em"
+            colorText="fourth"
+            colorBg=""
+          ></NavLink>
+        </div>
+        <div className="container-link" onClick={()=>{scrollTo(".quiz")}}>
+          <NavLink
+            urlTo="#"
+            urlImg=""
+            text="↑ Haut de page"
+            tailleText="1.2em"
+            colorText="fourth"
+            colorBg=""
+          ></NavLink>
+        </div>
       </div>
     </div>
   );

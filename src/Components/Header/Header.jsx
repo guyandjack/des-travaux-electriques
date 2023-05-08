@@ -147,7 +147,7 @@ function Header() {
             </NavCollapse>*/}
             <NavCollapse
               urlImg=""
-              text="Schéma"
+              text="Schémas"
               colorText="second"
               sizePolice="1.2em"
               colorBg=""

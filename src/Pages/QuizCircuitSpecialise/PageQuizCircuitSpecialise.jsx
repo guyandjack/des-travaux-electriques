@@ -289,6 +289,7 @@ function PageQuizCircuitSpecialise() {
     setMessageError(false);
     deleteElementInLocalStorage("userResponsesQuizCircuitSpecialise");
     setisvalid(true);
+    scrollTo(".quiz__resultat");
   }
 
   //Permet de relancer le quiz à zero.

@@ -3,6 +3,12 @@
 //Import du module "LINK"
 import { Link } from "react-router-dom";
 
+//Import des fonctions
+import { scrollTo } from "../../../Utils/Function/scrollTo.js";
+
+//Import des composants enfants
+import { NavLink } from "../../../Components/NavLink/NavLink.jsx";
+
 //Import des feuilles de style
 import "../../../Style/CSS/content_page_circuit_specialise.css";
 
@@ -13,9 +19,9 @@ let ContentTextPageCircuitSpecialise = {
       <div>
         <p>
           Avant toute intervention, veuillez mettre hors tension le circuit
-          concerné au niveau du <Link to="/tgbt"> tableau de répartition </Link>{" "}
-          et vérifier ensuite l'absence de tension avec un VAT (Vérificateur
-          d'Absence de Tension) au point d'intervention.
+          concerné au niveau du tableau de répartition et vérifier ensuite
+          l'absence de tension avec un VAT (Vérificateur d'Absence de Tension)
+          au point d'intervention.
         </p>
       </div>
     ),
@@ -61,34 +67,70 @@ let ContentTextPageCircuitSpecialise = {
         </p>
 
         <ul className="description-list">
-          <li className="description-list__li">
-            <a href="/circuit-specialise#cuisson">
-              plaque de cuisson ou cuisinière
-            </a>
+          <li
+            className="description-list__li"
+            onClick={() => {
+              scrollTo("#cuisson");
+            }}
+          >
+            <NavLink
+              text="plaque de cuisson ou cuisinière"
+              colorText="second"
+            ></NavLink>
           </li>
+          <li className="description-list__li">sèche-linge</li>
           <li className="description-list__li">four</li>
           <li className="description-list__li">lave-vaisselle</li>
-          <li className="description-list__li">
-            <a href="/circuit-specialise#lave-linge">
-              lave-linge / sèche-linge
-            </a>
+          <li
+            className="description-list__li"
+            onClick={() => {
+              scrollTo("#lave-linge");
+            }}
+          >
+            <NavLink text="lave-linge" colorText="second"></NavLink>
           </li>
-          <li className="description-list__li">congélateur</li>
-          <li className="description-list__li">hotte</li>
-          <li className="description-list__li">
-            <a href="/circuit-specialise#cumulus">chauffe-eau</a>
+
+          <li
+            className="description-list__li"
+            onClick={() => {
+              scrollTo("#cumulus");
+            }}
+          >
+            <NavLink text="chauffe-eau" colorText="second"></NavLink>
           </li>
-          <li className="description-list__li">pompe à chaleur</li>
-          <li className="description-list__li">ventilation</li>
           <li className="description-list__li">spa / sauna / piscine</li>
           <li className="description-list__li">
             IRVE(Infrastructure de Recharge de Véhicules Electriques)
           </li>
-          <li className="description-list__li">cave à vins</li>
           <li className="description-list__li">portail / porte de garage</li>
           <li className="description-list__li">interphone</li>
           <li className="description-list__li">tableaux divisionnaires</li>
+          <li className="description-list__li">congélateur</li>
+          <li className="description-list__li">VMC</li>
         </ul>
+        <p>
+          Liste non exhaustive des différents circuits dédiés d'un logement:
+        </p>
+        <ul className="description-list">
+          <li className="description-list__li">volet roulant</li>
+          <li className="description-list__li">
+            unité extérieur de climatisation
+          </li>
+          <li className="description-list__li">cave à vins</li>
+          <li className="description-list__li">interphone</li>
+          <li className="description-list__li">radiateur électrique</li>
+        </ul>
+        <p className="description__text">
+          Différence entre un circuit dédié et un circuit spécialisé:
+        </p>
+        <p className="description__text">
+          Un circuit spécialisé alimente un seul et unique appareil (ex:
+          cumulus).
+        </p>
+        <p className="description__text">
+          Un circuit dédié peut alimenter plusieurs appareils de même type (ex:
+          radiateur électrique).{" "}
+        </p>
       </div>
     ),
 
@@ -237,7 +279,18 @@ let ContentTextPageCircuitSpecialise = {
         </ul>
       </div>
     ),
-    collapseAstuce: <div className="astuce"></div>,
+    collapseAstuce: (
+      <div className="astuce">
+        <p className="astuce__text">
+          Utilisez des connecteurs rapides transparents, cela permet de vérifier rapidement si la connexion est bien établie.
+        </p>
+
+        <p className="astuce__text">
+          Veillez à bien connecter la terre sur le bornier de racordement du
+          cumulus.
+        </p>
+      </div>
+    ),
     collapseSavoir: (
       <div className="savoir">
         <p className="savoir__text">
@@ -289,7 +342,7 @@ let ContentTextPageCircuitSpecialise = {
 
           <li key="5" className="precaution__li">
             Interrupteur ou disjoncteur différentiel
-            <span className="important">de type A, F ou B)</span>.
+            <span className="important"> (de type A, F ou B)</span>.
           </li>
           <li key="6" className="precaution__li">
             Phase c'est marron en général ou toute autre couleur sauf bleu,

@@ -27,12 +27,12 @@ function Footer() {
           </Link>
         </li>
         <li className="footer__menu__li">
-          <Link
+          <a
             className="footer__menu__li__link"
-            to="https:www.github.com/guyandjack?tab=repositories"
+            href="https:www.github.com/guyandjack?tab=repositories"
           >
             Webmaster: Guy&Jack Dev-Web
-          </Link>
+          </a>
         </li>
       </ul>
     </footer>

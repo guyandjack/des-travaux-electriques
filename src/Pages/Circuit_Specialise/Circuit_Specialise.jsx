@@ -60,6 +60,7 @@ function PageCircuitSpecialise() {
 
   let schemaPlaqueDeCuisson =
     ContentImagePageCircuitSpecialise.schemaPlaqueCuisson[imageSize];
+  
   let schemaCumulus =
     ContentImagePageCircuitSpecialise.schemaCumulus[imageSize];
 
@@ -71,7 +72,7 @@ function PageCircuitSpecialise() {
   //Positionne le scroll en haut de page
   useEffect(() => {
     scrollTo(".circuit-specialise");
-  });
+  },[]);
 
   //recupere la taille de l' ecran pour les images responsives
   useEffect(() => {
@@ -262,8 +263,8 @@ function PageCircuitSpecialise() {
         <div className="container-image-schema">
           <ContainerImg
             src1={schemaLaveLinge}
-            alt1={"Schéma de câblage d'un chauffage "}
-            figcap1={"Schéma de câblage d'un chauffage "}
+            alt1={"Schéma de câblage d'un lave-linge "}
+            figcap1={"Schéma de câblage d'un lave-linge "}
           />
         </div>
 

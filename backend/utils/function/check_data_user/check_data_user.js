@@ -169,7 +169,7 @@ function createConnexionMysql() {
     let connection = mysql.createConnection({
       host: "localhost",
       user: "kvyjmgfk_admin",
-      password: "Poweradmin65!",
+      password: "MasterAdmin65!",
       database: "kvyjmgfk_travaux_electriques",
     });
     return connection

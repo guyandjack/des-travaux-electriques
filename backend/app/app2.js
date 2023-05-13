@@ -7,6 +7,9 @@ const bodyParser = require("body-parser");
 //import du fichier qui contient la logique des routes pour les commentaires
 const commentRouter = require("../routes/commentRoutes.js");
 
+//import du fichier qui contient la logique des routes pour le test server
+const serverTest = require("../routes/testServerRoute.js");
+
 //Import du fichier de parametrage des header pour le securityCORS
 const securityCORS = require("../middelware/securityCORS.js");
 
@@ -26,5 +29,8 @@ app.use("/", securityCORS.setHeaderSecurityCORS);
 
 //route et logique concernant les commentaires des utilisateurs
 app.use("/api/comment", commentRouter);
+
+//Route et logique du test de server
+app.use("/api/testserver", serverTest);
 
 module.exports = app;

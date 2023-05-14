@@ -30,7 +30,7 @@ app.use("/", securityCORS.setHeaderSecurityCORS);
 //route et logique concernant les commentaires des utilisateurs
 app.use("/api/comment", commentRouter);
 
-//Route et logique du test de server
-app.use("/api/testserver", serverTest);
+//Route et logique du teste server + bdd
+app.use("/api", serverTest);
 
 module.exports = app;

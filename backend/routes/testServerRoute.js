@@ -8,6 +8,7 @@ const routerTestServer = express.Router();
 //import du fichier qui controle la logique test server
 const testControler = require("../controlers/testservercontroler.js");
 
-routerTestServer.use("/", testControler.testRouteServer);
+routerTestServer.get("/testserver", testControler.testRouteServer);
+routerTestServer.get("/testbdd", testControler.testRouteBdd);
 
 module.exports = routerTestServer

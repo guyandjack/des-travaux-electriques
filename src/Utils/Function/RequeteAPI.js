@@ -3,8 +3,8 @@
 //setfunction le seteur d' une variable "usestate" qui contient un tableau
 export function fetchCommentsForOnePage(refpage, setfunction) {
 
-    fetch("http://localhost:3500/api/comment/" + refpage)
-        
+  fetch("https://electravaux.com/api/comment/" + refpage)
+      
       .then((response) => {
         response.json().then((responses) => {
           setfunction(JSON.parse(responses));

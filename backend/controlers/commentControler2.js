@@ -178,7 +178,7 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
 
   //recuperation des commentaires dans la base sql
 
-  let connection = checkForm.createconnexionmysql();
+  let connection = checkForm.createconnexionmysql();// definition des parametre de connexion
 
   /************** requetes preparées************* */
 

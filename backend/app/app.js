@@ -25,12 +25,12 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //parametrage du header de reponse pour annuler la sécurité "CORS"
-app.use("/", securityCORS.setHeaderSecurityCORS);
+app.use("https://electravaux.com", securityCORS.setHeaderSecurityCORS);
 
 //route et logique concernant les commentaires des utilisateurs
-app.use("/api/comment", commentRouter);
+app.use("https://electravaux.com/api/comment", commentRouter);
 
 //Route et logique du teste server + bdd
-app.use("/api", serverTest);
+app.use("https://electravaux.com/api", serverTest);
 
 module.exports = app;

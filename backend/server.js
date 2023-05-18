@@ -2,13 +2,13 @@
 /***************************************** */
 
 //import du module natif "http"
-const http = require("http");
+const https = require("https");
 
 //import de l'appli express
 const appli = require("./app/app.js");
 
 //creation du server avec logique de fonctionnement dans "appli"
-const server = http.createServer(appli);
+const server = https.createServer(appli);
 
 //détermination du port où "appli"
 const normalizePort = (val) => {

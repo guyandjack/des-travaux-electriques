@@ -43,12 +43,7 @@ exports.testRouteBdd = ((req, res) => {
             .status(200)
             .json({ message: "Connecté à la bdd travaux_electriques à: " + date })
 
-            .catch((error) => {
-                res
-                    .status(500)
-                    .json({ message: "Impossible de confirmer la connexion: " + error });
-          
-            });
+            
         
         connexion.end();
     })

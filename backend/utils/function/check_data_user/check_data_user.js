@@ -167,10 +167,10 @@ function objectResponse(lastName, firstName, email, checkboxvalue) {
 
 function createConnexionMysql() {
     let connection = mysql.createConnection({
-      host: "127.0.0.1",
-      user: "kvyjmgfk_admin",
-      password: "MasterAdmin65!",
-      database: "kvyjmgfk_travaux_electriques",
+      host: "localhost",
+      user: "admin",
+      password: "Poweradmin65!",
+      database: "travaux_electriques",
     });
     return connection
 }

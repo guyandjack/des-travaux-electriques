@@ -1,16 +1,12 @@
 //page de test pour le serveur planetHoster
 
 
-
-
-
 function PageTestServer() {
-    
-    
+        
 
     function callApi() {
 
-        fetch("https://www.electravaux.com/api/testserver")
+        fetch("https://electravaux.com/api/testserver")
           .then((response) => {
             response.json().then((responses) => {
               let result = responses.message;
@@ -26,12 +22,12 @@ function PageTestServer() {
     }
 
     function callApiBdd() {
-        fetch("http://www.electravaux.com/api/testbdd")
+        fetch("https://electravaux.com/api/testbdd")
           .then((response) => {
             response.json().then((responses) => {
               let result = responses.message;
 
-              document.querySelector(".div-response").textContent = result;
+              document.querySelector(".div-response-2").textContent = result;
             });
           })
 
@@ -73,7 +69,7 @@ function PageTestServer() {
             click ici  pour tester la connexion avec la bdd
             <br></br>
           </div>
-          <div className="div-response">
+          <div className="div-response-2">
             la reponse est: <br></br>
           </div>
         </div>

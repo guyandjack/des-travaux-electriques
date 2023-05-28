@@ -156,7 +156,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     //evite la soumission automatique du formulaire
     e.preventDefault();
 
-    fetch("http://localhost:3500/api/comment/", {
+    fetch("http://www.electravaux.com/api/comment/", {
       headers: {
         Accept: "application/json, text/plain",
         "Content-Type": "application/json",

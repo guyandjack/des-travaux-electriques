@@ -34,7 +34,7 @@ function PageCGU() {
           <li key={index} id={index} className={((index + 1)%2===0)?(classBgLi + classBgColor ):(classBgLi)} >
             
             
-            <div className="article-number">Article{" " + (index + 1) + " :"}<span className="article-title">{" " + document.title}</span></div>
+            <div className="article-number">Article{" " + (index + 1) + " :"}<div className="article-title">{" " + document.title}</div></div>
             <div className="article-content">{document.content}</div>
             
               

@@ -1,7 +1,15 @@
 .cgu {
-  width: 70%;
-  margin: 2em auto;
-  padding: 2em;
+  width: 100%;
+  margin: 0em auto;
+  padding: 1em;
+}
+
+@media screen and (min-width: 769px) {
+  .cgu {
+    width: 70%;
+    margin: 2em auto;
+    padding: 2em;
+  }
 }
 
 .cgu__title {
@@ -9,9 +17,20 @@
   text-align: center;
   color: #272727;
   font-family: 'Oswald', sans-serif;
-  font-size: 3em;
-  margin: 1em 0em 2em 0em;
+  font-size: 1.5em;
   text-transform: uppercase;
+}
+
+@media screen and (min-width: 769px) {
+  .cgu__title {
+    width: 100%;
+    text-align: center;
+    color: #272727;
+    font-family: 'Oswald', sans-serif;
+    font-size: 3em;
+    margin: 1em 0em 2em 0em;
+    text-transform: uppercase;
+  }
 }
 
 .cgu__list {
@@ -28,8 +47,14 @@
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  width: 80%;
+  width: 100%;
   margin: 0px auto;
+}
+
+@media screen and (min-width: 769px) {
+  .cgu__list {
+    width: 80%;
+  }
 }
 
 .cgu__list__li {
@@ -39,28 +64,27 @@
 
 .cgu__list .article-number {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.5em;
+  font-size: 1.1em;
   margin: 1em 0em;
 }
 
 .cgu__list .article-title {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.2em;
+  font-size: 1.1em;
+  padding: 1em 0.5em;
   color: #0267C1;
 }
 
-.cgu__list .article-content {
-  font-size: 1.2em;
-  line-height: 2em;
-  text-align: justify;
+@media screen and (min-width: 769px) {
+  .cgu__list .article-title {
+    display: inline-block;
+  }
 }
 
-.cgu__list .article-split {
-  height: 1px;
-  color: #EFA00B;
-  background-color: #EFA00B;
-  margin: 4em auto;
-  width: 30%;
+.cgu__list .article-content {
+  font-size: 1em;
+  line-height: 2em;
+  text-align: justify;
 }
 
 .cgu .bg-dark {

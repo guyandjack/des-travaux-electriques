@@ -24,8 +24,7 @@ function MenuSmallScreen() {
   let containerMenuBurger = "__container-menu-burger";
   let urlIcon = "/Asset/images_component_header/icon-menu-burger-fifth-color.png";
 
-  let classDisplay
-
+  
   return (
     <div className={menuSmallScreen + classAddMenuBurger}>
       <img

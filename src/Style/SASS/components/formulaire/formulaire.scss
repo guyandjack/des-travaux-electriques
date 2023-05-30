@@ -39,23 +39,31 @@
 
     &__text{
 
-        font-size: 1.1em;
+        font-size: 1em;
         text-align:left;
         margin: 2em 0em;
         color:map-get($colors-rule, fourth-color);
         word-spacing: 0.2em;
         line-height: 2em;
+
+        @include upper-medium-screen{
+            font-size: 1.1em;
+        }
         
 
         & > span{
             display: inline-block;
-            font-size: 1.4em;
+            font-size: 1.2em;
             font-style: italic;
             font-weight: 600; 
             text-transform: lowercase;
             
             &::first-letter{
                 text-transform: uppercase;
+            }
+
+            @include upper-medium-screen{
+                 font-size: 1.4em;
             }
 
         }
@@ -76,7 +84,7 @@
         display: flex;
         flex-flow:column nowrap;
         justify-content: flex-start;
-        align-items: center;
+        align-items: flex-start;
         width: 100%;
         font-weight: 600;
         //text-transform: lowercase;
@@ -86,20 +94,29 @@
         .requis{
             color: map-get($colors-rule, third-color);
         }
+
+        @include upper-medium-screen{
+             align-items: center;   
+            }
+
     }
 
     .text-label{
         
-        width: 50%;
+        align-self: flex-start;
         &::first-letter{
             text-transform: uppercase;
         }
+
+        @include upper-medium-screen{
+            width: 80%;
+            }
     }
 
    
     .form-input{
         
-        width: 50%;
+        width: 80%;
         height:2em;
         padding: 0.5em;
         border-bottom: 2px solid map-get($colors-rule, first-color);
@@ -107,6 +124,10 @@
         color:map-get($colors-rule, fourth-color);
         background:none;
         transition: border-bottom 250ms linear;
+
+        @include upper-medium-screen{
+            width: 50%;
+            }
 
         
     }
@@ -156,11 +177,16 @@
     .textarea{
         resize: none;
         margin-top: 1em;
-        width:50%;
+        width:80%;
         height: 200px;
         border: 2px solid map-get($colors-rule, first-color );
         padding: 0.5em;
+        align-self: center;
         transition: border 250ms linear;
+
+        @include upper-medium-screen{
+            width: 50%;
+        }
     }
 
     .textarea:focus{

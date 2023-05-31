@@ -13,6 +13,7 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  border: 2px solid blue;
 }
 
 @media screen and (min-width: 576px) {
@@ -45,15 +46,14 @@
   position: relative;
   padding: 0.5em 0em 0.5em 0em;
   width: 100%;
-  /*@include under-large-screen {
-      flex: 1 1 auto;
-    }*/
 }
 
 @media screen and (min-width: 576px) {
   .nav-menu__li {
     margin: 0em 1em;
-    width: 15%;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 15%;
+            flex: 0 1 15%;
     border-top: 0px solid #EFA00B;
     border-bottom: 0px solid #EFA00B;
     height: 100%;

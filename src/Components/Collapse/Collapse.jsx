@@ -30,9 +30,7 @@ function Collapse({ idCollapse, title, content, color, colorText }) {
     let colorClassContent;
     let colorClassText =  colorText;
 
-    //url des images
-
-   
+    
 
     if (isCliked === true) {
         addClass = " display";

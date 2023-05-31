@@ -11,7 +11,7 @@ let CGUContent = [
         <dt>Est défini comme « Service »:</dt>
         <dd>
           Le site internet accessible à l'adresse
-          <Link to="/"> www.elec-travaux.com</Link>
+          <Link to="/"> www.electravaux.com</Link>
         </dd>
 
         <dt>Est défini comme « Contenu »:</dt>
@@ -20,7 +20,7 @@ let CGUContent = [
         </dd>
 
         <dt>Est défini comme « Editeur »:</dt>
-        <dd>Le créateur et l'éditeur du site internet "elec-travaux.com".</dd>
+        <dd>Le créateur et l'éditeur du site internet "electravaux.com".</dd>
 
         <dt>Est défini comme « Utilisateur »:</dt>
         <dd>
@@ -36,7 +36,7 @@ let CGUContent = [
       <p>
         Les présentes « <stong>conditions générales d'utilisation</stong> » ou «{" "}
         <strong>CGU</strong> » ont pour objet l'encadrement juridique de
-        l’utilisation du site '<strong>elec-travaux.com</strong>' et de ses
+        l’utilisation du site '<strong>electravaux.com</strong>' et de ses
         services. Ce contrat est conclu entre :« l’Éditeur » et « l’Utilisateur
         ». Les « <strong>CGU</strong> » doivent être acceptées par tout «
         Utilisateur », et son accès au site vaut acceptation de ces conditions.
@@ -55,10 +55,10 @@ let CGUContent = [
     title: "Mentions légales",
     content: (
       <p>
-        Le site web '<strong>elec-travaux.com</strong>' est édité par Guy&Jack
+        Le site web '<strong>electravaux.com</strong>' est édité par Guy&Jack
         Dev-Web
         <br></br>
-        L' hébergeur du site est:
+        L'hébergeur du site est: " PlanetHoster "
       </p>
     ),
   },
@@ -83,7 +83,7 @@ let CGUContent = [
         l’Utilisateur doit rester secret. En cas de divulgation du mot de passe,
         l’Éditeur décline toute responsabilité. L’Utilisateur assume l’entière
         responsabilité de l’utilisation qu’il fait des informations et contenus
-        présents sur le site '<strong>elec-travaux.com</strong>'. Tout usage du
+        présents sur le site '<strong>electravaux.com</strong>'. Tout usage du
         service par l'« Utilisateur » ayant directement ou indirectement pour
         conséquence des dommages doit faire l'objet d'une indemnisation au
         profit du site. L'« Editeur » permet aux membres de publier des
@@ -105,7 +105,7 @@ let CGUContent = [
         Tout dysfonctionnement du serveur ou du réseau ne peut engager la
         responsabilité de l’Éditeur. De même, la responsabilité du site ne peut
         être engagée en cas de force majeure ou du fait imprévisible et
-        insurmontable d'un tiers. Le site '<strong>elec-travaux.com</strong>'
+        insurmontable d'un tiers. Le site '<strong>electravaux.com</strong>'
         s'engage à mettre en œuvre tous les moyens nécessaires pour garantir la
         sécurité et la confidentialité des données. Toutefois, il n’apporte pas
         une garantie de sécurité totale. L’Éditeur se réserve la faculté d’une
@@ -177,7 +177,7 @@ let CGUContent = [
     title: "Propriété intellectuelle",
     content: (
       <p>
-        Les contenus du site '<strong>elec-travaux.com</strong>' (logos, textes,
+        Les contenus du site '<strong>electravaux.com</strong>' (logos, textes,
         éléments graphiques, vidéos, etc.) sont protégés par le droit d’auteur,
         en vertu du Code de la propriété intellectuelle. L’Utilisateur devra
         obtenir l’autorisation de l’Editeur du site avant toute reproduction,
@@ -199,9 +199,9 @@ let CGUContent = [
         L’Utilisateur doit obligatoirement fournir des informations personnelles
         pour procéder à son inscription sur le site. L’adresse électronique
         (e-mail) de l’Utilisateur pourra notamment être utilisée par le site
-        'elec-travaux.com' pour la communication d’informations diverses et la
-        gestion du compte.'elec-travaux.com' garantit le respect de la vie
-        privée de l’Utilisateur, conformément à la loi n°78-17 du 6 janvier 1978
+        'electravaux.com' pour la communication d’informations diverses et la
+        gestion du compte.'electravaux.com' garantit le respect de la vie privée
+        de l’Utilisateur, conformément à la loi n°78-17 du 6 janvier 1978
         relative à l'informatique, aux fichiers et aux libertés. Le site est
         déclaré auprès de la CNIL sous le numéro suivant : [numéro]. En vertu
         des articles 39 et 40 de la loi en date du 6 janvier 1978, l'«
@@ -224,7 +224,7 @@ let CGUContent = [
     title: "Évolution des conditions générales d’utilisation",
     content: (
       <div>
-        Le site '<strong>elec-travaux.com</strong>' se réserve le droit de
+        Le site '<strong>electravaux.com</strong>' se réserve le droit de
         modifier les clauses de ces conditions générales d’utilisation à tout
         moment et sans justification.
       </div>

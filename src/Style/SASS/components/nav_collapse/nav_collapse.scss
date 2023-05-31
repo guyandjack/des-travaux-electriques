@@ -24,7 +24,7 @@
     justify-content: space-between;
     align-items: center;
     //border: 2px solid green;
-    width: 30%;
+    //width: 30%;
 
     //responsive pour ecran supérieur à large
     @include upper-large-screen {
@@ -32,7 +32,7 @@
     }
 
     .container-navlink {
-      flex: 0 1 30%;
+      flex: 1 1 30%;
       // border: 2px solid yellow;
       text-align: left;
       
@@ -77,9 +77,19 @@
     @include upper-small-screen {
       position: absolute;
       top: 100%;
+      width: 200%;
+      z-index: 10;
+    }
+
+    //responsive pour ecran superieur à large
+    @include upper-large-screen {
+      position: absolute;
+      top: 100%;
       width: 120%;
       z-index: 10;
     }
+
+
 
     &__li {
       display: flex;

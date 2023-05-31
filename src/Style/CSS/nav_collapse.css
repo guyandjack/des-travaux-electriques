@@ -31,7 +31,6 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 30%;
 }
 
 @media screen and (min-width: 993px) {
@@ -41,9 +40,9 @@
 }
 
 .nav-collapse .nav-collapse-title .container-navlink {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 30%;
-          flex: 0 1 30%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 30%;
+          flex: 1 1 30%;
   text-align: left;
 }
 
@@ -99,6 +98,15 @@
 }
 
 @media screen and (min-width: 576px) {
+  .nav-collapse .collapse-list {
+    position: absolute;
+    top: 100%;
+    width: 200%;
+    z-index: 10;
+  }
+}
+
+@media screen and (min-width: 993px) {
   .nav-collapse .collapse-list {
     position: absolute;
     top: 100%;

@@ -88,8 +88,10 @@
         width: 100%;
         font-weight: 600;
         //text-transform: lowercase;
-        text-align: left;
+        //text-align: left;
         color:map-get($colors-rule, fourth-color);
+
+        //border: 2px solid red;
 
         .requis{
             color: map-get($colors-rule, third-color);
@@ -102,14 +104,15 @@
     }
 
     .text-label{
-        
+        //border: 2px solid green;
         align-self: flex-start;
         &::first-letter{
             text-transform: uppercase;
         }
 
         @include upper-medium-screen{
-            width: 80%;
+            align-self: center;
+            width: 50%;
             }
     }
 

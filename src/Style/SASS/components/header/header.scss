@@ -18,7 +18,7 @@
   margin-bottom: 2em;
   background-color: map-get($colors-rule, fourth-color);
 
-  //responsive pour ecran superieur à small
+  //responsive pour écran superieur à small
   @include upper-small-screen {
     height: 100px;
   }
@@ -41,7 +41,7 @@
   }
 
   &__container-div-session {
-    width: auto;
+    
     height: 100%;
     margin: 0em 1em;
     border: 2px solid green;

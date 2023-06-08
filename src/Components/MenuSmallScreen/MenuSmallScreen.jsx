@@ -14,17 +14,38 @@ import { Link } from "react-router-dom";
 import "../../Style/CSS/menu_small_screen.css";
 
 function MenuSmallScreen() {
-
   const [isClicked, setIsClicked] = useState(false);
 
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  // variable class de style
   let menuSmallScreen = "menu-small-screen";
   let classAddMenuBurger = " ";
   let menuIcon = "__icon";
   let menuBanner = "__banner";
   let containerMenuBurger = "__container-menu-burger";
-  let urlIcon = "/Asset/images_component_header/icon-menu-burger-fifth-color.png";
+  let urlIcon =
+    "/Asset/images_component_header/icon-menu-burger-fifth-color.png";
 
   
+  //Declaration des fonctions
+
+  function getScreenSize() {
+    let screenSize = window.innerWidth;
+
+    if (screenSize < 579) {
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
+    }
+  }
+
+   window.addEventListener("resize", () => {
+     getScreenSize();
+   });
+
+
+
   return (
     <div className={menuSmallScreen + classAddMenuBurger}>
       <img
@@ -48,6 +69,12 @@ function MenuSmallScreen() {
       <div className={menuSmallScreen + containerMenuBurger}>
         <MenuBurger click={isClicked} />
       </div>
+
+      {!isSmallScreen ? (
+        <div className={menuSmallScreen + containerDivSession}>
+          <CollapseUserSession />
+        </div>
+      ) : null}
     </div>
   );
 }

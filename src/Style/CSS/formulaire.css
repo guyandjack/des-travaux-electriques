@@ -124,7 +124,6 @@
           align-items: flex-start;
   width: 100%;
   font-weight: 600;
-  text-align: left;
   color: #272727;
 }
 
@@ -151,7 +150,10 @@
 
 @media screen and (min-width: 769px) {
   .form .text-label {
-    width: 80%;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    width: 50%;
   }
 }
 

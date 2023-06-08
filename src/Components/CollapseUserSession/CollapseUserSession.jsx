@@ -26,7 +26,7 @@ function CollapseUserSession() {
     }
   }, []);
 
-  //fonction qui efface la clef "session" du localstorage et recharge la page pour cleaner les formulaire
+  //fonction qui efface la clef "session" du localstorage et recharge la page pour cleaner les formulaires
   function closeSession() {
     localStorage.removeItem("session");
     localStorage.removeItem("activePage");

@@ -13,30 +13,46 @@
   justify-content: space-between;
   align-items: center;
 
-  height: 200px;
+  max-height: 400px;
+  width: 400px;
+ 
   padding: 1em;
-  border: 6px solid map-get($colors-rule, second-color);
+  border: 4px solid map-get($colors-rule, second-color);
   border-radius: 10px;
   background-color: lighten(map-get($colors-rule, fourth-color), 15%);
 
   &__title {
     flex: 0 0 auto;
-    font-size: 1.5em;
+    font-size: 1.1em;
     color: map-get($colors-rule, second-color);
     margin-bottom: 0.8em;
+
+    @include upper-medium-screen{
+      font-size: 1.5em;
+    }
   }
 
   &__text {
+    margin-top: 1em;
     align-self: flex-start;
     flex: 0 0 auto;
-    font-size: 1.3em;
+    font-size: 1em;
     color: map-get($colors-rule, fifth-color);
+
+    @include upper-medium-screen{
+      font-size: 1.2em;
+    }
   }
 
   &__text-end {
+    margin-top: 1em;
     align-self: flex-start;
     color: map-get($colors-rule, fifth-color);
-    font-size: 1.4em;
+    font-size: 1.1em;
+
+    @include upper-medium-screen{
+      font-size:1.2em ;
+    }
   }
 
   &__closure {

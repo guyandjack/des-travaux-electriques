@@ -41,11 +41,7 @@ function PageCircuitEclairage() {
 
   //url image.
 
-  /*let plaqueDeCuisson =
-    ContentImagePageCircuitEclairage.plaqueCuisson[imageSize];
-  let chauffage = ContentImagePageCircuitEclairage.chauffage[imageSize];
-  let cumulus = ContentImagePageCircuitEclairage.cumulus[imageSize];
-  let laveLinge = ContentImagePageCircuitEclairage.laveLinge[imageSize];*/
+  
 
   //constante
   const refPage = "circuit-eclairage";
@@ -56,19 +52,17 @@ function PageCircuitEclairage() {
   let originalCommentId = null;
   let commentDate = null;
 
-  //url image schema.
+  //url image schema
+  let schema_eclairage_SA =
+    ContentImagePageCircuitEclairage.schemaSimpleAllumage[imageSize];
+  let schema_eclairage_VV =
+    ContentImagePageCircuitEclairage.schemaVaEtVient[imageSize];
+  let schema_eclairage_BP =
+    ContentImagePageCircuitEclairage.schemaBoutonPoussoir[imageSize];
+  let schema_eclairage_radar =
+    ContentImagePageCircuitEclairage.schemaDetecteurPresence[imageSize];
 
-  /*let schemaEclairageSimpleAllumage =
-    ContentImagePageCircuitSpecialise.schemaPlaqueCuisson[imageSize];
-
-  let schemaEclairageVaEtVient =
-    ContentImagePageCircuitSpecialise.schemaCumulus[imageSize];
-
-  let schemaEclairageBoutonPoussoir =
-    ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
-
-  let schemaEclairageDetecteurPresence =
-    ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];*/
+  
 
   //Positionne le scroll en haut de page
   useEffect(() => {
@@ -130,7 +124,7 @@ function PageCircuitEclairage() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={""}
+            src1={schema_eclairage_SA}
             alt1={"Schéma de câblage d' un éclairage simple allumage. "}
             figcap1={"Schéma de câblage d' un éclairage simple allumage. "}
           />
@@ -197,7 +191,7 @@ function PageCircuitEclairage() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={""}
+            src1={schema_eclairage_VV}
             alt1={"Schéma de câblage d'un eclairage va et vient "}
             figcap1={"Schéma de câblage d'un eclairage va et vient "}
           />
@@ -258,7 +252,7 @@ function PageCircuitEclairage() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={""}
+            src1={schema_eclairage_BP}
             alt1={"Schéma de câblage avec boutons poussoirs "}
             figcap1={"Schéma de câblage avec boutons poussoirs "}
           />
@@ -325,7 +319,7 @@ function PageCircuitEclairage() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={""}
+            src1={schema_eclairage_radar}
             alt1={"Schéma de câblage avec détecteur de présence."}
             figcap1={"Schéma de câblage avec détecteur de présence."}
           />

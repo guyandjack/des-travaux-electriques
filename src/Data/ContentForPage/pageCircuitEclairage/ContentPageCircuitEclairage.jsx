@@ -499,46 +499,46 @@ let ContentImagePageCircuitEclairage = {
   //Vignette
   detecteurPresence: {
     small:
-      "/Asset/images_page_circuit_specialise/plaque-cuisson/img-plaque-cuisson.png",
+      "",
     medium:
-      "/Asset/images_page_circuit_specialise/plaque-cuisson/img-plaque-cuisson.png",
+      "",
     large:
-      "/Asset/images_page_circuit_specialise/plaque-cuisson/img-plaque-cuisson.png",
+      "",
   },
   
-
+   //travaux-electriques\public\Asset\images_page_circuit_eclairage\schema-eclairage-sa-1500px.png
   //Schema
   schemaSimpleAllumage: {
     small:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-sa-500px.png",
     medium:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-sa-1000px.png",
     large:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-sa-1500px.png",
   },
   schemaVaEtVient: {
     small:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-1500px.png",
     medium:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-1000px.png",
     large:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-500px.png",
   },
   schemaBoutonPoussoir: {
     small:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-1500px.png",
     medium:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-1000px.png",
     large:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-500px.png",
   },
   schemaDetecteurPresence: {
     small:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-radar-1550px.png",
     medium:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-radar-1000px.png",
     large:
-      "",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-radar-500px.png",
   },
 };
 

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import {
   ContentTextPageCircuitEclairage,
   ContentImagePageCircuitEclairage,
-} from "../../Data/ContentForPage/PageCircuitSpecialise/ContentPageCircuitSpecialise.jsx";
+} from "../../Data/ContentForPage/PageCircuitEclairage/ContentPageCircuitEclairage.jsx";
 
 //Import des composants enfants
 import { Title } from "../../Components/Title/Title.jsx";
@@ -41,11 +41,11 @@ function PageCircuitEclairage() {
 
   //url image.
 
-  let plaqueDeCuisson =
+  /*let plaqueDeCuisson =
     ContentImagePageCircuitEclairage.plaqueCuisson[imageSize];
   let chauffage = ContentImagePageCircuitEclairage.chauffage[imageSize];
   let cumulus = ContentImagePageCircuitEclairage.cumulus[imageSize];
-  let laveLinge = ContentImagePageCircuitEclairage.laveLinge[imageSize];
+  let laveLinge = ContentImagePageCircuitEclairage.laveLinge[imageSize];*/
 
   //constante
   const refPage = "circuit-eclairage";
@@ -58,7 +58,7 @@ function PageCircuitEclairage() {
 
   //url image schema.
 
-  let schemaEclairageSimpleAllumage =
+  /*let schemaEclairageSimpleAllumage =
     ContentImagePageCircuitSpecialise.schemaPlaqueCuisson[imageSize];
 
   let schemaEclairageVaEtVient =
@@ -66,11 +66,9 @@ function PageCircuitEclairage() {
 
   let schemaEclairageBoutonPoussoir =
     ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
-  
-  let schemaEclairageDetecteurPresence =
-    ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
 
-  
+  let schemaEclairageDetecteurPresence =
+    ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];*/
 
   //Positionne le scroll en haut de page
   useEffect(() => {
@@ -103,14 +101,18 @@ function PageCircuitEclairage() {
   return (
     <div className="circuit-eclairage">
       <div className="container-title">
-        <Title pagetype="page" title="Circuit éclairage" text={}></Title>
+        <Title
+          pagetype="page"
+          title="Circuit éclairage"
+          text={ContentTextPageCircuitEclairage.introductionTexte}
+        ></Title>
       </div>
 
       <div className="container-collapse">
         <Collapse
           idCollapse="description"
           title="Circuit éclairage... ?"
-          content={}
+          content={""}
           color="fourth"
           colorText="fifth"
         ></Collapse>
@@ -128,7 +130,7 @@ function PageCircuitEclairage() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={}
+            src1={""}
             alt1={"Schéma de câblage d' un éclairage simple allumage. "}
             figcap1={"Schéma de câblage d' un éclairage simple allumage. "}
           />
@@ -138,7 +140,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="sa-principe"
             title="principe de fonctionnement"
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.simpleAllumage.collapsePrincipe
+            }
             color="first"
             colorText="fifth"
           ></Collapse>
@@ -148,7 +152,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="sa-precaution"
             title="precautions"
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.simpleAllumage.collapsePrecaution
+            }
             color="second"
             colorText="fifth"
           ></Collapse>
@@ -158,7 +164,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="sa-astuce"
             title="trucs & astuces"
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.simpleAllumage.collapseAstuce
+            }
             color="third"
             colorText="fifth"
           ></Collapse>
@@ -168,7 +176,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="sa-savoir"
             title="En savoir plus..."
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.simpleAllumage.collapseSavoir
+            }
             color="fourth"
             colorText="fifth"
           ></Collapse>
@@ -187,7 +197,7 @@ function PageCircuitEclairage() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={}
+            src1={""}
             alt1={"Schéma de câblage d'un eclairage va et vient "}
             figcap1={"Schéma de câblage d'un eclairage va et vient "}
           />
@@ -197,7 +207,7 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="vv-principe"
             title="principe de fonctionnement"
-            content={ContentTextPageCircuitSpecialise.cumulus.collapsePrincipe}
+            content={ContentTextPageCircuitEclairage.vaEtVient.collapsePrincipe}
             color="first"
             colorText="fifth"
           ></Collapse>
@@ -208,7 +218,7 @@ function PageCircuitEclairage() {
             idCollapse="vv-precaution"
             title="precautions"
             content={
-              ContentTextPageCircuitSpecialise.cumulus.collapsePrecaution
+              ContentTextPageCircuitEclairage.vaEtVient.collapsePrecaution
             }
             color="second"
             colorText="fifth"
@@ -219,7 +229,7 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="vv-astuce"
             title="trucs & astuces"
-            content={ContentTextPageCircuitSpecialise.cumulus.collapseAstuce}
+            content={ContentTextPageCircuitEclairage.vaEtVient.collapseAstuce}
             color="third"
             colorText="fifth"
           ></Collapse>
@@ -229,7 +239,7 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="vv-savoir"
             title="En savoir plus..."
-            content={ContentTextPageCircuitSpecialise.cumulus.collapseSavoir}
+            content={ContentTextPageCircuitEclairage.vaEtVient.collapseSavoir}
             color="fourth"
             colorText="fifth"
           ></Collapse>
@@ -248,7 +258,7 @@ function PageCircuitEclairage() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={}
+            src1={""}
             alt1={"Schéma de câblage avec boutons poussoirs "}
             figcap1={"Schéma de câblage avec boutons poussoirs "}
           />
@@ -258,7 +268,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="bp-principe"
             title="principe de fonctionnement"
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.boutonPoussoir.collapsePrincipe
+            }
             color="first"
             colorText="fifth"
           ></Collapse>
@@ -268,7 +280,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="bp-precaution"
             title="precautions"
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.boutonPoussoir.collapsePrecaution
+            }
             color="second"
             colorText="fifth"
           ></Collapse>
@@ -278,7 +292,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="bp-astuce"
             title="trucs & astuces"
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.boutonPoussoir.collapseAstuce
+            }
             color="third"
             colorText="fifth"
           ></Collapse>
@@ -288,7 +304,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="bp-savoir"
             title="En savoir plus..."
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.boutonPoussoir.collapseSavoir
+            }
             color="fourth"
             colorText="fifth"
           ></Collapse>
@@ -307,9 +325,9 @@ function PageCircuitEclairage() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={}
-            alt1={"Schéma de câblage avec detecteur de présence."}
-            figcap1={"Schéma de câblage avec detecteur de présence."}
+            src1={""}
+            alt1={"Schéma de câblage avec détecteur de présence."}
+            figcap1={"Schéma de câblage avec détecteur de présence."}
           />
         </div>
 
@@ -317,7 +335,10 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="radar-principe"
             title="principe de fonctionnement"
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.detecteurDePresence
+                .collapsePrincipe
+            }
             color="first"
             colorText="fifth"
           ></Collapse>
@@ -327,7 +348,10 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="radar-precaution"
             title="precautions"
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.detecteurDePresence
+                .collapsePrecaution
+            }
             color="second"
             colorText="fifth"
           ></Collapse>
@@ -337,7 +361,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="radar-astuce"
             title="trucs & astuces"
-            content={}
+            content={
+              ContentTextPageCircuitEclairage.detecteurDePresence.collapseAstuce
+            }
             color="third"
             colorText="fifth"
           ></Collapse>
@@ -347,7 +373,7 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="radar-savoir"
             title="En savoir plus..."
-            content={}
+            content={ContentTextPageCircuitEclairage.detecteurDePresence.collapseSavoir}
             color="fourth"
             colorText="fifth"
           ></Collapse>

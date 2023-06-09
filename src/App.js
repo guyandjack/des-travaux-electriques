@@ -9,7 +9,6 @@ import { NavContextProvider } from "./Utils/context/Nav_context.jsx";
 //Import des pages de l'application
 import { PageHome } from "../src/Pages/Home/PageHome.jsx";
 import { PagePC16A } from "../src/Pages/Prise_De_Courant_16A/Prise_De_Courant_16A";
-import { PageChauffageElectrique, PageCircuitChauffageElectrique } from "../src/Pages/Circuit_Chauffage_Electrique/Circuit_Chauffage_Electrique.jsx";
 import { PageCircuitSpecialise } from "../src/Pages/Circuit_Specialise/Circuit_Specialise.jsx";
 import { PageCircuitEclairage } from "../src/Pages/Circuit_Eclairage/Circuit_Eclairage.jsx";
 import { PageDisjoncteurMagnetoThermique } from "../src/Pages/DisjoncteurMagnetoThermique/DisjoncteurMagnetoThermique.jsx";
@@ -42,10 +41,10 @@ function App() {
           <Route path="testserver" element={<PageTestServer />}></Route>
           <Route path="/schema/pc16a" element={<PagePC16A />}></Route>
           <Route path="/schema/pc16a/quiz" element={<PageQuizPC />}></Route>
-          <Route path="/chauffage-electrique" element={<PageCircuitChauffageElectrique />}></Route>
           <Route path="/schema/circuit-specialise" element={<PageCircuitSpecialise />}></Route>
           <Route path="/schema/circuit-specialise/quiz" element={<PageQuizCircuitSpecialise />}></Route>
-          <Route path="/circuit-eclairage"  element={<PageCircuitEclairage />}></Route>
+          <Route path="/schema/circuit-eclairage"  element={<PageCircuitEclairage />}></Route>
+          {<Route path="/schema/circuit-eclairage/quiz"  element={""}></Route>}
           <Route path="/db" element={<PageDisjoncteurDeBranchement />}></Route>
           <Route path="/ddr" element={<PageDispositifDifferentiel />}></Route>
           <Route path="/tc" element={<PageTableauDeCommunication />}></Route>

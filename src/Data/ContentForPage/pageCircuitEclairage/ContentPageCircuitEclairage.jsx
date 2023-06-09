@@ -315,7 +315,7 @@ let ContentTextPageCircuitEclairage = {
     ),
   },
 
-  bouttonPoussoir: {
+  boutonPoussoir: {
     collapsePrincipe: (
       <div className="principe">
         <p className="principe__text">

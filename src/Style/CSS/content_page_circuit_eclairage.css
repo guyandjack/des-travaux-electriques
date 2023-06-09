@@ -1,0 +1,56 @@
+.circuit-eclairage .description, .circuit-eclairage .precaution {
+  counter-set: compteur;
+}
+
+.circuit-eclairage .description__li::before, .circuit-eclairage .precaution__li::before {
+  content: counter(compteur);
+  display: inline-block;
+  color: #0267C1;
+  font-weight: 600;
+  font-size: 1em;
+  width: 2em;
+  text-align: right;
+  margin-right: 1em;
+}
+
+.circuit-eclairage .description__li, .circuit-eclairage .precaution__li {
+  counter-increment: compteur;
+  margin-top: 0.5em;
+  font-size: 1em;
+}
+
+.circuit-eclairage .description .important, .circuit-eclairage .precaution .important {
+  color: #EFA00B;
+}
+
+.circuit-eclairage .description__text, .circuit-eclairage .principe__text, .circuit-eclairage .astuce__text, .circuit-eclairage .savoir__text, .circuit-eclairage .precaution__text {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0.5em 0em;
+}
+
+@media screen and (min-width: 769px) {
+  .circuit-eclairage .description__text, .circuit-eclairage .principe__text, .circuit-eclairage .astuce__text, .circuit-eclairage .savoir__text, .circuit-eclairage .precaution__text {
+    font-size: 1em;
+  }
+}
+
+.circuit-eclairage .important {
+  color: #EFA00B;
+}
+
+.circuit-eclairage .description-list {
+  margin: 0.5em 0em;
+  padding: 1em;
+  background-color: #f3f3f3;
+}
+
+.circuit-eclairage .description-list__li {
+  list-style-type: disc;
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+
+.circuit-eclairage .description-list__li__span {
+  margin-left: 3em;
+}

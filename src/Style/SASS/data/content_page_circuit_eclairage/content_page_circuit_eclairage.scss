@@ -1,0 +1,84 @@
+//Feuille de style pour les données de la page "circuit eclairage"
+
+//Import des mixins qui gérent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+//style du contenu des collapse
+.circuit-eclairage{
+
+
+
+    .description, .precaution{
+
+        counter-set: compteur ;
+
+        &__li::before{
+            content:counter(compteur);
+            display:inline-block;
+            color: map-get($colors-rule, first-color);
+            font-weight: 600;
+            font-size: 1em;
+            width:2em;
+            text-align: right;
+            margin-right: 1em;
+            //border:1px solid red;
+        }
+
+        &__li{
+            counter-increment: compteur;
+            margin-top: 0.5em;
+            font-size: 1em;
+            
+        }
+
+        .important{
+            color:  map-get($colors-rule, second-color );
+            
+        }
+    }
+
+    .description__text, .principe__text, .astuce__text, .savoir__text,  .precaution__text{
+
+        
+
+        
+            font-size: 1em;
+
+            @include upper-medium-screen{
+                font-size: 1em;
+            }
+
+            line-height: 1.5em;
+            margin: 0.5em 0em;
+            
+        }
+        
+        .important{
+        color:  map-get($colors-rule, second-color);
+        
+    }
+
+    .description-list{
+       margin: 0.5em 0em;
+       padding:1em;
+       background-color:lighten( map-get($colors-rule, fourth-color ),80%);
+        
+
+        
+        &__li{
+            list-style-type: disc;
+            margin-top: 0.5em;
+            margin-left: 1em;
+
+            &__span{
+                margin-left: 3em;
+            }
+        }
+    }
+
+}
+
+

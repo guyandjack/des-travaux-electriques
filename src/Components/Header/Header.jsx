@@ -168,7 +168,7 @@ function Header() {
                 tailleText="1em"
                 colorBg=""
               />
-              {/*<NavLink
+              {<NavLink
                 urlTo="/schema/circuit-eclairage"
                 urlImg=""
                 text="Circuit éclairage"
@@ -176,7 +176,7 @@ function Header() {
                 tailleText="1em"
                 colorBg=""
               />
-              <NavLink
+              /*<NavLink
                 urlTo="/schema/protection-des-personnes"
                 urlImg=""
                 text="Protection des personnes"

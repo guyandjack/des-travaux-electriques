@@ -48,13 +48,11 @@
       -ms-flex: 1 1 75%;
           flex: 1 1 75%;
   height: 100%;
-  border: 2px solid red;
 }
 
 .header__container-div-session {
   height: 100%;
   margin: 0em 1em;
-  border: 2px solid green;
 }
 
 .header__container-div-sitebuilding {

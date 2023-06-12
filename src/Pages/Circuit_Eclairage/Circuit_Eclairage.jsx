@@ -182,7 +182,7 @@ function PageCircuitEclairage() {
       <section id="va-et-vient" className="section color-section">
         <div className="container-undertitle">
           <TitleHN
-            titleText="Circuit éclairage avec « vat et vient »"
+            titleText="Circuit éclairage avec « va et vient »"
             titleLevel={2}
             size={2}
             color="fourth"

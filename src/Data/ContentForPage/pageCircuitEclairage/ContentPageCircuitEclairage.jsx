@@ -495,22 +495,17 @@ let ContentTextPageCircuitEclairage = {
 /**** url des contenus media de la page ***** */
 
 let ContentImagePageCircuitEclairage = {
-
   //Vignette
   detecteurPresence: {
-    small:
-      "",
-    medium:
-      "",
-    large:
-      "",
+    small: "",
+    medium: "",
+    large: "",
   },
-  
-   //travaux-electriques\public\Asset\images_page_circuit_eclairage\schema-eclairage-sa-1500px.png
+
+  //travaux-electriques\public\Asset\images_page_circuit_eclairage\schema-eclairage-sa-1500px.png
   //Schema
   schemaSimpleAllumage: {
-    small:
-      "/Asset/images_page_circuit_eclairage/schema-eclairage-sa-500px.png",
+    small: "/Asset/images_page_circuit_eclairage/schema-eclairage-sa-500px.png",
     medium:
       "/Asset/images_page_circuit_eclairage/schema-eclairage-sa-1000px.png",
     large:
@@ -518,27 +513,25 @@ let ContentImagePageCircuitEclairage = {
   },
   schemaVaEtVient: {
     small:
-      "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-1500px.png",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-500px.png",
     medium:
       "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-1000px.png",
-    large:
-      "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-500px.png",
+    large: "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-1500px.png",
   },
   schemaBoutonPoussoir: {
     small:
-      "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-1500px.png",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-500px.png",
     medium:
       "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-1000px.png",
-    large:
-      "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-500px.png",
+    large: "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-1500px.png",
   },
   schemaDetecteurPresence: {
     small:
-      "/Asset/images_page_circuit_eclairage/schema-eclairage-radar-1550px.png",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-radar-500px.png",
     medium:
       "/Asset/images_page_circuit_eclairage/schema-eclairage-radar-1000px.png",
     large:
-      "/Asset/images_page_circuit_eclairage/schema-eclairage-radar-500px.png",
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-radar-1500px.png",
   },
 };
 

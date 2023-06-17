@@ -106,7 +106,7 @@ function PageCircuitEclairage() {
         <Collapse
           idCollapse="description"
           title="Circuit éclairage... ?"
-          content={""}
+          content={ContentTextPageCircuitEclairage.collapseDescription}
           color="fourth"
           colorText="fifth"
         ></Collapse>
@@ -367,7 +367,9 @@ function PageCircuitEclairage() {
           <Collapse
             idCollapse="radar-savoir"
             title="En savoir plus..."
-            content={ContentTextPageCircuitEclairage.detecteurDePresence.collapseSavoir}
+            content={
+              ContentTextPageCircuitEclairage.detecteurDePresence.collapseSavoir
+            }
             color="fourth"
             colorText="fifth"
           ></Collapse>

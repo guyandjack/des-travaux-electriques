@@ -25,115 +25,78 @@ let ContentTextPageCircuitEclairage = {
     </div>
   ),
 
+  collapseDescription: (
+    <div className="description">
+      <p className="description__text">
+        Le nombre maximal de points d'utilisation par circuit est de "8".
+      </p>
+      <p className="description__text">
+        Dans le cas de spots ou de bandeaux lumineux, on compte un point
+        d'éclairage pour 300 VA dans le même local.
+      </p>
+
+      <p className="description__text">
+        Dans un logement, la norme électrique impose au moins un foyer lumineux
+        fixe dans les locaux suivants:
+      </p>
+      <ul className="description-list">
+        <li className="description-list__li">Séjour</li>
+        <li className="description-list__li">Chambres</li>
+        <li className="description-list__li">Cuisine</li>
+        <li className="description-list__li">Salle d'eau</li>
+        <li className="description-list__li">Entrée / dégagement</li>
+        <li className="description-list__li">WC</li>
+        <li className="description-list__li">Cellier</li>
+        <li className="description-list__li">Pallier extérieur</li>
+      </ul>
+
+      <p className="description__text">
+        Il existe plusieurs types de schéma de câblage, nous verrons ici les
+        principaux:
+      </p>
+
+      <ul className="description-list">
+        <li
+          className="description-list__li"
+          onClick={() => {
+            scrollTo("#simple-allumage");
+          }}
+        >
+          <NavLink text="Schéma avec un simple allumage" colorText="second"></NavLink>
+        </li>
+
+        <li
+          className="description-list__li"
+          onClick={() => {
+            scrollTo("#va-et-vient");
+          }}
+        >
+          <NavLink text="Schéma avec va et vient" colorText="second"></NavLink>
+        </li>
+
+        <li
+          className="description-list__li"
+          onClick={() => {
+            scrollTo("#bouton-poussoir");
+          }}
+        >
+          <NavLink text="Schéma avec des boutons poussoirs" colorText="second"></NavLink>
+        </li>
+        <li
+          className="description-list__li"
+          onClick={() => {
+            scrollTo("#detecteur-de-presence");
+          }}
+        >
+          <NavLink text="Schéma avec un détecteur de présence" colorText="second"></NavLink>
+        </li>
+        
+      </ul>
+      
+    </div>
+  ),
+
   simpleAllumage: {
-    collapseDescription: (
-      <div className="description">
-        <p className="description__text">
-          Pour respecter les règles de sécurité électrique du logement,
-          l’installation doit comporter plusieurs circuits spécialisés afin
-          d’alimenter certains équipements et plus particulièrement les
-          appareils électroménagers de forte puissance.
-        </p>
-        <p className="description__text">
-          Un circuit électrique « spécialisé » est un circuit qui fournit une
-          alimentation spécifique à un seul équipement.
-        </p>
-
-        <p className="description__text">Le circuit du cumulus par exemple.</p>
-
-        <p className="description__text">
-          Dans un logement, la norme électrique impose l’installation d’au moins
-          quatre circuits spécialisés :
-        </p>
-        <ul className="description-list">
-          <li className="description-list__li">
-            Un circuit dans la cuisine pour la plaque de cuisson ou la
-            cuisinière.
-          </li>
-          <li className="description-list__li">
-            Trois circuits spécialisés avec des prises de 16A pour alimenter des
-            équipements électroménagers.
-          </li>
-        </ul>
-        <p className="description__text">
-          La norme recommande de prévoir une prise spécialisée à proximité des
-          arrivées et évacuations d’eau pour le lave-vaisselle et la machine à
-          laver. Les autres circuits spécialisés seront installés en fonction
-          des besoins de l’occupant et de la configuration du logement.
-        </p>
-        <p>
-          Liste non exhaustive des différents circuits spécialisés d'un
-          logement:
-        </p>
-
-        <ul className="description-list">
-          <li
-            className="description-list__li"
-            onClick={() => {
-              scrollTo("#cuisson");
-            }}
-          >
-            <NavLink
-              text="plaque de cuisson ou cuisinière"
-              colorText="second"
-            ></NavLink>
-          </li>
-          <li className="description-list__li">sèche-linge</li>
-          <li className="description-list__li">four</li>
-          <li className="description-list__li">lave-vaisselle</li>
-          <li
-            className="description-list__li"
-            onClick={() => {
-              scrollTo("#lave-linge");
-            }}
-          >
-            <NavLink text="lave-linge" colorText="second"></NavLink>
-          </li>
-
-          <li
-            className="description-list__li"
-            onClick={() => {
-              scrollTo("#cumulus");
-            }}
-          >
-            <NavLink text="chauffe-eau" colorText="second"></NavLink>
-          </li>
-          <li className="description-list__li">spa / sauna / piscine</li>
-          <li className="description-list__li">
-            IRVE(Infrastructure de Recharge de Véhicules Electriques)
-          </li>
-          <li className="description-list__li">portail / porte de garage</li>
-          <li className="description-list__li">interphone</li>
-          <li className="description-list__li">tableaux divisionnaires</li>
-          <li className="description-list__li">congélateur</li>
-          <li className="description-list__li">VMC</li>
-        </ul>
-        <p>
-          Liste non exhaustive des différents circuits dédiés d'un logement:
-        </p>
-        <ul className="description-list">
-          <li className="description-list__li">volet roulant</li>
-          <li className="description-list__li">
-            unité extérieur de climatisation
-          </li>
-          <li className="description-list__li">cave à vins</li>
-          <li className="description-list__li">interphone</li>
-          <li className="description-list__li">radiateur électrique</li>
-        </ul>
-        <p className="description__text">
-          Différence entre un circuit dédié et un circuit spécialisé:
-        </p>
-        <p className="description__text">
-          Un circuit spécialisé alimente un seul et unique appareil (ex:
-          cumulus).
-        </p>
-        <p className="description__text">
-          Un circuit dédié peut alimenter plusieurs appareils de même type (ex:
-          radiateur électrique).{" "}
-        </p>
-      </div>
-    ),
-
     collapsePrincipe: (
       <div className="principe">
         <p className="principe__text">
@@ -142,18 +105,18 @@ let ContentTextPageCircuitEclairage = {
           indirects avec un conducteur actif.
         </p>
         <p className="principe__text">
-          Dans notre exemple c'est un interrupteur différentiel « dédié » à
-          haute sensibilité 32A 30mA. Ce dernier est placé en amont du circuit
-          1.
+          Dans notre exemple c'est un interrupteur différentiel à haute
+          sensibilité 63A 30mA. Ce dernier est placé en amont du circuit.
         </p>
         <p className="principe__text">
-          <Link to="/disjoncteur">Les disjoncteurs magnétothermiques </Link>
+          <Link to="">Le disjoncteur magnétothermique </Link>
           protègent notre installation contre les courts-circuits et surcharges.
         </p>
         <p className="principe__text">
-          Le principe de câblage est simple, on doit respecter les couleurs.
-          Dans la boîte de dérivation on connecte les conducteurs de même type
-          entre eux. Phase avec phase, neutre avec neutre, terre avec terre.
+          Le câblage d'un "simple allumage" est le plus facile à comprendre.
+          Lorsque que l'on appui sur l'interrupteur on ferme ou on ouvre le
+          circuit, le foyer lumineux est respectivement sous tension ou hors
+          tension.Le foyer lumineux s'éclaire ou s'éteint.
         </p>
       </div>
     ),
@@ -173,7 +136,7 @@ let ContentTextPageCircuitEclairage = {
 
           <li key="5" className="precaution__li">
             Phase c'est marron en général ou toute autre couleur sauf bleu,
-            vert, jaune, bicolore vert/jaune
+            vert, jaune, bicolore vert/jaune.
           </li>
           <li key="6" className="precaution__li">
             Neutre c'est obligatoirement bleu
@@ -183,7 +146,7 @@ let ContentTextPageCircuitEclairage = {
           </li>
           <li key="7" className="precaution__li">
             Retourlampe toute autre couleur sauf bleu, vert, jaune, bicolore
-            vert/jaune
+            vert/jaune.
           </li>
         </ul>
       </div>
@@ -203,22 +166,23 @@ let ContentTextPageCircuitEclairage = {
         </p>
 
         <p className="astuce__text">
-          Comme pour les prises classiques, utilisez des connecteurs rapides
-          transparents, cela permet de vérifier rapidement si la connexion est
-          bien établie.
+          Utilisez des connecteurs rapides transparents, cela permet de vérifier
+          rapidement si la connexion est bien établie.
+        </p>
+
+        <p className="astuce__text">
+          Pour le retour lampe on choisi une couleur différente de celle de la
+          phase. C'est plus facile pour se repérer lorsque que l'on fait les
+          racordements dans les boîtes de dérivation.
         </p>
       </div>
     ),
     collapseSavoir: (
       <div className="savoir">
-        <p className="savoir__text">
-          La hauteur minimale de l'axe d'une boîte de raccordement 32A
-          monophasée ou 20A triphasée est de 12cm par rapport au sol fini.
+            <p className="savoir__text">
+                Avec une 
         </p>
-        <p className="savoir__text">
-          Veillez à implanter votre prise ou sortie de câble à 60cm de toute
-          arrivée ou évacuation d'eau.
-        </p>
+        
       </div>
     ),
   },
@@ -476,17 +440,15 @@ let ContentTextPageCircuitEclairage = {
     ),
     collapseAstuce: (
       <div className="astuce">
-        
         <p className="astuce__text">
-          Pour un usage extérieur pensez à utiliser un détecteur avec un IP adapté.
+          Pour un usage extérieur pensez à utiliser un détecteur avec un IP
+          adapté.
         </p>
       </div>
     ),
     collapseSavoir: (
       <div className="savoir">
-        <p className="savoir__text">
-          
-        </p>
+        <p className="savoir__text"></p>
       </div>
     ),
   },
@@ -512,18 +474,18 @@ let ContentImagePageCircuitEclairage = {
       "/Asset/images_page_circuit_eclairage/schema-eclairage-sa-1500px.png",
   },
   schemaVaEtVient: {
-    small:
-      "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-500px.png",
+    small: "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-500px.png",
     medium:
       "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-1000px.png",
-    large: "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-1500px.png",
+    large:
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-vv-1500px.png",
   },
   schemaBoutonPoussoir: {
-    small:
-      "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-500px.png",
+    small: "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-500px.png",
     medium:
       "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-1000px.png",
-    large: "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-1500px.png",
+    large:
+      "/Asset/images_page_circuit_eclairage/schema-eclairage-bp-1500px.png",
   },
   schemaDetecteurPresence: {
     small:

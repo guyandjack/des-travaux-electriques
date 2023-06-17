@@ -34,7 +34,7 @@
     
     //border: 2px solid red;
 
-    //responsive pour écran superieur a small
+    //responsive pour écran superieur à small
     @include upper-small-screen{
         //border: 2px solid red;
         margin: 0em 1em;
@@ -50,8 +50,6 @@
                   
         }
     }
-
-
-    
+ 
   }
 }

@@ -11,8 +11,9 @@ let ContentTextPagePC16A = {
   introductionTexte: (
     <p>
       Avant toute intervention, veuillez mettre hors tension le circuit concerné
-      au niveau du <Link to="/tgbt"> tableau de répartition </Link> et vérifier ensuite l'absence de tension avec un VAT (Vérificateur d'Absence
-      de Tension) au point d'intervention.
+      au niveau du <Link to=""> tableau de répartition </Link> et vérifier
+      ensuite l'absence de tension avec un VAT (Vérificateur d'Absence de
+      Tension) au point d'intervention.
     </p>
   ),
 
@@ -23,8 +24,8 @@ let ContentTextPagePC16A = {
         Obturateur de sécurité, pour éviter les contacts directs avec les fiches
       </li>
       <li className="description__li">
-        Puits de sécurité, pour éviter les contacts directs avec les fiches mâles
-        lors de la connexion.
+        Puits de sécurité, pour éviter les contacts directs avec les fiches
+        mâles lors de la connexion.
       </li>
       <li className="description__li">
         La lettre " T " indique la connexion avec la terre.
@@ -34,13 +35,15 @@ let ContentTextPagePC16A = {
       </li>
       <li className="description__li">Levier de déconnexion.</li>
       <li className="description__li">
-        Connecteur rapide, pas besoin d'outils pour connecter ou déconnecter
-        le câble électrique
+        Connecteur rapide, pas besoin d'outils pour connecter ou déconnecter le
+        câble électrique
       </li>
       <li className="description__li">
         La lettre " N " indique la connexion avec le neutre.
       </li>
-      <li className="description__li">Matériel certifié NF (Norme Francaise)</li>
+      <li className="description__li">
+        Matériel certifié NF (Norme Francaise)
+      </li>
       <li className="description__li">
         Tension et courant maximal d'utilisation
       </li>
@@ -50,7 +53,7 @@ let ContentTextPagePC16A = {
   collapsePrincipe: (
     <div className="principe">
       <p className="principe__text">
-        <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
+        <Link to="">Le dispositif différentiel résiduel (DDR) </Link>
         assure la protection des personnes contre les contacts directs et
         indirects avec un conducteur actif.
       </p>
@@ -59,7 +62,7 @@ let ContentTextPagePC16A = {
         63A 30mA.Ce dernier est placé en amont du circuit 1 et circuit 2.
       </p>
       <p className="principe__text">
-        <Link to="/disjoncteur">Les disjoncteurs magnéto-thermiques </Link>
+        <Link to="">Les disjoncteurs magnéto-thermiques </Link>
         protègent notre installation contre les courts-circuits et surcharges.
       </p>
       <p className="principe__text">
@@ -91,7 +94,8 @@ let ContentTextPagePC16A = {
           max.
         </li>
         <li key="4" className="precaution__li">
-          Avec un disjoncteur 20A et une section 2.5mm² on peut placer 12 prises max.
+          Avec un disjoncteur 20A et une section 2.5mm² on peut placer 12 prises
+          max.
         </li>
         <li key="5" className="precaution__li">
           Phase c'est marron en général ou toute autre couleur sauf bleu, vert,
@@ -120,7 +124,7 @@ let ContentTextPagePC16A = {
 
       <p className="astuce__text">
         Pour les locaux humides et à l'extérieur, utilisez des prises étanches
-        avec un<Link to="/ip"> indice de protection </Link> IPX4, voire IPX5 si
+        avec un<Link to=""> indice de protection </Link> IPX4, voire IPX5 si
         l'emplacement est susceptible d'être arrosé au jet d'eau.
       </p>
 
@@ -130,10 +134,10 @@ let ContentTextPagePC16A = {
       </p>
 
       <p className="astuce__text">
-        Dans les pièces qui contiennent une douche ou une baignoire, pensez à implanter
-        vos prises <Link to="/sdb">"Hors Volume"</Link>. Sauf la prise rasoir,
-        qui peut être en <Link to="/sdb"> "volume 2" </Link>si elle est alimentée
-        par un transformateur d'isolation.
+        Dans les pièces qui contiennent une douche ou une baignoire, pensez à
+        implanter vos prises <Link to="">"Hors Volume"</Link>. Sauf la prise
+        rasoir, qui peut être en <Link to=""> "volume 2" </Link>si elle est
+        alimentée par un transformateur d'isolation.
       </p>
     </div>
   ),
@@ -152,9 +156,10 @@ let ContentTextPagePC16A = {
       </p>
 
       <p className="savoir__text">
-        Pour les locaux comme la véranda, le sous-sol, le vide sanitaire, la buanderie ainsi qu'à
-        l'extérieur, un<Link to="/ip"> indice de protection </Link>adapté est
-        exigé pour les appareillages.
+        Pour les locaux comme la véranda, le sous-sol, le vide sanitaire, la
+        buanderie ainsi qu'à l'extérieur, un
+        <Link to=""> indice de protection </Link>adapté est exigé pour les
+        appareillages.
       </p>
     </div>
   ),

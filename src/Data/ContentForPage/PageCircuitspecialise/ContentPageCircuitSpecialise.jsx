@@ -137,23 +137,22 @@ let ContentTextPageCircuitSpecialise = {
     collapsePrincipe: (
       <div className="principe">
         <p className="principe__text">
-          <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
+          <Link to="">Le dispositif différentiel résiduel (DDR) </Link>
           assure la protection des personnes contre les contacts directs et
           indirects avec un conducteur actif.
         </p>
         <p className="principe__text">
-          Dans notre exemple c'est un interrupteur différentiel « dédié » à
-          haute sensibilité 32A 30mA. Ce dernier est placé en amont du circuit
-          1.
+          Dans notre exemple c'est un interrupteur différentiel haute
+          sensibilité 32A 30mA. Ce dernier est placé en amont du circuit 1.
         </p>
         <p className="principe__text">
-          <Link to="/disjoncteur">Les disjoncteurs magnétothermiques </Link>
+          <Link to="">Le disjoncteur magnétothermique</Link>
           protègent notre installation contre les courts-circuits et surcharges.
         </p>
         <p className="principe__text">
           Le principe de câblage est simple, on doit respecter les couleurs.
-          Dans la boîte de dérivation on connecte les conducteurs de même type
-          entre eux. Phase avec phase, neutre avec neutre, terre avec terre.
+          On connecte les conducteurs de même type entre eux.
+          Phase avec phase, neutre avec neutre, terre avec terre.
         </p>
       </div>
     ),
@@ -232,9 +231,9 @@ let ContentTextPageCircuitSpecialise = {
           creuses », « tarif jour/nuit », « HP/HC ».
         </p>
         <p className="principe__text">
-          Nous avons dans cet exemple un interrupteur differentiel 63A type AC
-          pour la protection des personnes. Le disjonteur 2A protège la bobine
-          du contacteur HP/HC. Le disjoncteur 20A protège quant à lui le circuit
+          Nous avons dans cet exemple un <Link to="">interrupteur differentiel</Link> 63A type AC
+          pour la protection des personnes. Le <Link to="">disjonteur</Link> 2A protège la bobine
+          du contacteur HP/HC. Le <Link to="">disjoncteur 20A</Link> protège quant à lui le circuit
           du cumulus. Le contacteur, pour faire simple, fonctionne comme un
           interrupteur. Il ouvre ou ferme le circuit de puissance (cumulus)
           suivant si sa bobine est hors tension ou sous tension. Quand EDF emet
@@ -282,7 +281,8 @@ let ContentTextPageCircuitSpecialise = {
     collapseAstuce: (
       <div className="astuce">
         <p className="astuce__text">
-          Utilisez des connecteurs rapides transparents, cela permet de vérifier rapidement si la connexion est bien établie.
+          Utilisez des connecteurs rapides transparents, cela permet de vérifier
+          rapidement si la connexion est bien établie.
         </p>
 
         <p className="astuce__text">
@@ -305,7 +305,7 @@ let ContentTextPageCircuitSpecialise = {
     collapsePrincipe: (
       <div className="principe">
         <p className="principe__text">
-          <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
+          <Link to="">Le dispositif différentiel résiduel (DDR) </Link>
           assure la protection des personnes contre les contacts directs et
           indirects avec un conducteur actif.
         </p>
@@ -315,7 +315,7 @@ let ContentTextPageCircuitSpecialise = {
           dernier est placé en amont du circuit 1.
         </p>
         <p className="principe__text">
-          <Link to="/disjoncteur">Le disjoncteur magnétothermique </Link>
+          <Link to="">Le disjoncteur magnétothermique </Link>
           protège notre circuit contre les courts-circuits et surcharges. Il
           alimente uniquement la prise 16A pour notre lave-linge.
         </p>

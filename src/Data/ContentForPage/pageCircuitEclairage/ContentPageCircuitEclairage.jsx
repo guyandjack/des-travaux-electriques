@@ -62,7 +62,10 @@ let ContentTextPageCircuitEclairage = {
             scrollTo("#simple-allumage");
           }}
         >
-          <NavLink text="Schéma avec un simple allumage" colorText="second"></NavLink>
+          <NavLink
+            text="Schéma avec un simple allumage"
+            colorText="second"
+          ></NavLink>
         </li>
 
         <li
@@ -80,7 +83,10 @@ let ContentTextPageCircuitEclairage = {
             scrollTo("#bouton-poussoir");
           }}
         >
-          <NavLink text="Schéma avec des boutons poussoirs" colorText="second"></NavLink>
+          <NavLink
+            text="Schéma avec des boutons poussoirs"
+            colorText="second"
+          ></NavLink>
         </li>
         <li
           className="description-list__li"
@@ -88,11 +94,12 @@ let ContentTextPageCircuitEclairage = {
             scrollTo("#detecteur-de-presence");
           }}
         >
-          <NavLink text="Schéma avec un détecteur de présence" colorText="second"></NavLink>
+          <NavLink
+            text="Schéma avec un détecteur de présence"
+            colorText="second"
+          ></NavLink>
         </li>
-        
       </ul>
-      
     </div>
   ),
 
@@ -100,13 +107,14 @@ let ContentTextPageCircuitEclairage = {
     collapsePrincipe: (
       <div className="principe">
         <p className="principe__text">
-          <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
+          <Link to="">Le dispositif différentiel résiduel (DDR) </Link>
           assure la protection des personnes contre les contacts directs et
           indirects avec un conducteur actif.
         </p>
         <p className="principe__text">
-          Dans notre exemple c'est un interrupteur différentiel à haute
-          sensibilité 63A 30mA. Ce dernier est placé en amont du circuit.
+          Dans notre exemple c'est un{" "}
+          <Link to="">interrupteur différentiel</Link> à haute sensibilité 63A
+          30mA. Ce dernier est placé en amont du circuit.
         </p>
         <p className="principe__text">
           <Link to="">Le disjoncteur magnétothermique </Link>
@@ -179,10 +187,13 @@ let ContentTextPageCircuitEclairage = {
     ),
     collapseSavoir: (
       <div className="savoir">
-            <p className="savoir__text">
-                Avec une 
+        <p className="savoir__text">
+          Avec un disjoncteur de 10 A, nous disposons d'une puissance disponible
+          de 2300 VA (230 * 10 ) . En limitant à 8, le nombre de foyers lumineux
+          par circuit, on dispose de 287.5 VA (2300 / 8) par point
+          d'utilisation. La norme arrondi à 300VA. On peut donc commander avec
+          un interrupteur une trentaine de led de 10 Watt.
         </p>
-        
       </div>
     ),
   },
@@ -200,15 +211,21 @@ let ContentTextPageCircuitEclairage = {
         </p>
         <p className="principe__text">
           Nous avons dans cet exemple un interrupteur differentiel 63A type AC
-          pour la protection des personnes. Le disjonteur 2A protège la bobine
-          du contacteur HP/HC. Le disjoncteur 20A protège quant à lui le circuit
-          du cumulus. Le contacteur, pour faire simple, fonctionne comme un
-          interrupteur. Il ouvre ou ferme le circuit de puissance (cumulus)
-          suivant si sa bobine est hors tension ou sous tension. Quand EDF emet
-          le signal « heure creuse », le contact sec du compteur se ferme et la
-          bobine du conctacteur jour/nuit est alimentée. Le conctacteur
-          s'enclenche et le cumulus est sous tension, alimenté via le
-          disjoncteur 20A.
+          pour la protection des personnes. Le disjoncteur 10A protège notre
+          circuit contre les courts-circuits et surcharges.
+        </p>
+        <p className="principe__text">
+          La phase issue de notre disjoncteur se connecte sur le commun du
+          premier interrupteur. Quelque soie la position de ce dernier une navette
+          conduira la phase au second interrupteur.
+          Suivant la position du second interrupteur la phase sera conduite ou non
+          au foyer lumineux.
+        </p>
+        <p className="principe__text">
+          Si notre second interrupteur conduit la phase sur le luminaire, celui ci s'allume.
+          Nous pouvons donc éteindre notre luminaire de deux façons.
+          1- Avec le premier interrupteur en conduisant la phase sur l'autre navette.
+          2- Avec le second interrupteur en conduisant notre retour lampe sur l'autre navette.
         </p>
       </div>
     ),
@@ -292,7 +309,7 @@ let ContentTextPageCircuitEclairage = {
           commande.
         </p>
         <p className="principe__text">
-          <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
+          <Link to="">Le dispositif différentiel résiduel (DDR) </Link>
           assure la protection des personnes contre les contacts directs et
           indirects avec un conducteur actif.
         </p>
@@ -302,7 +319,7 @@ let ContentTextPageCircuitEclairage = {
           dernier est placé en amont du circuit 1.
         </p>
         <p className="principe__text">
-          <Link to="/disjoncteur">Le disjoncteur magnétothermique </Link>
+          <Link to="">Le disjoncteur magnétothermique </Link>
           protège notre circuit contre les courts-circuits et surcharges. Il
           alimente uniquement la prise 16A pour notre lave-linge.
         </p>
@@ -387,7 +404,7 @@ let ContentTextPageCircuitEclairage = {
           lumière.
         </p>
         <p className="principe__text">
-          <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
+          <Link to="">Le dispositif différentiel résiduel (DDR) </Link>
           assure la protection des personnes contre les contacts directs et
           indirects avec un conducteur actif.
         </p>
@@ -397,7 +414,7 @@ let ContentTextPageCircuitEclairage = {
           dernier est placé en amont du circuit 1.
         </p>
         <p className="principe__text">
-          <Link to="/disjoncteur">Le disjoncteur magnétothermique </Link>
+          <Link to="">Le disjoncteur magnétothermique </Link>
           protège notre circuit contre les courts-circuits et surcharges. Il
           alimente uniquement la prise 16A pour notre lave-linge.
         </p>

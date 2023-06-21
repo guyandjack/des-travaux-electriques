@@ -11,7 +11,7 @@ let ContentTextPageCircuitChauffage = {
   collapsePrincipe: (
     <div className="principe">
       <p className="principe__text">
-        <Link to="/ddr">Le dispositif différentiel résiduel (DDR) </Link>
+        <Link to="">Le dispositif différentiel résiduel (DDR) </Link>
         assure la protection des personnes contre les contacts directs et
         indirects avec un conducteur actif.
       </p>
@@ -21,7 +21,7 @@ let ContentTextPageCircuitChauffage = {
         placé en amont du circuit 1 et 2.
       </p>
       <p className="principe__text">
-        <Link to="/disjoncteur">Les disjoncteurs magnétothermiques </Link>
+        <Link to="">Les disjoncteurs magnétothermiques </Link>
         protègent nos circuits contre les courts-circuits et surcharges.
       </p>
       <p className="principe__text">

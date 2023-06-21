@@ -4,11 +4,15 @@
 import { useState, useEffect } from "react";
 
 
+
+
 //Import des fichiers des url des images de la banner
 import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
 
 
 //Import des composants enfants
+
+import { Link } from "react-router-dom";
 
 import { SiteIsBuilding } from "../../Components/SiteIsBuilding/SiteIsBuilding.jsx";
 
@@ -91,10 +95,22 @@ function Header() {
         />
       ) : null}
       <nav className="header">
-        
         <div className="header__container-div-sitebuilding">
           <SiteIsBuilding />
         </div>
+        
+        <div className="header__container-logo">
+          
+          <a href="/">
+            <img
+              className="header-logo"
+              src="/Asset/logo/logo-electravaux-v2.svg"
+              alt="logo"
+              ></img>
+          </a>
+
+        </div>
+        
         <div className="header__container-menu">
           <NavMenu>
             <NavLink
@@ -168,22 +184,24 @@ function Header() {
                 tailleText="1em"
                 colorBg=""
               />
-              {<NavLink
-                urlTo="/schema/circuit-eclairage"
-                urlImg=""
-                text="Circuit éclairage"
-                colorText="fourth"
-                tailleText="1em"
-                colorBg=""
-              />
-              /*<NavLink
+              {
+                <NavLink
+                  urlTo="/schema/circuit-eclairage"
+                  urlImg=""
+                  text="Circuit éclairage"
+                  colorText="fourth"
+                  tailleText="1em"
+                  colorBg=""
+                />
+                /*<NavLink
                 urlTo="/schema/protection-des-personnes"
                 urlImg=""
                 text="Protection des personnes"
                 colorText="fourth"
                 tailleText="1em"
                 colorBg=""
-              />*/}
+              />*/
+              }
             </NavCollapse>
             <NavCollapse
               urlImg=""
@@ -211,11 +229,11 @@ function Header() {
             </NavCollapse>
           </NavMenu>
         </div>
-        {!isSmallScreen ? <div className="header__container-div-session">
-          <CollapseUserSession />
-        </div> : null
-        }
-        
+        {!isSmallScreen ? (
+          <div className="header__container-div-session">
+            <CollapseUserSession />
+          </div>
+        ) : null}
       </nav>
     </header>
   );

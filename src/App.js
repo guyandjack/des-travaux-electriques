@@ -21,6 +21,7 @@ import { PageCGU } from "../src/Pages/CGU/CGU.jsx";
 import { PageTrucEtAstuce } from "../src/Pages/Truc_Et_Astuce/Truc_Et_Astuce.jsx";
 import { PageQuizPC } from "./Pages/QuizPC/PageQuizPC.jsx";
 import { PageQuizCircuitSpecialise } from "./Pages/QuizCircuitSpecialise/PageQuizCircuitSpecialise.jsx";
+import { PageQuizCircuitEclairage } from "./Pages/QuizCircuitEclairage/PageQuizCircuitEclairage.jsx";
 import { PageErreur } from "../src/Pages/Erreur_404/Erreur_404.jsx";
 import { PageTestServer } from "../src/Pages/Test_Server/TestServer.jsx";
 
@@ -44,7 +45,7 @@ function App() {
           <Route path="/schema/circuit-specialise" element={<PageCircuitSpecialise />}></Route>
           <Route path="/schema/circuit-specialise/quiz" element={<PageQuizCircuitSpecialise />}></Route>
           <Route path="/schema/circuit-eclairage"  element={<PageCircuitEclairage />}></Route>
-          {<Route path="/schema/circuit-eclairage/quiz"  element={""}></Route>}
+          {<Route path="/schema/circuit-eclairage/quiz"  element={<PageQuizCircuitEclairage />}></Route>}
           <Route path="/db" element={<PageDisjoncteurDeBranchement />}></Route>
           <Route path="/ddr" element={<PageDispositifDifferentiel />}></Route>
           <Route path="/tc" element={<PageTableauDeCommunication />}></Route>

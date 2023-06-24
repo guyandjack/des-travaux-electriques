@@ -84,7 +84,7 @@ function Header() {
   });
 
   return (
-    <header>
+    <header className="main-header">
       {isSmallScreen ? (
         <Banner
           pagename="home"
@@ -222,6 +222,14 @@ function Header() {
                 urlTo="/schema/circuit-specialise/quiz"
                 urlImg=""
                 text="Quiz - «circuits spécialisés»"
+                colorText="fourth"
+                tailleText="1em"
+                colorBg=""
+              />
+              <NavLink
+                urlTo="/schema/circuit-eclairage/quiz"
+                urlImg=""
+                text="Quiz - «circuits éclairages»"
                 colorText="fourth"
                 tailleText="1em"
                 colorBg=""

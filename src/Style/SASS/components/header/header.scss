@@ -6,6 +6,12 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
+.main-header{
+  position:sticky;
+  top: 0px;
+  z-index: 10;
+}
+
 .header {
   display: flex;
   flex-flow: row nowrap;
@@ -21,6 +27,8 @@
   //responsive pour écran superieur à small
   @include upper-small-screen {
     height: 100px;
+    
+    
   }
 
   &__container-logo {

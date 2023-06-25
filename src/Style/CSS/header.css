@@ -20,9 +20,6 @@
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   width: 100%;
   margin-bottom: 2em;
   background-color: #272727;
@@ -92,4 +89,22 @@
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 576px) {
+  .schrink {
+    -webkit-transition: height 150ms linear;
+    -o-transition: height 150ms linear;
+    transition: height 150ms linear;
+    height: 80px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .grow {
+    -webkit-transition: height 150ms linear;
+    -o-transition: height 150ms linear;
+    transition: height 150ms linear;
+    height: 100px;
+  }
 }

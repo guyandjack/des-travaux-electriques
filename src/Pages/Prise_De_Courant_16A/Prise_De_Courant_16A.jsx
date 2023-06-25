@@ -62,7 +62,7 @@ function PagePC16A() {
   //Positionne le scroll en haut de page
   useEffect(() => {
     scrollTo(".prise-courant");
-  })
+  }, []);
 
   //recupere la taille de l' ecran pour les images responsives
   useEffect(() => {
@@ -74,13 +74,13 @@ function PagePC16A() {
 
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
   //todo: implementer une com wesocket avec le serveur
-  useEffect(() => {
+  /*useEffect(() => {
     requetsFetch.fetchCommentsForOnePage(refPage, setArrayComments);
     setInterval(
       () => requetsFetch.fetchCommentsForOnePage(refPage, setArrayComments),
       60000
     );
-  }, []);
+  }, []);*/
 
   //Premplie les inputs user si une session est ouverte
   useEffect(() => {

@@ -19,17 +19,19 @@
   align-items: center;
 
   position: relative;
-  height: fit-content;
+  //height: fit-content;
   width: 100%;
   margin-bottom: 2em;
   background-color: map-get($colors-rule, fourth-color);
 
-  //responsive pour écran superieur à small
   @include upper-small-screen {
-    height: 100px;
     
-    
+     height:100px;
+     
   }
+
+  
+  
 
   &__container-logo {
     flex: 1 1 20%;
@@ -83,5 +85,24 @@
     left: 50%;
     transform: translate(-50%, -50%);
     
+  }
+}
+
+.schrink{
+  //responsive pour écran superieur à small
+  @include upper-small-screen {
+    
+    transition: height 150ms linear;
+     height:80px;
+     
+  }
+}
+
+.grow{
+  //responsive pour écran superieur à small
+  @include upper-small-screen {
+    
+    transition: height 150ms linear;
+     height:100px;
   }
 }

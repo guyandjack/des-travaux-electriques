@@ -3,12 +3,8 @@
 //Import des hook
 import { useState, useEffect } from "react";
 
-
-
-
 //Import des fichiers des url des images de la banner
 import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
-
 
 //Import des composants enfants
 
@@ -26,15 +22,18 @@ import { CollapseUserSession } from "../CollapseUserSession/CollapseUserSession.
 import "../../Style/CSS/header.css";
 
 //import des fonction
-import {  pageAperture, pageClosure } from "../../Utils/Function/LocalStorage.js";
-
+import {
+  pageAperture,
+  pageClosure,
+} from "../../Utils/Function/LocalStorage.js";
 
 //Fonction "Header"
 function Header() {
   //hooks
 
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  
+
+  const [isScrolling, setIsScrolling] = useState(false);
 
   //Variables
 
@@ -47,27 +46,81 @@ function Header() {
 
   //Gere les sessions utilisteurs
   useEffect(() => {
-   
     if (isFirstTime == true) {
-      
       //reference la page consultée dans le local storage
       pageAperture();
-  
+
       //Suite à un évenement fermeture de page on gère la session utilisateur
       window.addEventListener("beforeunload", () => {
         //reinitialisation de la variable
         isFirstTime = true;
         pageClosure();
-      
-      })
+      });
       //Evite un deuxieme traitement lors du re-render
       isFirstTime = false;
     }
   }, []);
-    
- 
 
-  //Declaration des fonctions
+  useEffect(() => {
+    
+    const menu = document.querySelector(".header grow");
+
+      menuSchrink(menu);
+
+    
+      menuGrow(menu);
+    }
+    
+  ,[]);
+
+  //Déclaration des fonctions
+
+   function menuSchrink(menuElement) {
+
+    window.addEventListener("scroll", (e1) => {
+      console.log(e1);
+
+      if (menuElement.getAttribute("class") !== "header schrink") {
+        menuElement.setAttribute("class", "header schrink");
+        //setIsScrolling(true);
+        return true
+      }
+
+    });
+
+    return false
+  };
+
+  function menuGrow(menuElement) {
+
+    setTimeout(() => {
+      console.log("fonction de correction activée");
+      
+        if (menuElement.getAttribute("class") !== "header grow") {
+          menuElement.setAttribute("class", "header grow");
+          
+        }
+      
+    }, 150);
+  }
+
+  /*function resizeGrowHeader(headerEle) {
+
+    if (headerEle.hasAttribute("schrink")) {
+      
+      headerEle.classList.replace("schrink", "grow");
+      //headerEle.classList.add("grow");
+    }
+  }
+
+  function resizeSchrinkHeader(headerEle) {
+
+    if (headerEle.hasAttribute("grow")) {
+
+      headerEle.classList.replace("grow", "schrink");
+      // headerEle.classList.add("schrink");
+    }
+  }*/
 
   function getScreenSize() {
     let screenSize = window.innerWidth;
@@ -94,23 +147,21 @@ function Header() {
           urlimg={urlImgBanner.home.small}
         />
       ) : null}
-      <nav className="header">
+      <nav className="header grow">
         <div className="header__container-div-sitebuilding">
           <SiteIsBuilding />
         </div>
-        
+
         <div className="header__container-logo">
-          
           <a href="/">
             <img
               className="header-logo"
               src="/Asset/logo/logo-electravaux-v2.svg"
               alt="logo"
-              ></img>
+            ></img>
           </a>
-
         </div>
-        
+
         <div className="header__container-menu">
           <NavMenu>
             <NavLink

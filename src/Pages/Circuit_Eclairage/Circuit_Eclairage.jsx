@@ -377,7 +377,7 @@ function PageCircuitEclairage() {
       </section>
 
       <div className="text-quiz">
-        <Link to="/schema/circuit-eclairage/quiz">
+        <Link to="/schema/circuit-/quiz">
           <ButtonStd
             btntype="button"
             text="Testez vos connaissances avec le 'Quiz'"

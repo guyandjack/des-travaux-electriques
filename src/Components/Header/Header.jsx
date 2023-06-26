@@ -1,7 +1,7 @@
 //Composant "Header"
 
 //Import des hook
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 //Import des fichiers des url des images de la banner
 import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
@@ -29,16 +29,16 @@ import {
 
 //Fonction "Header"
 function Header() {
-  //hooks
+
+  
+  // Variable pour limiter les re-render "session user"
+  let isFirstTime = true;
+
+  //hooks State
 
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  //Variables
-
-  // Variable pour limiter les re-render45
-  let isFirstTime = true;
+  //hook useEffect
 
   useEffect(() => {
     getScreenSize();
@@ -61,67 +61,30 @@ function Header() {
     }
   }, []);
 
+  //Gere les ecouteur d' évènment scroll et scrollend
   useEffect(() => {
+    window.addEventListener("scroll", () => {
+      
+      elementHeader.current.classList.replace("grow", "schrink");
+    })
     
-    const menu = document.querySelector(".header grow");
+    window.addEventListener("scrollend", () => {
+      
+      elementHeader.current.classList.replace("schrink", "grow");
+     
+    })
+    
+  }, []);
 
-      menuSchrink(menu);
+  //hook useRef
+  const elementHeader = useRef();
+  console.log("valeur dans hook useref: " + elementHeader.current);
 
-    
-      menuGrow(menu);
-    }
-    
-  ,[]);
+
 
   //Déclaration des fonctions
 
-   function menuSchrink(menuElement) {
-
-    window.addEventListener("scroll", (e1) => {
-      console.log(e1);
-
-      if (menuElement.getAttribute("class") !== "header schrink") {
-        menuElement.setAttribute("class", "header schrink");
-        //setIsScrolling(true);
-        return true
-      }
-
-    });
-
-    return false
-  };
-
-  function menuGrow(menuElement) {
-
-    setTimeout(() => {
-      console.log("fonction de correction activée");
-      
-        if (menuElement.getAttribute("class") !== "header grow") {
-          menuElement.setAttribute("class", "header grow");
-          
-        }
-      
-    }, 150);
-  }
-
-  /*function resizeGrowHeader(headerEle) {
-
-    if (headerEle.hasAttribute("schrink")) {
-      
-      headerEle.classList.replace("schrink", "grow");
-      //headerEle.classList.add("grow");
-    }
-  }
-
-  function resizeSchrinkHeader(headerEle) {
-
-    if (headerEle.hasAttribute("grow")) {
-
-      headerEle.classList.replace("grow", "schrink");
-      // headerEle.classList.add("schrink");
-    }
-  }*/
-
+  /*** fonction qui determine la taille d'ecran**** */
   function getScreenSize() {
     let screenSize = window.innerWidth;
 
@@ -137,7 +100,7 @@ function Header() {
   });
 
   return (
-    <header className="main-header">
+    <header className="main-header grow">
       {isSmallScreen ? (
         <Banner
           pagename="home"
@@ -147,7 +110,8 @@ function Header() {
           urlimg={urlImgBanner.home.small}
         />
       ) : null}
-      <nav className="header grow">
+
+      <nav ref={elementHeader} className="header grow">
         <div className="header__container-div-sitebuilding">
           <SiteIsBuilding />
         </div>

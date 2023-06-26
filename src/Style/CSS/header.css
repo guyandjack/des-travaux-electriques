@@ -25,12 +25,6 @@
   background-color: #272727;
 }
 
-@media screen and (min-width: 576px) {
-  .header {
-    height: 100px;
-  }
-}
-
 .header__container-logo {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 20%;
@@ -91,20 +85,20 @@
           transform: translate(-50%, -50%);
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 769px) {
   .schrink {
-    -webkit-transition: height 150ms linear;
-    -o-transition: height 150ms linear;
-    transition: height 150ms linear;
-    height: 80px;
+    -webkit-transition: height 100ms linear;
+    -o-transition: height 100ms linear;
+    transition: height 100ms linear;
+    height: 70px;
   }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 769px) {
   .grow {
-    -webkit-transition: height 150ms linear;
-    -o-transition: height 150ms linear;
-    transition: height 150ms linear;
-    height: 100px;
+    -webkit-transition: height 50ms linear;
+    -o-transition: height 50ms linear;
+    transition: height 50ms linear;
+    height: 90px;
   }
 }

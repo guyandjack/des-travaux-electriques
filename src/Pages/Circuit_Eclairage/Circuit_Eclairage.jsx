@@ -310,7 +310,7 @@ function PageCircuitEclairage() {
       <section id="detecteur-de-presence" className="section color-section">
         <div className="container-undertitle">
           <TitleHN
-            titleText="Circuit éclairage avec « detecteur de présence »"
+            titleText="Circuit éclairage avec « détecteur de présence »"
             titleLevel={2}
             size={2}
             color="fourth"

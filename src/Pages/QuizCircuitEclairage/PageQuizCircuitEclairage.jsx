@@ -423,9 +423,9 @@ function PageQuizCircuitEclairage() {
       <div className="container-link-end">
         <div className="container-link">
           <NavLink
-            urlTo="/schema/circuit-specialise"
+            urlTo="/schema/circuit-eclairage"
             urlImg=""
-            text="← Schéma circuit-specialise"
+            text="← Schéma circuit-éclairage"
             tailleText="1.2em"
             colorText="fourth"
             colorBg=""

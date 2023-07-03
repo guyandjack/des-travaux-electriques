@@ -85,7 +85,7 @@
   //responsive pour écran superieur à small
   @include upper-medium-screen {
     
-    transition: height 100ms linear;
+    transition: height 100ms ease-in;
      height:70px;
      
   }
@@ -95,7 +95,7 @@
   //responsive pour écran supérieur à small
   @include upper-medium-screen {
     
-    transition: height 50ms linear;
+    transition: height 100ms ease-out;
     height:90px;
   }
 }

@@ -22,22 +22,22 @@ let ContentQuizEclairage = [
     proposition1: "5",
     proposition2: "10",
     proposition3: "8",
-    proposition4: "8",
-    proposition5: "8",
-    goodresponse: "8",
+    proposition4: "",
+    proposition5: "",
+    goodresponse: "",
     textSolution: "8 est lenombre maximal",
   },
 
   {
     idQ: "ecl3",
     textQuestion:
-      "Quelle est la puissance maximal est autorisée par point d'éclairage dans un même local?",
+      "Dans le cas de spots ou de bandeaux lumineux, on compte un point d'éclairage pour: ",
     proposition1: "150 VA",
     proposition2: "250 VA",
     proposition3: "50 VA",
     proposition4: "300 VA",
     proposition5: "",
-    goodresponse: "5",
+    goodresponse: "300 VA",
     textSolution: "300 VA.",
   },
 
@@ -75,24 +75,26 @@ let ContentQuizEclairage = [
     idQ: "ecl6",
     textQuestion:
       "Quels sont les réglages présents sur la majorité des détecteurs de présence ?",
-    proposition1: "Durée, sensibilité, exposition",
-    proposition2: "",
-    proposition3: "oui, sous certaines conditions",
-    proposition4: "c'est limite mais ca passe",
-    goodresponse: "Durée, sensibilité, exposition",
+    proposition1:
+      "Durée d'éclairage, sensibilité à la détection, luminosité ambiante",
+    proposition2: "Durée d'exposition, délai avant éclairage",
+    proposition3: "",
+    proposition4: "",
+    goodresponse:
+      "Durée de commutation, sensibilité à la détection, luminosité ambiante",
     textSolution:
-      "Interdiction absolue, une section de câble de 1.5mm² ne peut supporter sans risque, un courant nominal supérieur à 16A.",
+      "",
   },
 
   {
     idQ: "ecl7",
     textQuestion:
       "Quelle est la différence principale pour un bouton poussoir par rapport à un interrupteur ?",
-    proposition1: "Aucune, ils fonctionnent de la même façons",
+    proposition1: "Aucune, ils fonctionnent de la même façons.",
     proposition2:
       "Le bouton poussoir revient dans sa position initiale aprés une pression.",
     proposition3:
-      "Le bouton poussoir commande uniquement des foyers lumineux de fortes puissance",
+      "Le bouton poussoir commande uniquement des foyers lumineux de fortes puissance.",
     proposition4: "",
     goodresponse: "",
     textSolution:

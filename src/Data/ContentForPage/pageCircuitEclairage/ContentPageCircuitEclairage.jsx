@@ -192,7 +192,7 @@ let ContentTextPageCircuitEclairage = {
           de 2300 VA (230 * 10 ) . En limitant à 8, le nombre de foyers lumineux
           par circuit, on dispose de 287.5 VA (2300 / 8) par point
           d'utilisation. La norme arrondi à 300VA. On peut donc commander avec
-          un interrupteur une trentaine de led de 10 Watt.
+          un interrupteur une trentaine de led de 10 Watt dans un même local.
         </p>
       </div>
     ),
@@ -216,16 +216,17 @@ let ContentTextPageCircuitEclairage = {
         </p>
         <p className="principe__text">
           La phase issue de notre disjoncteur se connecte sur le commun du
-          premier interrupteur. Quelque soie la position de ce dernier une navette
-          conduira la phase au second interrupteur.
-          Suivant la position du second interrupteur la phase sera conduite ou non
-          au foyer lumineux.
+          premier interrupteur. Quelque soit la position de ce dernier une
+          navette conduira la phase au second interrupteur. Suivant la position
+          du second interrupteur la phase sera conduite ou non au foyer
+          lumineux.
         </p>
         <p className="principe__text">
-          Si notre second interrupteur conduit la phase sur le luminaire, celui ci s'allume.
-          Nous pouvons donc éteindre notre luminaire de deux façons.
-          1- Avec le premier interrupteur en conduisant la phase sur l'autre navette.
-          2- Avec le second interrupteur en conduisant notre retour lampe sur l'autre navette.
+          Si notre second interrupteur conduit la phase sur le luminaire, celui
+          ci s'allume. Nous pouvons donc éteindre notre luminaire de deux
+          façons. 1- Avec le premier interrupteur en conduisant la phase sur
+          l'autre navette. 2- Avec le second interrupteur en conduisant notre
+          retour lampe sur l'autre navette.
         </p>
       </div>
     ),
@@ -239,15 +240,8 @@ let ContentTextPageCircuitEclairage = {
 
           <li key="1" className="precaution__li">
             Utilisation d'une section de
-            <span className="important"> 2.5² minimum</span> avec un
-            <span className="important"> disjoncteur max de 20A</span>pour le
-            circuit du cumulus.
-          </li>
-          <li key="1" className="precaution__li">
-            Utilisation d'une section de
-            <span className="important"> 1.5mm²</span> avec un
-            <span className="important"> disjoncteur max de 2A</span>pour le
-            circuit de commande du contacteur.
+            <span className="important"> 1.5mm² minimum</span> avec un
+            <span className="important"> disjoncteur maximal de 16A </span>.
           </li>
 
           <li key="5" className="precaution__li">
@@ -255,10 +249,14 @@ let ContentTextPageCircuitEclairage = {
             vert, jaune, bicolore vert/jaune.
           </li>
           <li key="6" className="precaution__li">
-            Neutre c'est obligatoirement bleu.
+            Neutre c'est obligatoirement bleu
           </li>
           <li key="7" className="precaution__li">
             Terre c'est obligatoirement bicolore vert/jaune
+          </li>
+          <li key="7" className="precaution__li">
+            Retourlampe toute autre couleur sauf bleu, vert, jaune, bicolore
+            vert/jaune.
           </li>
         </ul>
       </div>
@@ -266,13 +264,26 @@ let ContentTextPageCircuitEclairage = {
     collapseAstuce: (
       <div className="astuce">
         <p className="astuce__text">
+          Dans la pratique on utilise des conducteurs 1.5mm², avec un
+          disjoncteur de 10A.
+        </p>
+
+        <p className="astuce__text">
+          Prévoyez de faire la connexion avec des connecteurs rapides pour fils
+          souples si votre luminaire est équipé de fils souple. Ils ont la
+          caractéristique d'avoir des leviers pour verrouiller et déverrouiller
+          la connexion.
+        </p>
+
+        <p className="astuce__text">
           Utilisez des connecteurs rapides transparents, cela permet de vérifier
           rapidement si la connexion est bien établie.
         </p>
 
         <p className="astuce__text">
-          Veillez à bien connecter la terre sur le bornier de racordement du
-          cumulus.
+          Pour le retour lampe on choisi une couleur différente de celle de la
+          phase. C'est plus facile pour se repérer lorsque que l'on fait les
+          racordements dans les boîtes de dérivation.
         </p>
       </div>
     ),
@@ -314,14 +325,20 @@ let ContentTextPageCircuitEclairage = {
           indirects avec un conducteur actif.
         </p>
         <p className="principe__text">
-          Dans notre exemple, c'est un interrupteur différentiel de type A, avec
-          un courant assigné maximal de 63A, et une sensibilite de 30mA. Ce
-          dernier est placé en amont du circuit 1.
+          Dans notre exemple, c'est un interrupteur différentiel de type AC,
+          avec un courant assigné maximal de 63A, et une sensibilite de 30mA. Ce
+          dernier est placé en amont du circuit.
         </p>
         <p className="principe__text">
           <Link to="">Le disjoncteur magnétothermique </Link>
-          protège notre circuit contre les courts-circuits et surcharges. Il
-          alimente uniquement la prise 16A pour notre lave-linge.
+          protège notre circuit contre les courts-circuits et surcharges.
+        </p>
+
+        <p className="principe__text">
+          Lorsque nous appuyons sur le BP, la phase est conduite sur la bobine
+          du télérupteur. Ce dernier ferme le ciruit, ou ouvre le circuit. Le
+          télérupteur à la particularité de changer d'état à chaque nouvelle
+          impulsion (pression sur le BP).
         </p>
       </div>
     ),
@@ -335,28 +352,27 @@ let ContentTextPageCircuitEclairage = {
 
           <li key="1" className="precaution__li">
             Utilisation d'une section de
-            <span className="important"> 2.5² minimum</span> avec un
-            <span className="important"> disjoncteur max de 20A</span>.
-          </li>
-
-          <li key="3" className="precaution__li">
-            Disjoncteur dédié uniquement au lave-linge. Pas de raccord possible
-            avec un autre appareillage.
+            <span className="important"> 1.5mm² minimum</span> avec un
+            <span className="important"> disjoncteur maximal de 16A </span>.
           </li>
 
           <li key="5" className="precaution__li">
-            Interrupteur ou disjoncteur différentiel
-            <span className="important"> (de type A, F ou B)</span>.
-          </li>
-          <li key="6" className="precaution__li">
             Phase c'est marron en général ou toute autre couleur sauf bleu,
             vert, jaune, bicolore vert/jaune.
           </li>
-          <li key="7" className="precaution__li">
-            Neutre c'est obligatoirement bleu .
+          <li key="6" className="precaution__li">
+            Neutre c'est obligatoirement bleu
           </li>
-          <li key="8" className="precaution__li">
-            Terre c'est obligatoirement bicolore vert/jaune .
+          <li key="7" className="precaution__li">
+            Terre c'est obligatoirement bicolore vert/jaune
+          </li>
+          <li key="7" className="precaution__li">
+            Retour lampe toute autre couleur sauf bleu, vert, jaune, bicolore
+            vert/jaune.
+          </li>
+          <li key="7" className="precaution__li">
+            Retour BP toute autre couleur sauf bleu, vert, jaune, bicolore
+            vert/jaune.
           </li>
         </ul>
       </div>
@@ -364,13 +380,26 @@ let ContentTextPageCircuitEclairage = {
     collapseAstuce: (
       <div className="astuce">
         <p className="astuce__text">
-          Utiliser une couleur différente de fils, pour différencier la phase
-          permanante issue du tableau et la sortie du boutton poussoir qui vient
-          alimentar la bobine du télérupteur.
+          Dans la pratique on utilise des conducteurs 1.5mm², avec un
+          disjoncteur de 10A.
         </p>
-        <p>
-          Cela permet un repérage plus facile, et donc un câblage au niveau du
-          tableau plus rapide.
+
+        <p className="astuce__text">
+          Prévoyez de faire la connexion avec des connecteurs rapides pour fils
+          souples si votre luminaire est équipé de fils souple. Ils ont la
+          caractéristique d'avoir des leviers pour verrouiller et déverrouiller
+          la connexion.
+        </p>
+
+        <p className="astuce__text">
+          Utilisez des connecteurs rapides transparents, cela permet de vérifier
+          rapidement si la connexion est bien établie.
+        </p>
+
+        <p className="astuce__text">
+          Pour le retour lampe on choisi une couleur différente de celle de la
+          phase. C'est plus facile pour se repérer lorsque que l'on fait les
+          racordements dans les boîtes de dérivation.
         </p>
       </div>
     ),
@@ -392,7 +421,7 @@ let ContentTextPageCircuitEclairage = {
     collapsePrincipe: (
       <div className="principe">
         <p className="principe__text">
-          Utiliser le câblage avec un "detecteur de présence" permet de
+          Utiliser le câblage avec un "détecteur de présence" permet de
           commander un ou plusieurs points d'éclairage automatiquement.
         </p>
         <p className="principe__text">
@@ -400,7 +429,7 @@ let ContentTextPageCircuitEclairage = {
           lorsque vous arrivé de nuit.
         </p>
         <p>
-          Ou alors à des endroits ou il est frequent d' oublier d'éteindre la
+          Ou alors à des endroits ou il est frequent d'oublier d'éteindre la
           lumière.
         </p>
         <p className="principe__text">
@@ -409,14 +438,17 @@ let ContentTextPageCircuitEclairage = {
           indirects avec un conducteur actif.
         </p>
         <p className="principe__text">
-          Dans notre exemple, c'est un interrupteur différentiel de type A, avec
-          un courant assigné maximal de 63A, et une sensibilite de 30mA. Ce
-          dernier est placé en amont du circuit 1.
+          Dans notre exemple, c'est un interrupteur différentiel de type AC,
+          avec un courant assigné maximal de 63A, et une sensibilite de 30mA. Ce
+          dernier est placé en amont du circuit.
         </p>
         <p className="principe__text">
           <Link to="">Le disjoncteur magnétothermique </Link>
-          protège notre circuit contre les courts-circuits et surcharges. Il
-          alimente uniquement la prise 16A pour notre lave-linge.
+          protège notre circuit contre les courts-circuits et surcharges.
+        </p>
+        <p className="principe__text">
+          Le détecteur de présence agit comme un simple interrupteur, lorsqu' il
+          détecte un mouvement, il ferme le circuit.
         </p>
       </div>
     ),
@@ -430,27 +462,23 @@ let ContentTextPageCircuitEclairage = {
 
           <li key="1" className="precaution__li">
             Utilisation d'une section de
-            <span className="important"> 1.5² minimum</span> avec un
-            <span className="important"> disjoncteur max de 16A</span>.
+            <span className="important"> 1.5mm² minimum</span> avec un
+            <span className="important"> disjoncteur maximal de 16A </span>.
           </li>
 
           <li key="5" className="precaution__li">
-            Interrupteur ou disjoncteur différentiel
-            <span className="important"> (de type AC A, F ou B)</span>.
-          </li>
-          <li key="6" className="precaution__li">
             Phase c'est marron en général ou toute autre couleur sauf bleu,
             vert, jaune, bicolore vert/jaune.
           </li>
+          <li key="6" className="precaution__li">
+            Neutre c'est obligatoirement bleu
+          </li>
           <li key="7" className="precaution__li">
-            Neutre c'est obligatoirement bleu .
+            Terre c'est obligatoirement bicolore vert/jaune
           </li>
-          <li key="8" className="precaution__li">
-            Terre c'est obligatoirement bicolore vert/jaune .
-          </li>
-          <li key="8" className="precaution__li">
-            Retour lampe c'est toute autre couleur sauf bleu, vert, jaune,
-            bicolore vert/jaune.
+          <li key="7" className="precaution__li">
+            Retourlampe toute autre couleur sauf bleu, vert, jaune, bicolore
+            vert/jaune.
           </li>
         </ul>
       </div>
@@ -465,7 +493,10 @@ let ContentTextPageCircuitEclairage = {
     ),
     collapseSavoir: (
       <div className="savoir">
-        <p className="savoir__text"></p>
+        <p className="savoir__text">
+          Veillez à utiliser un détecteur avec un courant nominal adapté lors de
+          l'utilisation d'unéclairage de forte puissance.
+        </p>
       </div>
     ),
   },

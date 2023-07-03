@@ -87,18 +87,18 @@
 
 @media screen and (min-width: 769px) {
   .schrink {
-    -webkit-transition: height 100ms linear;
-    -o-transition: height 100ms linear;
-    transition: height 100ms linear;
+    -webkit-transition: height 100ms ease-in;
+    -o-transition: height 100ms ease-in;
+    transition: height 100ms ease-in;
     height: 70px;
   }
 }
 
 @media screen and (min-width: 769px) {
   .grow {
-    -webkit-transition: height 50ms linear;
-    -o-transition: height 50ms linear;
-    transition: height 50ms linear;
+    -webkit-transition: height 100ms ease-out;
+    -o-transition: height 100ms ease-out;
+    transition: height 100ms ease-out;
     height: 90px;
   }
 }

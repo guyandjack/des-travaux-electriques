@@ -1,7 +1,7 @@
 //Page "Contact"
 
 //Import des composants enfants
-import { Formulaire } from "../../Components/Formulaire/Formulaire.jsx";
+import { FormulaireContact } from "../../Components/Formulaire/Formulaire-contact.jsx";
 
 //Import des feuilles de style
 import "../../Style/CSS/contact.css";
@@ -23,7 +23,7 @@ function PageContact() {
 
   return (
     <div className="container-form">
-      <Formulaire 
+      <FormulaireContact 
         formref={"pc16a"}
       />
       {comment ? (

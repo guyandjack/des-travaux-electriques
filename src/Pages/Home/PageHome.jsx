@@ -12,7 +12,7 @@ import { pageAperture, pageClosure } from "../../Utils/Function/LocalStorage.js"
 //Import des composants enfants
 import { Banner } from "../../Components/Banner/Banner.jsx";
 import { Title } from "../../Components/Title/Title.jsx";
-import { BannerSlider } from "../../Components/BannerSlider/BannerSlider.jsx";
+import { Loader } from "../../Components/Loader/Loader.jsx";
 
 
 //Import des feuilles de style
@@ -52,6 +52,7 @@ function PageHome() {
 
   return (
     <div className={classHome}>
+      <Loader />
       <div className={classHome + classHomeBanner + classLargeScreen}>
         <Banner pagename="home" text="" colorbackground="first"></Banner>
       </div>

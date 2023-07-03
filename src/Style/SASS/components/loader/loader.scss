@@ -1,0 +1,159 @@
+//feuille de style composant "Loader"
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+//Import des mixins qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+@keyframes animLoader-container {
+  from {
+    transform: rotateZ(0deg);
+  }
+  25% {
+    transform: rotateZ(90deg);
+  }
+  50% {
+    transform: rotateZ(180deg);
+  }
+  75% {
+    transform: rotateZ(270deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+@keyframes animLoader-top {
+  from {
+    transform: translateY(0em) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(-4em) rotateZ(1080deg);
+  }
+}
+
+@keyframes animLoader-right {
+  from {
+    transform: translateX(0em) rotateZ(0deg);
+  }
+  to {
+    transform: translateX(5em) rotateZ(360deg);
+  }
+}
+
+@keyframes animLoader-bottom {
+  from {
+    transform: translateY(0em) rotateZ(0deg);
+  }
+  to {
+    transform: translateY(4em) rotateZ(720deg);
+  }
+}
+
+@keyframes animLoader-left {
+  from {
+    transform: translateX(0em) rotateZ(0deg);
+  }
+  to {
+    transform: translateX(-8em) rotateZ(-180deg);
+  }
+}
+
+.loader {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(27, 27, 27, 0.7);
+  z-index: 10;
+
+  &__container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+   
+    width: 400px;
+    height: 400px;
+    //border: 2px solid yellow;
+  }
+
+  .loader-element {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+
+  .text {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100%);
+    border-radius: 0%;
+    font-size: 2em;
+    color: map-get($colors-rule, fifth-color);
+    //border: 2px solid red;
+  }
+
+  .color-first {
+    border: 2px solid map-get($colors-rule, first-color);
+    border-top: 8px solid map-get($colors-rule, first-color);
+  }
+  .color-second {
+    border: 2px solid map-get($colors-rule, second-color);
+    border-right: 8px solid map-get($colors-rule, second-color);
+  }
+  .color-third {
+    border: 2px solid map-get($colors-rule, third-color);
+    border-bottom: 8px solid map-get($colors-rule, third-color);
+  }
+  .color-fifth {
+    border: 2px solid map-get($colors-rule, fifth-color);
+    border-left: 8px solid map-get($colors-rule, fifth-color);
+  }
+
+  .hover-color{
+    color: map-get($colors-rule, second-color);
+  }
+
+  .index-1 {
+    z-index: 1;
+  }
+  .index-2 {
+    z-index: 2;
+  }
+  .index-3 {
+    z-index: 3;
+  }
+  .index-4 {
+    z-index: 4;
+  }
+
+  .anim-container-loader {
+    animation: animLoader-container 4000ms linear 0ms infinite alternate both;
+  }
+
+  .anim-top {
+    animation: animLoader-top 2000ms linear 0ms infinite alternate both;
+  }
+  .anim-right {
+    animation: animLoader-right 2000ms ease-in-out 500ms infinite alternate both;
+  }
+  .anim-bottom {
+    animation: animLoader-bottom 2000ms linear 1000ms infinite alternate both;
+  }
+  .anim-left {
+    animation: animLoader-left 2000ms ease-in-out 1500ms infinite alternate both;
+  }
+}

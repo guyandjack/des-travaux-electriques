@@ -27,6 +27,11 @@ function Footer() {
           </Link>
         </li>
         <li className="footer__menu__li">
+          <Link to="/contact" className="footer__menu__li__link">
+            Contact
+          </Link>
+        </li>
+        <li className="footer__menu__li">
           <a
             className="footer__menu__li__link"
             href=""

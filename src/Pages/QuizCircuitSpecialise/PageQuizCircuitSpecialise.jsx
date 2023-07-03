@@ -21,6 +21,7 @@ import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
 import { Title } from "../../Components/Title/Title.jsx";
 import { QuizQuestion } from "../../Components/QuizQuestion/QuizQuestion.jsx";
 import { NavLink } from "../../Components/NavLink/NavLink.jsx";
+import { Loader } from "../../Components/Loader/Loader.jsx";
 
 //import des feuilles de style
 import "../../Style/CSS/page_quiz_pc.css";
@@ -322,6 +323,7 @@ useEffect(() => {
 
   return (
     <div className="quiz">
+      <Loader/>
       <div className="container-link">
         <NavLink
           urlTo="/schema/circuit-specialise"

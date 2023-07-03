@@ -2,6 +2,7 @@
 
 //Import des composants enfants
 import { FormulaireContact } from "../../Components/Formulaire/Formulaire-contact.jsx";
+import { Loader } from "../../Components/Loader/Loader.jsx";
 
 //Import des feuilles de style
 import "../../Style/CSS/contact.css";
@@ -23,6 +24,7 @@ function PageContact() {
 
   return (
     <div className="container-form">
+      <Loader />
       <FormulaireContact 
         formref={"pc16a"}
       />

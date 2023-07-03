@@ -22,19 +22,37 @@ import "../../Style/CSS/loader.css";
 
 function Loader() {
   const whiteRing = useRef();
-    const textLoadind = useRef();
-    
-      return (
-    <div className="loader">
+  const textLoading = useRef();
+  const loaderElement = useRef();
+
+  //const [isLoaded, setIsLoadead] = useState(false);
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      loaderElement.current.classList.add("loader__hide");
+    } else {
+      window.addEventListener("load", () => {
+        loaderElement.current.classList.add("loader__hide");
+
+        window.removeEventListener("load", () => {
+          loaderElement.current.classList.add("loader__hide");
+        });
+      });
+    }
+  }, []);
+
+  return (
+    <div ref={loaderElement} className="loader">
       <div className="loader__container anim-container-loader">
         <div className="loader-element color-first index-1 anim-top "></div>
         <div className="loader-element color-second index-2 anim-right"></div>
         <div className="loader-element color-third index-3 anim-bottom"></div>
         <div
-          ref={whiteRing} className="loader-element color-fifth index-4 anim-left"
+          ref={whiteRing}
+          className="loader-element color-fifth index-4 anim-left"
         ></div>
       </div>
-      <div ref={textLoadind} className="loader-element text">
+      <div ref={textLoading} className="loader-element text">
         loading...
       </div>
     </div>

@@ -9,6 +9,9 @@ import { useEffect } from "react";
 //Import des fonctions
 import { linkRef } from "../../Utils/Function/linkRef.js";
 
+//Import des composants enfants
+import { Loader } from "../../Components/Loader/Loader.jsx";
+
 //Import des feuilles de style
 import "../../Style/CSS/cgu.css";
 
@@ -27,6 +30,7 @@ function PageCGU() {
 
   return (
     <div className="cgu">
+      <Loader />
       <h1 className="cgu__title">Conditions générales d'Utilisation</h1>
       <ul className="cgu__list">
         {CGUContent.map((document, index) => {

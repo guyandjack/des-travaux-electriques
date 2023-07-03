@@ -20,6 +20,7 @@ import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
 import { TitleHN } from "../../Components/Title/TitleHN/TitleHN.jsx";
 import { Formulaire } from "../../Components/Formulaire/Formulaire.jsx";
 import { CommentUser } from "../../Components/CommentUser/CommentUser.jsx";
+import { Loader } from "../../Components/Loader/Loader.jsx";
 
 //Import des functions
 import { scrollTo } from "../../Utils/Function/scrollTo.js";
@@ -99,6 +100,7 @@ function PageCircuitSpecialise() {
 
   return (
     <div className="circuit-specialise">
+      <Loader />
       <div className="container-title">
         <Title
           pagetype="page"

@@ -10,6 +10,7 @@
   position: sticky;
   top: 0px;
    z-index: 10;
+   margin-bottom: 2em;
 }
 
 .header {
@@ -22,7 +23,7 @@
   //height: fit-content;
   width: 100%;
   
-  margin-bottom: 2em;
+  
   background-color: map-get($colors-rule, fourth-color);
 
 

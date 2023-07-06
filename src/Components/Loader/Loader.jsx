@@ -25,23 +25,25 @@ function Loader() {
   const textLoading = useRef();
   const loaderElement = useRef();
 
-  //const [isLoaded, setIsLoadead] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (document.readyState === "complete") {
-      loaderElement.current.classList.add("loader__hide");
-    } else {
+
+    if(document.readyState !== "complete") {
+      
+      setIsLoading(true);
       window.addEventListener("load", () => {
-        loaderElement.current.classList.add("loader__hide");
-
-        window.removeEventListener("load", () => {
-          loaderElement.current.classList.add("loader__hide");
-        });
-      });
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500);
+      })
+          
     }
-  }, []);
+   
+  
+  },[]);
 
-  return (
+  return isLoading? (
     <div ref={loaderElement} className="loader">
       <div className="loader__container anim-container-loader">
         <div className="loader-element color-first index-1 anim-top "></div>
@@ -56,7 +58,7 @@ function Loader() {
         loading...
       </div>
     </div>
-  );
+  ): null;
 }
 
-export { Loader };
+export { Loader }

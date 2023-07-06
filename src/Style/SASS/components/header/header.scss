@@ -6,11 +6,36 @@
 //Import de la charte de couleur
 @import "../../utils/colors-rule/colors-rule.scss";
 
-.main-header{
-  position: sticky;
-  top: 0px;
-   z-index: 10;
-   margin-bottom: 2em;
+.main-header {
+
+  @include upper-medium-screen {
+    
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    margin-bottom: 2em;
+  }
+}
+.container-banner {
+  /*display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 50px;
+  
+
+  .banner {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+  }*/
+  width: 100%;
+  height: 80px;
+  background-image: url("../../../public/Asset/background-image/small-screen-banner.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .header {
@@ -22,10 +47,8 @@
   position: relative;
   //height: fit-content;
   width: 100%;
-  
-  
-  background-color: map-get($colors-rule, fourth-color);
 
+  background-color: map-get($colors-rule, fourth-color);
 
   &__container-logo {
     flex: 1 1 20%;
@@ -34,20 +57,19 @@
 
     //margin-top: 40px;
 
-    
-   // background-color: white;
-   // border: 2px solid red;
+    // background-color: white;
+    // border: 2px solid red;
 
     & > a {
       display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
       height: 100%;
       //border: 2px solid red;
     }
 
-    .header-logo{
+    .header-logo {
       height: 90%;
       width: auto;
       //border:2px solid green;
@@ -66,7 +88,6 @@
   }
 
   &__container-div-session {
-    
     height: 100%;
     margin: 0em 1em;
     //border: 2px solid green;
@@ -78,25 +99,21 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
   }
 }
 
-.schrink{
+.schrink {
   //responsive pour écran superieur à small
   @include upper-medium-screen {
-    
     transition: height 100ms ease-in;
-     height:70px;
-     
+    height: 70px;
   }
 }
 
-.grow{
+.grow {
   //responsive pour écran supérieur à small
   @include upper-medium-screen {
-    
     transition: height 100ms ease-out;
-    height:90px;
+    height: 90px;
   }
 }

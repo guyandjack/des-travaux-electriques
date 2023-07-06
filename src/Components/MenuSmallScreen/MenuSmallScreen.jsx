@@ -58,12 +58,11 @@ function MenuSmallScreen() {
       ></img>
 
       <div className={menuSmallScreen + menuBanner}>
-        <Banner
-          pagename="home"
-          title="Des travaux électriques...!?"
-          text="Schémas, explications..., astuces"
-          color="fifth"
-        />
+        <img
+          className="bg-banner"
+          src="/Asset/background-image/small-screen-banner.svg"
+          alt="banner titre"
+        ></img>
       </div>
 
       <div className={menuSmallScreen + containerMenuBurger}>

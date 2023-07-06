@@ -9,9 +9,7 @@ import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
 //Import des composants enfants
 
 import { Link } from "react-router-dom";
-
 import { SiteIsBuilding } from "../../Components/SiteIsBuilding/SiteIsBuilding.jsx";
-
 import { NavMenu } from "../NavMenu/NavMenu.jsx";
 import { NavCollapse } from "../NavCollapse/NavCollapse.jsx";
 import { NavLink } from "../NavLink/NavLink.jsx";
@@ -102,13 +100,14 @@ function Header() {
   return (
     <header className="main-header grow">
       {isSmallScreen ? (
-        <Banner
-          pagename="home"
-          text="Des astuces pour vos projets!"
-          title={"Des travaux électriques...?"}
-          color={"fifth"}
-          urlimg={urlImgBanner.home.small}
-        />
+        <div className="container-banner">
+          {/*<img
+            className="banner"
+            src="/Asset/background-image/small-screen-banner.svg"
+            alt="banner"
+          ></img>*/}
+        </div>
+        
       ) : null}
 
       <nav ref={elementHeader} className="header grow">
@@ -117,13 +116,13 @@ function Header() {
         </div>
 
         <div className="header__container-logo">
-          <a href="/">
+          <Link to="/">
             <img
               className="header-logo"
               src="/Asset/logo/logo-electravaux-v2.svg"
               alt="logo"
             ></img>
-          </a>
+          </Link>
         </div>
 
         <div className="header__container-menu">

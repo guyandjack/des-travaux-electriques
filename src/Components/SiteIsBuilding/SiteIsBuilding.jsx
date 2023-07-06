@@ -43,6 +43,7 @@ function SiteIsBuilding() {
           </p>
           <p className="site-building__text">
             La navigation se limite à quelques pages pour le moment.<br></br>
+            Les formulaires de contact ne sont pas activés.
           </p>
           <p className="site-building__text-end">Bonne visite!</p>
           <div className="site-building__icon" name="1">

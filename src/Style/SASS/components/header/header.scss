@@ -7,9 +7,7 @@
 @import "../../utils/colors-rule/colors-rule.scss";
 
 .main-header {
-
   @include upper-medium-screen {
-    
     position: sticky;
     top: 0px;
     z-index: 10;
@@ -17,25 +15,20 @@
   }
 }
 .container-banner {
-  /*display: flex;
-  flex-flow: column nowrap;
+  display: flex;
+  flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-
+  
   width: 100%;
-  height: 50px;
+  height: 80px;
   
 
   .banner {
-    height: 100%;
-    width: 100%;
-    object-fit: fill;
-  }*/
-  width: 100%;
-  height: 80px;
-  background-image: url("../../../public/Asset/background-image/small-screen-banner.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
+    
+    background-color: map-get($colors-rule, second-color );
+    
+  }
 }
 
 .header {
@@ -45,7 +38,7 @@
   align-items: center;
 
   position: relative;
-  //height: fit-content;
+  
   width: 100%;
 
   background-color: map-get($colors-rule, fourth-color);
@@ -55,24 +48,20 @@
     max-width: 200px;
     height: 100%;
 
-    //margin-top: 40px;
-
-    // background-color: white;
-    // border: 2px solid red;
-
+    
     & > a {
       display: flex;
       flex-flow: column nowrap;
       justify-content: center;
       align-items: center;
       height: 100%;
-      //border: 2px solid red;
+      
     }
 
     .header-logo {
       height: 90%;
       width: auto;
-      //border:2px solid green;
+      
     }
 
     //reponsive pour ecran small
@@ -84,13 +73,13 @@
   &__container-menu {
     flex: 1 1 75%;
     height: 100%;
-    //border: 2px solid red;
+    
   }
 
   &__container-div-session {
     height: 100%;
     margin: 0em 1em;
-    //border: 2px solid green;
+    
   }
 
   &__container-div-sitebuilding {
@@ -113,7 +102,7 @@
 .grow {
   //responsive pour écran supérieur à small
   @include upper-medium-screen {
-    transition: height 100ms ease-out;
+    transition: height 250ms linear;
     height: 90px;
   }
 }

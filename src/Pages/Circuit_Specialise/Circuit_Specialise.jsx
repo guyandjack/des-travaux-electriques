@@ -127,9 +127,10 @@ function PageCircuitSpecialise() {
         <div className="container-undertitle">
           <TitleHN
             titleText="Circuit spécialisé « Plaque de cuisson »"
-            titleLevel={2}
-            size={2}
-            color="fourth"
+            titleLevel="h2"
+            titleSize="1.9em"
+            titleColor="first-color"
+            titleId="plaque-de-cuisson"
           />
         </div>
 
@@ -195,9 +196,10 @@ function PageCircuitSpecialise() {
         <div className="container-undertitle">
           <TitleHN
             titleText="Circuit spécialisé « cumulus »"
-            titleLevel={2}
-            size={2}
-            color="fourth"
+            titleLevel={"h2"}
+            titleSize={"1.8em"}
+            titleColor={"first-color"}
+            titleId={"circuit-cumulus"}
           />
         </div>
 
@@ -256,9 +258,10 @@ function PageCircuitSpecialise() {
         <div className="container-undertitle">
           <TitleHN
             titleText="Circuit spécialisé « lave-linge »"
-            titleLevel={2}
-            size={2}
-            color="fourth"
+            titleLevel={"h2"}
+            titleSize={"1.8em"}
+            titleColor={"first-color"}
+            titleId={"ll"}
           />
         </div>
 

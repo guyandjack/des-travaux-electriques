@@ -103,9 +103,9 @@ function FormulaireContact() {
         </div>
         <p className="form__text">
           <br></br>
-          Aux vues d'un trop grand nombre de questions techniques sur la
+          Au vue d'un trop grand nombre de questions techniques sur la
           réalisation des travaux des internautes, nous ne pouvons donner suite
-          à votre requete. Merci de votre compréhension.
+          à votre requête. Merci de votre compréhension.
         </p>
 
         <div className="cont-label-input">

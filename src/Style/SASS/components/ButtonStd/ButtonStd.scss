@@ -3,15 +3,21 @@
 //Import de la charte de couleur
 @import "../../../SASS/utils/colors-rule/colors-rule.scss";
 
+//Import des mixins qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
 .button{
        
     &__std{
         padding: 1em;
-        font-size: 1.2em;
+        font-size: 1em;
         border: none;
-        
+        width: 90%;
+        max-width: fit-content;
         transition: background-color 250ms linear;
-        
+        @include upper-large-screen{
+            font-size: 1.2em;
+        }
     }
 
     .first-bg{

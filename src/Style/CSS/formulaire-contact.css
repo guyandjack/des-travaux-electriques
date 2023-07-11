@@ -48,31 +48,11 @@
   padding: 1em;
   -webkit-box-shadow: 0px 0px 20px #272727;
           box-shadow: 0px 0px 20px #272727;
-  /*background-color: darken(map-get($colors-rule, fifth-color), 80%);*/
   background: -webkit-radial-gradient(at 0% 0%, #EFA00B, #fad899 30%, #fdebc9 80%, #EFA00B 95%);
   background: -o-radial-gradient(at 0% 0%, #EFA00B, #fad899 30%, #fdebc9 80%, #EFA00B 95%);
   background: radial-gradient(at 0% 0%, #EFA00B, #fad899 30%, #fdebc9 80%, #EFA00B 95%);
   -webkit-animation: landing 500ms linear 0s 1 normal forwards;
           animation: landing 500ms linear 0s 1 normal forwards;
-  /*.container-img-bg {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      width: 100%;
-      height: 100%;
-
-      .bg-form {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 110%;
-        height: 100%;
-       
-       
-        border: 2px solid red;
-        z-index: -10;
-      }
-    }*/
 }
 
 @media screen and (min-width: 769px) {
@@ -253,6 +233,11 @@
   .form-contact .form .textarea {
     width: 50%;
   }
+}
+
+.form-contact .form .cont-valid-btn {
+  padding: 0.2em;
+  background-color: #FBFFFE;
 }
 
 .form-contact .form .textarea:focus {

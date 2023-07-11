@@ -101,11 +101,11 @@ function Header() {
     <header className="main-header grow">
       {isSmallScreen ? (
         <div className="container-banner">
-          {/*<img
+          <img
             className="banner"
             src="/Asset/background-image/small-screen-banner.svg"
             alt="banner"
-          ></img>*/}
+          ></img>
         </div>
         
       ) : null}

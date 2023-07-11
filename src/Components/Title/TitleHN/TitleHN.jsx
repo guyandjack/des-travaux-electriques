@@ -1,74 +1,87 @@
 //Composant "TitleHn"
 
+/*********
+ * Ce composant a 4 props qui le définissent
+ * 
+ * titleText = Une chaine de caractere qui definit le titre(mon titre...)
+ * titlelevel = Une chaine qui definit le niveau de titre (h1,h2.....)
+ * titleSize = Une chaine qui definit la taille de la popilice en "em" (1em,0.8em,2em.....)
+ * titleColor = Une chaine qui definit la couleur de la police (first-color, second-color....)
+ * titleId = Une chaine qui definit l' id du composant titre (#mon id...)
+ * 
+ */
+
 //Import des hooks
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+
+//Import des break points
+import { breakPoint } from "../../../Utils/break_point/break_point.js";
 
 //Import des feuilles de style
 import "../../../Style/CSS/title_n.css";
 
 //Fonction "Title"
 
-function TitleHN({ titleText, titleLevel, size, color }) {
+function TitleHN({ titleText, titleLevel, titleSize, titleColor, titleId }) {
 
-  const [update, setUpdate] = useState(false);
+//declaration des "state"
+  
+  //const [isSmallScreen, setIsSmallScreen] = useState(true);
+  //const [titleFontSize, setTitleFontSize] = useState("0.8em");
+
+//declaration des fonctions
+  function titleGoodSize() {
+
+    let titleSelected = document.getElementById(titleId);
+    let screenSize = window.innerWidth;
+
+    console.log("titre selectionne: " + titleSelected);
+    console.log("taille d'ecran: " + screenSize);
+
+    if (screenSize > breakPoint.medium_Max && screenSize <= breakPoint.large_Max){
+      titleSelected.style.fontSize = "1.1em";
+      return
+      
+    } 
+    
+    if (screenSize > breakPoint.large_Max && screenSize <= breakPoint.x_large_Max) {
+      
+      titleSelected.style.fontSize = "1.3em";
+      return
+      
+    } 
+
+    if (screenSize > breakPoint.x_large_Max) {
+      
+      titleSelected.style.fontSize = titleSize;
+      return
+      
+    } 
+
+    
+  }
 
   useEffect(() => {
-    let titleList = document.querySelectorAll(".title-n");
-    
-    titleList.forEach(title => {
-      
-      title.firstElementChild.style.fontSize = size + "em";
-      title.firstElementChild.style.color = colorTitle;
-    })
-  },[]);
 
-  let classTitle = "title-n";
-  let colorTitle = "";
- 
-  switch (color) {
-    case "first":
-      colorTitle = " first-color";
-      break
-    case "fifth":
-      colorTitle = " fifth-color";
-      break
-    case "second":
-      colorTitle = " second-color";
-      break
-    case "third":
-      colorTitle = " third-color";
-      break
-    case "fourth":
-      colorTitle = " fourth-color";
-      break
-    default:
-      colorTitle = " first-color";
-  }
+    titleGoodSize();
+
+    window.addEventListener("resize", () => {
+
+      titleGoodSize();
+      
+    })
+  }, []);
+
   
 
-
-
-
   return (
-    <div className={classTitle}>
-      {titleLevel === 1 ? (
-        <h1 className={size + colorTitle}>{titleText}</h1>
-      ) : null}
-      {titleLevel === 2 ? (
-        <h2 className={size + colorTitle}>{titleText}</h2>
-      ) : null}
-      {titleLevel === 3 ? (
-        <h3 className={size + colorTitle}>{titleText}</h3>
-      ) : null}
-      {titleLevel === 4 ? (
-        <h4 className={size + colorTitle}>{titleText}</h4>
-      ) : null}
-      {titleLevel === 5 ? (
-        <h5 className={size + colorTitle}>{titleText}</h5>
-      ) : null}
-      {titleLevel === 6 ? (
-        <h6 className={size + colorTitle}>{titleText}</h6>
-      ) : null}
+    <div  className="title-n">
+      {titleLevel === "h1" ? <h1 id={titleId} className={titleColor}>{titleText}</h1> : null}
+      {titleLevel === "h2" ? <h2 id={titleId} className={titleColor}>{titleText}</h2> : null}
+      {titleLevel === "h3" ? <h3 id={titleId} className={titleColor}>{titleText}</h3> : null}
+      {titleLevel === "h4" ? <h4 id={titleId} className={titleColor}>{titleText}</h4> : null}
+      {titleLevel === "h5" ? <h5 id={titleId} className={titleColor}>{titleText}</h5> : null}
+      {titleLevel === "h6" ? <h6 id={titleId} className={titleColor}>{titleText}</h6> : null}
     </div>
   );
 }

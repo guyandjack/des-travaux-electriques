@@ -1,0 +1,45 @@
+//Feuille de style du composant "MenuFlotant"
+
+//Import des mixins qui gerent le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
+//Import de la charte de couleur
+@import "../../utils/colors-rule/colors-rule.scss";
+
+
+
+
+.menu-flotant{
+    position: fixed;
+    top: 150px;
+    left: 20px;
+
+    
+
+    .menu{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        
+
+       // background-color: map-get($colors-rule, fourth-color);
+
+        &__li{
+            max-width: 300px;
+            color: map-get($colors-rule, second-color );
+            margin-top: 0.5em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        &__li:hover{
+            
+            color: darken(map-get($colors-rule, second-color ), 40%);
+            cursor: pointer;
+
+        }
+    }
+}

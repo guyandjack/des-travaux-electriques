@@ -1,17 +1,22 @@
 //Fonction qui permet d' acceder a un endroit precis sur la page suite à un click sur lien
 
+//import des functions
+import { scrollTo } from "../Function/scrollTo.js";
+
 export function linkRef() {
 
     //Element du DOM
     let cguTitle = document.querySelector(".cgu__title");
-    let cguMentionsLegales = document.getElementById("2");
-    let cguPolitique = document.getElementById("9");
+
+    //Syntaxe pour utiliser "querySelector" avec de id
+    let cguMentionsLegales = "[id='2']";
+    let cguPolitique = "[id='9']";
 
     //Url de la page active
     let url = window.location.href;
 
 
-    //Recupere dans l' url l' id de l'article de la page des CGU
+    //Recupere dans l' url, l'id de l'article de la page des CGU
     let array = url.split("/");
     let idArticle = array[array.length - 1];
 
@@ -22,11 +27,11 @@ export function linkRef() {
     }
     if (idArticle == 2) {
         
-        cguMentionsLegales.scrollIntoView();
+        scrollTo(cguMentionsLegales);
     }
     if (idArticle == 9) {
         
-        cguPolitique.scrollIntoView();
+        scrollTo(cguPolitique);
     }
    
 

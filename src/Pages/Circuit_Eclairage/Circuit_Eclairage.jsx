@@ -118,9 +118,10 @@ function PageCircuitEclairage() {
         <div className="container-undertitle">
           <TitleHN
             titleText="Circuit éclairage avec un « Simple allumage »"
-            titleLevel={2}
-            size={2}
-            color="fourth"
+            titleLevel="h2"
+            titleSize="2em"
+            titleColor="first-color"
+            titleId="sa"
           />
         </div>
 
@@ -185,9 +186,10 @@ function PageCircuitEclairage() {
         <div className="container-undertitle">
           <TitleHN
             titleText="Circuit éclairage avec « va et vient »"
-            titleLevel={2}
-            size={2}
-            color="fourth"
+            titleLevel="h2"
+            titleSize="2em"
+            titleColor="first-color"
+            titleId="vv"
           />
         </div>
 
@@ -246,9 +248,10 @@ function PageCircuitEclairage() {
         <div className="container-undertitle">
           <TitleHN
             titleText="Circuit éclairage avec « boutons poussoirs »"
-            titleLevel={2}
-            size={2}
-            color="fourth"
+            titleLevel="h2"
+            titleSize="2em"
+            titleColor="first-color"
+            titleId="bp"
           />
         </div>
 
@@ -313,9 +316,10 @@ function PageCircuitEclairage() {
         <div className="container-undertitle">
           <TitleHN
             titleText="Circuit éclairage avec « détecteur de présence »"
-            titleLevel={2}
-            size={2}
-            color="fourth"
+            titleLevel="h2"
+            titleSize="2em"
+            titleColor="first-color"
+            titleId="radar"
           />
         </div>
 

@@ -75,7 +75,7 @@ let CGUContent = [
   },
 
   {
-    title: "Responsabilité de l’Utilisateur",
+    title: "Responsabilité de l’« Utilisateur »",
     content: (
       <p>
         L'« Utilisateur » est responsable des risques liés à l’utilisation de
@@ -99,7 +99,7 @@ let CGUContent = [
     ),
   },
   {
-    title: "Responsabilité de l’Éditeur",
+    title: "Responsabilité de l’« Éditeur »",
     content: (
       <p>
         Tout dysfonctionnement du serveur ou du réseau ne peut engager la
@@ -115,7 +115,7 @@ let CGUContent = [
     ),
   },
   {
-    title: "Limite de responsabilite",
+    title: "Limite de responsabilité",
     content: (
       <div>
         <p>
@@ -238,7 +238,7 @@ let CGUContent = [
   {
     title: "Droit applicable et juridiction compétente",
     content:
-      "Le présent contrat dépend de la législation française.En cas de litige non résolu à l’amiable entre l’Utilisateur et l’Éditeur, les tribunaux du lieu de residence de l'« Editeur » du site sont compétents pour régler le contentieux.",
+      "Le présent contrat dépend de la législation française. En cas de litige non résolu à l’amiable entre l’« Utilisateur » et l’« Éditeur », les tribunaux du lieu de residence de l'« Editeur » du site sont compétents pour régler le contentieux.",
   },
 ];
 

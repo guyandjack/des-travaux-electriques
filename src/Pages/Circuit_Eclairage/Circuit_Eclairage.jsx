@@ -42,8 +42,6 @@ function PageCircuitEclairage() {
 
   //url image.
 
-  
-
   //constante
   const refPage = "circuit-eclairage";
 
@@ -62,8 +60,6 @@ function PageCircuitEclairage() {
     ContentImagePageCircuitEclairage.schemaBoutonPoussoir[imageSize];
   let schema_eclairage_radar =
     ContentImagePageCircuitEclairage.schemaDetecteurPresence[imageSize];
-
-  
 
   //Positionne le scroll en haut de page
   useEffect(() => {

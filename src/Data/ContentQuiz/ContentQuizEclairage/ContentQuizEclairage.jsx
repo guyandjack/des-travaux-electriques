@@ -24,7 +24,7 @@ let ContentQuizEclairage = [
     proposition3: "8",
     proposition4: "",
     proposition5: "",
-    goodresponse: "",
+    goodresponse: "8",
     textSolution: "8 est lenombre maximal",
   },
 
@@ -81,9 +81,8 @@ let ContentQuizEclairage = [
     proposition3: "",
     proposition4: "",
     goodresponse:
-      "Durée de commutation, sensibilité à la détection, luminosité ambiante",
-    textSolution:
-      "",
+      "Durée d'éclairage, sensibilité à la détection, luminosité ambiante",
+    textSolution: "",
   },
 
   {
@@ -96,7 +95,8 @@ let ContentQuizEclairage = [
     proposition3:
       "Le bouton poussoir commande uniquement des foyers lumineux de fortes puissance.",
     proposition4: "",
-    goodresponse: "",
+    goodresponse:
+      "Le bouton poussoir revient dans sa position initiale aprés une pression.",
     textSolution:
       "Le bouton poussoir revient dans sa position initiale aprés une pression.",
   },

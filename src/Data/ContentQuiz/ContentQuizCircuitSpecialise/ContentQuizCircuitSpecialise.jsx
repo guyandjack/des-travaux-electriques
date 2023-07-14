@@ -32,7 +32,7 @@ let ContentQuizCircuitSpecialise = [
     proposition2: "non",
     goodresponse: "non",
     textSolution:
-      "Non, en effet la NFC-1500 stipule d'utiliser un circuit spécialisé. ",
+      "Non, en effet la NFC-1500 stipule d'utiliser un circuit spécialisé.",
   },
 
   {
@@ -42,7 +42,7 @@ let ContentQuizCircuitSpecialise = [
     proposition1: "oui",
     proposition2: "non, c'est strictement interdit.",
     proposition3:
-      "oui, s'il y a un disjoncteur de 20A qui assure la protection du circuit.",
+      "Oui, s'il y a un disjoncteur de 20A qui assure la protection du circuit.",
     goodresponse: "non, c'est strictement interdit.",
     textSolution: "non, c'est strictement interdit.",
   },
@@ -63,7 +63,7 @@ let ContentQuizCircuitSpecialise = [
   {
     idQ: "circuitspecialise6",
     textQuestion:
-      "Un circuit dédié peut-il alimenter plusieurs appareillages de même type , comme le circuit chauffage par exemple ?",
+      "Un circuit dédié peut-il alimenter plusieurs appareillages de même type, comme le circuit chauffage par exemple ?",
     proposition1: "oui, sous certaines conditions",
     proposition2: "non, la norme l'interdit",
     goodresponse: "oui, sous certaines conditions",
@@ -80,7 +80,7 @@ let ContentQuizCircuitSpecialise = [
     proposition3: "oui, car les appareils sont de même type.",
     goodresponse: "non",
     textSolution:
-      "Non, le cumulus principal doit être sur un circuit spécialisé tout comme le cumulus d'appoint.",
+      "Non, le cumulus principal ainsi que le cumulus d'appoint, doivent être sur leur circuit spécialisé respectif.",
   },
 
   {
@@ -118,7 +118,7 @@ let ContentQuizCircuitSpecialise = [
     goodresponse:
       "De bénéficier d'un tarif réduit pendant les heures creuses.",
     textSolution:
-      "Une reduction du prix du KWh est appliquée pendant les heures creuses.",
+      "Une réduction du prix du KWh est appliquée pendant les heures creuses.",
   },
 ];
 

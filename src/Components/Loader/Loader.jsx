@@ -27,7 +27,7 @@ function Loader() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+ /* useEffect(() => {
 
     if(document.readyState !== "complete") {
       
@@ -41,7 +41,22 @@ function Loader() {
     }
    
   
-  },[]);
+  },[]);*/
+
+  
+    
+    if (document.readyState !== "complete") {
+        
+      setIsLoading(true);
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 200);
+      })
+    }
+  
+  
+  
 
   return isLoading? (
     <div ref={loaderElement} className="loader">

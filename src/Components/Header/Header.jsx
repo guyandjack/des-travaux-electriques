@@ -59,7 +59,7 @@ function Header() {
     }
   }, []);
 
-  //Gere les ecouteur d' évènment scroll et scrollend
+  //Gere les écouteurs d'évènment scroll et scrollend
   useEffect(() => {
     window.addEventListener("scroll", () => {
       

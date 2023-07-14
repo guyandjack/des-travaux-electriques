@@ -35,11 +35,14 @@
 
     &__text {
       width: 100%;
-      font-size: 1.2em;
+      font-size: 1em;
       align-self: left;
       font-weight: 400;
       padding: 0.5em;
       background-color: lighten(map-get($colors-rule, fourth-color), 80%);
+      @include upper-large-screen{
+        font-size: 1.2em;
+      }
     }
   }
 
@@ -50,18 +53,20 @@
     align-items: center;
     margin-top: 1em;
     width: 100%;
-    // border: 2px solid red;
+    
 
     &__label {
-      width: auto;
-      //margin-right: 1em;
-      font-size: 1.3em;
+      flex: 0 0 80%;
+      font-size: 1em;
       font-style: italic;
-      //border: 2px solid green;
+      @include upper-large-screen{
+        font-size: 1.2em;
+      }
+           
     }
 
     &__input {
-      margin-right: 2em;
+      margin-right: 1em;
       width: 1em;
       height: 1em;
       border: 2px solid lighten(map-get($colors-rule, fourth-color), 20%);

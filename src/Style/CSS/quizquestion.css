@@ -47,13 +47,19 @@
 
 .container-question .question-header__text {
   width: 100%;
-  font-size: 1.2em;
+  font-size: 1em;
   -ms-flex-item-align: left;
       -ms-grid-row-align: left;
       align-self: left;
   font-weight: 400;
   padding: 0.5em;
   background-color: #f3f3f3;
+}
+
+@media screen and (min-width: 993px) {
+  .container-question .question-header__text {
+    font-size: 1.2em;
+  }
 }
 
 .container-question .proposition {
@@ -75,13 +81,21 @@
 }
 
 .container-question .proposition__label {
-  width: auto;
-  font-size: 1.3em;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 80%;
+          flex: 0 0 80%;
+  font-size: 1em;
   font-style: italic;
 }
 
+@media screen and (min-width: 993px) {
+  .container-question .proposition__label {
+    font-size: 1.2em;
+  }
+}
+
 .container-question .proposition__input {
-  margin-right: 2em;
+  margin-right: 1em;
   width: 1em;
   height: 1em;
   border: 2px solid #5a5a5a;

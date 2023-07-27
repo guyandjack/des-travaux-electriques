@@ -11,6 +11,7 @@ import { PageHome } from "../src/Pages/Home/PageHome.jsx";
 import { PagePC16A } from "../src/Pages/Prise_De_Courant_16A/Prise_De_Courant_16A";
 import { PageCircuitSpecialise } from "../src/Pages/Circuit_Specialise/Circuit_Specialise.jsx";
 import { PageCircuitEclairage } from "../src/Pages/Circuit_Eclairage/Circuit_Eclairage.jsx";
+import { PageCompteurEnergie } from "../src/Pages/Composants/Compteur_energie/Compteur_energie.jsx";
 import { PageDisjoncteurMagnetoThermique } from "../src/Pages/DisjoncteurMagnetoThermique/DisjoncteurMagnetoThermique.jsx";
 import { PageDisjoncteurDeBranchement } from "../src/Pages/Disjoncteur_De_Branchement/Disjoncteur_De_branchement.jsx";
 import { PageDispositifDifferentiel } from "../src/Pages/Dispositif_Differentiel/Dispositif_Differentiel.jsx";
@@ -45,7 +46,8 @@ function App() {
           <Route path="/schema/circuit-specialise" element={<PageCircuitSpecialise />}></Route>
           <Route path="/schema/circuit-specialise/quiz" element={<PageQuizCircuitSpecialise />}></Route>
           <Route path="/schema/circuit-eclairage"  element={<PageCircuitEclairage />}></Route>
-          {<Route path="/schema/circuit-eclairage/quiz"  element={<PageQuizCircuitEclairage />}></Route>}
+          <Route path="/schema/circuit-eclairage/quiz" element={<PageQuizCircuitEclairage />}></Route>
+          <Route path="/composants/compteur-energie" element={<PageCompteurEnergie />}></Route>
           <Route path="/db" element={<PageDisjoncteurDeBranchement />}></Route>
           <Route path="/ddr" element={<PageDispositifDifferentiel />}></Route>
           <Route path="/tc" element={<PageTableauDeCommunication />}></Route>

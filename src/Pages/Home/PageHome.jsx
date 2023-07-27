@@ -6,8 +6,11 @@ import { useState, useEffect } from "react";
 //Import des breakpoints
 import { breakPoint } from "../../Utils/break_point/break_point.js";
 
-//import des fonction qui gerent la session user
+//import des fonctions qui gerent la session user
 import { pageAperture, pageClosure } from "../../Utils/Function/LocalStorage.js";
+
+//Import des fonctions communes
+import { scrollTo } from "../../Utils/Function/scrollTo.js";
 
 //Import des composants enfants
 import { Banner } from "../../Components/Banner/Banner.jsx";
@@ -21,6 +24,12 @@ import "../../Style/CSS/home.css";
 //Fonction "PageHome"
 function PageHome() {
   const [sizeScreen, setSizeScreen] = useState(window.innerWidth);
+
+  //Ajuste le scroll en haut de page
+  useEffect(() => {
+    scrollTo("[id='root']");
+   
+  }, []);
 
   //Gere les sessions utilisteurs
   useEffect(() => {
@@ -58,6 +67,7 @@ function PageHome() {
       </div>
 
       <div className={classHome + classHomeTitle + classLargeScreen}>
+        
         <Title
           pagetype="home"
           title="Des travaux électriques...!?"

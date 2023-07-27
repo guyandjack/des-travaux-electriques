@@ -29,19 +29,19 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   let classHide = "hide";
   let classDisplay = "display-form-response";
 
-  let messageLastName = "";
-  let messageFirstName = "";
-  let messageMail = "";
-  let messageMsg = "";
+  let messageErrorLastName = "";
+  let messageErrorFirstName = "";
+  let messageErrorMail = "";
+  let messageErrorMsg = "";
 
   let contentPlaceHolder =
     "Vos commentaires et suggestions permetrons d'améliorer l' expérience utilisateur de nos futurs visiteurs";
 
   //Message d' erreur des differents champs du formulaire
-  const [lastName, setLastname] = useState(messageLastName);
-  const [firstName, setFirstname] = useState(messageFirstName);
-  const [mail, setMail] = useState(messageMail);
-  const [msg, setMsg] = useState(messageMsg);
+  const [lastName, setLastname] = useState(messageErrorLastName);
+  const [firstName, setFirstname] = useState(messageErrorFirstName);
+  const [mail, setMail] = useState(messageErrorMail);
+  const [msg, setMsg] = useState(messageErrorMsg);
 
   //const [userUrl, setUserUrl] = useState();
 
@@ -156,7 +156,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     //evite la soumission automatique du formulaire
     e.preventDefault();
 
-    fetch("http://www.electravaux.com/api/comment/", {
+    fetch("http://www.electravaux.com/api/comment-user/", {
       headers: {
         Accept: "application/json, text/plain",
         "Content-Type": "application/json",
@@ -181,13 +181,13 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   //Valide l' input "lastName"
   function validLastName(e) {
     if (masqueText.test(e.target.value) !== true) {
-      messageLastName = "veuillez entrer un nom valide";
+      messageErrorLastName = "veuillez entrer un nom valide";
       setisValidLastName(false);
-      setLastname(messageLastName);
+      setLastname(messageErrorLastName);
     } else {
-      messageLastName = "";
+      messageErrorLastName = "";
       setisValidLastName(true);
-      setLastname(messageLastName);
+      setLastname(messageErrorLastName);
       setLastnameValue(e.target.value);
     }
   }
@@ -195,13 +195,13 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   //Valide l' input "firstName"
   function validFirstName(e) {
     if (masqueText.test(e.target.value) !== true) {
-      messageFirstName = "Veuillez entrer un prénom valide";
+      messageErrorFirstName = "Veuillez entrer un prénom valide";
       setisValidFirstName(false);
-      setFirstname(messageFirstName);
+      setFirstname(messageErrorFirstName);
     } else {
-      messageFirstName = "";
+      messageErrorFirstName = "";
       setisValidFirstName(true);
-      setFirstname(messageFirstName);
+      setFirstname(messageErrorFirstName);
       setFirstNameValue(e.target.value);
     }
   }
@@ -209,13 +209,13 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   //Valide l' input "mail"
   function validMail(e) {
     if (masqueMail.test(e.target.value) !== true) {
-      messageMail = "Veuillez entrer un email valide";
+      messageErrorMail = "Veuillez entrer un email valide";
       setisValidMail(false);
-      setMail(messageMail);
+      setMail(messageErrorMail);
     } else {
-      messageMail = "";
+      messageErrorMail = "";
       setisValidMail(true);
-      setMail(messageMail);
+      setMail(messageErrorMail);
       setEmailValue(e.target.value);
     }
   }
@@ -223,13 +223,13 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   //Valide le message utilisateur
   function validMessage(e) {
     if (masqueMessage.test(e.target.value) !== true) {
-      messageMsg = "Nbr de carracteres incorrects ou carracteres non autorisés";
+      messageErrorMsg = "Nbr de carracteres incorrects ou carracteres non autorisés";
       setisValidMsg(false);
-      setMsg(messageMsg);
+      setMsg(messageErrorMsg);
     } else {
-      messageMsg = "";
+      messageErrorMsg = "";
       setisValidMsg(true);
-      setMsg(messageMsg);
+      setMsg(messageErrorMsg);
       setContentlValue(e.target.value);
     }
   }

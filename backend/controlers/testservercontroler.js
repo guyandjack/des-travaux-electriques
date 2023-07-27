@@ -8,7 +8,7 @@ const checkForm = require("../utils/function/check_data_user/check_data_user.js"
 exports.testRouteServer = ((req, res, next) => {
 
 
-    res.status(200).json({ message: " La route de test est bien validée" })
+    res.status(200).json({ message: " La route de test pour l'api est bien validée" })
         
         
         .catch((error) => {

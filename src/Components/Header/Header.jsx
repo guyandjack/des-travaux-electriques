@@ -107,7 +107,6 @@ function Header() {
             alt="banner"
           ></img>
         </div>
-        
       ) : null}
 
       <nav ref={elementHeader} className="header grow">
@@ -135,46 +134,7 @@ function Header() {
               colorText="second"
               colorBg=""
             />
-            {/*<NavCollapse
-              urlImg=""
-              text="norme"
-              colorText="second"
-              sizePolice="1.2em"
-              colorBg=""
-            >
-              <NavLink
-                urlTo="/ip"
-                urlImg=""
-                text="Indice de protection"
-                colorText="fourth"
-                tailleText="1em"
-                colorBg=""
-              />
-              <NavLink
-                urlTo="/classe"
-                urlImg=""
-                text="Classe des appareillages électriques"
-                colorText="fourth"
-                tailleText="1em"
-                colorBg=""
-              />
-              <NavLink
-                urlTo="/section-conducteur"
-                urlImg=""
-                text="Section des conducteurs"
-                colorText="fourth"
-                tailleText="1em"
-                colorBg=""
-              />
-              <NavLink
-                urlTo="/protection-des-personnes"
-                urlImg=""
-                text="Protection des personnes"
-                colorText="fourth"
-                tailleText="1em"
-                colorBg=""
-              />
-            </NavCollapse>*/}
+
             <NavCollapse
               urlImg=""
               text="Schémas"
@@ -185,7 +145,7 @@ function Header() {
               <NavLink
                 urlTo="/schema/pc16a"
                 urlImg=""
-                text="Prise de courant 16A"
+                text="Prise de courant"
                 colorText="fourth"
                 tailleText="1em"
                 colorBg=""
@@ -207,16 +167,66 @@ function Header() {
                   tailleText="1em"
                   colorBg=""
                 />
-                /*<NavLink
-                urlTo="/schema/protection-des-personnes"
-                urlImg=""
-                text="Protection des personnes"
-                colorText="fourth"
-                tailleText="1em"
-                colorBg=""
-              />*/
               }
             </NavCollapse>
+            {
+              <NavCollapse
+                urlImg=""
+                text="Appareillages"
+                colorText="second"
+                sizePolice="1.2em"
+                colorBg=""
+              >
+                <NavLink
+                  urlTo="/composants/compteur-energie"
+                  urlImg=""
+                  text="Compteur d'énergie"
+                  colorText="fourth"
+                  tailleText="1em"
+                  colorBg=""
+                />
+                <NavLink
+                  urlTo=""
+                  urlImg=""
+                  text="Disjoncteur de branchement"
+                  colorText="fourth"
+                  tailleText="1em"
+                  colorBg=""
+                />
+                <NavLink
+                  urlTo=""
+                  urlImg=""
+                  text="Dispositif différentiel"
+                  colorText="fourth"
+                  tailleText="1em"
+                  colorBg=""
+                />
+                <NavLink
+                  urlTo=""
+                  urlImg=""
+                  text="Disjonteur magnétothermique"
+                  colorText="fourth"
+                  tailleText="1em"
+                  colorBg=""
+                />
+                <NavLink
+                  urlTo=""
+                  urlImg=""
+                  text="Télérupteur"
+                  colorText="fourth"
+                  tailleText="1em"
+                  colorBg=""
+                />
+                <NavLink
+                  urlTo=""
+                  urlImg=""
+                  text="Horloge mécanique"
+                  colorText="fourth"
+                  tailleText="1em"
+                  colorBg=""
+                />
+              </NavCollapse>
+            }
             <NavCollapse
               urlImg=""
               text="Quiz"

@@ -16,7 +16,7 @@ const regEx = require("../../variables/RegEx/RegEx.js");
 //Valide l' input "lastName"
 function validLastName(lastName) {
   if (
-    //regEx.masqueText.test(lastName) !== true ||
+    
     regEx.masquetext.test(lastName) !== true ||
     lastName === null ||
     lastName === "undefined"
@@ -91,8 +91,8 @@ function validIsResponse(isResponse) {
 //Valide l' id du commentaire original
 function validOriginalCommentId(originalCommentId) {
   if (
-    originalCommentId == null ||
-    originalCommentId == "undefined" ||
+    originalCommentId === null ||
+    originalCommentId === "undefined" ||
     !originalCommentId
   ) {
     
@@ -103,7 +103,7 @@ function validOriginalCommentId(originalCommentId) {
   }
 
   if (regEx.masquenumber.test(originalCommentId) !== true) {
-    return false;
+    return false
   } else {
     return {
       test: true,
@@ -112,13 +112,15 @@ function validOriginalCommentId(originalCommentId) {
   }
 }
 
-//valide l' autorisation d' enregistrer une session utilisateur
+//valide l'autorisation d' enregistrer une session utilisateur
 function validCheckbox(userData) {
   //La valeur du checkbox peut etre nulle, ou absente.
 
-  if (userData == null || userData == "undefined") {
+  if (userData === null || userData === "undefined") {
     return true;
   }
+
+
 
   if (regEx.masquecheckbox.test(userData) !== true) {
     return false;

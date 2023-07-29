@@ -164,14 +164,23 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       method: "POST",
       body: JSON.stringify(bodyrequest),
     })
-      .then((response) => response.json())
-      .then((data) => JSON.stringify(data))
+      .then((response) => {
+        console.log(" valeur de retour 'brut' de l' api: " + response)
+        response.json()
+      })
+      .then((data) => {
+        
+        console.log(" valeur de retour 'jsoned' de l' api: " + data)
+        JSON.stringify(data)
+      })
       .then((datastringed) => {
+        console.log(" valeur de retour 'stringified' de l' api: " + datastringed)
         localStorage.setItem("session", datastringed);
         localStorage.setItem("activePage", "0");
+        console.log(datastringed)
       })
       .then(setOriginalCommentIdValue(""))
-      .then(window.location.reload())
+      //.then(window.location.reload())
 
       .catch((error) => console.log(error));
   }

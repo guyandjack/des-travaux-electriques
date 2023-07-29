@@ -4,7 +4,7 @@
 
   
 //Motif qui autorise lettres majuscules, minuscules, undescore, apostrophe,point, et trait d'union.entre 2 et 20 carracteres.
-const masqueText = /^[A-Za-z_'.-]{2,30}$/;
+const masqueText = /^[A-Za-z_'.- ]{2,30}$/;
 
 
 
@@ -27,7 +27,7 @@ const masqueMail = /^[0-9]{0,4}[0-9a-z_'.-]{2,30}@[0-9a-z_'.-]{2,20}\.[0-9a-zA-Z
 
 
 //motif qui autorise "o" suivi de "k"
-const masqueCheckBox = /^[o][k]$/;
+const masqueCheckBox = /^[no][ok]$/;
 
 
 //Motif qui autorise des nombres, lettres minuscules et majuscules, point, trait d'union, apotrophe, espace et underscore, retour a la ligne de 10 a 200 caracteres

@@ -170,7 +170,7 @@ function Header() {
               }
             </NavCollapse>
             {
-              <NavCollapse
+              /*<NavCollapse
                 urlImg=""
                 text="Appareillages"
                 colorText="second"
@@ -178,7 +178,7 @@ function Header() {
                 colorBg=""
               >
                 <NavLink
-                  urlTo="/composants/compteur-energie"
+                  urlTo=""
                   urlImg=""
                   text="Compteur d'énergie"
                   colorText="fourth"
@@ -225,7 +225,7 @@ function Header() {
                   tailleText="1em"
                   colorBg=""
                 />
-              </NavCollapse>
+              </NavCollapse>*/
             }
             <NavCollapse
               urlImg=""

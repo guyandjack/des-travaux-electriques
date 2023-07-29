@@ -1,16 +1,20 @@
-/**************  ensemble des midelwares qui gérent la logique des commentaires  **********************/
 
-//Import des fonctions de controle des inputs issues du formulaire
+
+
+//import des functions
+
+
+const connectToBdd = require("../utils/functions/connexionBdd.js");
+
 const checkForm = require("../utils/functions/checkDataForm.js");
 
-//Midellwares qui controle et enregistre les données issues du formulaire
 
-exports.checkDataForm = (req, res, next) => {
 
+exports.testForm = (req, res) => {
   //Controle la presence des données "obligatoires" issues des inputs du formulaire.
   //Si une valeur est absente on retourne un message d'erreur au client
 
-  if(
+  /*if(
       req.body.lastname === null || req.body.lastname === "undefined" || !req.body.lastname ||
       req.body.firstname === null || req.body.firstname === "undefined" || !req.body.firstname || 
       req.body.email === null || req.body.email === "undefined" || !req.body.email ||
@@ -22,32 +26,36 @@ exports.checkDataForm = (req, res, next) => {
     )
   {
     res.status(500).json({ message: " Le formulaire a envoyé des valeurs inatendues..."  })
-  }
+  }*/
 
-  /** Recuperation des donnees de l'utilisateur **/
+  /****** donnée utilisateur *******/
+
   let lastName = req.body.lastname;
-  console.log("valeur de lastname: " + lastName);
+
   let firstName = req.body.firstname;
-  console.log("valeur de firstname: " + firstName);
+
   let email = req.body.email;
-  console.log("valeur de email: " + email);
+
   let comment = req.body.comment;
-  console.log("valeur de comment: " + comment);
 
   /** donees "cachees" **/
+
   let userUrl = req.body.userurl;
-  console.log("valeur de userurl: " + userUrl);
+
+  // adresse ip de l' utilisateur
   let adressIp = checkForm.getuserip(req);
-  console.log("valeur de adresse ip: " + adressIp); // adresse ip de l' utilisateur
+
+  // reference de la page dont est issu le formulaire
   let refPage = req.body.pageref;
-  console.log("valeur de refpage: " + refPage); // reference de la page dont est issu le formulaire
+
+  // indique si le commentaire est une réponse
   let isResponse = req.body.isresponse;
-  console.log("valeur de isresponse: " + isResponse); // indique si le commentaire est une reponse
-  console.log("type de isresponse: " + typeof isResponse); // indique si le commentaire est une reponse
+
+  // indique l id du commentaire correspondant a la reponse
   let originalCommentId = req.body.originalcommentid;
-  console.log("valeur de originalcommentid: " + originalCommentId); // indique l id du commentaire correspondant a la reponse
+
+  //indique si  l' utilisateur souhaite ouvrir une session
   let userData = req.body.userdata;
-  console.log("valeur de userdata: " + userData); //indique si  l' utilisateur souhaite ouvrir une session
 
   //Variables globales
   let insertID;
@@ -59,25 +67,21 @@ exports.checkDataForm = (req, res, next) => {
   let testMessage = checkForm.validmessage(comment);
   let testRefPage = checkForm.validreferencepage(refPage);
   let testBoolean = checkForm.validisresponse(isResponse);
+
   //TescommentId renvoi la valeur du test et la valeur du commentoriginalid dans certains cas
   let testCommentId = checkForm.validoriginalcommentid(originalCommentId);
+
   if (testCommentId.test == true && testCommentId.neworiginalid == -1) {
-    originalCommentId = -1
+    originalCommentId = -1;
   }
-  console.log("valeur de original commentId apres la fonction de test: " + originalCommentId)
+  console.log(
+    "valeur de original commentId apres la fonction de test: " +
+      originalCommentId
+  );
+
   let testCheckbox = checkForm.validcheckbox(userData);
 
-  //si les données sont valides enregistrement dans la base de données le contenu du formulaire
-
-  console.log("etat de testLastname : " + testLastname);
-  console.log("etat de testFirstname : " + testFirstname);
-  console.log("etat de testMail : " + testMail);
-  console.log("etat de testMessage : " + testMessage);
-  console.log("etat de testrefPage : " + testRefPage);
-  console.log("etat de testBoolean : " + testBoolean);
-  console.log("etat de testCommentId : " + testCommentId.test);
-  console.log("etat de testcheckbox : " + testCheckbox);
-
+  //si les données sont valides on les enregistre dans la base de données
   if (
     testLastname &&
     testFirstname &&
@@ -85,19 +89,19 @@ exports.checkDataForm = (req, res, next) => {
     testMessage &&
     testRefPage &&
     testBoolean &&
-    testCommentId.test  &&
+    testCommentId.test &&
     testCheckbox
   ) {
     //Enregistrement du commentaire dans la base sql
 
-    let connection = checkForm.createconnexionmysql();
+    const connection = connectToBdd.connexionToBdd;
 
     //Composition des requetes preparees
 
     //-1- requete pour inserer un commentaire original:
 
     //Requete -1- type "insert"
-    let requeteInsertion = `INSERT INTO user-comment (lastname,firstname,email,content,adressip,pageref,response,originalcommentid,date) VALUES (?,?,?,?,?,?,?,?,NOW())`;
+    let requeteInsertion = `INSERT INTO user_comment (lastname,firstname,email,content,adressip,pageref,response,originalcommentid,date) VALUES (?,?,?,?,?,?,?,?,NOW())`;
 
     //parametres de la requete -1- type "insert"
     let paramInsertion = [
@@ -173,16 +177,22 @@ exports.checkDataForm = (req, res, next) => {
           });
         }
 
-        let resultForClient = checkForm.objectresponse(lastName, firstName, email, userData );
+        let resultForClient = checkForm.objectresponse(
+          lastName,
+          firstName,
+          email,
+          userData
+        );
 
         res.status(201).json(resultForClient);
 
         connection.end();
       });
     });
-  }
-  else {
-    console.log("une condition de testInputUser n'est pas valide")
+  } else {
+    res.status(500).json({
+      message: "des donnees sont manquqntes!!!",
+    });
   }
 };
 
@@ -194,7 +204,7 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
 
   //recuperation des commentaires dans la base sql
 
-  let connection = checkForm.createconnexionmysql();// definition des parametre de connexion
+  const connection = connectToBdd.connexionToBdd();// definition des parametre de connexion
 
   /************** requetes preparées************* */
 
@@ -239,6 +249,3 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
     );
   });
 };
-
-
-

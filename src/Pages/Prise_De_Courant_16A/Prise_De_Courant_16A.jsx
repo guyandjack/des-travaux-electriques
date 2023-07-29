@@ -29,7 +29,7 @@ import "../../Style/CSS/prise_courant.css";
 
 
 //Import des fonctions
-const requetsFetch = require("../../Utils/Function/RequeteAPI.js");
+const requestFetch = require("../../Utils/Function/RequeteAPI.js");
 const dateFormat = require("../../Utils/Function/Date.js");
 const sizeScreen = require("../../Utils/Function/Size.js");
 const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
@@ -74,15 +74,15 @@ function PagePC16A() {
 
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
   //todo: implementer une com wesocket avec le serveur
-  /*useEffect(() => {
-    requetsFetch.fetchCommentsForOnePage(refPage, setArrayComments);
+  useEffect(() => {
+    requestFetch.fetchCommentsForOnePage(refPage, setArrayComments);
     setInterval(
-      () => requetsFetch.fetchCommentsForOnePage(refPage, setArrayComments),
+      () => requestFetch.fetchCommentsForOnePage(refPage, setArrayComments),
       60000
     );
-  }, []);*/
+  }, []);
 
-  //Premplie les inputs user si une session est ouverte
+  //Préremplie les inputs user si une session est ouverte
   useEffect(() => {
     defaultValueInputUser.setValueInputUser();
   }, []);

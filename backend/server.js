@@ -1,56 +1,7 @@
 /***** creation d'un derveur node****** */
 /***************************************** */
 
-//import du module natif "http"
 const http = require("http");
-
-//import de l'appli express
-const appli = require("./app/app.js");
-
-//creation du server avec logique de fonctionnement dans "appli"
+const appli = require("./app/appli.js");
 const server = http.createServer(appli);
-
-//détermination du port où "appli"
-const normalizePort = (val) => {
-  const port = parseInt(val, 10);
-
-  if (isNaN(port)) {
-    return val;
-  }
-  if (port >= 0) {
-    return port;
-  }
-  return false;
-};
-const port = normalizePort(process.env.PORT || "3500");
-appli.set("port", port);
-
-const errorHandler = (error) => {
-  if (error.syscall !== "listen") {
-    throw error;
-  }
-  const address = server.address();
-  const bind =
-    typeof address === "string" ? "pipe " + address : "port: " + port;
-  switch (error.code) {
-    case "EACCES":
-      console.error(bind + " requires elevated privileges.");
-      process.exit(1);
-      break;
-    case "EADDRINUSE":
-      console.error(bind + " is already in use.");
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
-};
-
-server.on("error", errorHandler);
-server.on("listening", () => {
-  const address = server.address();
-  const bind = typeof address === "string" ? "pipe " + address : "port " + port;
-  console.log("Listening on " + bind);
-});
-
-server.listen(port);
+server.listen();

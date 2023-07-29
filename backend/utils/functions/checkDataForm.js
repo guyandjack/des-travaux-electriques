@@ -11,7 +11,7 @@
 const mysql = require("mysql");
 
 //import des regEx pour les fonctions de controle des donées du formulaire
-const regEx = require("../../variables/RegEx/RegEx.js");
+const regEx = require("../expressionReguliere/RegExForm.js");
 
 //Valide l' input "lastName"
 function validLastName(lastName) {
@@ -117,7 +117,7 @@ function validCheckbox(userData) {
   //La valeur du checkbox peut etre nulle, ou absente.
 
   if (userData === null || userData === "undefined") {
-    return true;
+    return false;
   }
 
 
@@ -170,9 +170,9 @@ function objectResponse(lastName, firstName, email, checkboxvalue) {
 function createConnexionMysql() {
     let connection = mysql.createConnection({
       host: "localhost",
-      user: "admin",
+      user: "kvyjmgfk_admin",
       password: "Poweradmin65!",
-      database: "travaux_electriques",
+      database: "kvyjmgfk_electravaux",
     });
     return connection
 }

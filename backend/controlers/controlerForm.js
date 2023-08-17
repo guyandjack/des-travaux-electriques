@@ -221,6 +221,7 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
     }
     let date = new Date();
     console.log("Connecté à la bdd 'travaux_electriques' à :  " + date);
+
     connection.query(
       requeteSelectAllCommentsFromPage,
       paramSelectAllCommentsFromPage,

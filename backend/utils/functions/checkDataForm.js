@@ -11,7 +11,7 @@
 const mysql = require("mysql");
 
 //import des regEx pour les fonctions de controle des donées du formulaire
-const regEx = require("../expressionReguliere/RegExForm.js");
+const regEx = require("../regEx/RegExForm.js");
 
 //Valide l' input "lastName"
 function validLastName(lastName) {

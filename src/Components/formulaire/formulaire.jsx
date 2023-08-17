@@ -156,31 +156,48 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     //evite la soumission automatique du formulaire
     e.preventDefault();
 
-    fetch("http://www.electravaux.com/api/comment-user/", {
+    fetch("https://www.electravaux.com/api/comment-user/", {
       headers: {
         Accept: "application/json, text/plain",
         "Content-Type": "application/json",
       },
       method: "POST",
+      mode: "no-cors",
       body: JSON.stringify(bodyrequest),
     })
       .then((response) => {
-        console.log(" valeur de retour 'brut' de l' api: " + response)
-        response.json()
+        console.log(
+          "type du resultat brut de la requette formulaire: " + typeof response
+        );
+        console.log("resultat brut de la requette formulaire: " + response);
+        response
+          .json()
+          .then((data) => {
+            console.log(
+              "type du resultat 'jsoned' de la requette formulaire: " +
+                typeof data
+            );
+            console.log("resultat 'jsoned' de la requette formulaire: " + data);
+            JSON.stringify(data);
+          })
+          .then((datastringed) => {
+            console.log(
+              "type du resultat 'stringified' de la requette formulaire: " +
+                typeof datastringed
+            );
+            console.log(
+              "resultat 'stringified' de la requette formulaire: " +
+                datastringed
+            );
+
+            localStorage.setItem("session", datastringed);
+            localStorage.setItem("activePage", "0");
+            //console.log(data);
+          })
+          .then(setOriginalCommentIdValue(""));
+        //.then(window.location.reload())
       })
-      .then((data) => {
-        
-        console.log(" valeur de retour 'jsoned' de l' api: " + data)
-        JSON.stringify(data)
-      })
-      .then((datastringed) => {
-        console.log(" valeur de retour 'stringified' de l' api: " + datastringed)
-        localStorage.setItem("session", datastringed);
-        localStorage.setItem("activePage", "0");
-        console.log(datastringed)
-      })
-      .then(setOriginalCommentIdValue(""))
-      //.then(window.location.reload())
+     
 
       .catch((error) => console.log(error));
   }

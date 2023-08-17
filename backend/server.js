@@ -1,7 +1,11 @@
-/***** creation d'un derveur node****** */
+/***** creation d'un serveur node****** */
 /***************************************** */
 
 const http = require("http");
-const appli = require("./app/appli.js");
+const appli = require("./appli.js");
+
 const server = http.createServer(appli);
-server.listen();
+
+appli.set("port", 5022 || process.env.PORT);
+
+server.listen(5022 || process.env.PORT);

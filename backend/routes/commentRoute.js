@@ -4,17 +4,17 @@ const express = require("express");
 
 const router = express.Router();
 
-//const controler = require("../controler/controlerForm.js");
+const controler = require("../controler/controlerForm.js");
 
 //router.get("/testbdd", controler.testConnexionBdd);
 
 //router.get("/testserver", controler.testConnexionServer);
 
 //Routes "get"
-//router.get("/comment-user/:ref", controler.getAllCommentsForOnePage);
+router.get("/comment-user/:ref", controler.getAllCommentsForOnePage);
 
 //Routes "post"
-//router.post("/comment-user", controler.testForm);
+router.post("/comment-user", controler.testForm);
 
 //route "get"
 router.get("/", (req, res) => {

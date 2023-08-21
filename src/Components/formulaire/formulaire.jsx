@@ -156,7 +156,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     //evite la soumission automatique du formulaire
     e.preventDefault();
 
-    fetch("https://www.electravaux.com/api/comment-user/", {
+    fetch("https://www.apielectravaux.electravaux.com/comment-user/", {
       headers: {
         Accept: "application/json, text/plain",
         "Content-Type": "application/json",

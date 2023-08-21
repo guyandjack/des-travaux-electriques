@@ -22,6 +22,6 @@ appli.use(express.json());
 appli.use(bodyparser.urlencoded({ extended: true }));
 
 //Routes principales
-appli.use("/", routeApiCommentUser);
+appli.use("/comment-user", routeApiCommentUser);
 
 module.exports = appli;

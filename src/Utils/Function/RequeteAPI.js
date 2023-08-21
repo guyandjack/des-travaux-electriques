@@ -4,8 +4,8 @@
 export function fetchCommentsForOnePage(refpage, setfunction) {
 
   fetch(
-    "https://www.apielectravaux.electravaux.com/comment-user/" + refpage
-    /*{
+    "https://www.apielectravaux.electravaux.com/comment-user/" + refpage,
+    {
       headers: {
         "Accept": "application/json, text/plain",
         "Content-Type" : "application/json",
@@ -13,7 +13,7 @@ export function fetchCommentsForOnePage(refpage, setfunction) {
       method: "GET",
       mode: "no-cors",
       
-    }*/
+    }
   )
     .then((response) => {
       console.log(

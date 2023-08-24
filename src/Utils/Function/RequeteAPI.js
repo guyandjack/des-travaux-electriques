@@ -4,7 +4,7 @@
 export function fetchCommentsForOnePage(refpage, setfunction) {
 
   fetch(
-    "https://www.apielectravaux.electravaux.com/comment-user/" + refpage,
+    "https://www.apielectravaux.electravaux.com/comment-user" + refpage,
     {
       headers: {
         "Accept": "application/json, text/plain",
@@ -16,6 +16,9 @@ export function fetchCommentsForOnePage(refpage, setfunction) {
     }
   )
     .then((response) => {
+
+      console.log(JSON.parse(response));
+
       console.log(
         "type de reponses de la requete pour récuperer les commentaires: " +
           typeof response
@@ -24,9 +27,9 @@ export function fetchCommentsForOnePage(refpage, setfunction) {
         "valeur de la reponses de la requete pour récuperer les commentaires: " +
           response
       );
-      console.log("longeur de l'objet response: " + response.lenght);
+      console.log("longeur de l'objet response: " + response.length);
 
-      for (let i = 0; i < response.lenght; i++) {
+      for (let i = 0; i < response.length; i++) {
         console.log("user-number: " + i + "user-name: " + response[i].lastname);
       }
       setfunction(response);

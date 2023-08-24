@@ -16,6 +16,9 @@ router.get("/comment-user/:ref", controler.getAllCommentsForOnePage);
 //Routes "post"
 router.post("/comment-user", controler.testForm);
 
-
+//route testst
+router.delete("/comment-user", (req, res) => {
+  res.status(250).json({ "message: ": "la route est propre jusqu ici" });
+});
 
 module.exports = router;

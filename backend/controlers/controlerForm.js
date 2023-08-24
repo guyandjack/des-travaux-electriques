@@ -204,7 +204,7 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
 
   //recuperation des commentaires dans la base sql
 
-  const connection = connectToBdd.connexionToBdd();// definition des parametre de connexion
+  const connection = connectToBdd.connexionToBdd;// definition des parametre de connexion
 
   /************** requetes preparées************* */
 

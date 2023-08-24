@@ -11,28 +11,23 @@ export function fetchCommentsForOnePage(refpage, setfunction) {
         "Content-Type" : "application/json",
       },
       method: "GET",
-      mode: "no-cors",
+      //mode: "no-cors",
       
     }
   )
     .then((response) => {
 
+      console.log(response);
+      return response.json()
+
+        .then((data) => {
+          for (let i = 0; i < data.length; i++) {
+            console.log("user-number: " + i + "user-name: " + data[i].lastname);
+          }
+          setfunction(data);
+        })
       
-
-      console.log(
-        "type de reponses de la requete pour récuperer les commentaires: " +
-          typeof response
-      );
-      console.log(
-        "valeur de la reponses de la requete pour récuperer les commentaires: " +
-          response
-      );
-      console.log("longeur de l'objet response: " + response.length);
-
-      for (let i = 0; i < response.length; i++) {
-        console.log("user-number: " + i + "user-name: " + response[i].lastname);
-      }
-      setfunction(response);
+      
     })
 
     .catch((error) => {

@@ -17,7 +17,7 @@ export function fetchCommentsForOnePage(refpage, setfunction) {
   )
     .then((response) => {
 
-      console.log(JSON.parse(response));
+      
 
       console.log(
         "type de reponses de la requete pour récuperer les commentaires: " +

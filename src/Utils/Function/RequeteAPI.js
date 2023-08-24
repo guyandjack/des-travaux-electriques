@@ -4,7 +4,7 @@
 export function fetchCommentsForOnePage(refpage, setfunction) {
 
   fetch(
-    "https://www.apielectravaux.electravaux.com/comment-user" + refpage,
+    "https://www.apielectravaux.electravaux.com/comment-user/" + refpage,
     {
       headers: {
         "Accept": "application/json, text/plain",

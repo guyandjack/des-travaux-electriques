@@ -156,13 +156,13 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     //evite la soumission automatique du formulaire
     e.preventDefault();
 
-    fetch("https://www.apielectravaux.electravaux.com/comment-user/", {
+    fetch("http://www.apielectravaux.electravaux.com/comment-user/form", {
       headers: {
         Accept: "application/json, text/plain",
         "Content-Type": "application/json",
       },
       method: "POST",
-      mode: "no-cors",
+      //mode: "no-cors",
       body: JSON.stringify(bodyrequest),
     })
       .then((response) => {

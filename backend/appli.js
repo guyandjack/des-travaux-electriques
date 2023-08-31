@@ -13,7 +13,7 @@ const routeApiCommentUser = require("./routes/commentRoute.js");
 const appli = express();
 
 //parametrage du header de réponse pour annuler la sécurité "CORS"
-appli.use( securityCORS.setHeaderSecurityCORS);
+appli.use(securityCORS.setHeaderSecurityCORS());
 
 //permet d' exploiter le contenu json du corps des requettes
 appli.use(express.json());

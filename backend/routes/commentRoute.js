@@ -4,7 +4,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const controler = require("../controler/controlerForm.js");
+const controler = require("../controlers/controlerForm.js");
 
 //router.get("/testbdd", controler.testConnexionBdd);
 
@@ -14,7 +14,7 @@ const controler = require("../controler/controlerForm.js");
 router.get("/comment-user/:ref", controler.getAllCommentsForOnePage);
 
 //Routes "post"
-router.post("/comment-user", controler.testForm);
+router.post("/comment-user/form", controler.testForm);
 
 //route testst
 router.delete("/comment-user", (req, res) => {

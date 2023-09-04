@@ -39,7 +39,8 @@ const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 function PagePC16A() {
   const [imageSize, setImageSize] = useState("");
   const [arrayComments, setArrayComments] = useState([]);
-  let [isFirstTime, setIsFirstTime] = useState(true);
+  //let [isFirstTime, setIsFirstTime] = useState(true);
+  const [initialIdValue, setInitialIdValue] = useState(-1);
 
   //url image
 
@@ -54,7 +55,6 @@ function PagePC16A() {
   //variable
   let originalFirstname = null;
   let originalContent = null;
-  let originalCommentId = null;
   let commentDate = null;
 
   //hooks
@@ -75,11 +75,18 @@ function PagePC16A() {
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
   //todo: implementer une com wesocket avec le serveur
   useEffect(() => {
-    requestFetch.fetchCommentsForOnePage(refPage, setArrayComments);
-    setInterval(
-      () => requestFetch.fetchCommentsForOnePage(refPage, setArrayComments),
+
+    //premiere requete une fois les composants montés.
+    //et emsuite toute les minutes
+    requestFetch.fetchCommentsForOnePageTest(refPage, setArrayComments);
+    const timer = setInterval(
+      () => requestFetch.fetchCommentsForOnePageTest(refPage, setArrayComments),
       60000
-    );
+    )
+    //lorsque que le composant est demonté on stope le timer
+    return function () {
+      clearInterval(timer)
+    }
   }, []);
 
   //Préremplie les inputs user si une session est ouverte
@@ -194,11 +201,11 @@ function PagePC16A() {
           pageRef={refPage}
           isResponse={0}
           responseTo={null}
-          responseIdTo={null}
+          responseIdTo={initialIdValue}
         />
       </div>
       <ul id="" className="container-comment">
-        {/****************************** Logique des commentaires:*******************************************
+        {/****************************** Logique des commentaires  *******************************************
 
         -1- chaque commentaire s' affiche ds l'ordre chronologique d' enregistrement de la bdd (comme une messagerie/chat)
 
@@ -209,8 +216,9 @@ function PagePC16A() {
 
         -3- Distinction des types de commentaire
           On utilise trois champs de la bdd
+
           a) "id"                 du commentaire générer par la bdd lors de l'enregistrement
-          b) "originalcommentid"  determiné par le bakend et inseré dans la bdd lors de l'enregistrement
+          b) "originalcommentid"  générer par le formulaire qui soumet les infos au backend
           c) "response"           générer par le formulaire qui soumet les infos au backend
 
         -4- Contenu  des commentaires
@@ -218,13 +226,13 @@ function PagePC16A() {
 
             a) Le "prénom/pseudo" de l' utilisateur issu de la bdd
             b) La "Date" issu de la bdd formatée par le frontend avec la fonction "formatDate"
-            c) Le contenu textuel du issu de la bdd
+            c) Le contenu textuel du issu de la bdd (corps du message)
 
           II) Commentaire Type b et Type c
 
             a) Le "prénom/pseudo" de l' utilisateur issu de la bdd
             b) La "Date" issu de la bdd formatée par le frontend avec la fonction "formatDate"
-            c) Le contenu textuel du issu de la bdd
+            c) Le contenu textuel du issu de la bdd (corps du message)
             d) le "prenom/pseudo" du commentaite original/initial
             e) Le contenu textuel du commentaire original/initial
 
@@ -240,21 +248,16 @@ function PagePC16A() {
               //formatage de la date
               commentDate = dateFormat.formatDate(onecomment.date);
 
-              //recuperation de l' "id" du commentaire original
-              originalCommentId = onecomment.originalcommentid;
-
-              
               //si "response" est egal à "1" ce commentaire est une réponse.
+              //On recherche le commentaire original qui lui correspond
               if (onecomment.response == 1) {
                 //Seconde itération dans le  tableau des commentaires.
-                //pour trouver un commentaire dont l'"id" correspond à "originalCommentId"
+                //pour trouver un commentaire dont l'"id" correspond à "originalCommentId" du commentaire "response"
                 //On recupere ainsi les infos du commentaire original
                 let theFindedCommentOriginal = arrayComments.find(
-                  (findedComment) => findedComment.id == originalCommentId
+                  (findedComment) =>
+                    findedComment.id == onecomment.originalcommentid
                 );
-
-                //Un commentaire "reponse" à un "originalcommentid" égal à son "id"
-                originalCommentId = onecomment.id;
 
                 //Recuperation du "prenom" , du "contenu"  du commentaire "original"
                 originalFirstname = theFindedCommentOriginal.firstname;
@@ -271,7 +274,7 @@ function PagePC16A() {
                     originalfirstname={originalFirstname}
                     originaltext={originalContent}
                     //props à transmettre au formulaire contenu dans "commentUser"
-                    originalcommentid={originalCommentId}
+                    originalcommentid={onecomment.id}
                     //id du commentaire original à envoyer via le formulaire pour la bdd
                     //Cet id original est l' id du commentaire parent.
                   />

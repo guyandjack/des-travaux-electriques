@@ -5,18 +5,13 @@
 
 /************************************************************************************************ */
 
-
 //Import des fonctions
 
 //Contient les parametres de connexion de la bdd.
 const connectToBdd = require("../utils/functions/connexionBdd.js");
 
-
-
 //Contient les fonction de control des data du formulaire.
 const checkForm = require("../utils/functions/checkDataForm.js");
-
-
 
 exports.testForm = (req, res) => {
   //Controle la presence des données "obligatoires" issues des inputs du formulaire.
@@ -102,7 +97,7 @@ exports.testForm = (req, res) => {
   ) {
     //Enregistrement du commentaire dans la base sql
 
-    const connection = connectToBdd.connexionToBddTest;
+    const connection = connectToBdd.connexionToBddTest();
 
     //Composition des requetes preparees
 
@@ -199,7 +194,7 @@ exports.testForm = (req, res) => {
     });
   } else {
     res.status(500).json({
-      message: "des donnees sont manquqntes!!!",
+      message: "des donnees sont manquantes!!!",
     });
   }
 };
@@ -207,32 +202,27 @@ exports.testForm = (req, res) => {
 //Middelware qui recupere tous les commentaires correspondant à la page consultée.
 
 exports.getAllCommentsForOnePage = (req, res, next) => {
-    
   //Si le paramtere de l' url contient une reference de page valide on recupere cette reference
   let param = "";
-  if(
-      req.params.ref === "pc16a" ||
-      req.params.ref === "circuit-eclairage" ||
-      req.params.ref === "circuit-specialise"
-      ){
-      
-       param = req.params.ref;
+  if (
+    req.params.ref === "pc16a" ||
+    req.params.ref === "circuit-eclairage" ||
+    req.params.ref === "circuit-specialise"
+  ) {
+    param = req.params.ref;
+  } else {
+    res.status(403).json({ "message:": "Page inconnue!" });
   }
-  else{
-      res.status(403).json({"message:" : "Page inconnue!"})
-  }
-  
 
   //recuperation des commentaires dans la base sql
-  
+
   // definition des parametre de connexion
   const connection = connectToBdd.connexionToBddTest();
- 
 
   /************** requetes preparées************* */
 
   //Requete type "select All comments"
-  let requeteSelectAllCommentsFromPage = `SELECT id, firstname, content, date, originalcommentid, response FROM user_comment WHERE pageref = ?`;
+  let requeteSelectAllCommentsFromPage = `SELECT id, firstname, content, date, originalcommentid, response FROM user_comment_test WHERE pageref = ?`;
 
   //parametres de la requete "select page comments"
   let paramSelectAllCommentsFromPage = [param];
@@ -240,7 +230,7 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
   //Connection à la bdd sql "travaux_electriques"
   connection.connect(function (err) {
     if (err) {
-        res.status(400).json({"message: ": "probleme identifiant connexion"})
+      res.status(400).json({ "message: ": "probleme identifiant connexion" });
       return console.error("error de connection: " + err.message);
     }
     let date = new Date();

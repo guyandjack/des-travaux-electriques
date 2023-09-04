@@ -14,7 +14,7 @@ function CollapseUserSession() {
   const [userFirstName, setUserFirstName] = useState(null);
 
   useEffect(() => {
-    //le composant s' affiche uniquement si une session est ouverte
+    //le composant s'affiche uniquement si une session est ouverte
 
     if (localStorage.getItem("session")) {
       let userSession = JSON.parse(localStorage.getItem("session"));

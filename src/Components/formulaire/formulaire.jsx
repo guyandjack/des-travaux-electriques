@@ -66,9 +66,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   const [userUrlValue, setUserUrlValue] = useState(window.location.href);
   const [pageRefValue, setPagerefValue] = useState(pageRef);
   const [isResponseValue, setIsResponseValue] = useState(isResponse);
-  const [originalCommentIdValue, setOriginalCommentIdValue] = useState(
-    responseIdTo
-  );
+  const [originalCommentIdValue, setOriginalCommentIdValue] = useState(responseIdTo);
 
   //Indique si une session user est ouverte
   const [isSessionOpen, setIsSessionOpen] = useState(
@@ -156,7 +154,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     //evite la soumission automatique du formulaire
     e.preventDefault();
 
-    fetch("http://www.apielectravaux.electravaux.com/comment-user/form", {
+    fetch("http://www.apielectravauxtest.electravaux.com/comment-user/form", {
       headers: {
         Accept: "application/json, text/plain",
         "Content-Type": "application/json",
@@ -194,17 +192,16 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             localStorage.setItem("activePage", "0");
             //console.log(data);
           })
-          .then(setOriginalCommentIdValue(""));
+          .then(setOriginalCommentIdValue(responseIdTo));
         //.then(window.location.reload())
       })
-     
 
       .catch((error) => console.log(error));
   }
 
   /****** fonction de validation des inputs user************ */
 
-  //Valide l' input "lastName"
+  //Valide l'input "lastName"
   function validLastName(e) {
     if (masqueText.test(e.target.value) !== true) {
       messageErrorLastName = "veuillez entrer un nom valide";
@@ -461,10 +458,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       <input type="hidden" name="userurl" value={userUrlValue} />
       <input type="hidden" name="pageref" value={pageRefValue} />
       <input type="hidden" name="isresponse" value={isResponseValue} />
-      <input
-        type="hidden"
-        name="originalcommentid"
-        value={originalCommentIdValue}
+      <input type="hidden" name="originalcommentid" value={originalCommentIdValue}
       />
 
       <div className="cont-valid-btn">

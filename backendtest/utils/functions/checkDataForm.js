@@ -1,0 +1,162 @@
+/*********************************************************************************************************
+ * *****************************************************************************************************
+ *                 fonctions utilisées par les middelwares de "commentControleur2"                        *
+ * ******************************************************************************************************
+ * ************************************************************************************************* */
+
+/*********************************************************************************************************
+ *                         fonctions qui controlent les data issues du formulaire                        *
+ ******************************************************************************************************* */
+//Import du module "mysql"
+const mysql = require("mysql");
+
+//import des regEx pour les fonctions de controle des donées du formulaire
+const regEx = require("../regEx/RegExForm.js");
+
+//Import du tableau qui contient les "references de page" creés par le frontend
+const refPageValided = require("../../data/refpage/refpage.js");
+
+//Valide l' input "lastName"
+function validLastName(lastName) {
+  if (
+    
+    regEx.masquetext.test(lastName) !== true
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//Valide l' input "firstName"
+function validFirstName(firstName) {
+  if (
+    regEx.masquetext.test(firstName) !== true 
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//Valide l' input "mail"
+function validMail(email) {
+  if (
+    regEx.masquemail.test(email) !== true 
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//Valide le message utilisateur
+function validMessage(comment) {
+  if (
+    regEx.masquemessage.test(comment) !== true 
+  ) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//Valide la réference de la page
+function validReferencePage(refPage) {
+  
+  let foundedRef = refPageValided.includes(refPage); 
+
+  if(!foundedRef ){
+    return false;
+  } else {
+    return true;
+  }
+}
+
+//Valide un entier qui indique si le commentaire est une réponse à un autre commentaire
+function validIsResponse(isResponse) {
+
+  if (isResponse > 1 || isResponse < 0) {
+    return false;
+  } 
+  else {
+    return true
+  }
+  
+}
+
+//Valide l' id du commentaire original
+function validOriginalCommentId(originalCommentId) {
+  
+  if (regEx.masquenumber.test(originalCommentId) !== true) {
+    return false
+  } else {
+    return true
+  }
+}
+
+//valide l'autorisation d' enregistrer une session utilisateur
+
+function validCheckbox(userData) {
+  //La valeur du checkbox peut etre nulle, ou absente.
+
+  if (regEx.masquecheckbox.test(userData) !== true) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+/********************************************************************************************************
+ *                              fonctions diverse du middelware                                        *
+ * *****************************************************************************************************/
+
+//Recupere l'adresse ip de l'utilisateur
+
+function getUserIP(req) {
+  var ip =
+    req.ip ||
+    req.headers["x-forwarded-for"] ||
+    req.connection.remoteAddress ||
+    req.socket.remoteAddress ||
+    req.connection.socket.remoteAddress;
+  ip = ip.split(",")[0];
+  //ip = ip.split(':').slice(-1); //in case the ip returned in a format: "::ffff:146.xxx.xxx.xxx"
+  return ip;
+}
+
+//creation d' un objet à renvoyer au frontend suite à l' enregistrement d' un commentaire
+
+function objectResponse(lastName, firstName, email, checkboxvalue) {
+  let object = {};
+
+  if (checkboxvalue == "ok") {
+    object = {
+      validsession: "ok",
+      userDataName: lastName,
+      userDataFirstname: firstName,
+      userDataEmail: email,
+    };
+  } else {
+    object = {
+      validsession: "no",
+    };
+  }
+  return object;
+}
+
+
+
+module.exports = {
+  validlastname: validLastName,
+  validfirstname: validFirstName,
+  validmail: validMail,
+  validmessage: validMessage,
+  validreferencepage: validReferencePage,
+  validisresponse: validIsResponse,
+  validoriginalcommentid: validOriginalCommentId,
+  validcheckbox: validCheckbox,
+  getuserip: getUserIP,
+  objectresponse: objectResponse,
+  
+};

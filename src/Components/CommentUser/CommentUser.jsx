@@ -21,7 +21,6 @@ function CommentUser({
   originaltext,
   originalcommentid,
 }) {
-
   //Variable de class de style
   let classContainerComment = "container-comment-user";
   let classCommentUser = "comment-user";
@@ -32,7 +31,7 @@ function CommentUser({
   let actualUrl = window.location.href;
   let splitUrl = actualUrl.split("/");
   let refPage = splitUrl[splitUrl.length - 1];
-  
+
   //Affiche le formulaire pour effectuer une réponse à un commentaire.
 
   function displayFormResponse(e) {

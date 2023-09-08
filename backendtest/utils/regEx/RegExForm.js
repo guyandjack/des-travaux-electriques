@@ -15,7 +15,7 @@ const masqueText = /^[A-Za-z_'.-\s]{2,50}$/;
 //nombres de carractere compris entre 1 et 4.
 const masqueNumber = /^([-][1]|[0-9]{0,4})$/;
 
-/***** Permet le controle d' une input caché "refpage" ***********/
+/***** Permet le controle d'une input caché "refpage" ***********/
 
 //Motif qui autorise un nombre ou un chiffre, lettres majuscules et minuscules,
 //underscore, apostrophe, point, trait d'union
@@ -41,7 +41,7 @@ const masqueCheckBox = /^([n][o]|[o][k])$/;
 
 /***** Permet le controle de l' input "content" (le corps du message)  **********/
 
-//Motif qui autorise tous les carracteres à l' exeption des balises ouvrantes, accolades, crochets, signe multiplié et signe logique (ou)
+//Motif qui autorise tous les carracteres à l'exeption des balises ouvrantes, accolades, crochets, signe multiplié et signe logique (ou)
 const masqueMessage = /^[^<>{}\[\]*|]{20,200}$/;
 
 module.exports = {

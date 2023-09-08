@@ -9,13 +9,20 @@ import { ButtonStd } from "../ButtonStd/ButtonStd";
 //Import des feuille de style
 import "../../Style/CSS/formulaire.css";
 
+//Import de la fonction qui soumet le formulaire au backend
+import { submitForm } from "../../Utils/Function/formComment/requete/formSubmit.js";
+
+//Import des regEx pour le controle des inputs du formulaire
+import { masqueText, masqueMail, masqueMessage } from "../../Utils/regEx/regExForm.js";
+
+
 //Import des fonctions
 const testSession = require("../../Utils/Function/LocalStorage");
+
 
 //Fonction "Formulaire"
 
 function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
-  
   //Class css des élements du DOM
   let form = "form";
   let form_input = "form-input";
@@ -69,12 +76,10 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   const [originalCommentIdValue, setOriginalCommentIdValue] = useState(responseIdTo);
 
   //Indique si une session user est ouverte
-  const [isSessionOpen, setIsSessionOpen] = useState(
-    testSession.isSessionOpen()
-  );
+  const [isSessionOpen, setIsSessionOpen] = useState(testSession.isSessionOpen());
 
   //si une session est ouverte:
-  //le formulaire doit renvoyer la valeur "userData" egal à "ok"
+  //le formulaire doit envoyer au backend la valeur "userData" egal à "ok" 
   //Les states mame, firstname, email doivent etre mis à jour avec le contenu du localstorage pour la soumission du formulaire
   // on valide ensuite les entrees nom prenom et email pour l'utilisateur (effet visuel)
 
@@ -130,74 +135,11 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     }
   }, [isValidLastName, isValidFirstName, isValidMail, isValidMsg]);
 
-  /********************** expressions regulieres ******************/
-
-  //Motif qui autorise lettres majuscules et minuscules uniquement
-  let masqueText = /^[A-Za-z_'.-]{2,20}$/;
-
-  //Motif qui autorise une adresse mail qui peut commencer par:
-  //0 ou 4 chiffres
-  //suivi de lettres minuscules,ou underscore, ou point, ou trait d'union, ou apostrophe entre 2 et 10 carracteres
-  //suivi d' un arobase
-  //suivi de lettres minuscules,ou underscore, ou point, ou trait d'union entre, ou apostrophe, virgule, point-virgule, double point 2 et 10 carracteres
-  //suivi d' un point
-  //suivi de lettres minuscules ou majuscules entre 2 et 10 caracteres
-  let masqueMail = /^[0-9]{0,4}[0-9a-z_'.-]{2,30}@[0-9a-z_'.-]{2,15}\.[0-9a-zA-Z_'.-]{2,15}$/;
-
-  //Motif qui autorise des nombres, lettres minuscules et majuscules, point, trait d'union, apotrophe, et underscore de 10 a 200 caracteres
-  let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!ç\n\s]{10,200}$/;
+  
 
   /********************* declaration des fonctions ************************ */
 
-  //realise une requete "fetch" lors de la soummission du formulaire.
-  function submitForm(e) {
-    //evite la soumission automatique du formulaire
-    e.preventDefault();
-
-    fetch("http://www.apielectravauxtest.electravaux.com/comment-user/form", {
-      headers: {
-        Accept: "application/json, text/plain",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      //mode: "no-cors",
-      body: JSON.stringify(bodyrequest),
-    })
-      .then((response) => {
-        console.log(
-          "type du resultat brut de la requette formulaire: " + typeof response
-        );
-        console.log("resultat brut de la requette formulaire: " + response);
-        response
-          .json()
-          .then((data) => {
-            console.log(
-              "type du resultat 'jsoned' de la requette formulaire: " +
-                typeof data
-            );
-            console.log("resultat 'jsoned' de la requette formulaire: " + data);
-            JSON.stringify(data);
-          })
-          .then((datastringed) => {
-            console.log(
-              "type du resultat 'stringified' de la requette formulaire: " +
-                typeof datastringed
-            );
-            console.log(
-              "resultat 'stringified' de la requette formulaire: " +
-                datastringed
-            );
-
-            localStorage.setItem("session", datastringed);
-            localStorage.setItem("activePage", "0");
-            //console.log(data);
-          })
-          .then(setOriginalCommentIdValue(responseIdTo));
-        //.then(window.location.reload())
-      })
-
-      .catch((error) => console.log(error));
-  }
+  
 
   /****** fonction de validation des inputs user************ */
 
@@ -246,7 +188,8 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   //Valide le message utilisateur
   function validMessage(e) {
     if (masqueMessage.test(e.target.value) !== true) {
-      messageErrorMsg = "Nbr de carracteres incorrects ou carracteres non autorisés";
+      messageErrorMsg =
+        "Nbr de carracteres incorrects ou carracteres non autorisés";
       setisValidMsg(false);
       setMsg(messageErrorMsg);
     } else {
@@ -281,7 +224,9 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       className={form}
       method="post"
       onSubmit={(evt) => {
-        submitForm(evt);
+        submitForm(evt, bodyrequest);
+        setOriginalCommentIdValue(responseIdTo);
+        //window.location.reload();
       }}
     >
       {isResponse ? (
@@ -439,7 +384,6 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             name="comment"
             min="10"
             max="200"
-            
             required
             onChange={function (evt) {
               validMessage(evt);
@@ -454,11 +398,14 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       >
         {msg}
       </p>
-
+      <input type="hidden" name="sujet" value={""} />
       <input type="hidden" name="userurl" value={userUrlValue} />
       <input type="hidden" name="pageref" value={pageRefValue} />
       <input type="hidden" name="isresponse" value={isResponseValue} />
-      <input type="hidden" name="originalcommentid" value={originalCommentIdValue}
+      <input
+        type="hidden"
+        name="originalcommentid"
+        value={originalCommentIdValue}
       />
 
       <div className="cont-valid-btn">

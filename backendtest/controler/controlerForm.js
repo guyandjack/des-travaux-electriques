@@ -15,6 +15,11 @@ const checkForm = require("../utils/functions/checkDataForm.js");
 
 exports.testForm = (req, res, next) => {
 
+  //Controle anti-spam (pot de miel)
+  if (req.body.sujet !== "") {
+    res.status(404).json({ "message:": " Probalité d'un spam" });
+  }
+
   //Controle la presence  des données issues des inputs du formulaire.
 
   //tableau renvoyé au front end si une input du formulaire est manquante
@@ -262,10 +267,13 @@ exports.testForm = (req, res, next) => {
       }
 
       let resultForClient = checkForm.objectresponse(
+        //variable pour premplir les champs du formulaire
         lastName,
         firstName,
         email,
+        //Variable qui permet de tester si l'utilisateur souhaite être reconnu
         userData
+        //Variablecontenant l'ip de l'utilisateur qui
       );
 
       res.status(201).json(resultForClient);
@@ -280,18 +288,10 @@ exports.testForm = (req, res, next) => {
 //Middelware qui recupere tous les commentaires correspondant à la page consultée.
 
 exports.getAllCommentsForOnePage = (req, res, next) => {
-  //Si le paramtere de l' url contient une reference de page valide on recupere cette reference
-  let param = "";
-  if (
-    req.params.ref === "pc16a" ||
-    req.params.ref === "circuit-eclairage" ||
-    req.params.ref === "circuit-specialise"
-  ) {
-    param = req.params.ref;
-  } else {
-    res.status(403).json({ "message:": "Page inconnue!" });
-  }
 
+  //Recuperation de la reference de la page consultée.
+  let param = req.params.ref;
+  
   //recuperation des commentaires dans la base sql
 
   // definition des parametre de connexion

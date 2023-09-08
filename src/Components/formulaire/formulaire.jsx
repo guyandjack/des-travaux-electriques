@@ -398,7 +398,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       >
         {msg}
       </p>
-      <input type="hidden" name="sujet" value={""} />
+      <input type="hidden" name="sujet"  />
       <input type="hidden" name="userurl" value={userUrlValue} />
       <input type="hidden" name="pageref" value={pageRefValue} />
       <input type="hidden" name="isresponse" value={isResponseValue} />

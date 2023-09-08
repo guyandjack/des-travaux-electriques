@@ -15,6 +15,11 @@ const checkForm = require("../utils/functions/checkDataForm.js");
 
 exports.testForm = (req, res, next) => {
 
+  //Controle si la requete utilisateur provient du site 'electravaux.com'
+  if (req.hostname !== "http//:www.electravaux.com") {
+    res.status(450).json({ "message: ": "vient d' un autre site" });
+  }
+
   //Controle anti-spam (pot de miel)
   if (req.body.sujet !== "") {
     res.status(404).json({ "message:": " Probalité d'un spam" });

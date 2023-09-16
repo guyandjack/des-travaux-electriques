@@ -3,47 +3,72 @@
 //Import de la charte de couleur
 @import "../../../SASS/utils/colors-rule/colors-rule.scss";
 
-.container-user-session, .list{
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+.collapse-session{
+    margin-right: 10px;
+    max-height: 100%;
 
-    background-color: map-get($colors-rule, third-color);
-    height: 100%;
+    
 }
 
-.container-icon{
+.collapse-session:hover{
+
+    .list{
+        //display: flex;
+        max-height: 100px;
+        transform: translateX(0%);
+        opacity:1;
+        transition: opacity 500ms, transform 500ms, max-height 500ms ;
+    }
+}
+
+
+
+.collapse-session .container-icon{
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
 }
 
-.text{
+.collapse-session .text{
     flex: 1 1 auto;
     //min-width: 60%;
     font-size: 1em; 
     color:map-get($colors-rule, fifth-color);
     padding: 0.5em;
     text-transform: capitalize;
+    
+    .color-name{
+        color:map-get($colors-rule, second-color);
 
+    }
 }
 
 .icon > path{
     
-  d:path("M480 575q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160 896v-94q0-38 19-65t49-41q67-30 128.5-45T480 636q62 0 123 15.5t127.921 44.694q31.301 14.126 50.19 40.966Q800 764 800 802v94H160Zm60-60h520v-34q0-16-9.5-30.5T707 750q-64-31-117-42.5T480 696q-57 0-111 11.5T252 750q-14 7-23 21.5t-9 30.5v34Zm260-321q39 0 64.5-25.5T570 425q0-39-25.5-64.5T480 335q-39 0-64.5 25.5T390 425q0 39 25.5 64.5T480 515Zm0-90Zm0 411Z");
   fill: map-get($colors-rule, fifth-color);
   
 }
 
 
-.list{
+.collapse-session .list{
+    
+    opacity:0;
+    max-height: 0px;
+    transform:translateX(100%);
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     width: 100%;
+    background-color: map-get($colors-rule, third-color);
+
+    transition: opacity 300ms, transform 50ms linear 250ms, max-height 300ms; 
+                
+    
 }
 
 .list-li{
-    background-color: lighten(map-get($colors-rule, third-color),10%);
+    background-color: lighten(map-get($colors-rule, third-color),5%);
     text-align: center;
     width: 100%;
 

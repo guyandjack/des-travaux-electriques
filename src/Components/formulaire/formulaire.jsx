@@ -74,34 +74,36 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   const [pageRefValue, setPagerefValue] = useState(pageRef);
   const [isResponseValue, setIsResponseValue] = useState(isResponse);
   const [originalCommentIdValue, setOriginalCommentIdValue] = useState(responseIdTo);
+  const [sujetValue, setSujetValue] = useState(null);
 
   //Indique si une session user est ouverte
   const [isSessionOpen, setIsSessionOpen] = useState(testSession.isSessionOpen());
-
+  console.log("valeur de is session: " + isSessionOpen);
   //si une session est ouverte:
   //le formulaire doit envoyer au backend la valeur "userData" egal à "ok" 
   //Les states mame, firstname, email doivent etre mis à jour avec le contenu du localstorage pour la soumission du formulaire
   // on valide ensuite les entrees nom prenom et email pour l'utilisateur (effet visuel)
 
   if (isSessionOpen == true) {
-    let dataUser = JSON.parse(localStorage.getItem("session"));
+
+    let dataUserSession = JSON.parse(localStorage.getItem("UserSession"));
 
     if (userDataValue !== "ok") {
       setUserDataValue("ok");
     }
 
-    if (dataUser.userDataName !== lastNameValue) {
-      setLastnameValue(dataUser.userDataName);
+    if (dataUserSession.userDataName !== lastNameValue) {
+      setLastnameValue(dataUserSession.userDataName);
       setisValidLastName(true);
     }
 
-    if (dataUser.userDataFirstname !== firstNameValue) {
-      setFirstNameValue(dataUser.userDataFirstname);
+    if (dataUserSession.userDataFirstname !== firstNameValue) {
+      setFirstNameValue(dataUserSession.userDataFirstname);
       setisValidFirstName(true);
     }
 
-    if (dataUser.userDataEmail !== emailValue) {
-      setEmailValue(dataUser.userDataEmail);
+    if (dataUserSession.userDataEmail !== emailValue) {
+      setEmailValue(dataUserSession.userDataEmail);
       setisValidMail(true);
     }
   }
@@ -117,6 +119,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
     isresponse: isResponseValue,
     originalcommentid: originalCommentIdValue,
     userdata: userDataValue,
+    sujet: sujetValue
   };
 
   //valide le button submit en fonction de l'etat des inputs utilisateur
@@ -337,31 +340,13 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       >
         {mail}
       </p>
-      {isSessionOpen == true ? (
+      
         <div className="cont-label-input">
           <label className="container-checkbox">
             <input
               className="checkbox"
               type="checkbox"
               name="userdata"
-              value="ok"
-              checked
-              disabled
-            />
-            <p className="text-label">
-              Se souvenir de moi si je souhaite rajouter un commentaire pendant
-              la même session.
-            </p>
-          </label>
-        </div>
-      ) : (
-        <div className="cont-label-input">
-          <label className="container-checkbox">
-            <input
-              className="checkbox"
-              type="checkbox"
-              name="userdata"
-              value="ok"
               onClick={function (evt) {
                 validSessionUser(evt);
               }}
@@ -372,7 +357,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             </p>
           </label>
         </div>
-      )}
+      
 
       <div className="cont-label-input">
         <label className="form-label" min="2" max="200">

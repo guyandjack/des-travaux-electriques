@@ -1,8 +1,11 @@
-//realise une requete "fetch" pour la soummission du formulaire.
+//réalise une requete "fetch" pour la soummission du formulaire.
+/**************
+ * arg1: évènement "submit" du formulaire concerné
+ * arg2: corps de la requete à transmettre
+ *************/
 
- function submitForm(e, bodyrequest) {
-
-  //evite la soumission automatique du formulaire
+function submitForm(e, bodyrequest) {
+  //évite la soumission automatique du formulaire
   e.preventDefault();
 
   fetch("http://www.apielectravauxtest.electravaux.com/comment-user/form", {
@@ -14,38 +17,23 @@
     body: JSON.stringify(bodyrequest),
   })
     .then((response) => {
-      console.log(
-        "type du resultat brut de la requette formulaire: " + typeof response
-      );
-      console.log("resultat brut de la requette formulaire: " + response);
-      response
-        .json()
+      response.json() 
+      
         .then((data) => {
-          console.log(
-            "type du resultat 'jsoned' de la requette formulaire: " +
-              typeof data
-          );
-          console.log("resultat 'jsoned' de la requette formulaire: " + data);
-          JSON.stringify(data);
-        })
-        .then((datastringed) => {
-          console.log(
-            "type du resultat 'stringified' de la requette formulaire: " +
-              typeof datastringed
-          );
-          console.log(
-            "resultat 'stringified' de la requette formulaire: " + datastringed
-          );
 
-          localStorage.setItem("session", datastringed);
+          localStorage.setItem("UserSession", data);
           localStorage.setItem("activePage", "0");
-          
+
         })
         
-      //.then(window.location.reload())
+
+         
     })
+
+      //.then(window.location.reload())
+    
 
     .catch((error) => console.log(error));
 }
 
-export {submitForm}
+export { submitForm };

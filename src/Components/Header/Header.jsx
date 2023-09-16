@@ -262,7 +262,7 @@ function Header() {
           </NavMenu>
         </div>
         {!isSmallScreen ? (
-          <div className="header__container-div-session">
+          <div className="header__collapse-session">
             <CollapseUserSession />
           </div>
         ) : null}

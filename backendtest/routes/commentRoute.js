@@ -1,24 +1,26 @@
-/************** objet router definissant toutes les routes "electravaux" **************/
+/******************************************************************************** */
+/**************  definission de toutes les routes "electravaux" **************/
+/***************************************************************************** */
 
+//Import du package "express"
 const express = require("express");
 
+//Instance de l' objet "Router"
 const router = express.Router();
 
-const controler = require("../controler/controlerForm.js");
+//Import du controler qui gerele données issues du formulaire
+const checkFieldForm = require("../controler/controlerForm.js");
 
-//router.get("/testbdd", controler.testConnexionBdd);
+//Import du controler qui recupere les commentaires issus de la bdd, pour la page consultée
+const getAllComments = require("../controler/getAllComments.js");
 
-//router.get("/testserver", controler.testConnexionServer);
+
+/************  ensemble des routes  ****************** */
 
 //Routes "get"
-router.get("/comment-user/:ref", controler.getAllCommentsForOnePage);
+router.get("/comment-user/:ref", getAllComments.getAllCommentsForOnePage);
 
 //Routes "post"
-router.post("/comment-user/form", controler.testForm);
-
-//route testst
-router.delete("/comment-user", (req, res) => {
-  res.status(250).json({ "message: ": "la route est propre jusqu ici" });
-});
+router.post("/comment-user/form", checkFieldForm.testForm);
 
 module.exports = router;

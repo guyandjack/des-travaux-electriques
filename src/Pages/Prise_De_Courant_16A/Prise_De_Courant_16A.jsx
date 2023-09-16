@@ -83,7 +83,7 @@ function PagePC16A() {
       () => requestFetch.fetchCommentsForOnePageTest(refPage, setArrayComments),
       60000
     )
-    //lorsque que le composant est demonté on stope le timer
+    //lorsque que le composant est demonté on stope  "timer"
     return function () {
       clearInterval(timer)
     }

@@ -223,7 +223,9 @@
         color: map-get($colors-rule, third-color);
     }
 
-   
+   .color-readonly {
+       color: lighten(map-get($colors-rule, fourth-color),20%)
+   }
 
     .comment-stored{
         display: flex;
@@ -270,4 +272,12 @@
     }
 
     
+    .color-readonly {
+        color: lighten(map-get($colors-rule, fourth-color),40%);
+    }
+
+    .border-readonly{
+        border-bottom: 2px solid lighten(map-get($colors-rule, fourth-color),40%);
+
+    }
 }

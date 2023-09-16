@@ -1,30 +1,31 @@
 //Test si une session user est ouverte
 export function isSessionOpen() {
   if (
-    localStorage.getItem("session") == null ||
-    localStorage.getItem("session") == "undefined" ||
-    !localStorage.getItem("session")
+    localStorage.getItem("UserSession") == null ||
+    localStorage.getItem("UserSession") == "undefined" ||
+    !localStorage.getItem("UserSession")
   ) {
     return false;
   }
 
-  let dataUser = JSON.parse(localStorage.getItem("session"));
+  let dataUserSession = JSON.parse(localStorage.getItem("UserSession"));
 
-  if (dataUser.validsession !== "ok") {
-    return false;
+  if (dataUserSession.validsession == "ok") {
+    return true
   }
 
-  return true;
+  return false
 }
 
-//Attribut des valeurs par defaut issu du local storage dans les inputs utilisateurs du formulaire principal
+//Attribut des valeurs par defaut issu du local storage dans les inputs utilisateurs de tous les formulaires de la page
 
 export function setValueInputUser() {
   let validSession = isSessionOpen();
 
   //si la session est ouverte on preremplie les inputs
   if (validSession == true) {
-    let dataUser = JSON.parse(localStorage.getItem("session"));
+
+    let dataUserSession = JSON.parse(localStorage.getItem("UserSession"));
 
     let listInputName = document.querySelectorAll("input[name=lastname]");
 
@@ -32,20 +33,33 @@ export function setValueInputUser() {
 
     let listInputEmail = document.querySelectorAll("input[name=email]");
 
+    let listInputCheckBox = document.querySelectorAll("input[name=userdata]");
+
     listInputName.forEach((inputName) => {
-      inputName.value = dataUser.userDataName;
-      inputName.placeholder = dataUser.userDataName;
+      inputName.value = dataUserSession.userDataName;
+      inputName.placeholder = dataUserSession.userDataName;
+      inputName.readonly = true;
+      inputName.classList.add("color-readonly","border-readonly");
     });
 
     listInputFirstName.forEach((inputFirstName) => {
-      inputFirstName.value = dataUser.userDataFirstname;
-      inputFirstName.placeholder = dataUser.userDataFirstname;
+      inputFirstName.value = dataUserSession.userDataFirstname;
+      inputFirstName.placeholder = dataUserSession.userDataFirstname;
+      inputFirstName.readonly = true;
+      inputFirstName.classList.add("color-readonly","border-readonly");
     });
 
     listInputEmail.forEach((inputEmail) => {
-      inputEmail.value = dataUser.userDataEmail;
-      inputEmail.placeholder = dataUser.userDataEmail;
+      inputEmail.value = dataUserSession.userDataEmail;
+      inputEmail.placeholder = dataUserSession.userDataEmail;
+      inputEmail.readonly = true;
+      inputEmail.classList.add("color-readonly","border-readonly");
     });
+
+    listInputCheckBox.forEach((inputcheckbox) => {
+      inputcheckbox.checked = true;
+      inputcheckbox.disabled = true;
+    })
   }
 }
 
@@ -58,7 +72,7 @@ export function getUrl() {
 export function pageAperture() {
 
   //Si une session user est ouverte on ajoute une page active
-  let sessionUser = localStorage.getItem("session")? localStorage.getItem("session"):null;
+  let sessionUser = localStorage.getItem("UserSession")? localStorage.getItem("UserSession"):null;
   let activePage = localStorage.getItem("activePage")? localStorage.getItem("activePage"):null;
 
   if (sessionUser !== null && activePage !== null) {
@@ -114,8 +128,8 @@ export function deleteSession() {
   let flag1 = false;
   let flag2 = false;
 
-  if (localStorage.getItem("session")) {
-    localStorage.removeItem("session");
+  if (localStorage.getItem("UserSession")) {
+    localStorage.removeItem("UserSession");
     flag1 = true;
   }
 

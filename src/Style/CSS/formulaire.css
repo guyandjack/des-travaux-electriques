@@ -263,6 +263,10 @@
   color: #3A7D44;
 }
 
+.form .color-readonly {
+  color: #5a5a5a;
+}
+
 .form .comment-stored {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -314,4 +318,12 @@
 
 .form .hide {
   display: none;
+}
+
+.form .color-readonly {
+  color: #8d8d8d;
+}
+
+.form .border-readonly {
+  border-bottom: 2px solid #8d8d8d;
 }

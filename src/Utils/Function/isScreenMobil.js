@@ -2,8 +2,8 @@
 /*** fonction qui determine la taille d'ecran**** */
 
 /********
- * arg 1: est la fonction seteur d'un hook "useState" 
- * return : null
+ 
+ * return : booleen
  ********/
 
 /******
@@ -15,15 +15,15 @@ import { breakPoint } from "../break_point/break_point.js";
 
 function isScreenMobil() {
   
-    console.log("nouvelle taille de l'ecran dans la fonction isScreenMobil: " + window.innerWidth);
+    
 
     if (window.innerWidth > breakPoint.medium_Max) {
-        console.log("la fonction isScreenMobil retourne  FALSE");
+        
        return false;
     }
 
     if (window.innerWidth <= breakPoint.medium_Max) {
-        console.log("la fonction isScreenMobil retourne  TRUE");
+        
         return true;
     }
   

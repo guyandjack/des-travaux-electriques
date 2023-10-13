@@ -78,8 +78,13 @@ function Header() {
 
   //Gere les écouteurs d'évènment scroll et scrollend
   useEffect(() => {
-    //Si on est sur un ecran d' appareil mobile le useEffect ne s'applique pas
-    if (!isSmallScreen) {
+    //Le useEffect s'applique uniaquement si l' ecran n'est pas de type mobile
+
+    let mobile = isScreenMobil();
+
+
+    if (!mobile) {
+      
       window.addEventListener("scroll", () => {
       
       elementHeader.current.classList.replace("grow", "schrink");

@@ -3,21 +3,33 @@
 //Import de la charte de couleur
 @import "../../../SASS/utils/colors-rule/colors-rule.scss";
 
+//Import des mixin qui gére le responsive
+@import "../../utils/mixins/responsive/responsive.scss";
+
 .collapse-session{
+    position:relative;
+        
     margin-right: 10px;
+    margin-bottom: 10px;
     max-height: 100%;
 
     
-}
+    
+    &:hover{
 
-.collapse-session:hover{
-
-    .list{
-        //display: flex;
-        max-height: 100px;
-        transform: translateX(0%);
-        opacity:1;
-        transition: opacity 500ms, transform 500ms, max-height 500ms ;
+        
+    
+        .list{
+            @include upper-medium-screen{
+            display: flex;
+            margin-bottom: 0px;
+            max-height: 100px;
+            transform: translateY(0%);
+            opacity:1;
+            transition: opacity 500ms, transform 500ms, max-height 500ms ;
+            }
+        }
+    
     }
 }
 
@@ -52,29 +64,54 @@
 
 
 .collapse-session .list{
+
+     @include upper-medium-screen{
+        position: absolute;
+        width: 100%;
+        z-index: 10;
+
+    }
     
-    opacity:0;
-    max-height: 0px;
-    transform:translateX(100%);
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     width: 100%;
     background-color: map-get($colors-rule, third-color);
+    
+    @include upper-medium-screen{
+    
+    opacity:0;
+    max-height: 0px;
+    transform:translateY(-100%);
 
-    transition: opacity 300ms, transform 50ms linear 250ms, max-height 300ms; 
-                
+    transition: opacity 300ms, transform 300ms linear, max-height 300ms; 
+    }            
     
 }
 
 .list-li{
+   
     background-color: lighten(map-get($colors-rule, third-color),5%);
     text-align: center;
     width: 100%;
 
     &:hover{
+        @include upper-medium-screen{
         cursor: pointer;
         background-color: lighten(map-get($colors-rule, third-color),30%);
+        }
+    }
+    
+}
+
+.display-none{
+
+     @include under-medium-screen{
+
+        display: none;
+        
     }
 }
+
+
 

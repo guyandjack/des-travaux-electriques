@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 769px) {
   .nav-menu {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -47,7 +47,7 @@
   width: 100%;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 769px) {
   .nav-menu__li {
     margin: 0em 1em;
     -webkit-box-flex: 0;

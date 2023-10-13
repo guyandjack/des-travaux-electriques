@@ -9,11 +9,11 @@
 //Nombre de carracteres compris entre  2 et 50.
 const masqueText = /^[A-Za-z_'.-\s]{2,50}$/;
 
-/***** Permet le controle d' une input caché "response" ***********/
+/***** Permet le controle d' une input "originalcommentId" ***********/
 
-//Motif qui autorise un nombre ou un chiffre
-//nombres de carractere compris entre 1 et 4.
-const masqueNumber = /^([-][1]|[0-9]{0,4})$/;
+//Motif qui autorise "-1" ou " nombre strictement positif "
+//nombres de carractere compris entre 1 et 9999.
+const masqueNumber = /^([-][1]|[1-9]{1}[0-9]{0,3})$/;
 
 /***** Permet le controle d'une input caché "refpage" ***********/
 

@@ -1,19 +1,27 @@
 .collapse-session {
+  position: relative;
   margin-right: 10px;
+  margin-bottom: 10px;
   max-height: 100%;
 }
 
-.collapse-session:hover .list {
-  max-height: 100px;
-  -webkit-transform: translateX(0%);
-      -ms-transform: translateX(0%);
-          transform: translateX(0%);
-  opacity: 1;
-  -webkit-transition: opacity 500ms, max-height 500ms, -webkit-transform 500ms;
-  transition: opacity 500ms, max-height 500ms, -webkit-transform 500ms;
-  -o-transition: opacity 500ms, transform 500ms, max-height 500ms;
-  transition: opacity 500ms, transform 500ms, max-height 500ms;
-  transition: opacity 500ms, transform 500ms, max-height 500ms, -webkit-transform 500ms;
+@media screen and (min-width: 769px) {
+  .collapse-session:hover .list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 0px;
+    max-height: 100px;
+    -webkit-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+    -webkit-transition: opacity 500ms, max-height 500ms, -webkit-transform 500ms;
+    transition: opacity 500ms, max-height 500ms, -webkit-transform 500ms;
+    -o-transition: opacity 500ms, transform 500ms, max-height 500ms;
+    transition: opacity 500ms, transform 500ms, max-height 500ms;
+    transition: opacity 500ms, transform 500ms, max-height 500ms, -webkit-transform 500ms;
+  }
 }
 
 .collapse-session .container-icon {
@@ -50,11 +58,6 @@
 }
 
 .collapse-session .list {
-  opacity: 0;
-  max-height: 0px;
-  -webkit-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-          transform: translateX(100%);
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
@@ -67,11 +70,29 @@
           align-items: center;
   width: 100%;
   background-color: #3A7D44;
-  -webkit-transition: opacity 300ms, max-height 300ms, -webkit-transform 50ms linear 250ms;
-  transition: opacity 300ms, max-height 300ms, -webkit-transform 50ms linear 250ms;
-  -o-transition: opacity 300ms, transform 50ms linear 250ms, max-height 300ms;
-  transition: opacity 300ms, transform 50ms linear 250ms, max-height 300ms;
-  transition: opacity 300ms, transform 50ms linear 250ms, max-height 300ms, -webkit-transform 50ms linear 250ms;
+}
+
+@media screen and (min-width: 769px) {
+  .collapse-session .list {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .collapse-session .list {
+    opacity: 0;
+    max-height: 0px;
+    -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
+    -webkit-transition: opacity 300ms, max-height 300ms, -webkit-transform 300ms linear;
+    transition: opacity 300ms, max-height 300ms, -webkit-transform 300ms linear;
+    -o-transition: opacity 300ms, transform 300ms linear, max-height 300ms;
+    transition: opacity 300ms, transform 300ms linear, max-height 300ms;
+    transition: opacity 300ms, transform 300ms linear, max-height 300ms, -webkit-transform 300ms linear;
+  }
 }
 
 .list-li {
@@ -80,7 +101,15 @@
   width: 100%;
 }
 
-.list-li:hover {
-  cursor: pointer;
-  background-color: #88c892;
+@media screen and (min-width: 769px) {
+  .list-li:hover {
+    cursor: pointer;
+    background-color: #88c892;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .display-none {
+    display: none;
+  }
 }

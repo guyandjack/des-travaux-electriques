@@ -15,8 +15,8 @@
   width: 100%;
   //border: 2px solid blue;
   
-  //responsive pour ecran superieur à small screen
-  @include upper-small-screen{
+  //responsive pour ecran superieur à medium
+  @include upper-medium-screen{
       flex-flow: row nowrap;
       justify-content: flex-end;
       height: 100%;
@@ -34,8 +34,8 @@
     
     //border: 2px solid red;
 
-    //responsive pour écran superieur à small
-    @include upper-small-screen{
+    //responsive pour écran superieur à medium
+    @include upper-medium-screen{
         //border: 2px solid red;
         margin: 0em 1em;
         flex: 0 1 15%;

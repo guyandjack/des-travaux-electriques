@@ -54,7 +54,9 @@ export function fetchCommentsForOnePageTest(refpage, setfunction) {
 
         .then((data) => {
           for (let i = 0; i < data.length; i++) {
-            console.log("user-number: " + i + "user-name: " + data[i].lastname);
+            console.log(
+              "user-number: " + i + " user-name: " + data[i].firstname
+            );
           }
           setfunction(data);
         });

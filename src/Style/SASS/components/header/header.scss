@@ -24,7 +24,7 @@
   height: 80px;
   
 
-  .banner {
+  &__banner {
     
     background-color: map-get($colors-rule, second-color );
     
@@ -89,10 +89,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
+  
 }
 
 .schrink {
-  //responsive pour écran superieur à small
+  //responsive pour écran superieur à medium
   @include upper-medium-screen {
     transition: height 100ms ease-in;
     height: 70px;
@@ -100,7 +102,7 @@
 }
 
 .grow {
-  //responsive pour écran supérieur à small
+  //responsive pour écran supérieur à medium
   @include upper-medium-screen {
     transition: height 250ms linear;
     height: 90px;

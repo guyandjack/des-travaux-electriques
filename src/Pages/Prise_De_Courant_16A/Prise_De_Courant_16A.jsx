@@ -19,6 +19,7 @@ import { ContainerImg } from "../../Components/Container_img/Container_img.jsx";
 import { ButtonStd } from "../../Components/ButtonStd/ButtonStd.jsx";
 import { Formulaire } from "../../Components/Formulaire/Formulaire.jsx";
 import { CommentUser } from "../../Components/CommentUser/CommentUser.jsx";
+import { Loader } from "../../Components/Loader/Loader.jsx";
 
 //Import des functions
 import { scrollTo } from "../../Utils/Function/scrollTo.js";
@@ -31,15 +32,15 @@ import "../../Style/CSS/prise_courant.css";
 //Import des fonctions
 const requestFetch = require("../../Utils/Function/RequeteAPI.js");
 const dateFormat = require("../../Utils/Function/Date.js");
-const sizeScreen = require("../../Utils/Function/Size.js");
+const sizeScreen = require("../../Utils/Function/giveImageSize.js");
 const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 
 //Fonction "PagePC16A"
 
 function PagePC16A() {
+  //hooks "useState"
   const [imageSize, setImageSize] = useState("");
   const [arrayComments, setArrayComments] = useState([]);
-  //let [isFirstTime, setIsFirstTime] = useState(true);
   const [initialIdValue, setInitialIdValue] = useState(-1);
 
   //url image
@@ -57,16 +58,17 @@ function PagePC16A() {
   let originalContent = null;
   let commentDate = null;
 
-  //hooks
+  //hooks "useEffect"
 
   //Positionne le scroll en haut de page
   useEffect(() => {
     scrollTo(".prise-courant");
   }, []);
 
-  //recupere la taille de l' ecran pour les images responsives
+  //determine l' image ä afficher en fonction de la taille de l'ecran
   useEffect(() => {
     sizeScreen.giveImageSize(setImageSize);
+
     window.addEventListener("resize", () => {
       sizeScreen.giveImageSize(setImageSize);
     });
@@ -75,18 +77,17 @@ function PagePC16A() {
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
   //todo: implementer une com wesocket avec le serveur
   useEffect(() => {
-
     //premiere requete une fois les composants montés.
     //et emsuite toute les minutes
     requestFetch.fetchCommentsForOnePageTest(refPage, setArrayComments);
     const timer = setInterval(
       () => requestFetch.fetchCommentsForOnePageTest(refPage, setArrayComments),
       60000
-    )
+    );
     //lorsque que le composant est demonté on stope  "timer"
     return function () {
-      clearInterval(timer)
-    }
+      clearInterval(timer);
+    };
   }, []);
 
   //Préremplie les inputs user si une session est ouverte
@@ -94,10 +95,9 @@ function PagePC16A() {
     defaultValueInputUser.setValueInputUser();
   }, []);
 
- 
-
   return (
     <div className="prise-courant">
+      <Loader />
       <div className="container-title">
         <Title
           pagetype="page"

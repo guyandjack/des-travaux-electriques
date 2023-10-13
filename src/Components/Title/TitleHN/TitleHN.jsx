@@ -1,7 +1,7 @@
 //Composant "TitleHn"
 
 /*********
- * Ce composant a 4 props qui le définissent
+ * Ce composant à 5 props qui le définissent
  * 
  * titleText = Une chaine de caractere qui definit le titre(mon titre...)
  * titlelevel = Une chaine qui definit le niveau de titre (h1,h2.....)
@@ -62,16 +62,18 @@ function TitleHN({ titleText, titleLevel, titleSize, titleColor, titleId }) {
   }
 
   useEffect(() => {
-
     titleGoodSize();
 
     window.addEventListener("resize", () => {
-
       titleGoodSize();
-      
-    })
+    });
+    //lorsque que le composant est demonté on suprime l' ecouteur d'évènement
+    return function () {
+      window.removeEventListener("resize", () => {
+        titleGoodSize();
+      });
+    };
   }, []);
-
   
 
   return (
@@ -86,4 +88,4 @@ function TitleHN({ titleText, titleLevel, titleSize, titleColor, titleId }) {
   );
 }
 
-export { TitleHN };
+    export { TitleHN };

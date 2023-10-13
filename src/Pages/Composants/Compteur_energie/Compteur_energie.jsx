@@ -31,7 +31,7 @@ import "../../../Style/CSS/compteur_energie.css";
 //Import des fonctions
 const requetsFetch = require("../../../Utils/Function/RequeteAPI.js");
 const dateFormat = require("../../../Utils/Function/Date.js");
-const sizeScreen = require("../../../Utils/Function/Size.js");
+const sizeScreen = require("../../../Utils/Function/giveImageSize.js");
 const defaultValueInputUser = require("../../../Utils/Function/LocalStorage.js");
 
 //Fonction "PageCompteurEnergie"

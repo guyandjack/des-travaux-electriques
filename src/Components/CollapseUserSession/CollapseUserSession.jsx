@@ -1,7 +1,7 @@
 //Composant "collapseUserSession"
 
 //import des hooks
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 //Import fichier de style
 import "../../Style/CSS/collapse_user_session.css";
@@ -10,9 +10,15 @@ import "../../Style/CSS/collapse_user_session.css";
 
 //Function "CollapseUserSession"
 function CollapseUserSession() {
+
+  //hook useref
+  const list = useRef();
+
+  //hook "useState"
   const [sessionValid, setSessionValid] = useState(true);
   const [userFirstName, setUserFirstName] = useState(null);
 
+  //hook "useEffect"
   useEffect(() => {
     //le composant s'affiche uniquement si une session est ouverte
 
@@ -36,9 +42,13 @@ function CollapseUserSession() {
     window.location.reload();
   }
 
+  //Variable pour les class de style css
+
+  let smalldisplay = "small-display";
+
   return sessionValid == true ? (
     <div className="collapse-session">
-      <div className="container-icon">
+      <div className="container-icon" onClick={() => {list.current.classList.toggle("display-none") }}>
         
         <svg className="icon"
           xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +65,7 @@ function CollapseUserSession() {
         <p className="text">Bonjour<br></br><span className="color-name">{' '+ "userFirstName" }</span></p>
       </div>
 
-      <ul className="list">
+      <ul ref={list} className="list display-none">
         <li
           className="list-li"
           onClick={() => {
@@ -64,6 +74,7 @@ function CollapseUserSession() {
         >
           Déconnexion
         </li>
+        
       </ul>
     </div>
   ) : null;

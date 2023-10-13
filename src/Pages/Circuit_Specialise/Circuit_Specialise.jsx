@@ -31,14 +31,15 @@ import "../../Style/CSS/circuit_specialise.css";
 //Import des fonctions
 const requestFetch = require("../../Utils/Function/RequeteAPI.js");
 const dateFormat = require("../../Utils/Function/Date.js");
-const sizeScreen = require("../../Utils/Function/Size.js");
+const sizeScreen = require("../../Utils/Function/giveImageSize.js");
 const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 
 //Fonction "PageCircuitSpecialise"
 function PageCircuitSpecialise() {
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  //hooks "useState"
   const [imageSize, setImageSize] = useState("");
   const [arrayComments, setArrayComments] = useState([]);
+  const [initialIdValue, setInitialIdValue] = useState(-1);
 
   //url image.
 
@@ -54,7 +55,6 @@ function PageCircuitSpecialise() {
   //variable
   let originalFirstname = null;
   let originalContent = null;
-  let originalCommentId = null;
   let commentDate = null;
 
   //url image schema.
@@ -68,16 +68,17 @@ function PageCircuitSpecialise() {
   let schemaLaveLinge =
     ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
 
-  //hooks
+  //hooks "useEffect"
 
   //Positionne le scroll en haut de page
   useEffect(() => {
     scrollTo(".circuit-specialise");
   }, []);
 
-  //recupere la taille de l' ecran pour les images responsives
+  //determine l' image ä afficher en fonction de la taille de l'ecran
   useEffect(() => {
     sizeScreen.giveImageSize(setImageSize);
+
     window.addEventListener("resize", () => {
       sizeScreen.giveImageSize(setImageSize);
     });
@@ -86,14 +87,20 @@ function PageCircuitSpecialise() {
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
   //todo: implementer une com wesocket avec le serveur
   useEffect(() => {
-    requestFetch.fetchCommentsForOnePage(refPage, setArrayComments);
-    setInterval(
-      () => requestFetch.fetchCommentsForOnePage(refPage, setArrayComments),
+    //premiere requete une fois les composants montés.
+    //et emsuite toute les minutes
+    requestFetch.fetchCommentsForOnePageTest(refPage, setArrayComments);
+    const timer = setInterval(
+      () => requestFetch.fetchCommentsForOnePageTest(refPage, setArrayComments),
       60000
     );
+    //lorsque que le composant est demonté on stope  "timer"
+    return function () {
+      clearInterval(timer);
+    };
   }, []);
 
-  //Premplie les inputs user si une session est ouverte
+  //Préremplie les inputs user si une session est ouverte
   useEffect(() => {
     defaultValueInputUser.setValueInputUser();
   }, []);
@@ -334,7 +341,7 @@ function PageCircuitSpecialise() {
           pageRef={refPage}
           isResponse={0}
           responseTo={null}
-          responseIdTo={null}
+          responseIdTo={initialIdValue}
         />
       </div>
 
@@ -381,20 +388,16 @@ function PageCircuitSpecialise() {
               //formatage de la date
               commentDate = dateFormat.formatDate(onecomment.date);
 
-              //recuperation de l' "id" du commentaire original
-              originalCommentId = onecomment.originalcommentid;
-
               //si "response" est egal à "1" ce commentaire est une réponse.
+              //On recherche le commentaire original qui lui correspond
               if (onecomment.response == 1) {
                 //Seconde itération dans le  tableau des commentaires.
-                //pour trouver un commentaire dont l'"id" correspond à "originalCommentId"
+                //pour trouver un commentaire dont l'"id" correspond à "originalCommentId" du commentaire "response"
                 //On recupere ainsi les infos du commentaire original
                 let theFindedCommentOriginal = arrayComments.find(
-                  (findedComment) => findedComment.id == originalCommentId
+                  (findedComment) =>
+                    findedComment.id == onecomment.originalcommentid
                 );
-
-                //Un commentaire "reponse" à un "originalcommentid" égal à son "id"
-                originalCommentId = onecomment.id;
 
                 //Recuperation du "prenom" , du "contenu"  du commentaire "original"
                 originalFirstname = theFindedCommentOriginal.firstname;
@@ -411,7 +414,7 @@ function PageCircuitSpecialise() {
                     originalfirstname={originalFirstname}
                     originaltext={originalContent}
                     //props à transmettre au formulaire contenu dans "commentUser"
-                    originalcommentid={originalCommentId}
+                    originalcommentid={onecomment.id}
                     //id du commentaire original à envoyer via le formulaire pour la bdd
                     //Cet id original est l' id du commentaire parent.
                   />

@@ -39,7 +39,7 @@ function PageContact() {
     <div className="container-form">
       <Loader />
       <FormulaireContact 
-        formref={"pc16a"}
+        formref={"contact"}
       />
       {comment ? (
         <div className="comment-stored">

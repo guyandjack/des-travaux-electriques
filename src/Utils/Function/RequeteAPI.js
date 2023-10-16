@@ -1,6 +1,10 @@
 //Réalise une requete "fetch" pour récupérer les commentaires corespondant à la page consultée
+
+/*******
 //refpage = reference de la page
 //setfunction le seteur d' une variable "usestate" qui contient un tableau
+
+******/
 
 //fonction de tri par ordre croissant pour la method "sort"
   function sortByLowerToUpper(a, b) {

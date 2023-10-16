@@ -1,10 +1,18 @@
-/*************   ********************************************************       ***************/
+/*************   *****************************************************       ***************/
 
-//Le controler "testform" gerent les données issu du formulaire, et enregistre le commentaire dans la bdd.
+//Le controler "testFormContact" :
+
+/** gerent les données issu du formulaire de la page contact, 
+/** enregistre les informations issu du formulaire dans la bdd,
+
 
 /************************************************************************************************ */
 
+
 //Import des fonctions
+
+//Import du module "nodemailer"
+let nodemailer = require("nodemailer");
 
 //Contient les parametres de connexion de la bdd.
 const connectToBdd = require("../utils/functions/connexionBdd.js");
@@ -12,10 +20,8 @@ const connectToBdd = require("../utils/functions/connexionBdd.js");
 //Contient les fonction de control des data du formulaire.
 const checkForm = require("../utils/functions/checkDataForm.js");
 
-exports.testForm = (req, res, next) => {
-  //tableau renvoyé au front end si une input du formulaire est manquante
-  let tabErrorBodyreq = [];
-
+exports.testFormContact = (req, res, next) => {
+  
   //Tableau qui contient le resultat des tests des inputs
   let tabValidInput = [];
 
@@ -24,12 +30,8 @@ exports.testForm = (req, res, next) => {
     "lastname",
     "firstname",
     "email",
-    "comment",
+    "message",
     "pageref",
-    "isresponse",
-    "originalcommentid",
-    "userdata",
-    "userurl",
     "sujet",
   ];
 
@@ -78,29 +80,16 @@ exports.testForm = (req, res, next) => {
 
   let email = req.body.email;
 
-  let comment = req.body.comment;
+  let message = req.body.message;
 
-  /** donees "cachees" **/
-
-  let userUrl = req.body.userurl;
-
+  
   // adresse ip de l' utilisateur
-  let adressIp = checkForm.getuserip(req);
+  //let adressIp = checkForm.getuserip(req);
 
   // reference de la page dont est issu le formulaire
   let refPage = req.body.pageref;
 
-  // indique si le commentaire est une réponse
-  let isResponse = req.body.isresponse;
-
-  // indique l id du commentaire correspondant a la reponse
-  let originalCommentId = req.body.originalcommentid;
-
-  //indique si  l' utilisateur souhaite ouvrir une session
-  let userData = req.body.userdata;
-
-  //Variables globales
-  let insertID;
+  
 
   //Controle la validite des données
   checkForm.validlastname(lastName, tabValidInput);
@@ -109,15 +98,9 @@ exports.testForm = (req, res, next) => {
 
   checkForm.validmail(email, tabValidInput);
 
-  checkForm.validmessage(comment, tabValidInput);
+  checkForm.validmessage(message, tabValidInput);
 
   checkForm.validreferencepage(refPage, tabValidInput);
-
-  checkForm.validisresponse(isResponse, tabValidInput);
-
-  checkForm.validoriginalcommentid(originalCommentId, tabValidInput);
-
-  checkForm.validcheckbox(userData, tabValidInput);
 
   //si le tableau n' est pas vide, on renvoi le tableau d' erreur
   if (tabValidInput.length !== 0) {
@@ -133,19 +116,16 @@ exports.testForm = (req, res, next) => {
   //-1- requete pour inserer un commentaire original:
 
   //Requete -1- type "insert"
-  let requeteInsertion = `INSERT INTO user_comment_test (lastname,firstname,email,content,adressip,pageref,response,originalcommentid,date) VALUES (?,?,?,?,?,?,?,?,NOW())`;
+  let requeteInsertion = `INSERT INTO user_message_test (lastname,firstname,email,message,date) VALUES (?,?,?,?,NOW())`;
 
   //parametres de la requete -1- type "insert"
   let paramInsertion = [
     lastName,
     firstName,
     email,
-    comment,
-    adressIp,
-    refPage,
-    isResponse,
-    originalCommentId,
-  ];
+    message,
+    
+    ];
 
   //Connection à la bdd sql "travaux_electriques"
   connection.connect(function (err) {
@@ -155,73 +135,57 @@ exports.testForm = (req, res, next) => {
 
     console.log("Connexion à la bdd ´travaux_electriques´ reussie!");
 
-    //requette -1- insertion du commentaire
+    //requette -1- insertion du message
     connection.query(requeteInsertion, paramInsertion, (err, result) => {
       //gestion des erreurs
       if (err) {
-        console.log("impossible d'enregistre le commentaire: " + err);
+        console.log("impossible d'enregistre le message: " + err);
 
         res.status(500).json({
-          message: "impossible d'enregistre le commentaire: " + err,
+          message: "impossible d'enregistre le message: " + err,
         });
         //fermeture connection
         connection.end();
       }
-
-      //gestion du resultat
-      console.log(
-        "resultat de l'enregistrement du comment ds la bdd: " +
-          JSON.stringify(result)
-      );
-      insertID = result.insertId;
-      console.log("insertid dans la  requette 1 : " + insertID);
-
-      // Requette secondaire facultative: Attribut une valeur à originalcommentid
-      if (isResponse == 0) {
-        console.log("requette 2 lancee");
-        //Un commentaire original doit avoir son originalcommentid egal à son id
-
-        //Requete type "update"
-        let requeteUpdate = `UPDATE comment_user_test SET originalcommentid = ? WHERE id = ?`;
-
-        //Parametre de la requette -2- type "update"
-        let paramUpdate = [insertID, insertID];
-
-        console.log("valeur du insertid dans la requette 2: " + insertID);
-
-        connection.query(requeteUpdate, paramUpdate, (err, result) => {
-          //gestion des erreurs
-          if (err) {
-            console.log("impossible de modifier le commentaire: " + err);
-
-            res.status(500).json({
-              message: "impossible de modifier le commentaire: " + err,
-            });
-            //fermeture connection
-            connection.end();
-          }
-
-          //gestion du resultat
-          console.log(
-            "resultat de la mise  à jour du comment ds la bdd: " +
-              JSON.stringify(result)
-          );
-        });
-      }
-
-      let resultForClient = checkForm.objectresponse(
-        //variable pour premplir les champs du formulaire
-        lastName,
-        firstName,
-        email,
-        //Variable qui permet de tester si l'utilisateur souhaite être reconnu
-        userData
-        //Variablecontenant l'ip de l'utilisateur qui
-      );
-
-      res.status(201).json(resultForClient);
-
-      connection.end();
+      //si la requette d' insertion reussi on passe au midelware suivant
+        connection.end();
+       next();
     });
   });
+    
+   
 };
+
+
+/**************************************** 
+ * Middelware qui envoi un mail au webmaster
+**************************************/
+
+
+exports.sendMail = (req, res, next) => {
+
+let transporter = nodemailer.createTransport({
+  service: "orange",
+  auth: {
+    user: "g-dupanloup@wanadoo.fr",
+    pass: "9bce6hq9BCE6HQ",
+  },
+});
+
+let mailOptions = {
+  from: req.body.email,
+  to: "myfriend@yahoo.com",
+  subject: "Sending Email using Node.js",
+  text: req.body.message,
+};
+
+transporter.sendMail(mailOptions, function (error, info) {
+  if (error) {
+    console.log(error);
+  } else {
+      res.status(201).json({ "message status": "sended" });
+      
+  }
+});
+    
+}

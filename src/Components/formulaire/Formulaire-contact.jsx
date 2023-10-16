@@ -9,6 +9,10 @@ import { ButtonStd } from "../ButtonStd/ButtonStd";
 //Import des feuille de style
 import "../../Style/CSS/formulaire-contact.css";
 
+//Import de la fonction qui soumet le formulaire au backend
+import { submitForm } from "../../Utils/Function/formComment/requete/formSubmit.js";
+import { submitFormContact } from "../../Utils/Function/formComment/requete/formContactSubmit";
+
 //Import des fonctions
 
 /****** fonction qui test une session user***** */
@@ -56,28 +60,22 @@ function FormulaireContact() {
   let classHide = "hide";
 
   //Corps de la requette fetch pour soummission du formulaire
-  let bodyrequest = {};
+  let bodyrequest = {
+    lastname: lastNameValue,
+    firstname: firstNameValue,
+    email: emailValue,
+    comment: contentlValue,
+    userurl: userUrlValue,
+    pageref: pageRefValue,
+    isresponse: isResponseValue,
+    originalcommentid: originalCommentIdValue,
+    userdata: userDataValue,
+    sujet: sujetValue,
+  };
 
   /********************* declaration des fonctions ************************ */
 
   //realise une requete "fetch" lors de la soummission du formulaire.
-  function submitForm(e) {
-    //evite la soumission automatique du formulaire
-    e.preventDefault();
-
-    fetch("http://www.electravaux.com/api/contact", {
-      headers: {
-        Accept: "application/json, text/plain",
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-      body: JSON.stringify(bodyrequest),
-    })
-      .then((response) => response.json())
-      .then((data) => JSON.stringify(data))
-
-      .catch((error) => console.log(error));
-  }
 
   return (
     <div className="form-contact">
@@ -85,7 +83,7 @@ function FormulaireContact() {
         className="form"
         method="post"
         onSubmit={(evt) => {
-          submitForm(evt);
+          submitFormContact(evt);
         }}
       >
         {/*<div className="container-img-bg">

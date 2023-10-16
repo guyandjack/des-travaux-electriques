@@ -28,39 +28,40 @@ import { isScreenMobil } from "../../Utils/Function/isScreenMobil.js";
 
 //Fonction "Header"
 function Header() {
-
   //hooks State
 
-  const [isSmallScreen, setIsSmallScreen] = useState();
-  
-  // Variable pour limiter les re-render "session user"
-  let isFirstTime = true;
+  //boleen qui indique si l' ecran est de type mobile ou non
+  //valeur de defaut true (ecran mobile)
+  const [isSmallScreen, setIsSmallScreen] = useState(true);
 
+  //bolleen qui indique si un ecouteur d'évènement lié au "scroll" est rataché à un élément du DOM
+  //valeur de defaut false (aucun ecouteur rattaché)
+  const [eventScroll, setEventScroll] = useState(false);
 
   //hook useEffect
 
+  //determine si l' ecran est de type mobile, et ajuste le "UseState" en fonction
   useEffect(() => {
     let isMobilDisplay = isScreenMobil();
-    
+
     setIsSmallScreen(isMobilDisplay);
-    
 
     window.addEventListener("resize", () => {
       let isMobilDisplays = isScreenMobil();
-      
+
       setIsSmallScreen(isMobilDisplays);
-      
+      console.log("is mobile type: (isSmallscreen)" + isMobilDisplay);
     });
 
     return () => {
       window.removeEventListener("resize", () => {
-        isScreenMobil(setIsSmallScreen)
-      })
+        isScreenMobil(setIsSmallScreen);
+      });
     };
   }, []);
 
   //Gere les sessions utilisteurs
-  useEffect(() => {
+  /*useEffect(() => {
     if (isFirstTime == true) {
       //reference la page consultée dans le local storage
       pageAperture();
@@ -74,47 +75,41 @@ function Header() {
       //Evite un deuxieme traitement lors du re-render
       isFirstTime = false;
     }
-  }, []);
+  }, []);*/
 
-  //Gere les écouteurs d'évènment scroll et scrollend
+  //Applique un changement de class CSS en fonction du "scroll" et "scrollend"
   useEffect(() => {
-    //Le useEffect s'applique uniaquement si l' ecran n'est pas de type mobile
-
-    let mobile = isScreenMobil();
-
-
-    if (!mobile) {
-      
-      window.addEventListener("scroll", () => {
-      
+    let changeGrowToSchrink = () => {
       elementHeader.current.classList.replace("grow", "schrink");
-    })
-    
-    window.addEventListener("scrollend", () => {
-      
-      elementHeader.current.classList.replace("schrink", "grow");
-     
-    })
-
-    return () => {
-
-      window.removeEventListener("scroll", () => {
-         elementHeader.current.classList.replace("grow", "schrink");
-      });
-
-      window.removeEventListener("scrollend", () => {
-        elementHeader.current.classList.replace("schrink", "grow");
-      });
     };
-  };
-      
 
-      
-  }, []);
+    let changeSchrinkToGrow = () => {
+      elementHeader.current.classList.replace("schrink", "grow");
+    };
+
+    //si aucun event de type scroll est deja rataché
+    //et si l' ecran n'est pas  de type mobile,
+    //on creé les  évenement "scroll"
+
+    if (!eventScroll && !isSmallScreen) {
+      window.addEventListener("scroll", changeGrowToSchrink);
+      window.addEventListener("scrollend", changeSchrinkToGrow);
+      setEventScroll(true);
+    }
+
+    //Si un evenement scroll est déja rataché
+    // et si l' ecran est de type mobile
+    // on detruit les ecouteurs d'évènements
+
+    if (eventScroll && isSmallScreen) {
+      window.removeEventListener("scroll", changeGrowToSchrink);
+      window.removeEventListener("scrollend", changeSchrinkToGrow);
+      //setEventScroll(false);
+    }
+  }, [isSmallScreen, eventScroll]);
 
   //hook useRef
   const elementHeader = useRef();
-  
 
   return (
     <header className="main-header grow">

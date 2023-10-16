@@ -1,7 +1,16 @@
 //Réalise une requete "fetch" pour récupérer les commentaires corespondant à la page consultée
 //refpage = reference de la page
 //setfunction le seteur d' une variable "usestate" qui contient un tableau
+
+//fonction de tri par ordre croissant pour la method "sort"
+  function sortByLowerToUpper(a, b) {
+    return a.id - b.id
+};
+  
+
 export function fetchCommentsForOnePage(refpage, setfunction) {
+
+  
 
   fetch(
     "http://www.apielectravaux.electravaux.com/comment-user/" + refpage,
@@ -21,9 +30,8 @@ export function fetchCommentsForOnePage(refpage, setfunction) {
       return response.json()
 
         .then((data) => {
-          for (let i = 0; i < data.length; i++) {
-            console.log("user-number: " + i + "user-name: " + data[i].lastname);
-          }
+          //tri le tableau par ordre croissant de "id"
+          data.sort(sortByLowerToUpper);
           setfunction(data);
           
         })
@@ -53,11 +61,8 @@ export function fetchCommentsForOnePageTest(refpage, setfunction) {
         .json()
 
         .then((data) => {
-          for (let i = 0; i < data.length; i++) {
-            console.log(
-              "user-number: " + i + " user-name: " + data[i].firstname
-            );
-          }
+          //tri le tableau par ordre croissant de "id"
+          data.sort(sortByLowerToUpper);
           setfunction(data);
         });
     })

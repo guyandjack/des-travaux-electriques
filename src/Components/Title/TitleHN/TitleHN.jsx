@@ -9,7 +9,7 @@
  * titleColor = Une chaine qui definit la couleur de la police (first-color, second-color....)
  * titleId = Une chaine qui definit l' id du composant titre (#mon id...)
  * 
- */
+ *******/
 
 //Import des hooks
 import { useState, useEffect, useRef } from "react";
@@ -32,33 +32,45 @@ function TitleHN({ titleText, titleLevel, titleSize, titleColor, titleId }) {
 //declaration des fonctions
   function titleGoodSize() {
 
-    let titleSelected = document.getElementById(titleId);
+    //fonction asynchrone qui evite une erreur dans la console.
+    //Meme si getElementById est appelé dans un un "useEffect" la console affiche une erreur car le composant n' est pas trouvé dans le dom
+    async function getElement() {
+      let titleSelected =  document.getElementById(titleId);
+      return titleSelected
+    }
+
+    let titleSelected =  getElement();
     let screenSize = window.innerWidth;
 
-    console.log("titre selectionne: " + titleSelected);
-    console.log("taille d'ecran: " + screenSize);
+    titleSelected
+      .then((element) => {
+        console.log("titre selectionne: " + element);
+        console.log("taille d'ecran: " + screenSize);
+        if (
+          screenSize > breakPoint.medium_Max &&
+          screenSize <= breakPoint.large_Max
+        ) {
+          element.style.fontSize = "1.1em";
+          return;
+        }
 
-    if (screenSize > breakPoint.medium_Max && screenSize <= breakPoint.large_Max){
-      titleSelected.style.fontSize = "1.1em";
-      return
-      
-    } 
-    
-    if (screenSize > breakPoint.large_Max && screenSize <= breakPoint.x_large_Max) {
-      
-      titleSelected.style.fontSize = "1.3em";
-      return
-      
-    } 
+        if (
+          screenSize > breakPoint.large_Max &&
+          screenSize <= breakPoint.x_large_Max
+        ) {
+          element.style.fontSize = "1.3em";
+          return;
+        }
 
-    if (screenSize > breakPoint.x_large_Max) {
-      
-      titleSelected.style.fontSize = titleSize;
-      return
-      
-    } 
+        if (screenSize > breakPoint.x_large_Max) {
+          element.style.fontSize = titleSize;
+          return;
+        } 
+      }
+      )
+    .catch((e=>{console.log(e)}))
 
-    
+        
   }
 
   useEffect(() => {
@@ -67,7 +79,7 @@ function TitleHN({ titleText, titleLevel, titleSize, titleColor, titleId }) {
     window.addEventListener("resize", () => {
       titleGoodSize();
     });
-    //lorsque que le composant est demonté on suprime l' ecouteur d'évènement
+    //lorsque que le composant est demonté on suprime l' écouteur d'évènement
     return function () {
       window.removeEventListener("resize", () => {
         titleGoodSize();

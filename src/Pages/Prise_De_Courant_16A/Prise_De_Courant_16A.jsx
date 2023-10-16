@@ -26,6 +26,7 @@ import { scrollTo } from "../../Utils/Function/scrollTo.js";
 
 //Import des feuilles de style
 import "../../Style/CSS/prise_courant.css";
+//import { forEach } from "../../../backendtest/data/refpage/refpage.js";
 
 
 
@@ -38,6 +39,7 @@ const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 //Fonction "PagePC16A"
 
 function PagePC16A() {
+  
   //hooks "useState"
   const [imageSize, setImageSize] = useState("");
   const [arrayComments, setArrayComments] = useState([]);
@@ -76,6 +78,7 @@ function PagePC16A() {
 
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
   //todo: implementer une com wesocket avec le serveur
+  
   useEffect(() => {
     //premiere requete une fois les composants montés.
     //et emsuite toute les minutes

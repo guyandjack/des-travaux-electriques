@@ -35,12 +35,15 @@ export function setValueInputUser() {
 
     let listInputCheckBox = document.querySelectorAll("input[name=userdata]");
 
-    listInputName.forEach((inputName) => {
-      inputName.value = dataUserSession.userDataName;
-      inputName.placeholder = dataUserSession.userDataName;
-      inputName.readonly = true;
-      inputName.classList.add("color-readonly","border-readonly");
-    });
+    
+      listInputName.forEach((inputName) => {
+        inputName.value = dataUserSession.userDataName;
+        inputName.placeholder = dataUserSession.userDataName;
+        inputName.readonly = true;
+        inputName.classList.add("color-readonly", "border-readonly");
+      });
+    
+
 
     listInputFirstName.forEach((inputFirstName) => {
       inputFirstName.value = dataUserSession.userDataFirstname;
@@ -49,6 +52,7 @@ export function setValueInputUser() {
       inputFirstName.classList.add("color-readonly","border-readonly");
     });
 
+
     listInputEmail.forEach((inputEmail) => {
       inputEmail.value = dataUserSession.userDataEmail;
       inputEmail.placeholder = dataUserSession.userDataEmail;
@@ -56,10 +60,12 @@ export function setValueInputUser() {
       inputEmail.classList.add("color-readonly","border-readonly");
     });
 
-    listInputCheckBox.forEach((inputcheckbox) => {
-      inputcheckbox.checked = true;
-      inputcheckbox.disabled = true;
-    })
+    if (listInputCheckBox.length > 0) {
+      listInputCheckBox.forEach((inputcheckbox) => {
+        inputcheckbox.checked = true;
+        inputcheckbox.disabled = true;
+      })
+    }
   }
 }
 

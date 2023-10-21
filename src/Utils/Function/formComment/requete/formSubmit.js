@@ -1,8 +1,10 @@
-//réalise une requete "fetch" pour la soummission du formulaire.
-/**************
+//Réalise une requete "fetch" pour la soummission du formulaire.
+//Requete émise dans le composant "Formulaire.jsx" lors de la soumission du formulaire
+
+/************************************************
  * arg1: évènement "submit" du formulaire concerné
  * arg2: corps de la requete à transmettre
- *************/
+ ***********************************************/
 
 function submitForm(e, bodyrequest) {
   //évite la soumission automatique du formulaire

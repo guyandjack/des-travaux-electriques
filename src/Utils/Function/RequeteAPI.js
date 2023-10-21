@@ -1,10 +1,11 @@
-//Réalise une requete "fetch" pour récupérer les commentaires corespondant à la page consultée
+//Réalise une requete "fetch" pour récupérer les commentaires corespondant à la page consultée 
+//Reqûete émise dans script de page;
 
-/*******
+/********************************
 //refpage = reference de la page
 //setfunction le seteur d' une variable "usestate" qui contient un tableau
 
-******/
+***********************************/
 
 //fonction de tri par ordre croissant pour la method "sort"
   function sortByLowerToUpper(a, b) {

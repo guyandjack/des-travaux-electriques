@@ -29,6 +29,10 @@ router.get("/comment-user/:ref", getAllComments.getAllCommentsForOnePage);
 router.post("/comment-user/form", checkFieldForm.testForm);
 
 /***** permet d'envoyer un mail   ******* */
-router.post("/contact", checkFieldFormContact.testFormContact, checkFieldFormContact.sendMail);
+//router.post("/contact", checkFieldFormContact.testFormContact, checkFieldFormContact.sendMail);
+router.post("/contact", checkFieldFormContact.sendMail);
+
+
+
 
 module.exports = router;

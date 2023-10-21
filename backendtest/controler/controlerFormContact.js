@@ -157,35 +157,35 @@ exports.testFormContact = (req, res, next) => {
 };
 
 
-/**************************************** 
- * Middelware qui envoi un mail au webmaster
-**************************************/
+/***************************************************** 
+ ***** Middelware qui envoi un mail au webmaster *****
+******************************************************/
 
 
 exports.sendMail = (req, res, next) => {
+  let transporter = nodemailer.createTransport({
+    host: "smtp.orange.fr",
+    auth: {
+      user: "g-dupanloup@wanadoo.fr",
+      pass: "9bce6hq9BCE6HQ",
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
 
-let transporter = nodemailer.createTransport({
-  service: "orange",
-  auth: {
-    user: "g-dupanloup@wanadoo.fr",
-    pass: "9bce6hq9BCE6HQ",
-  },
-});
+  let mailOptions = {
+    from: req.body.email,
+    to: "g-dupanloup@wanadoo.fr",
+    subject: "user message from 'travauxelectriques.com'",
+    text: req.body.message,
+  };
 
-let mailOptions = {
-  from: req.body.email,
-  to: "myfriend@yahoo.com",
-  subject: "Sending Email using Node.js",
-  text: req.body.message,
-};
-
-transporter.sendMail(mailOptions, function (error, info) {
-  if (error) {
-    console.log(error);
-  } else {
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      res.status(300).json({ "message status": error });
+    } else {
       res.status(201).json({ "message status": "sended" });
-      
-  }
-});
-    
-}
+    }
+  });
+};

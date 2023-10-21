@@ -3,7 +3,7 @@
 /********************** expressions regulieres ******************/
 
 //Motif qui autorise lettres majuscules et minuscules uniquement
-let masqueText = /^[A-Za-z_'.-]{2,20}$/;
+let masqueText = /^[A-Za-z_'.-\s]{2,20}$/;
 
 //Motif qui autorise une adresse mail qui peut commencer par:
 //0 ou 4 chiffres
@@ -59,12 +59,20 @@ function validMessage(e) {
   }
 }
 
+//Valid l'input caché "sujet" (pot de miel)
+function validSujet(e) {
+  let value = e.target.value
+  if (value.length > 0) {
+    return false
+  }
+  else {
+    return true
+  }
+}
+
 //Valide le formulaire
 function validForm(inputlastname, inputfirstname, inputemail, inputmessage, seter) {
-    console.log("valeur de name: " + inputlastname);
-    console.log("valeur de firstname: " + inputfirstname);
-    console.log("valeur de email: " + inputemail);
-    console.log("valeur de text: " + inputmessage);
+    
     if (
       masqueText.test(inputlastname) === true &&
       masqueText.test(inputfirstname) === true &&
@@ -83,4 +91,4 @@ function validForm(inputlastname, inputfirstname, inputemail, inputmessage, sete
     }
 }
 
-export { validLastName, validFirstName, validMail, validMessage, validForm };
+export { validLastName, validFirstName, validMail, validMessage, validForm, validSujet };

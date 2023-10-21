@@ -10,7 +10,6 @@ import { ButtonStd } from "../ButtonStd/ButtonStd";
 import "../../Style/CSS/formulaire-contact.css";
 
 //Import de la fonction qui soumet le formulaire au backend
-import { submitForm } from "../../Utils/Function/formComment/requete/formSubmit.js";
 import { submitFormContact } from "../../Utils/Function/formComment/requete/formContactSubmit";
 
 //Import des fonctions
@@ -24,29 +23,92 @@ const testInputUser = require("../../Utils/Function/testInputUser");
 //Fonction "FormulaireContact"
 
 function FormulaireContact() {
+  
   /*********** hooks****************/
-  //UseRef
 
-  //référencement des elements "input" du formulaire
-  const inputLastName = useRef();
-  const inputFirstName = useRef();
-  const inputEmail = useRef();
-  const inputMessage = useRef();
+  /***************** useRef ********/
 
-  //référencement des éléments "p" qui contiennent les messages d'erreur liés aux inputs user.
-  const pContentErrorLastName = useRef();
-  const pContentErrorFirstName = useRef();
-  const pContentErrorEmail = useRef();
-  const pContentErrorMessage = useRef();
+  //référencement des éléments "div" du DOM qui contiennent les messages d'erreur liés aux inputs user.
+  const divErrorLastName = useRef();
+  const divErrorFirstName = useRef();
+  const divErrorEmail = useRef();
+  const divErrorMessage = useRef();
 
-  //UseState
-  const [isValidForm, setIsValidForm] = useState("disabled");
+  //Flag qui indique si l'input user est en defaut
+  const FlagErrorUserLastName = useRef(true);
+  const FlagErrorUserFirstName = useRef(true);
+  const FlagErrorUserEmail = useRef(true);
+  const FlagErrorUserMessage = useRef(true);
+
+  /******************** useState ***/
+
+  //Flag qui indique si le formulaire est valide pour soumission vers api
+  const [isValidForm, setIsValidForm] = useState(false);
+
+  /*** ******************* useEffect ***/
+  
+  useEffect(() => {
+    testSession.setValueInputUser();
+  }, []);
+
+  //Corps de la requette fetch pour soummission du formulaire
+  let bodyrequest = {};
 
   //Variables contenant les messages d'erreur des differents inputs user
   const lastNameErrorMessage = "Veuillez entrer un 'nom' valide...";
   const firstNameErrorMessage = "Veuillez entrer un 'prénom' valide...";
   const emailErrorMessage = "Veuillez entrer un 'email' valide...";
   const textErrorMessage = "Veuillez entrer un 'text' valide...";
+
+  //Declaration des fonctions
+
+  /***Ajoute ou supprime la class CSS "hide" ****
+   * arg1: fonction de test d' une input
+   * arg2: valeur de l'attribut "ref" du div error correspondant à l'input
+   * arg3: reference du flag d' erreur
+   * return: void;
+   */
+  function hideOrDisplayDivError(testInput, divErrorRef, errorFlag) {
+    if (testInput) {
+      divErrorRef.current.classList.add("hide");
+      errorFlag.current = false;
+    } else {
+      divErrorRef.current.classList.remove("hide");
+      errorFlag.current = true;
+    }
+
+    console.log("etat du flag erreur: " + errorFlag.current);
+  }
+
+  /*** Test la validite du formulaire avant soumission des data ****
+   * return: void;
+   */
+  function validFormContact() {
+    //Control du pot de miel
+    if (testInputUser.validSujet) {
+      if (
+        !FlagErrorUserLastName.current &&
+        !FlagErrorUserFirstName.current &&
+        !FlagErrorUserEmail.current &&
+        !FlagErrorUserMessage.current
+      ) {
+        makeBodyrequest();
+        console.log(bodyrequest);
+        console.log("valeur de isValidForm: " + isValidForm);
+        setIsValidForm(true);
+      } else {
+        setIsValidForm(false);
+        console.log("valeur de isValidForm: " + isValidForm);
+      }
+    }
+  }
+
+  function makeBodyrequest() {
+    bodyrequest.lastname = document.forms["formContact"].lastname.value;
+    bodyrequest.firstname = document.forms["formContact"].firstname.value;
+    bodyrequest.email = document.forms["formContact"].email.value;
+    bodyrequest.message = document.forms["formContact"].message.value;
+  }
 
   //Class css des élements du DOM
   let form_input = "form-input";
@@ -59,36 +121,16 @@ function FormulaireContact() {
   let invalid_border = " invalid-border";
   let classHide = "hide";
 
-  //Corps de la requette fetch pour soummission du formulaire
-  let bodyrequest = {
-    lastname: lastNameValue,
-    firstname: firstNameValue,
-    email: emailValue,
-    comment: contentlValue,
-    userurl: userUrlValue,
-    pageref: pageRefValue,
-    isresponse: isResponseValue,
-    originalcommentid: originalCommentIdValue,
-    userdata: userDataValue,
-    sujet: sujetValue,
-  };
-
-  /********************* declaration des fonctions ************************ */
-
-  //realise une requete "fetch" lors de la soummission du formulaire.
-
   return (
     <div className="form-contact">
       <form
+        name="formContact"
         className="form"
         method="post"
         onSubmit={(evt) => {
-          submitFormContact(evt);
+          submitFormContact(evt, bodyrequest);
         }}
       >
-        {/*<div className="container-img-bg">
-                  <img className="bg-form" src="/Asset/bg-form-contact.svg" alt="back ground"></img>
-              </div>*/}
         <div className="container-title">
           <div className="container-logo">
             <img
@@ -112,83 +154,66 @@ function FormulaireContact() {
               Nom<span className="requis">*</span>
             </p>
             <input
-              ref={inputLastName}
               className={form_input}
               type="text"
               name="lastname"
               min="2"
-              max="20"
+              max="30"
               placeholder="Votre nom..."
               required
               onChange={function (evt) {
-                let isValidLastName = testInputUser.validLastName(evt);
-                if (isValidLastName) {
-                  pContentErrorLastName.current.classList.add("hide");
-                } else {
-                  pContentErrorLastName.current.classList.remove("hide");
-                }
-                testInputUser.validForm(
-                  inputLastName.current.value,
-                  inputFirstName.current.value,
-                  inputEmail.current.value,
-                  inputMessage.current.value,
-                  setIsValidForm
+                hideOrDisplayDivError(
+                  testInputUser.validLastName(evt),
+                  divErrorLastName,
+                  FlagErrorUserLastName
                 );
+                validFormContact();
               }}
             />
           </label>
         </div>
-        <p
-          ref={pContentErrorLastName}
+        <div
+          ref={divErrorLastName}
           className={form_flag + invalid_text + " " + classHide}
         >
           {lastNameErrorMessage}
-        </p>
+        </div>
         <div className="cont-label-input">
           <label className="form-label">
             <p className="text-label">
               Prénom<span className="requis"> *</span>
             </p>
             <input
-              ref={inputFirstName}
               className={form_input}
               type="text"
               name="firstname"
               min="2"
-              max="20"
+              max="30"
               placeholder="Votre prénom..."
               required
               onChange={function (evt) {
-                let isValidFirstName = testInputUser.validFirstName(evt);
-                if (isValidFirstName) {
-                  pContentErrorFirstName.current.classList.add("hide");
-                } else {
-                  pContentErrorFirstName.current.classList.remove("hide");
-                }
-                testInputUser.validForm(
-                  inputLastName.current.value,
-                  inputFirstName.current.value,
-                  inputEmail.current.value,
-                  inputMessage.current.value,
-                  setIsValidForm
+                hideOrDisplayDivError(
+                  testInputUser.validFirstName(evt),
+                  divErrorFirstName,
+                  FlagErrorUserFirstName
                 );
+                validFormContact();
               }}
             />
           </label>
         </div>
-        <p
-          ref={pContentErrorFirstName}
+        <div
+          ref={divErrorFirstName}
           className={form_flag + invalid_text + " " + classHide}
         >
           {firstNameErrorMessage}
-        </p>
+        </div>
         <div className="cont-label-input">
           <label className="form-label">
             <p className="text-label">
               Email<span className="requis"> *</span>
             </p>
             <input
-              ref={inputEmail}
               className={form_input}
               type="email"
               name="email"
@@ -197,29 +222,22 @@ function FormulaireContact() {
               placeholder="Votre email..."
               required
               onChange={function (evt) {
-                let isValidEmail = testInputUser.validMail(evt);
-                if (isValidEmail) {
-                  pContentErrorEmail.current.classList.add("hide");
-                } else {
-                  pContentErrorEmail.current.classList.remove("hide");
-                }
-                testInputUser.validForm(
-                  inputLastName.current.value,
-                  inputFirstName.current.value,
-                  inputEmail.current.value,
-                  inputMessage.current.value,
-                  setIsValidForm
+                hideOrDisplayDivError(
+                  testInputUser.validMail(evt),
+                  divErrorEmail,
+                  FlagErrorUserEmail
                 );
+                validFormContact();
               }}
             />
           </label>
         </div>
-        <p
-          ref={pContentErrorEmail}
+        <div
+          ref={divErrorEmail}
           className={form_flag + invalid_text + " " + classHide}
         >
           {emailErrorMessage}
-        </p>
+        </div>
 
         <div className="cont-label-input">
           <label className="form-label" min="2" max="200">
@@ -227,37 +245,29 @@ function FormulaireContact() {
               Entrez votre texte...<span className="requis"> *</span>
             </p>
             <textarea
-              ref={inputMessage}
               className={textarea}
-              name="comment"
+              name="message"
               min="10"
-              max="200"
+              max="300"
               required
               onChange={function (evt) {
-                let isValidMessage = testInputUser.validMessage(evt);
-                if (isValidMessage) {
-                  pContentErrorMessage.current.classList.add("hide");
-                } else {
-                  pContentErrorMessage.current.classList.remove("hide");
-                }
-                testInputUser.validForm(
-                  inputLastName.current.value,
-                  inputFirstName.current.value,
-                  inputEmail.current.value,
-                  inputMessage.current.value,
-                  setIsValidForm
+                hideOrDisplayDivError(
+                  testInputUser.validMessage(evt),
+                  divErrorMessage,
+                  FlagErrorUserMessage
                 );
+                validFormContact();
               }}
             ></textarea>
           </label>
         </div>
-        <p
-          ref={pContentErrorMessage}
+        <div
+          ref={divErrorMessage}
           className={form_flag + invalid_text + " " + classHide}
         >
           {textErrorMessage}
-        </p>
-
+        </div>
+        <input type="hidden" name="sujet" />
         <div className="cont-valid-btn">
           <ButtonStd
             btntype="submit"
@@ -265,7 +275,7 @@ function FormulaireContact() {
             text="Envoyer votre message"
             colorbg="first"
             colortext="fifth"
-            disabledButton={isValidForm === "disabled" ? "disabled" : ""}
+            disabledButton={isValidForm ? "" : "disabled"}
           ></ButtonStd>
         </div>
       </form>

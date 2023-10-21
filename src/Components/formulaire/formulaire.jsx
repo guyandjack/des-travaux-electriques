@@ -269,7 +269,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             type="text"
             name="lastname"
             min="2"
-            max="20"
+            max="30"
             placeholder="Votre nom..."
             required
             onChange={function (evt) {
@@ -297,7 +297,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
             type="text"
             name="firstname"
             min="2"
-            max="20"
+            max="30"
             placeholder="Votre prénom..."
             required
             onChange={function (evt) {
@@ -367,7 +367,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
           <textarea
             className={isValidMsg ? textarea + valid_border_textarea : textarea}
             name="comment"
-            min="10"
+            min="20"
             max="200"
             required
             onChange={function (evt) {

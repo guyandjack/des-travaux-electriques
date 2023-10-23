@@ -21,11 +21,16 @@ function submitFormContact(e, bodyrequest) {
         .json()
 
         .then((data) => {
-          console.log(data)
+          console.log(data);
+           alert("message envoyé 👍");
         });
     })
 
-    //.then(window.location.reload())
+    .then(() => {
+      window.location.reload();
+    })
+
+    
 
     .catch((error) => console.log(error));
 }

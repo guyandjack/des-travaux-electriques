@@ -17,7 +17,11 @@ export function isSessionOpen() {
   return false
 }
 
-//Attribut des valeurs par defaut issu du local storage dans les inputs utilisateurs de tous les formulaires de la page
+//Attribut des valeurs par defaut issu du local storage dans les inputs utilisateurs 
+//de tous les formulaires de la page
+/*****
+ * @return boolean
+ */
 
 export function setValueInputUser() {
   let validSession = isSessionOpen();
@@ -66,7 +70,9 @@ export function setValueInputUser() {
         inputcheckbox.disabled = true;
       })
     }
+    return true
   }
+  return false
 }
 
 //Permet de recuperer l' Url Courante.

@@ -47,8 +47,16 @@ function FormulaireContact() {
 
   /*** ******************* useEffect ***/
   
+  //Permet de preremplir et de valider les inputs utilisateur, avec les donnees du client connecté.
+  
   useEffect(() => {
-    testSession.setValueInputUser();
+    let isSession = testSession.setValueInputUser();
+    if (isSession) {
+      FlagErrorUserLastName.current = false;
+      FlagErrorUserFirstName.current = false;
+      FlagErrorUserEmail.current = false;
+
+    }
   }, []);
 
   //Corps de la requette fetch pour soummission du formulaire

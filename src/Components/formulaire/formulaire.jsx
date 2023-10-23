@@ -229,7 +229,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       onSubmit={(evt) => {
         submitForm(evt, bodyrequest);
         setOriginalCommentIdValue(responseIdTo);
-        //window.location.reload();
+        window.location.reload();
       }}
     >
       {isResponse ? (

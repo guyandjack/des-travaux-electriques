@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { FormulaireContact } from "../../Components/Formulaire/Formulaire-contact.jsx";
 import { Loader } from "../../Components/Loader/Loader.jsx";
 
-//Import des fnctions
+//Import des fonctions
 import { scrollTo } from "../../Utils/Function/scrollTo.js";
 
 //Import des feuilles de style

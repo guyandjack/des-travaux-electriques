@@ -26,7 +26,7 @@ function CollapseUserSession() {
       let userSession = JSON.parse(localStorage.getItem("UserSession"));
 
       if (userSession.validsession == "ok") {
-        //setUserFirstName(userSession.userDataFirstname);
+        
         setUserFirstName(userSession.userDataFirstname);
         setSessionValid(true);
       }

@@ -1,4 +1,4 @@
-//Réalise une requete "fetch" pour la soummission du formulaire.
+//Réalise une requete "fetch" pour la soummission du formulaire des commentaires.
 //Requete émise dans le composant "Formulaire.jsx" lors de la soumission du formulaire
 
 /************************************************

@@ -15,10 +15,11 @@
 
 export function fetchCommentsForOnePage(refpage, setfunction) {
 
-  
+  let urlTestFetch = "http://www.apielectravauxtest.electravaux.com/comment-user/";
+  let urlProdFetch = "https://www.apielectravaux.electravaux.com/comment-user/";
 
   fetch(
-    "http://www.apielectravaux.electravaux.com/comment-user/" + refpage,
+    urlProdFetch + refpage,
     {
       headers: {
         "Accept": "application/json, text/plain",
@@ -49,7 +50,7 @@ export function fetchCommentsForOnePage(refpage, setfunction) {
     });
 }
 
-export function fetchCommentsForOnePageTest(refpage, setfunction) {
+/*export function fetchCommentsForOnePageTest(refpage, setfunction) {
   fetch(
     "http://www.apielectravauxtest.electravaux.com/comment-user/" + refpage,
     {
@@ -75,4 +76,4 @@ export function fetchCommentsForOnePageTest(refpage, setfunction) {
     .catch((error) => {
       console.log("msg erreur requette api: " + error);
     });
-}
+}*/

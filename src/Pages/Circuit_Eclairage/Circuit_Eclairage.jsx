@@ -81,9 +81,9 @@ function PageCircuitEclairage() {
   useEffect(() => {
     //premiere requete une fois les composants montés.
     //et emsuite toute les minutes
-    requestFetch.fetchCommentsForOnePageTest(refPage, setArrayComments);
+    requestFetch.fetchCommentsForOnePage(refPage, setArrayComments);
     const timer = setInterval(
-      () => requestFetch.fetchCommentsForOnePageTest(refPage, setArrayComments),
+      () => requestFetch.fetchCommentsForOnePage(refPage, setArrayComments),
       60000
     );
     //lorsque que le composant est demonté on stope  "timer"

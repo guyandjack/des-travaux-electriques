@@ -47,7 +47,7 @@ function FormulaireContact() {
 
   /*** ******************* useEffect ***/
   
-  //Permet de preremplir et de valider les inputs utilisateur, avec les donnees du client connecté.
+  //Permet de préremplir et de valider les inputs utilisateur, avec les donnees du client connecté.
   
   useEffect(() => {
     let isSession = testSession.setValueInputUser();

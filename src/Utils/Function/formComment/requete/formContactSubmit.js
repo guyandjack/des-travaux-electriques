@@ -8,7 +8,10 @@ function submitFormContact(e, bodyrequest) {
   //évite la soumission automatique du formulaire
   e.preventDefault();
 
-  fetch("http://www.apielectravauxtest.electravaux.com/contact", {
+  let urlTestFetch = "http://www.apielectravauxtest.electravaux.com/contact";
+  let urlProdFetch = "https://www.apielectravaux.electravaux.com/contact";
+
+  fetch(urlProdFetch, {
     headers: {
       Accept: "application/json, text/plain",
       "Content-Type": "application/json",

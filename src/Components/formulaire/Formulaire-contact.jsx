@@ -22,7 +22,7 @@ const testInputUser = require("../../Utils/Function/testInputUser");
 
 //Fonction "FormulaireContact"
 
-function FormulaireContact() {
+function FormulaireContact(refpage) {
   
   /*********** hooks****************/
 
@@ -116,6 +116,8 @@ function FormulaireContact() {
     bodyrequest.firstname = document.forms["formContact"].firstname.value;
     bodyrequest.email = document.forms["formContact"].email.value;
     bodyrequest.message = document.forms["formContact"].message.value;
+    bodyrequest.pageref = refpage;
+    bodyrequest.sujet = "";
   }
 
   //Class css des élements du DOM

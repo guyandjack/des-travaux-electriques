@@ -34,17 +34,26 @@ function PageContact() {
     let parent = evt.parentElement;
     parent.classList.add("hide")
   }
+  //Reference de la page
+  const pageRef = "contact";
 
   return (
     <div className="container-form">
       <Loader />
-      <FormulaireContact 
-        formref={"contact"}
-      />
+      <FormulaireContact refpage="contact" />
       {comment ? (
         <div className="comment-stored">
-          <span className="comment-stored__text">Votre commentaire a été envoyé</span>
-          <span className="comment-stored__cross" onClick={(e)=>{hide(e.currentTarget)}}>X</span>
+          <span className="comment-stored__text">
+            Votre commentaire a été envoyé
+          </span>
+          <span
+            className="comment-stored__cross"
+            onClick={(e) => {
+              hide(e.currentTarget);
+            }}
+          >
+            X
+          </span>
         </div>
       ) : null}
     </div>

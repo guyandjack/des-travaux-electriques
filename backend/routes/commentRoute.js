@@ -1,24 +1,38 @@
-/************** objet router definissant toutes les routes "electravaux" **************/
+/******************************************************************************** */
+/**************  definission de toutes les routes "electravaux" **************/
+/***************************************************************************** */
 
+//Import du package "express"
 const express = require("express");
 
+//Instance de l' objet "Router"
 const router = express.Router();
 
-const controler = require("../controlers/controlerForm.js");
+//Import du controler qui gere les données issues du formulaire des commentaires
+const checkFieldForm = require("../controler/controlerForm.js");
 
-//router.get("/testbdd", controler.testConnexionBdd);
+//Import du controler qui recupere les commentaires issus de la bdd, pour la page consultée
+const getAllComments = require("../controler/getAllComments.js");
 
-//router.get("/testserver", controler.testConnexionServer);
+//Import du controler qui gere les donnés du formulaire de la page "contact"
+const checkFieldFormContact = require("../controler/controlerFormContact.js");
+
+
+/************  ensemble des routes  ****************** */
 
 //Routes "get"
-router.get("/comment-user/:ref", controler.getAllCommentsForOnePage);
+router.get("/comment-user/:ref", getAllComments.getAllCommentsForOnePage);
 
 //Routes "post"
-router.post("/comment-user/form", controler.testForm);
 
-//route testst
-router.delete("/comment-user", (req, res) => {
-  res.status(250).json({ "message: ": "la route est propre jusqu ici" });
-});
+/**** permet de poster un commentaire **** */
+router.post("/comment-user/form", checkFieldForm.testForm);
+
+/***** permet d'envoyer un mail   ******* */
+//router.post("/contact", checkFieldFormContact.testFormContact, checkFieldFormContact.sendMail);
+router.post("/contact", checkFieldFormContact.sendMail);
+
+
+
 
 module.exports = router;

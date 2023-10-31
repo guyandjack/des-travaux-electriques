@@ -15,10 +15,10 @@
 let nodemailer = require("nodemailer");
 
 //Contient les parametres de connexion de la bdd.
-const connectToBdd = require("../utils/functions/connexionBdd.js");
+const connectToBdd = require("../utils/functions/connexionBdd.js.js");
 
 //Contient les fonction de control des data du formulaire.
-const checkForm = require("../utils/functions/checkDataForm.js");
+const checkForm = require("../utils/functions/checkDataForm.js.js");
 
 exports.testFormContact = (req, res, next) => {
   

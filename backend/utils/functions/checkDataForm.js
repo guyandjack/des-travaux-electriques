@@ -1,26 +1,57 @@
 /*********************************************************************************************************
  * *****************************************************************************************************
- *                 fonctions utilisées par les middelwares de "commentControleur2"                        *
+ *                 fonctions utilisées par le controler "controlerForm.js"                        *
  * ******************************************************************************************************
  * ************************************************************************************************* */
-
-/*********************************************************************************************************
- *                         fonctions qui controlent les data issues du formulaire                        *
- ******************************************************************************************************* */
-//Import du module "mysql"
-const mysql = require("mysql");
 
 //import des regEx pour les fonctions de controle des donées du formulaire
 const regEx = require("../regEx/RegExForm.js");
 
+//Import du tableau qui contient les "references de page" creés par le frontend
+const refPageValided = require("../../data/refpage/refpage.js");
+
+/*********************************************************************************************************
+ *                         Fonctions qui controlent la présence des data issues du formulaire                        *
+ ******************************************************************************************************* */
+
+//verifie si toutes les champs du formulaires sont present dans le corps de la requete
+
+function checkReqBodyKeys(listOfKeys, tabRefOfKeys) {
+
+  
+  //Si les tableaux n' ont pas la meme longeur, c'est qu' ils sont differents
+  if (listOfKeys.length !== tabRefOfKeys.length) {
+    return false
+  }
+
+  let tabMatchingValue = tabRefOfKeys.map((key) => { listOfKeys.includes(key) });
+  
+  //Si le tableau des valeurs trouvées a la même longeur que le tableau de référence
+  //alors tous les champs attendus sont présent dans le corps de la requette
+  if (tabMatchingValue.length === tabRefOfKeys.length) {
+    return true
+  }
+
+  return false
+
+}
+
+
+
+  
+/*********************************************************************************************************
+ *                         Fonctions qui controlent la validité des data issues du formulaire                        *
+ ******************************************************************************************************* */
+
+
 //Valide l' input "lastName"
-function validLastName(lastName) {
+function validLastName(lastName, tabValidInput) {
+  
   if (
     
-    regEx.masquetext.test(lastName) !== true ||
-    lastName === null ||
-    lastName === "undefined"
+    regEx.masquetext.test(lastName) !== true
   ) {
+    tabValidInput.push({ lastname:" Valeur du champ non validé"})
     return false;
   } else {
     return true;
@@ -28,12 +59,11 @@ function validLastName(lastName) {
 }
 
 //Valide l' input "firstName"
-function validFirstName(firstName) {
+function validFirstName(firstName, tabValidInput) {
   if (
-    regEx.masquetext.test(firstName) !== true ||
-    firstName === null ||
-    firstName === "undefined"
+    regEx.masquetext.test(firstName) !== true 
   ) {
+    tabValidInput.push({ firstname:" Valeur du champ non validé"})
     return false;
   } else {
     return true;
@@ -41,12 +71,11 @@ function validFirstName(firstName) {
 }
 
 //Valide l' input "mail"
-function validMail(email) {
+function validMail(email, tabValidInput) {
   if (
-    regEx.masquemail.test(email) !== true ||
-    email === null ||
-    email === "undefined"
+    regEx.masquemail.test(email) !== true 
   ) {
+    tabValidInput.push({ email:" Valeur du champ non validé"})
     return false;
   } else {
     return true;
@@ -54,12 +83,11 @@ function validMail(email) {
 }
 
 //Valide le message utilisateur
-function validMessage(comment) {
+function validMessage(comment, tabValidInput) {
   if (
-    regEx.masquemessage.test(comment) !== true ||
-    comment === null ||
-    comment === "undefined"
+    regEx.masquemessage.test(comment) !== true 
   ) {
+    tabValidInput.push({ comment:" Valeur du champ non validé"})
     return false;
   } else {
     return true;
@@ -67,12 +95,12 @@ function validMessage(comment) {
 }
 
 //Valide la réference de la page
-function validReferencePage(refPage) {
-  if (
-    regEx.masquealphanumerique.test(refPage) !== true ||
-    refPage === null ||
-    refPage === "undefined"
-  ) {
+function validReferencePage(refPage, tabValidInput) {
+  
+  let foundedRef = refPageValided.includes(refPage); 
+
+  if(!foundedRef ){
+    tabValidInput.push({ refpage:" Valeur du champ non validé"})
     return false;
   } else {
     return true;
@@ -80,49 +108,36 @@ function validReferencePage(refPage) {
 }
 
 //Valide un entier qui indique si le commentaire est une réponse à un autre commentaire
-function validIsResponse(isResponse) {
-  if (isResponse === 1 || isResponse === 0) {
-    return true;
-  } else {
+function validIsResponse(isResponse, tabValidInput) {
+
+  if (isResponse > 1 || isResponse < 0) {
+    tabValidInput.push({ isresponse:" Valeur du champ non validé"})
     return false;
+  } 
+  else {
+    return true
   }
+  
 }
 
 //Valide l' id du commentaire original
-function validOriginalCommentId(originalCommentId) {
-  if (
-    originalCommentId === null ||
-    originalCommentId === "undefined" ||
-    !originalCommentId
-  ) {
-    
-    return {
-        test : true,
-        neworiginalid : -1
-    };
-  }
-
+function validOriginalCommentId(originalCommentId, tabValidInput) {
+  
   if (regEx.masquenumber.test(originalCommentId) !== true) {
+    tabValidInput.push({ originalid:" Valeur du champ non validé"})
     return false
   } else {
-    return {
-      test: true,
-      neworiginalid: originalCommentId
-    };
+    return true
   }
 }
 
 //valide l'autorisation d' enregistrer une session utilisateur
-function validCheckbox(userData) {
+
+function validCheckbox(userData, tabValidInput) {
   //La valeur du checkbox peut etre nulle, ou absente.
 
-  if (userData === null || userData === "undefined") {
-    return false;
-  }
-
-
-
   if (regEx.masquecheckbox.test(userData) !== true) {
+    tabValidInput.push({ userdata:" Valeur du champ non validé"})
     return false;
   } else {
     return true;
@@ -151,6 +166,7 @@ function getUserIP(req) {
 
 function objectResponse(lastName, firstName, email, checkboxvalue) {
   let object = {};
+   
 
   if (checkboxvalue == "ok") {
     object = {
@@ -164,20 +180,16 @@ function objectResponse(lastName, firstName, email, checkboxvalue) {
       validsession: "no",
     };
   }
-  return object;
+  return JSON.stringify(object);
 }
 
-function createConnexionMysql() {
-    let connection = mysql.createConnection({
-      host: "localhost",
-      user: "kvyjmgfk_admin",
-      password: "Poweradmin65!",
-      database: "kvyjmgfk_electravaux",
-    });
-    return connection
-}
+
 
 module.exports = {
+  //test de présence
+  checkreqbodykeys : checkReqBodyKeys,
+  
+  //test de validité
   validlastname: validLastName,
   validfirstname: validFirstName,
   validmail: validMail,
@@ -186,7 +198,10 @@ module.exports = {
   validisresponse: validIsResponse,
   validoriginalcommentid: validOriginalCommentId,
   validcheckbox: validCheckbox,
+
+  //recuperation de l'IP
   getuserip: getUserIP,
+
+  //Objet röponse ä renvoyer au front end
   objectresponse: objectResponse,
-  createconnexionmysql: createConnexionMysql,
 };

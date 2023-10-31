@@ -9,7 +9,7 @@ function submitFormContact(e, bodyrequest) {
   e.preventDefault();
 
   let urlTestFetch = "http://www.apielectravauxtest.electravaux.com/contact";
-  let urlProdFetch = "https://www.apielectravaux.electravaux.com/contact";
+  let urlProdFetch = "https://www.apielectravauxproduction.electravaux.com/contact";
 
   fetch(urlProdFetch, {
     headers: {

@@ -10,7 +10,7 @@ function submitForm(e, bodyrequest) {
   //évite la soumission automatique du formulaire
   e.preventDefault();
   let urlTestFetch =  "http://www.apielectravauxtest.electravaux.com/comment-user/form";
-  let urlProdFetch =  "https://www.apielectravaux.electravaux.com/comment-user/form";
+  let urlProdFetch =  "https://www.apielectravauxproduction.electravaux.com/comment-user/form";
 
   fetch(urlProdFetch, {
     headers: {

@@ -36,20 +36,28 @@ exports.testFormContact = (req, res, next) => {
   /****** check 1:  *********/
   //Controle si la requete utilisateur provient du site 'electravaux.com'
 
-  /*if (req.headers.origin !== "http://localhost:3000") {
+  if (req.headers.origin !== "https://electravaux.com/") {
     //Si la condition est rempli on renvoi un code de status reussi et un message vide, pour leurer le robot
     res.status(201).json({ "em ": "01A" });
-  }*/
+  }
 
   /****** check 2:  *********/
   // controle si le corps de la requete contient toutes les proprietés attendues
 
   //Récuperation des clefs du corps de la requete
   let listOfKeys = Object.keys(req.body);
-  //Si le tableau des clefs vide on renvoi un message d'erreur
+
+  //Si le tableau des clefs est vide on renvoi un message d'erreur
   if (listOfKeys.length < 1) {
     res.status(200).json({ me: " 01B" });
   }
+
+  //Si la premiere clef est "current" on supprime cette meme clef
+  if (listOfKeys[0] === "current") {
+    listOfKeys.shift();
+  }
+
+  // Test si les clefs obtenues correspondent aux clefs attendues
 
   let isAllKeys = checkForm.checkreqbodykeys(listOfKeys, tabRefOfKeys);
   //Si toutes les clefs attendues ne sont pas presente on renvoi un message d' erreur
@@ -92,7 +100,7 @@ exports.testFormContact = (req, res, next) => {
 
   checkForm.validreferencepage(refPage, tabValidInput);
 
-  //si le tableau n' est pas vide, on renvoi le tableau d' erreur
+  //si le tableau n'est pas vide, on renvoi le tableau d' erreur
   if (tabValidInput.length !== 0) {
     res.status(200).json({ me: " 01D" });
   }
@@ -163,9 +171,9 @@ exports.sendMail = (req, res, next) => {
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-      res.status(300).json({ "message status": error });
+      res.status(300).json({ message_status: error });
     } else {
-      res.status(201).json({ "message status": "sended" });
+      res.status(201).json({ message_status: "sended" });
     }
   });
 };

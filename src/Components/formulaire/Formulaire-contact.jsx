@@ -22,8 +22,7 @@ const testInputUser = require("../../Utils/Function/testInputUser");
 
 //Fonction "FormulaireContact"
 
-function FormulaireContact(refpage) {
-  
+function FormulaireContact(refPage) {
   /*********** hooks****************/
 
   /***************** useRef ********/
@@ -40,27 +39,27 @@ function FormulaireContact(refpage) {
   const FlagErrorUserEmail = useRef(true);
   const FlagErrorUserMessage = useRef(true);
 
+  //Objet qui constitu le corps de la requette
+  //Corps de la requette fetch pour soummission du formulaire
+  const bodyrequest = useRef({});
+
   /******************** useState ***/
 
   //Flag qui indique si le formulaire est valide pour soumission vers api
   const [isValidForm, setIsValidForm] = useState(false);
 
   /*** ******************* useEffect ***/
-  
+
   //Permet de préremplir et de valider les inputs utilisateur, avec les donnees du client connecté.
-  
+
   useEffect(() => {
     let isSession = testSession.setValueInputUser();
     if (isSession) {
       FlagErrorUserLastName.current = false;
       FlagErrorUserFirstName.current = false;
       FlagErrorUserEmail.current = false;
-
     }
   }, []);
-
-  //Corps de la requette fetch pour soummission du formulaire
-  let bodyrequest = {};
 
   //Variables contenant les messages d'erreur des differents inputs user
   const lastNameErrorMessage = "Veuillez entrer un 'nom' valide...";
@@ -116,8 +115,9 @@ function FormulaireContact(refpage) {
     bodyrequest.firstname = document.forms["formContact"].firstname.value;
     bodyrequest.email = document.forms["formContact"].email.value;
     bodyrequest.message = document.forms["formContact"].message.value;
-    bodyrequest.pageref = refpage;
+    bodyrequest.pageref = refPage.refPage;//la prop "refPage" contient un objet dont la ropriete est "refPage"
     bodyrequest.sujet = "";
+    
   }
 
   //Class css des élements du DOM

@@ -35,12 +35,12 @@ function PageContact() {
     parent.classList.add("hide")
   }
   //Reference de la page
-  const pageRef = "contact";
+  const refOfPage = "contact";
 
   return (
     <div className="container-form">
       <Loader />
-      <FormulaireContact refpage="contact" />
+      <FormulaireContact refPage={refOfPage} />
       {comment ? (
         <div className="comment-stored">
           <span className="comment-stored__text">

@@ -15,7 +15,7 @@ let masqueText = /^[A-Za-z_'.-\s]{2,20}$/;
 let masqueMail = /^[0-9]{0,4}[0-9a-z_'.-]{2,30}@[0-9a-z_'.-]{2,15}\.[0-9a-zA-Z_'.-]{2,15}$/;
 
 //Motif qui autorise des nombres, lettres minuscules et majuscules, point, trait d'union, apotrophe, et underscore de 10 a 200 caracteres
-let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!ç\n\s]{10,200}$/;
+let masqueMessage = /^[0-9A-Za-z_'.-;,:éàè?!ç\n\s]{20,200}$/;
 
 
 /********************  fonctions    ************** */

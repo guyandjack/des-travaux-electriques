@@ -74,7 +74,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
   const [pageRefValue, setPagerefValue] = useState(pageRef);
   const [isResponseValue, setIsResponseValue] = useState(isResponse);
   const [originalCommentIdValue, setOriginalCommentIdValue] = useState(responseIdTo);
-  const [sujetValue, setSujetValue] = useState(null);
+  const [sujetValue, setSujetValue] = useState("");
 
   //Indique si une session user est ouverte
   const [isSessionOpen, setIsSessionOpen] = useState(testSession.isSessionOpen());
@@ -229,7 +229,7 @@ function Formulaire({ pageRef, isResponse, responseTo, responseIdTo }) {
       onSubmit={(evt) => {
         submitForm(evt, bodyrequest);
         setOriginalCommentIdValue(responseIdTo);
-        window.location.reload();
+        //window.location.reload();
       }}
     >
       {isResponse ? (

@@ -24,8 +24,11 @@ function submitFormContact(e, bodyrequest) {
         .json()
 
         .then((data) => {
-          console.log(data);
-           alert("message envoyé 👍");
+          if (data.message_status !== "sended") {
+            alert(" Une erreur est survenue lors de l’envoi du message !!! \n Votre message ne nous est pas parvenu.");
+          } else {
+            alert("message recu! 👍 \n il sera traité dans les 48h");
+          }
         });
     })
 

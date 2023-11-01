@@ -34,7 +34,7 @@ function submitForm(e, bodyrequest) {
          
     })
 
-      //.then(window.location.reload())
+      .then(window.location.reload())
     
 
     .catch((error) => console.log(error));

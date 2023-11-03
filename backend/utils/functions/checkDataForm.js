@@ -170,6 +170,7 @@ function objectResponse(lastName, firstName, email, checkboxvalue) {
 
   if (checkboxvalue == "ok") {
     object = {
+      statusRequest: "sended",
       validsession: "ok",
       userDataName: lastName,
       userDataFirstname: firstName,
@@ -177,6 +178,7 @@ function objectResponse(lastName, firstName, email, checkboxvalue) {
     };
   } else {
     object = {
+      statusRequest: "sended",
       validsession: "no",
     };
   }

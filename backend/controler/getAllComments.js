@@ -1,6 +1,6 @@
 /****************************************************************************************************/
 
-//Le controler "getAllCommentsForOnePage" permet à chaque page de récuperer les commentaires utilisateurs 
+//Le controler "getAllCommentsForOnePage" permet à chaque page de récuperer les commentaires utilisateurs
 //correspondants.
 
 /****************************************************************************************************/
@@ -19,7 +19,7 @@ exports.getAllCommentsForOnePage = (req, res, next) => {
   //recuperation des commentaires dans la base sql
 
   // definition des parametre de connexion
-  const connection = connectToBdd.connexionToBdd();
+  const connection = connectToBdd.connexionToBddProd();
 
   /************** requetes preparées************* */
 

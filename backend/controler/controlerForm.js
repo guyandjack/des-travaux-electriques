@@ -1,4 +1,4 @@
-/*************   ********************************************************       ***************/
+/*************   Ensemble des controleurs qui gèrent les commentaires utilisateur.       ***************/
 
 //Le controler "testform" gerent les données issu du formulaire, et enregistre le commentaire dans la bdd.
 
@@ -16,7 +16,7 @@ exports.testForm = (req, res, next) => {
   //tableau renvoyé au front end si une input du formulaire est manquante
   let tabErrorBodyreq = [];
 
-  //Tableau qui contient le resultat des tests des inputs
+  //Tableau qui contient le resultat des test des inputs
   let tabValidInput = [];
 
   //Clefs du corp de requete normalement attendues
@@ -41,34 +41,31 @@ exports.testForm = (req, res, next) => {
     res.status(201).json({ "em ": "01A" });
   }*/
 
-
-
   /****** check 2:  *********/
   // controle si le corps de la requete contient toutes les proprietés attendues
 
-  //Récuperation des clefs du corps de la requete
+  //Recuperation des clefs du corps de la requete
   let listOfKeys = Object.keys(req.body);
   //Si le tableau des clefs vide on renvoi un message d'erreur
   if (listOfKeys.length < 1) {
-    res.status(200).json({ "me": " 01B" });
+    res.status(200).json({ me: " 01B" });
   }
 
   let isAllKeys = checkForm.checkreqbodykeys(listOfKeys, tabRefOfKeys);
   //Si toutes les clefs attendues ne sont pas presente on renvoi un message d' erreur
   if (isAllKeys !== true) {
-    res.status(200).json({"me": " 02B"})
+    res.status(200).json({ me: " 02B" });
   }
-
 
   /****** check 3:  *********/
   //Controle anti-spam (pot de miel)
   //La variable sujet est issu d' une input caché que l'utilisateur ne peut pas voir et remplir.(leure pour robot)
-  
-  if (req.body.sujet.length > 0) {
-      //Si la valeur de la clef sujet n' est pas nulle, on renvoi un code d' erreur
-      res.status(201).json({ "me": " 01C" });
-    }
-  
+  let honey = req.body.sujet;
+
+  if (honey.length > 0) {
+    //Si la valeur de la clef sujet n' est pas nulle, on renvoi un code d' erreur
+    res.status(201).json({ me: " 01C" });
+  }
 
   /****** donnée utilisateur *******/
 
@@ -121,20 +118,19 @@ exports.testForm = (req, res, next) => {
 
   //si le tableau n' est pas vide, on renvoi le tableau d' erreur
   if (tabValidInput.length !== 0) {
-    res.status(200).json({ "me": " 01D" });
+    res.status(200).json({ me: " 01D" });
   }
 
   //Enregistrement du commentaire dans la base sql
 
-  const connection = connectToBdd.connexionToBddTest();
+  const connection = connectToBdd.connexionToBddProd();
 
   //Composition des requetes preparees
 
   //-1- requete pour inserer un commentaire original:
 
   //Requete -1- type "insert"
-  let requeteInsertionTest = `INSERT INTO user_comment_test (lastname,firstname,email,content,adressip,pageref,response,originalcommentid,date) VALUES (?,?,?,?,?,?,?,?,NOW())`;
-  let requeteInsertionProd = `INSERT INTO user_comment (lastname,firstname,email,content,adressip,pageref,response,originalcommentid,date) VALUES (?,?,?,?,?,?,?,?,NOW())`;
+  let requeteInsertion = `INSERT INTO user_comment (lastname,firstname,email,content,adressip,pageref,response,originalcommentid,date) VALUES (?,?,?,?,?,?,?,?,NOW())`;
 
   //parametres de la requete -1- type "insert"
   let paramInsertion = [
@@ -154,10 +150,8 @@ exports.testForm = (req, res, next) => {
       return console.error("error de connection: " + err.message);
     }
 
-    console.log("Connexion à la bdd ´travaux_electriques´ reussie!");
-
     //requette -1- insertion du commentaire
-    connection.query(requeteInsertionProd, paramInsertion, (err, result) => {
+    connection.query(requeteInsertion, paramInsertion, (err, result) => {
       //gestion des erreurs
       if (err) {
         console.log("impossible d'enregistre le commentaire: " + err);
@@ -170,28 +164,22 @@ exports.testForm = (req, res, next) => {
       }
 
       //gestion du resultat
-      console.log(
-        "resultat de l'enregistrement du comment ds la bdd: " +
-          JSON.stringify(result)
-      );
+      //le resultat de la requete indique l'ID ou est inserer le commentaire
       insertID = result.insertId;
-      console.log("insertid dans la  requette 1 : " + insertID);
+      console.log("insertid dans la requette 1 : " + insertID);
 
-      // Requette secondaire facultative: Attribut une valeur à originalcommentid
+      //Requette secondaire facultative: Attribut une valeur à originalcommentid
       if (isResponse == 0) {
         console.log("requette 2 lancee");
         //Un commentaire original doit avoir son originalcommentid egal à son id
 
         //Requete type "update"
-        let requeteUpdateTest = `UPDATE comment_user_test SET originalcommentid = ? WHERE id = ?`;
-        let requeteUpdateProd = `UPDATE comment_user SET originalcommentid = ? WHERE id = ?`;
+        let requeteUpdate = `UPDATE comment_user SET originalcommentid = ? WHERE id = ?`;
 
         //Parametre de la requette -2- type "update"
         let paramUpdate = [insertID, insertID];
 
-        console.log("valeur du insertid dans la requette 2: " + insertID);
-
-        connection.query(requeteUpdateProd, paramUpdate, (err, result) => {
+        connection.query(requeteUpdate, paramUpdate, (err, result) => {
           //gestion des erreurs
           if (err) {
             console.log("impossible de modifier le commentaire: " + err);
@@ -204,14 +192,12 @@ exports.testForm = (req, res, next) => {
           }
 
           //gestion du resultat
-          console.log(
-            "resultat de la mise  à jour du comment ds la bdd: " +
-              JSON.stringify(result)
-          );
+          
         });
       }
 
       let resultForClient = checkForm.objectresponse(
+        //Variable 
         //variable pour premplir les champs du formulaire
         lastName,
         firstName,

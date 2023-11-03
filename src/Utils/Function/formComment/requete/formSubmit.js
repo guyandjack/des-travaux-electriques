@@ -21,21 +21,28 @@ function submitForm(e, bodyrequest) {
     body: JSON.stringify(bodyrequest),
   })
     .then((response) => {
-      response.json() 
-      
+      response
+        .json()
+
         .then((data) => {
-
-          localStorage.setItem("UserSession", data);
-          localStorage.setItem("activePage", "0");
-
-        })
-        
-
-         
+          let result = JSON.parse(data);
+          console.log("objet renvoyer par le backend apres insertion commentaire: " + result);
+          console.log("propriete statusRequest: " + result.statusRequest);
+          if (result.statusRequest !== "sended") {
+            alert(
+              "Une erreur est survenue,\n votre commentaire n'a pas été envoyé!"
+            );
+          } else {
+            localStorage.setItem("UserSession", data);
+            localStorage.setItem("activePage", "0");
+            alert("Merci pour votre commentaire! 👋");
+          }
+        });
     })
 
-      .then(window.location.reload())
-    
+    .then(() => {
+      window.location.reload();
+    })
 
     .catch((error) => console.log(error));
 }

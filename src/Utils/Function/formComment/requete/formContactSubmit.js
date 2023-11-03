@@ -2,6 +2,7 @@
 /**************
  * arg1: évènement "submit" du formulaire concerné
  * arg2: corps de la requete à transmettre
+ 
  *************/
 
 function submitFormContact(e, bodyrequest) {

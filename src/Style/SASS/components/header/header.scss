@@ -7,13 +7,17 @@
 @import "../../utils/colors-rule/colors-rule.scss";
 
 .main-header {
+  
   @include upper-medium-screen {
     position: sticky;
-    top: 0px;
+    top: 0%;
     z-index: 10;
     margin-bottom: 2em;
   }
+  background-color: red;
 }
+
+
 .container-banner {
   display: flex;
   flex-flow: row nowrap;
@@ -23,10 +27,10 @@
   width: 100%;
   height: 80px;
   
-
   &__banner {
     
     background-color: map-get($colors-rule, second-color );
+    width:auto;
     
   }
 }
@@ -38,6 +42,7 @@
   align-items: center;
 
   position: relative;
+  top:30px;
   
   width: 100%;
 

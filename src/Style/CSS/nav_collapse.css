@@ -97,7 +97,7 @@
   transition: max-height 300ms linear, opacity 350ms linear, border-top 300ms linear;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 769px) {
   .nav-collapse .collapse-list {
     position: absolute;
     top: 100%;
@@ -137,7 +137,7 @@
   transition: background-color 300ms linear, padding-left 300ms linear;
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 769px) {
   .nav-collapse .collapse-list__li:hover {
     padding-left: 2em;
     background-color: #f7bd50;

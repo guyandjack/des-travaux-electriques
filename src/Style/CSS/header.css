@@ -1,8 +1,12 @@
+.main-header {
+  background-color: red;
+}
+
 @media screen and (min-width: 769px) {
   .main-header {
     position: -webkit-sticky;
     position: sticky;
-    top: 0px;
+    top: 0%;
     z-index: 10;
     margin-bottom: 2em;
   }
@@ -28,6 +32,7 @@
 
 .container-banner__banner {
   background-color: #EFA00B;
+  width: auto;
 }
 
 .header {
@@ -45,6 +50,7 @@
       -ms-flex-align: center;
           align-items: center;
   position: relative;
+  top: 30px;
   width: 100%;
   background-color: #272727;
 }

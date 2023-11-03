@@ -113,16 +113,6 @@ function Header() {
 
   return (
     <header className="main-header grow">
-      {isSmallScreen ? (
-        <div className="container-banner">
-          <img
-            className="container-banner__banner"
-            src="/Asset/background-image/small-screen-banner.svg"
-            alt="banner"
-          ></img>
-        </div>
-      ) : null}
-
       <nav ref={elementHeader} className="header grow">
         <div className="header__container-div-sitebuilding">
           <SiteIsBuilding />
@@ -142,6 +132,15 @@ function Header() {
 
         <div className="header__container-menu">
           <NavMenu>
+            {isSmallScreen ? (
+              <div className="container-banner">
+                <img
+                  className="container-banner__banner"
+                  src="/Asset/background-image/small-screen-banner.svg"
+                  alt="banner"
+                ></img>
+              </div>
+            ) : null}
             <NavLink
               urlTo="/"
               urlImg=""
@@ -217,7 +216,6 @@ function Header() {
                 colorBg=""
               />
             </NavCollapse>
-            
           </NavMenu>
         </div>
         {isSmallScreen ? null : (

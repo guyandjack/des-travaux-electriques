@@ -24,7 +24,7 @@ import { PageQuizPC } from "./Pages/QuizPC/PageQuizPC.jsx";
 import { PageQuizCircuitSpecialise } from "./Pages/QuizCircuitSpecialise/PageQuizCircuitSpecialise.jsx";
 import { PageQuizCircuitEclairage } from "./Pages/QuizCircuitEclairage/PageQuizCircuitEclairage.jsx";
 import { PageErreur } from "../src/Pages/Erreur_404/Erreur_404.jsx";
-import { PageTestServer } from "../src/Pages/Test_Server/TestServer.jsx";
+
 
 //Import des composants enfants
 import { Header } from "../src/Components/Header/Header.jsx";
@@ -40,7 +40,6 @@ function App() {
 
         <Routes>
           <Route exact path="/" element={<PageHome />}></Route>
-          <Route path="testserver" element={<PageTestServer />}></Route>
           <Route path="/schema/pc16a" element={<PagePC16A />}></Route>
           <Route path="/schema/pc16a/quiz" element={<PageQuizPC />}></Route>
           <Route path="/schema/circuit-specialise" element={<PageCircuitSpecialise />}></Route>

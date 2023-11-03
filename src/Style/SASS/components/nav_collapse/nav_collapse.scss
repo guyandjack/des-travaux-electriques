@@ -74,7 +74,7 @@
     border-top 300ms linear;
 
     //responsive pour ecran superieur à small
-    @include upper-small-screen {
+    @include upper-medium-screen {
       position: absolute;
       top: 100%;
       width: 200%;
@@ -104,7 +104,7 @@
 
       &:hover {
         //responsive pour écran small
-        @include upper-small-screen {
+        @include upper-medium-screen {
           padding-left: 2em;
           background-color: lighten(map-get($colors-rule, second-color), 15%);
         }

@@ -25,8 +25,14 @@ function submitFormContact(e, bodyrequest) {
         .json()
 
         .then((data) => {
-          if (data.message_status !== "sended") {
-            alert(" Une erreur est survenue lors de l’envoi du message !!! \n Votre message ne nous est pas parvenu.");
+          
+          let result = JSON.parse(JSON.stringify(data));
+          
+
+          if (result.statusMessage !== "sended") {
+            alert(
+              " Une erreur est survenue lors de l’envoi du message !!! \n Votre message ne nous est pas parvenu."
+            );
           } else {
             alert("message recu! 👍 \n il sera traité dans les 48h");
           }

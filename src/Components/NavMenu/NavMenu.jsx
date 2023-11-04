@@ -19,31 +19,21 @@ import "../../Style/CSS/nav-menu.css";
 //Fonction "NavMenu"
 
 function NavMenu({ children }) {
+  //hook useState
+  const [isSmallScreen, setIsSmallScreen] = useState();
 
-   //hook useState
-    const [isSmallScreen, setIsSmallScreen] = useState(); 
-    
   //hook useEffect
 
+  //determine si l' ecran est de type mobile, et ajuste le "UseState" en fonction
   useEffect(() => {
     let isMobilDisplay = isScreenMobil();
-    console.log("valeur de retour de la fonction isMobil: " + isMobilDisplay);
 
     setIsSmallScreen(isMobilDisplay);
-    console.log(
-      " valeur de issamllscreen dans le use effect header: " + isSmallScreen
-    );
 
     window.addEventListener("resize", () => {
       let isMobilDisplays = isScreenMobil();
-      console.log(
-        " valeur de issamllscreen dans l 'event avant setage: " + isSmallScreen
-      );
+
       setIsSmallScreen(isMobilDisplays);
-      console.log(" taille de l'écran dans le header: " + window.innerWidth);
-      console.log(
-        " valeur de issamllscreen dans l 'event apres setage: " + isSmallScreen
-      );
     });
 
     return () => {
@@ -52,6 +42,8 @@ function NavMenu({ children }) {
       });
     };
   }, []);
+
+  
   return (
     <ul className="nav-menu">
       {children.map((link, index) => {

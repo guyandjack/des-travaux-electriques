@@ -3,8 +3,6 @@
 //Import des hook
 import { useState, useEffect, useRef } from "react";
 
-//Import des fichiers des url des images de la banner
-import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
 
 //Import des composants enfants
 
@@ -18,25 +16,25 @@ import { CollapseUserSession } from "../CollapseUserSession/CollapseUserSession.
 //Import des feuilles de style
 import "../../Style/CSS/header.css";
 
-//import des fonctions
-import {
-  pageAperture,
-  pageClosure,
-} from "../../Utils/Function/LocalStorage.js";
 
 import { isScreenMobil } from "../../Utils/Function/isScreenMobil.js";
 
 //Fonction "Header"
 function Header() {
+  //hook useRef
+
+  // reference de l'élement nav dans le DOM
+  const elementHeader = useRef();
+
+  //bolleen qui indique si un ecouteur d'évènement lié au "scroll" est rataché à un élément du DOM
+  //valeur de defaut false (aucun ecouteur rattaché)
+  let eventScroll = useRef(false);
+
   //hooks State
 
   //boleen qui indique si l' ecran est de type mobile ou non
   //valeur de defaut true (ecran mobile)
   const [isSmallScreen, setIsSmallScreen] = useState(true);
-
-  //bolleen qui indique si un ecouteur d'évènement lié au "scroll" est rataché à un élément du DOM
-  //valeur de defaut false (aucun ecouteur rattaché)
-  const [eventScroll, setEventScroll] = useState(false);
 
   //hook useEffect
 
@@ -50,7 +48,6 @@ function Header() {
       let isMobilDisplays = isScreenMobil();
 
       setIsSmallScreen(isMobilDisplays);
-      console.log("is mobile type: (isSmallscreen)" + isMobilDisplay);
     });
 
     return () => {
@@ -59,23 +56,6 @@ function Header() {
       });
     };
   }, []);
-
-  //Gere les sessions utilisteurs
-  /*useEffect(() => {
-    if (isFirstTime == true) {
-      //reference la page consultée dans le local storage
-      pageAperture();
-
-      //Suite à un évenement fermeture de page on gère la session utilisateur
-      window.addEventListener("beforeunload", () => {
-        //reinitialisation de la variable
-        isFirstTime = true;
-        pageClosure();
-      });
-      //Evite un deuxieme traitement lors du re-render
-      isFirstTime = false;
-    }
-  }, []);*/
 
   //Applique un changement de class CSS en fonction du "scroll" et "scrollend"
   useEffect(() => {
@@ -91,32 +71,36 @@ function Header() {
     //et si l' ecran n'est pas  de type mobile,
     //on creé les  évenement "scroll"
 
-    if (!eventScroll && !isSmallScreen) {
+    if (!eventScroll.current && !isSmallScreen) {
       window.addEventListener("scroll", changeGrowToSchrink);
       window.addEventListener("scrollend", changeSchrinkToGrow);
-      setEventScroll(true);
+      eventScroll.current = true;
     }
 
     //Si un evenement scroll est déja rataché
     // et si l' ecran est de type mobile
     // on detruit les ecouteurs d'évènements
 
-    if (eventScroll && isSmallScreen) {
+    if (eventScroll.current && isSmallScreen) {
       window.removeEventListener("scroll", changeGrowToSchrink);
       window.removeEventListener("scrollend", changeSchrinkToGrow);
-      //setEventScroll(false);
+      eventScroll.current = false;
     }
-  }, [isSmallScreen, eventScroll]);
-
-  //hook useRef
-  const elementHeader = useRef();
+  }, [isSmallScreen, eventScroll.current]);
 
   return (
     <header className="main-header grow">
-      <nav ref={elementHeader} className="header grow">
-        <div className="header__container-div-sitebuilding">
-          <SiteIsBuilding />
+      {isSmallScreen ? (
+        <div className="container-banner">
+          <img
+            className="container-banner__banner"
+            src="/Asset/background-image/small-screen-banner.svg"
+            alt="banner"
+          ></img>
         </div>
+      ) : null}
+      <nav ref={elementHeader} className="header grow">
+        
 
         {isSmallScreen ? null : (
           <div className="header__container-logo">
@@ -132,15 +116,6 @@ function Header() {
 
         <div className="header__container-menu">
           <NavMenu>
-            {isSmallScreen ? (
-              <div className="container-banner">
-                <img
-                  className="container-banner__banner"
-                  src="/Asset/background-image/small-screen-banner.svg"
-                  alt="banner"
-                ></img>
-              </div>
-            ) : null}
             <NavLink
               urlTo="/"
               urlImg=""

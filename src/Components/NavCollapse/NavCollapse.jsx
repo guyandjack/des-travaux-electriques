@@ -20,14 +20,32 @@ import "../../Utils/break_point/break_point.js";
 //Import des feuilles de style
 import "../../Style/CSS/nav_collapse.css";
 
+//Import des fonctions
+import { isScreenMobil } from "../../Utils/Function/isScreenMobil.js";
+
 //Fonction "NavCollapse"
 
 function NavCollapse({ urlTo, urlImg, text, colorText, sizePolice, colorBg, children }) {
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState();
 
+  //determine si l' ecran est de type mobile, et ajuste le "UseState" en fonction
   useEffect(() => {
-    getScreenSize();
-  }, [isSmallScreen]);
+    let isMobilDisplay = isScreenMobil();
+
+    setIsSmallScreen(isMobilDisplay);
+
+    window.addEventListener("resize", () => {
+      let isMobilDisplays = isScreenMobil();
+
+      setIsSmallScreen(isMobilDisplays);
+    });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        isScreenMobil(setIsSmallScreen);
+      });
+    };
+  }, []);
 
   let classList = "collapse-list";
   let classListHide = "display";
@@ -83,20 +101,9 @@ function NavCollapse({ urlTo, urlImg, text, colorText, sizePolice, colorBg, chil
     chevron.classList.remove(classChevronAnimation);
   }
 
-  function getScreenSize() {
-    screenSize = window.innerWidth;
-    if (screenSize < 579) {
-      setIsSmallScreen(true);
-    } else {
-      setIsSmallScreen(false);
-    }
+  
 
-    
-  }
-
-  window.addEventListener("resize", () => {
-    getScreenSize();
-  });
+  
 
   return (
     <div

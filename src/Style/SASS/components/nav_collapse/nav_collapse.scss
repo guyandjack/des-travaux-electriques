@@ -73,7 +73,7 @@
     transition: max-height 300ms linear, opacity 350ms linear,
     border-top 300ms linear;
 
-    //responsive pour ecran superieur à small
+    //responsive pour ecran superieur à medium
     @include upper-medium-screen {
       position: absolute;
       top: 100%;

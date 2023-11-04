@@ -67,7 +67,7 @@ function PageCircuitEclairage() {
     scrollTo(".circuit-eclairage");
   }, []);
 
-  //determine l' image ä afficher en fonction de la taille de l'ecran
+  //determine l'image à afficher en fonction de la taille de l'ecran.
   useEffect(() => {
     sizeScreen.giveImageSize(setImageSize);
 

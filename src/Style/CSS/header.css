@@ -1,5 +1,18 @@
 .main-header {
-  background-color: red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 769px) {
@@ -9,6 +22,7 @@
     top: 0%;
     z-index: 10;
     margin-bottom: 2em;
+    overflow: visible;
   }
 }
 
@@ -32,7 +46,8 @@
 
 .container-banner__banner {
   background-color: #EFA00B;
-  width: auto;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
 }
 
 .header {
@@ -50,7 +65,6 @@
       -ms-flex-align: center;
           align-items: center;
   position: relative;
-  top: 30px;
   width: 100%;
   background-color: #272727;
 }

@@ -461,9 +461,6 @@ function PageCircuitEclairage() {
                   (findedComment) => findedComment.id == originalCommentId
                 );
 
-                //Un commentaire "reponse" à un "originalcommentid" égal à son "id"
-                originalCommentId = onecomment.id;
-
                 //Recuperation du "prenom" , du "contenu"  du commentaire "original"
                 originalFirstname = theFindedCommentOriginal.firstname;
                 originalContent = theFindedCommentOriginal.content;
@@ -479,7 +476,7 @@ function PageCircuitEclairage() {
                     originalfirstname={originalFirstname}
                     originaltext={originalContent}
                     //props à transmettre au formulaire contenu dans "commentUser"
-                    originalcommentid={originalCommentId}
+                    originalcommentid={onecomment.id}
                     //id du commentaire original à envoyer via le formulaire pour la bdd
                     //Cet id original est l' id du commentaire parent.
                   />

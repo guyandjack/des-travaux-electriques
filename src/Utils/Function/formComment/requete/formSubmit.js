@@ -25,9 +25,9 @@ function submitForm(e, bodyrequest) {
         .json()
 
         .then((data) => {
+          
           let result = JSON.parse(data);
-          console.log("objet renvoyer par le backend apres insertion commentaire: " + result);
-          console.log("propriete statusRequest: " + result.statusRequest);
+          
           if (result.statusRequest !== "sended") {
             alert(
               "Une erreur est survenue,\n votre commentaire n'a pas été envoyé!"

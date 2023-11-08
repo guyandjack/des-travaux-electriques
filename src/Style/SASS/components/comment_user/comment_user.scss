@@ -47,6 +47,9 @@
       }
 
       .comment-user-text {
+        overflow: hidden;
+        overflow-wrap: break-word;
+        //word-wrap: break-word;
         text-align: left;
 
         flex: 0 1 70%;

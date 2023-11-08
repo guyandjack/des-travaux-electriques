@@ -35,10 +35,13 @@ function CommentUser({
   //Affiche le formulaire pour effectuer une réponse à un commentaire.
 
   function displayFormResponse(e) {
-    let parent = e.parentElement;
-    parent.nextElementSibling.classList.add(classDisplay);
-    //preremplie les inputs utilisateurs si une user session est ouverte
-    defaultValueInputUser.setValueInputUser();
+    
+    
+      let parent = e.parentElement;
+      parent.nextElementSibling.classList.add(classDisplay);
+      //preremplie les inputs utilisateurs si une user session est ouverte
+      defaultValueInputUser.setValueInputUser();
+    
   }
 
   return (
@@ -53,7 +56,7 @@ function CommentUser({
             <div className="comment-user-firstname-original">
               {originalfirstname}
             </div>
-            <div className="comment-user-text-original">{originaltext}</div>
+            <span className="comment-user-text-original">{originaltext}</span>
           </div>
         ) : null}
         <div className="container-info">

@@ -10,10 +10,15 @@
 .title {
   display: flex;
   flex-flow: column nowrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 
   width: 100%;
+  height: 100%;
+
+  @include upper-medium-screen{
+    justify-content: flex-start;
+  }
 
   &__container-text {
     display: flex;
@@ -24,14 +29,13 @@
     width: 100%;
     //responsive pour ecran superieur à medium
 
-   @include upper-medium-screen{
-    flex-flow: row nowrap;
-    justify-content: space-around;
-   }
+    @include upper-medium-screen {
+      flex-flow: row nowrap;
+      justify-content: space-around;
+    }
 
-    .title-img{
-        width: 150px;
-        
+    .title-img {
+      width: 150px;
     }
   }
 
@@ -42,33 +46,44 @@
     font-family: "Oswald", sans-serif;
     text-transform: uppercase;
     color: map-get($colors-rule, fourth-color);
-    font-size: 3em;
-    margin: 0em 0em 2em 0em;
+    font-size: 1.2em;
+    //margin: 0em 0em 0em 0em;
     border-right: 50px solid map-get($colors-rule, second-color);
     border-left: 50px solid map-get($colors-rule, second-color);
     text-decoration: underline map-get($colors-rule, second-color);
 
-    //responsive pour ecran inferieur à "large"
-    @include under-large-screen {
+    @include upper-medium-screen{
       font-size: 2em;
       margin: 0.8em 0em;
     }
 
-    //responsive pour ecran small
-    @include small-screen {
-      font-size: 1.2em;
-      margin: 0.5em 0em;
+    @include upper-large-screen{
+      font-size: 2.5em;
+      margin: 0.8em 0em;
     }
+
+    
   }
 
   .title-home {
-    font-size: 3.5em;
+    font-size: 1.2em;
     color: map-get($colors-rule, fifth-color);
     border: none;
     text-decoration: none;
 
+    @include upper-medium-screen{
+      font-size: 2em;
+      margin: 0.8em 0em;
+    }
+
+    @include upper-large-screen{
+      font-size: 3em;
+      margin: 0.8em 0em;
+    }
+
+    
     //responsive pour ecran inferieur à "large"
-    @include under-large-screen {
+    /*@include under-large-screen {
       font-size: 2em;
       margin: 0.8em 0em;
     }
@@ -77,20 +92,27 @@
     @include small-screen {
       font-size: 1.2em;
       margin: 0.5em 0em;
-    }
+    }*/
   }
 
   .text-home,
   .text-page {
     width: fit-content;
-    font-size: 1.5em;
+    font-size: 1em;
     font-style: italic;
     color: map-get($colors-rule, fourth-color);
     text-align: center;
     padding: 1em 0em;
-    
 
-    //responsive pour ecran inferieur à large
+    @include upper-medium-screen{
+      font-size: 1.5em;
+      margin: 0.8em 0em;
+    }
+      @include upper-large-screen{
+      font-size: 2em;
+      margin: 0.8em 0em;
+      }
+    /*//responsive pour ecran inferieur à large
     @include under-large-screen {
       font-size: 1.5em;
       margin: 0.8em 0em;
@@ -100,10 +122,27 @@
     @include small-screen {
       font-size: 1em;
       margin: 0.5em 0em;
-    }
+    }*/
   }
 
   .text-home {
+    color: map-get($colors-rule, fifth-color);
+  }
+
+  .first-color {
+    color: map-get($colors-rule, first-color);
+  }
+  .second-color {
+    color: map-get($colors-rule, second-color);
+  }
+  .third-color {
+    color: map-get($colors-rule, third-color);
+  }
+  .fourth-color {
+    color: map-get($colors-rule, fourth-color);
+  }
+
+  .fifth-color {
     color: map-get($colors-rule, fifth-color);
   }
 }

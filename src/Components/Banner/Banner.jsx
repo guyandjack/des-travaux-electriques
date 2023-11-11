@@ -1,7 +1,7 @@
 // Composant "Banner"
 
 //Import des "hooks"
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 //Importation des url des images pour les différents banner et taille d'écran
 import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
@@ -9,29 +9,37 @@ import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
 //Import feuille de style
 import "../../Style/CSS/banner.css";
 
+
+
+//Import des functions
+const typeImg = require("../../Utils/Function/giveImageSize.js");
+
+
+
 function Banner({ pagename, text, title, colortext, colorbackground, urlimg }) {
-  const [sizeScreen, setSizeScreen] = useState(window.innerWidth);
+  /**********  hooks  ******/
+  // "useState"
+  const [imageSize, setImageSize] = useState("");
 
-  function getTypeScreen() {
-    if (sizeScreen >= 0 && sizeScreen <= 768) {
-      return "medium";
-    }
+  //"useEffect"
+  //determine l'image à afficher en fonction de la taille de l'ecran.
+  useEffect(() => {
+    typeImg.giveImageSize(setImageSize);
 
-    if (sizeScreen >= 769 && sizeScreen <= 992) {
-      return "large";
-    }
+    window.addEventListener("resize", () => {
+      typeImg.giveImageSize(setImageSize);
+    });
 
-    if (sizeScreen >= 993 && sizeScreen <= 1500) {
-      return "xlarge";
-    }
+    return () => {
+      window.removeEventListener("resize", () => {
+        typeImg.giveImageSize(setImageSize);
+      });
+    };
+  }, [imageSize]);
 
-    if (sizeScreen >= 1501) {
-      return "xxlarge";
-    }
-  }
-
-  let typeScreen = getTypeScreen();
-  let imgUrl = urlImgBanner[pagename]["medium"];
+  /*****  variables  *****/
+  //Contient l'url de l' image aà afficher dans le composant "banner"
+  let imgUrl = urlImgBanner[pagename][imageSize];
 
   let classBanner = "banner";
   let classBackGroundImg = "banner__background-img";
@@ -92,7 +100,7 @@ function Banner({ pagename, text, title, colortext, colorbackground, urlimg }) {
     }
   }
 
-  window.addEventListener("resize", () => setSizeScreen(window.innerWidth));
+  
 
   return (
     <div className={classBanner}>

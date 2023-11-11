@@ -12,17 +12,17 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  overflow: hidden;
 }
 
 @media screen and (min-width: 769px) {
   .main-header {
     position: -webkit-sticky;
     position: sticky;
-    top: 0%;
+    top: 0px;
     z-index: 10;
-    margin-bottom: 2em;
+    margin-bottom: 50px;
     overflow: visible;
+    width: 100%;
   }
 }
 

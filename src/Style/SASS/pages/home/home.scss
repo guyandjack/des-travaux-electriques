@@ -13,14 +13,17 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
-    align-items: center;  
+    align-items: center; 
+    
+    //transform: translateY(150px);
     width:100%;
-    height: 1000px;
+    height: 100px;
+    max-height: 1000px;
     
 
     //responsive pour écran small
-    @include small-screen{
-        height: 100px;
+    @include upper-medium-screen{
+        height: 600px;
     }
 
 

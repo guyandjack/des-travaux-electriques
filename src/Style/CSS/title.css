@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .title {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6,13 +7,22 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 769px) {
+  .title {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
 }
 
 .title__container-text {
@@ -53,15 +63,14 @@
   font-family: "Oswald", sans-serif;
   text-transform: uppercase;
   color: #272727;
-  font-size: 3em;
-  margin: 0em 0em 2em 0em;
+  font-size: 1.2em;
   border-right: 50px solid #EFA00B;
   border-left: 50px solid #EFA00B;
   -webkit-text-decoration: underline #EFA00B;
           text-decoration: underline #EFA00B;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (min-width: 769px) {
   .title .title-home,
   .title .title-page {
     font-size: 2em;
@@ -69,32 +78,42 @@
   }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (min-width: 993px) {
   .title .title-home,
   .title .title-page {
-    font-size: 1.2em;
-    margin: 0.5em 0em;
+    font-size: 2.5em;
+    margin: 0.8em 0em;
   }
 }
 
 .title .title-home {
-  font-size: 3.5em;
+  font-size: 1.2em;
   color: #FBFFFE;
   border: none;
   text-decoration: none;
+  /*@include under-large-screen {
+      font-size: 2em;
+      margin: 0.8em 0em;
+    }
+
+    //responsive pour ecran small
+    @include small-screen {
+      font-size: 1.2em;
+      margin: 0.5em 0em;
+    }*/
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (min-width: 769px) {
   .title .title-home {
     font-size: 2em;
     margin: 0.8em 0em;
   }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (min-width: 993px) {
   .title .title-home {
-    font-size: 1.2em;
-    margin: 0.5em 0em;
+    font-size: 3em;
+    margin: 0.8em 0em;
   }
 }
 
@@ -103,14 +122,25 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  font-size: 1.5em;
+  font-size: 1em;
   font-style: italic;
   color: #272727;
   text-align: center;
   padding: 1em 0em;
+  /*//responsive pour ecran inferieur à large
+    @include under-large-screen {
+      font-size: 1.5em;
+      margin: 0.8em 0em;
+    }
+
+    //responsive pour ecran small
+    @include small-screen {
+      font-size: 1em;
+      margin: 0.5em 0em;
+    }*/
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (min-width: 769px) {
   .title .text-home,
   .title .text-page {
     font-size: 1.5em;
@@ -118,14 +148,34 @@
   }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (min-width: 993px) {
   .title .text-home,
   .title .text-page {
-    font-size: 1em;
-    margin: 0.5em 0em;
+    font-size: 2em;
+    margin: 0.8em 0em;
   }
 }
 
 .title .text-home {
+  color: #FBFFFE;
+}
+
+.title .first-color {
+  color: #0267C1;
+}
+
+.title .second-color {
+  color: #EFA00B;
+}
+
+.title .third-color {
+  color: #3A7D44;
+}
+
+.title .fourth-color {
+  color: #272727;
+}
+
+.title .fifth-color {
   color: #FBFFFE;
 }

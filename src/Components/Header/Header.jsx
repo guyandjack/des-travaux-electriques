@@ -5,7 +5,6 @@ import { useState, useEffect, useRef } from "react";
 
 
 //Import des composants enfants
-
 import { Link } from "react-router-dom";
 import { SiteIsBuilding } from "../../Components/SiteIsBuilding/SiteIsBuilding.jsx";
 import { NavMenu } from "../NavMenu/NavMenu.jsx";
@@ -16,14 +15,14 @@ import { CollapseUserSession } from "../CollapseUserSession/CollapseUserSession.
 //Import des feuilles de style
 import "../../Style/CSS/header.css";
 
-
+//Import des fonctions
 import { isScreenMobil } from "../../Utils/Function/isScreenMobil.js";
 
 //Fonction "Header"
 function Header() {
   //hook useRef
 
-  // reference de l'élement nav dans le DOM
+  //reference de l'élement nav dans le DOM
   const elementHeader = useRef();
 
   //bolleen qui indique si un ecouteur d'évènement lié au "scroll" est rataché à un élément du DOM
@@ -90,6 +89,7 @@ function Header() {
 
   return (
     <header className="main-header grow">
+      <SiteIsBuilding />
       {isSmallScreen ? (
         <div className="container-banner">
           <img

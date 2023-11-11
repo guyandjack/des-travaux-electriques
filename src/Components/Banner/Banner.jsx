@@ -6,40 +6,39 @@ import { useState, useRef, useEffect } from "react";
 //Importation des url des images pour les différents banner et taille d'écran
 import { urlImgBanner } from "../../Data/url_image_banner/url_image_banner.js";
 
+//Import des functions
+import { giveImageType } from "../../Utils/Function/giveImageType.js";
+
 //Import feuille de style
 import "../../Style/CSS/banner.css";
-
-
-
-//Import des functions
-const typeImg = require("../../Utils/Function/giveImageSize.js");
-
-
 
 function Banner({ pagename, text, title, colortext, colorbackground, urlimg }) {
   /**********  hooks  ******/
   // "useState"
-  const [imageSize, setImageSize] = useState("");
+
+  const [imgUrl, setImgUrl] = useState();
 
   //"useEffect"
-  //determine l'image à afficher en fonction de la taille de l'ecran.
+  //Selectionne l' url de  l'image à afficher en fonction de la taille de l'ecran.
   useEffect(() => {
-    typeImg.giveImageSize(setImageSize);
+    let imageType = giveImageType();
+    let url = urlImgBanner[pagename][imageType];
+    setImgUrl(url);
 
     window.addEventListener("resize", () => {
-      typeImg.giveImageSize(setImageSize);
+      let imageType = giveImageType();
+      let url = urlImgBanner[pagename][imageType];
+      setImgUrl(url);
     });
 
     return () => {
       window.removeEventListener("resize", () => {
-        typeImg.giveImageSize(setImageSize);
+        let imageType = giveImageType();
+        let url = urlImgBanner[pagename][imageType];
+        setImgUrl(url);
       });
     };
-  }, [imageSize]);
-
-  /*****  variables  *****/
-  //Contient l'url de l' image aà afficher dans le composant "banner"
-  let imgUrl = urlImgBanner[pagename][imageSize];
+  }, []);
 
   let classBanner = "banner";
   let classBackGroundImg = "banner__background-img";
@@ -99,8 +98,6 @@ function Banner({ pagename, text, title, colortext, colorbackground, urlimg }) {
       classColorBg = " color-bg-first";
     }
   }
-
-  
 
   return (
     <div className={classBanner}>

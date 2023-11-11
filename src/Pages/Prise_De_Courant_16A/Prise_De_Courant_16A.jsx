@@ -23,6 +23,7 @@ import { Loader } from "../../Components/Loader/Loader.jsx";
 
 //Import des functions
 import { scrollTo } from "../../Utils/Function/scrollTo.js";
+import { giveImageType } from "../../Utils/Function/giveImageType.js";
 
 //Import des feuilles de style
 import "../../Style/CSS/prise_courant.css";
@@ -33,24 +34,22 @@ import "../../Style/CSS/prise_courant.css";
 //Import des fonctions
 const requestFetch = require("../../Utils/Function/RequeteAPI.js");
 const dateFormat = require("../../Utils/Function/Date.js");
-const sizeScreen = require("../../Utils/Function/giveImageSize.js");
 const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 
 //Fonction "PagePC16A"
 
 function PagePC16A() {
-  
   //hooks "useState"
-  const [imageSize, setImageSize] = useState("");
+  const [imageType, setImageType] = useState();
   const [arrayComments, setArrayComments] = useState([]);
   const [initialIdValue, setInitialIdValue] = useState(-1);
 
   //url image
 
-  let comptagePrise = ContentImagePagePC16A.comptage_pc[imageSize];
-  let schemaPC = ContentImagePagePC16A.schema_pc[imageSize];
-  let pcFront = ContentImagePagePC16A.pc_front_face[imageSize];
-  let pcBack = ContentImagePagePC16A.pc_back_face[imageSize];
+  let comptagePrise = ContentImagePagePC16A.comptage_pc[imageType];
+  let schemaPC = ContentImagePagePC16A.schema_pc[imageType];
+  let pcFront = ContentImagePagePC16A.pc_front_face[imageType];
+  let pcBack = ContentImagePagePC16A.pc_back_face[imageType];
 
   //constante
   const refPage = "pc16a";
@@ -67,18 +66,29 @@ function PagePC16A() {
     scrollTo(".prise-courant");
   }, []);
 
-  //determine l' image ä afficher en fonction de la taille de l'ecran
+  //Selectionne l' url de  l'image à afficher en fonction de la taille de l'ecran.
   useEffect(() => {
-    sizeScreen.giveImageSize(setImageSize);
+    let imgType = giveImageType();
+    setImageType(imgType);
+    console.log("type image page pc: " + imgType)
 
     window.addEventListener("resize", () => {
-      sizeScreen.giveImageSize(setImageSize);
+      let imgType = giveImageType();
+      setImageType(imgType);
+      console.log("type image page pc: " + imgType);
     });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        let imgType = giveImageType();
+        setImageType(imgType);
+      });
+    };
   }, []);
 
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
   //todo: implementer une com wesocket avec le serveur
-  
+
   useEffect(() => {
     //premiere requete une fois les composants montés.
     //et emsuite toute les minutes

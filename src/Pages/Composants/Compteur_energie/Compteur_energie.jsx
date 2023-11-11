@@ -31,7 +31,7 @@ import "../../../Style/CSS/compteur_energie.css";
 //Import des fonctions
 const requetsFetch = require("../../../Utils/Function/RequeteAPI.js");
 const dateFormat = require("../../../Utils/Function/Date.js");
-const sizeScreen = require("../../../Utils/Function/giveImageSize.js");
+//const sizeScreen = require("../../../Utils/Function/giveImageSize.js");
 const defaultValueInputUser = require("../../../Utils/Function/LocalStorage.js");
 
 //Fonction "PageCompteurEnergie"
@@ -42,11 +42,11 @@ function PageCompteurEnergie() {
 
   //url image.
 
-  let compteurElectromecanique =
+  /*let compteurElectromecanique =
     ContentImagePageCompteurEnergie.compteurAncien[imageSize];
   let compteurElectronique =
     ContentImagePageCompteurEnergie.compteurElectronique[imageSize];
-  let compteurLinky = ContentImagePageCompteurEnergie.compteurLinky[imageSize];
+  let compteurLinky = ContentImagePageCompteurEnergie.compteurLinky[imageSize];*/
 
   //constante
   const refPage = "compteur-energie";
@@ -59,11 +59,11 @@ function PageCompteurEnergie() {
 
   //url image schema.
 
-  let schemaCompteurAncien =
+  /*let schemaCompteurAncien =
     ContentImagePageCompteurEnergie.schemaCompteurAncien[imageSize];
 
   let schemaCompteurLinky =
-    ContentImagePageCompteurEnergie.schemaCompteurLinky[imageSize];
+    ContentImagePageCompteurEnergie.schemaCompteurLinky[imageSize];*/
 
   //hooks
 
@@ -73,12 +73,12 @@ function PageCompteurEnergie() {
   }, []);
 
   //recupere la taille de l' ecran pour les images responsives
-  useEffect(() => {
+  /*useEffect(() => {
     sizeScreen.giveImageSize(setImageSize);
     window.addEventListener("resize", () => {
       sizeScreen.giveImageSize(setImageSize);
     });
-  }, []);
+  }, []);*/
 
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
   //todo: implementer une com wesocket avec le serveur
@@ -129,7 +129,7 @@ function PageCompteurEnergie() {
         <div className="container-image-header">
           <ContainerImg
             displaytype={"row"}
-            src1={compteurElectromecanique}
+            src1={""}
             alt1={"Compteur électromecanique"}
             figcap1={"Compteur électromecanique"}
           />
@@ -201,7 +201,7 @@ function PageCompteurEnergie() {
         <div className="container-image-header">
           <ContainerImg
             displaytype={"row"}
-            src1={compteurElectronique}
+            src1={""}
             alt1={"Compteur électronique"}
             figcap1={"Compteur électronique"}
           />
@@ -273,7 +273,7 @@ function PageCompteurEnergie() {
         <div className="container-image-header">
           <ContainerImg
             displaytype={"row"}
-            src1={compteurLinky}
+            src1={""}
             alt1={"Compteur Linky"}
             figcap1={"Compteur Linky"}
           />

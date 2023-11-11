@@ -24,6 +24,7 @@ import { Loader } from "../../Components/Loader/Loader.jsx";
 
 //Import des functions
 import { scrollTo } from "../../Utils/Function/scrollTo.js";
+import { giveImageType } from "../../Utils/Function/giveImageType.js";
 
 //Import des feuilles de style
 import "../../Style/CSS/circuit_specialise.css";
@@ -31,23 +32,21 @@ import "../../Style/CSS/circuit_specialise.css";
 //Import des fonctions
 const requestFetch = require("../../Utils/Function/RequeteAPI.js");
 const dateFormat = require("../../Utils/Function/Date.js");
-const sizeScreen = require("../../Utils/Function/giveImageSize.js");
 const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 
 //Fonction "PageCircuitSpecialise"
 function PageCircuitSpecialise() {
   //hooks "useState"
-  const [imageSize, setImageSize] = useState("");
+  //url des images à afficher
+  const [plaqueDeCuisson, setPlaqueDeCuisson] = useState();
+  const [cumulus, setCumulus] = useState();
+  const [laveLinge, setLaveLinge] = useState();
+
+  //Tableau contenant les commentaires issus de la bdd
   const [arrayComments, setArrayComments] = useState([]);
+
+  //Initialisation d' une props du composant "coment"
   const [initialIdValue, setInitialIdValue] = useState(-1);
-
-  //url image.
-
-  let plaqueDeCuisson =
-    ContentImagePageCircuitSpecialise.plaqueCuisson[imageSize];
-  let chauffage = ContentImagePageCircuitSpecialise.chauffage[imageSize];
-  let cumulus = ContentImagePageCircuitSpecialise.cumulus[imageSize];
-  let laveLinge = ContentImagePageCircuitSpecialise.laveLinge[imageSize];
 
   //constante
   const refPage = "circuit-specialise";
@@ -57,17 +56,6 @@ function PageCircuitSpecialise() {
   let originalContent = null;
   let commentDate = null;
 
-  //url image schema.
-
-  let schemaPlaqueDeCuisson =
-    ContentImagePageCircuitSpecialise.schemaPlaqueCuisson[imageSize];
-
-  let schemaCumulus =
-    ContentImagePageCircuitSpecialise.schemaCumulus[imageSize];
-
-  let schemaLaveLinge =
-    ContentImagePageCircuitSpecialise.schemalaveLinge[imageSize];
-
   //hooks "useEffect"
 
   //Positionne le scroll en haut de page
@@ -75,15 +63,19 @@ function PageCircuitSpecialise() {
     scrollTo(".circuit-specialise");
   }, []);
 
-  //determine l' image ä afficher en fonction de la taille de l'ecran
+  //Selectionne l'url de l'image à afficher en fonction de la taille de l'ecran.
   useEffect(() => {
-    sizeScreen.giveImageSize(setImageSize);
-
+    setUrl();
     window.addEventListener("resize", () => {
-      sizeScreen.giveImageSize(setImageSize);
+      setUrl();
     });
-  }, []);
 
+    return () => {
+      window.removeEventListener("resize", () => {
+        setUrl();
+      });
+    };
+  }, []);
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
   //todo: implementer une com wesocket avec le serveur
   useEffect(() => {
@@ -104,6 +96,18 @@ function PageCircuitSpecialise() {
   useEffect(() => {
     defaultValueInputUser.setValueInputUser();
   }, []);
+
+  //fonctions locales
+  
+  function setUrl() {
+    let imageType = giveImageType();
+
+    setPlaqueDeCuisson(
+      ContentImagePageCircuitSpecialise.schemaPlaqueCuisson[imageType]
+    );
+    setCumulus(ContentImagePageCircuitSpecialise.schemaCumulus[imageType]);
+    setLaveLinge(ContentImagePageCircuitSpecialise.schemalaveLinge[imageType]);
+  }
 
   return (
     <div className="circuit-specialise">
@@ -143,7 +147,7 @@ function PageCircuitSpecialise() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={schemaPlaqueDeCuisson}
+            src1={plaqueDeCuisson}
             alt1={"Schéma de câblage d'une plaque de cuisson "}
             figcap1={"Schéma de câblage d'une plaque de cuisson "}
           />
@@ -212,7 +216,7 @@ function PageCircuitSpecialise() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={schemaCumulus}
+            src1={cumulus}
             alt1={"Schéma de câblage d'un cumulus "}
             figcap1={"Schéma de câblage d'un cumulus "}
           />
@@ -274,7 +278,7 @@ function PageCircuitSpecialise() {
 
         <div className="container-image-schema">
           <ContainerImg
-            src1={schemaLaveLinge}
+            src1={laveLinge}
             alt1={"Schéma de câblage d'un lave-linge "}
             figcap1={"Schéma de câblage d'un lave-linge "}
           />

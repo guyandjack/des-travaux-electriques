@@ -24,6 +24,7 @@ import { Loader } from "../../Components/Loader/Loader.jsx";
 
 //Import des functions
 import { scrollTo } from "../../Utils/Function/scrollTo.js";
+import { giveImageType } from "../../Utils/Function/giveImageType.js";
 
 //Import des feuilles de style
 import "../../Style/CSS/circuit_eclairage.css";
@@ -31,49 +32,46 @@ import "../../Style/CSS/circuit_eclairage.css";
 //Import des fonctions
 const requestFetch = require("../../Utils/Function/RequeteAPI.js");
 const dateFormat = require("../../Utils/Function/Date.js");
-const sizeScreen = require("../../Utils/Function/giveImageSize.js");
 const defaultValueInputUser = require("../../Utils/Function/LocalStorage.js");
 
 //Fonction "PageCircuitEclairage"
 function PageCircuitEclairage() {
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
-  const [imageSize, setImageSize] = useState("");
+  /**** hooks "useState" ******* */
+
+  //url des images à afficher
+  const [schema_eclairage_SA, setSchema_eclairage_SA] = useState();
+  const [schema_eclairage_VV, setSchema_eclairage_VV] = useState();
+  const [schema_eclairage_BP, setSchema_eclairage_BP] = useState();
+  const [schema_eclairage_radar, setSchema_eclairage_radar] = useState();
+
+  //Tableau contenant les commentaires issus de la bdd
   const [arrayComments, setArrayComments] = useState([]);
+
+  //Initialisation d' une props du composant "coment"
   const [initialIdValue, setInitialIdValue] = useState(-1);
 
-  //url image.
-
-  //constante
-  const refPage = "circuit-eclairage";
-
-  //variable
-  let originalFirstname = null;
-  let originalContent = null;
-  let originalCommentId = null;
-  let commentDate = null;
-
-  //url image schema
-  let schema_eclairage_SA =
-    ContentImagePageCircuitEclairage.schemaSimpleAllumage[imageSize];
-  let schema_eclairage_VV =
-    ContentImagePageCircuitEclairage.schemaVaEtVient[imageSize];
-  let schema_eclairage_BP =
-    ContentImagePageCircuitEclairage.schemaBoutonPoussoir[imageSize];
-  let schema_eclairage_radar =
-    ContentImagePageCircuitEclairage.schemaDetecteurPresence[imageSize];
-
+/**** hooks "useEffect" ******* */
+  
+  
   //Positionne le scroll en haut de page
   useEffect(() => {
     scrollTo(".circuit-eclairage");
   }, []);
 
-  //determine l'image à afficher en fonction de la taille de l'ecran.
+  
+  //Selectionne l'url de l'image à afficher en fonction de la taille de l'ecran.
   useEffect(() => {
-    sizeScreen.giveImageSize(setImageSize);
-
+    
+    setUrl();
     window.addEventListener("resize", () => {
-      sizeScreen.giveImageSize(setImageSize);
+      setUrl();
     });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        setUrl();
+      });
+    };
   }, []);
 
   //réalise une requette sur l'api pour récuperer les commentaires de la page consultée
@@ -96,6 +94,35 @@ function PageCircuitEclairage() {
   useEffect(() => {
     defaultValueInputUser.setValueInputUser();
   }, []);
+
+  //reference de la page
+  const refPage = "circuit-eclairage";
+
+  //variable
+  let originalFirstname = null;
+  let originalContent = null;
+  let originalCommentId = null;
+  let commentDate = null;
+
+  //fonctions
+  function setUrl() {
+    let imageType = giveImageType();
+    console.log("image type dans fonction seturl: " + imageType);
+    setSchema_eclairage_SA(
+      ContentImagePageCircuitEclairage.schemaSimpleAllumage[imageType]
+    );
+    setSchema_eclairage_VV(
+      ContentImagePageCircuitEclairage.schemaVaEtVient[imageType]
+    );
+    setSchema_eclairage_BP(
+      ContentImagePageCircuitEclairage.schemaBoutonPoussoir[imageType]
+    );
+    setSchema_eclairage_radar(
+      ContentImagePageCircuitEclairage.schemaDetecteurPresence[imageType]
+    );
+
+    console.log("url image simple allumage: " + schema_eclairage_SA);
+  }
 
   return (
     <div className="circuit-eclairage">
